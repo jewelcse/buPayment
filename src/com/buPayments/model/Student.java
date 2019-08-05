@@ -35,10 +35,9 @@ public class Student {
 		this.s_password = s_password;
 	}
 	
-	public Student(String s_roll, String s_reg, String s_name,
-			String s_mother_name, String s_father_name, String s_email,
-			String s_faculty, String s_department, String s_semester,
-			String s_phone, String s_password) {
+	public Student(String s_roll, String s_reg, String s_name, String s_father_name,
+			String s_mother_name, String s_email,
+			String s_phone, String s_password, String s_semester, String s_department, String s_faculty) {
 		
 		this.s_roll = s_roll;
 		this.s_reg = s_reg;
@@ -52,6 +51,8 @@ public class Student {
 		this.s_phone = s_phone;
 		this.s_password = s_password;
 	}
+	
+
 	
 	public Student(String s_email,String s_password) {
 	
@@ -158,9 +159,6 @@ public class Student {
 	public void setS_password(String s_password) {
 		this.s_password = s_password;
 	}
-	
-	
-	
 	
 	 public void removeStudentRoll() {
 		 s_roll = null;

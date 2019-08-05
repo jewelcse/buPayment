@@ -28,8 +28,8 @@ function goBack() {
     <h3 class="h3-responsive font-weight-bold text-center ">Payment Form</h3>
     
     <div class="text-center text-md-right">
-     <button onclick="goBack()" class="btn btn-primary">Back</button>
-     <a class="btn btn-primary">Confirm Payment</a>
+     <button onclick="goBack()" class="btn btn-primary mdb-color darken-3">Back</button>
+     <button  class="btn btn-primary mdb-color darken-3">Confirm Payment</button>
 </div>
 <hr>
 

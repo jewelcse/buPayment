@@ -5,12 +5,17 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
+
+import com.buPayments.model.Admin;
 import com.buPayments.model.Devfees;
 import com.buPayments.model.FormfillupFees;
 import com.buPayments.model.SemesterFees;
@@ -20,13 +25,17 @@ import com.mysql.jdbc.PreparedStatement;
 public class mainController {
 
 static dbConnection db = new dbConnection();
+
+
+ArrayList<Student> al = new ArrayList<Student>();
 	
 	public static void addStudent(Student newStudent) throws SQLException {
 		
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		
-		
+		  
+			  
+	       
 			// get a connection
 			myConn =db.getCon();
 			
@@ -34,21 +43,27 @@ static dbConnection db = new dbConnection();
 			String sql = "insert into student "
 					   + "(s_Roll,s_Reg,s_Name,s_Father_name,s_Mother_name,s_Email,s_Phone,s_Pass,s_Semester,s_Department,s_Faculty) "
 					   + "values (?,?,?,?,?,?,?,?,?,?,?)";
-			
+			  
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			
 			// set the param values for the student
 						myStmt.setString(1, newStudent.getS_roll());
 						myStmt.setString(2, newStudent.getS_reg());
+						
 						myStmt.setString(3, newStudent.getS_name());
-						myStmt.setString(4, newStudent.getS_mother_name());
-						myStmt.setString(5, newStudent.getS_father_name());
+						myStmt.setString(4, newStudent.getS_father_name());
+						myStmt.setString(5, newStudent.getS_mother_name());
+						
 						myStmt.setString(6, newStudent.getS_email());
-						myStmt.setString(7, newStudent.getS_faculty());
-						myStmt.setString(8, newStudent.getS_department());
+						myStmt.setString(7, newStudent.getS_phone());
+						myStmt.setString(8, newStudent.getS_password());
+						
 						myStmt.setString(9, newStudent.getS_semester());
-						myStmt.setString(10, newStudent.getS_phone());
-						myStmt.setString(11, newStudent.getS_password());
+						myStmt.setString(10, newStudent.getS_department());
+						myStmt.setString(11, newStudent.getS_faculty());
+						
+						
+						
 			
 			
 			// execute sql insert
@@ -226,5 +241,98 @@ static dbConnection db = new dbConnection();
 			// execute sql insert
 			myStmt.execute();
 			System.out.print("formfillup-payment-successfulls");
+	}
+
+
+
+	public static Admin admin_login(Admin login_admin) {
+		
+		//preparing some objects for connection 
+	      Statement stmt = null;    
+		
+		  Connection myConn = null;
+		  PreparedStatement myStmt = null;
+		  ResultSet myRs = null;
+			
+	      String admin = login_admin.getAdmin();
+	      String password = login_admin.getPassword();
+	     
+		  
+			
+			// create sql statement
+			String sql = "select * from admin where admin = '"+admin+"' AND password = '"+password+"'";
+			
+			try {
+		    	myConn = db.getCon();
+				stmt=myConn.createStatement();
+				 myRs = stmt.executeQuery(sql);
+				    boolean more = myRs.next();
+				    
+				    if (!more) 
+				      {
+				         System.out.println("login-failed");
+				         login_admin.setValid(false);
+				      } 
+				    
+				    else if (more) 
+				      {
+				    	login_admin.setValid(true);
+				        System.out.println("login-success");
+				      }
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		   
+			
+			
+		return login_admin;
+	}
+	
+	public ArrayList<Student> showData(){
+		String sql = "select * from student";
+		Connection con = db.getCon();
+		try {
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		    while (myRs.next()) {
+		    	Student newStudent = new Student();
+		    	
+		    	String d_roll  = myRs.getString("s_Roll");
+		    	String d_reg  = myRs.getString("s_Reg");
+		    	String d_name  = myRs.getString("s_Name");
+		    	String d_fname  = myRs.getString("s_Father_name");
+		    	String d_mname  = myRs.getString("s_Mother_name");
+		    	String d_email = myRs.getString("s_Email");
+		    	String d_phone  = myRs.getString("s_Phone");
+		    	String d_semester  = myRs.getString("s_Semester");
+		    	String d_dept  = myRs.getString("s_Department");
+		    	String d_faculty  = myRs.getString("s_Faculty");
+		        System.out.println("Welcome " + d_name);
+		        // login_student.setS_name(name);
+		    	
+		        newStudent.setS_roll(d_roll);
+		        newStudent.setS_reg(d_reg);
+		        newStudent.setS_name(d_name);
+		        newStudent.setS_father_name(d_fname);
+		        newStudent.setS_mother_name(d_mname);
+		        newStudent.setS_email(d_email);
+		        newStudent.setS_phone(d_phone);
+		        newStudent.setS_faculty(d_faculty);
+		        newStudent.setS_semester(d_semester);
+		        newStudent.setS_department(d_dept);
+		        newStudent.setValid(true);
+		        al.add(newStudent);
+			}
+		    
+//			for(int i=0;i<al.size();i++){
+//				System.out.println(al.get(i).getName()+ "    "+al.get(i).getEmail());
+//			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return al;
 	}
 }

@@ -1,20 +1,6 @@
-
-<%@include file="header.jsp" %>
+<%@include file="adminheader.jsp" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="com.buPayments.model.Student"
-    %>
-    
-     <% 
-    response.setHeader("Cache-Control","no-store,must-revalidate"); 
-    response.setHeader("Pragma","no-cache"); 
-    response.setDateHeader ("Expires", -1); 
-    new java.util.Date();
-    if(session.getAttribute("currentSessionStudent")==null)
-    {
-    	
-    Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
-    
     %>
 
 <script>
@@ -27,10 +13,10 @@ function clearForms()
 }
 function validateForm()
 {
-var x=document.forms["myForm"]["email"].value;
+var x=document.forms["myForm"]["admin"].value;
 if (x==null || x=="")
   {
- alert("email must be filled out");
+ alert("admin must be filled out");
  // document.getElementById('email').focus();
   return false;
   }
@@ -53,7 +39,7 @@ if (y==null || y=="")
     <!--Grid column-->
         <div class="col-md-4 m-auto pt-4">
         	
-            <form id="myForm"action="logInController" onsubmit="return validateForm()" method="post"  name="myForm">
+            <form id="myForm"action="adminController" onsubmit="return validateForm()" method="post"  name="myForm">
             
                 
                
@@ -72,21 +58,21 @@ if (y==null || y=="")
 
                   <div class="md-form">
                     <i class="far fa-envelope prefix"></i>
-                    <input type="text" id="orangeForm-email" name="email" id="email" class="form-control">
-                    <label for="orangeForm-email" class="">Your email</label>
+                    <input type="text"  name="admin" id="admin" class="form-control">
+                    <label for="admin" class="">Admin Name</label>
                   </div>
 
                   <div class="md-form">
                     <i class="fas fa-lock prefix"></i>
-                    <input type="password" id="orangeForm-pass" name="password" id="password" class="form-control">
-                    <label for="orangeForm-pass" class="">Your password</label>
+                    <input type="password" name="password" id="password" class="form-control">
+                    <label for="password" class="">Admin password</label>
                   </div>
 
                   <div class="text-center">
                     
                     <input type="submit" class="btn  btn-primary  mdb-color darken-3 waves-effect waves-light" value="Login" > 
                     
-                    <p class="mt-4">Don't Have an Account? Please Sign Up First <a href="signup.jsp" >Sign-up</a></p>
+                   
    				 </div>      
          </div>
 <!-- Jumbotron -->
@@ -109,20 +95,6 @@ if (y==null || y=="")
 </body>   
 </html>
 
-<br><br>
-<%@include file="footer.jsp" %>
 
-<% }
 
-    else{ %>
-    	
-    	<div class="col-md-6  mt-5">
-    	
-    	<h1>Already logedIn !!</h1>
-    	</div>
-    	<br><br>
-<%@include file="footer.jsp" %>
-    	
-<%     }
 
-%> 

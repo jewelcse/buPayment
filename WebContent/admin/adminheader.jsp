@@ -65,7 +65,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
+              <a class="nav-link" href="#">add Student</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
@@ -222,12 +222,7 @@
               Login
                </a>
           </li>
-          	<li class="nav-item">
-            <a class="nav-link waves-effect waves-light" href="signup.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
-              SignUp
-               </a>
-          </li>
+          
           </ul>
           <!-- Links -->
           

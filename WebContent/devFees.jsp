@@ -220,7 +220,7 @@ return false;
 			<!-- Amount table for users -->
 
             <div class="text-center text-md-right">
-                <input type="submit" class="btn btn-primary" value="pay now">
+                <input type="submit" class="btn btn-primary mdb-color darken-3" value="pay now">
             </div>
             
             </form>

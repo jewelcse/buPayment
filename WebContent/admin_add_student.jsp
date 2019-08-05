@@ -34,7 +34,7 @@
       <div class="container">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.jsp">BUPayments</a>
+        <a class="navbar-brand" href="#">BUPayments</a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -45,31 +45,7 @@
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="basicExampleNav">
 
-          <!-- Links -->
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.jsp">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Services</a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
-                <a class="dropdown-item" href="admissionFees.jsp">Admission Fees</a>
-                <a class="dropdown-item" href="formFillUp.jsp">Form Fill-up Fees</a>
-              </div>
-            </li>
-          </ul>
+          
           
           <ul class="navbar-nav ml-auto">
           
@@ -198,7 +174,7 @@ return false;
     <!--Grid column-->
         <div class="col-md-5  m-auto">
         	
-            <form id="myForm" onsubmit="return validateForm()" method="post"  name="myForm" action="signUpController">
+            <form id="myForm" onsubmit="return validateForm()" method="post"  name="myForm" action="addStudentController">
             
                 
                
@@ -211,7 +187,7 @@ return false;
 			<div class="card-body m-4">
 			 <!-- Header -->
                   <div class="form-header mdb-color darken-3 text-center " style="border-radius: 25px;">
-                    <h3 class="font-weight-500 my-2 py-1 text-light">Sign Up</h3>
+                    <h3 class="font-weight-500 my-2 py-1 text-light">Add New Student</h3>
                   </div>
                   <!-- Body -->
                   <div class="md-form">
@@ -325,15 +301,10 @@ return false;
                     
                     
 
-                  <div class="md-form">
-                    <i class="fas fa-lock prefix"></i>
-                    <input type="password" id="spass" name="s_password" class="form-control">
-                    <label for="spass" class="">Your password</label>
-                  </div>
-
+             
                   <div class="text-center">
-                   <input type="submit" value="Sign up" class="btn btn-primary mdb-color darken-3">
-                    <p class="mt-4">Already Have an Account? <a href="login.jsp" >Login</a></p>
+                   <input type="submit" value="Add record" class="btn btn-primary mdb-color darken-3">
+                    
                    </div>      
      		  </div>
 <!-- Jumbotron -->
@@ -359,3 +330,4 @@ return false;
 
 <br><br>
 <%@include file="footer.jsp" %>
+/html>

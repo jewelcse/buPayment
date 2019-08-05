@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="com.buPayments.model.Student"
+    import="com.buPayments.model.Admin"
     %>
     
      <% 
@@ -8,10 +8,10 @@
     response.setHeader("Pragma","no-cache"); 
     response.setDateHeader ("Expires", -1); 
     new java.util.Date();
-    if(session.getAttribute("currentSessionStudent")!=null)
+    if(session.getAttribute("currentSessionAdmin")!=null)
     {
     	
-    Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
+    Admin currentAdmin = (Admin)(session.getAttribute("currentSessionAdmin"));
     
     %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -46,7 +46,7 @@
       <div class="container">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.jsp">BUPayments</a>
+        <a class="navbar-brand" href="admin_index.jsp">BUPayments</a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -57,40 +57,19 @@
         <!-- Collapsible content -->
         <div class="collapse navbar-collapse" id="basicExampleNav">
 
-          <!-- Links -->
-          <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.jsp">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
+       
+            
+           
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Services</a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
-                <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
-                <a class="dropdown-item" href="formFillUp.jsp">Form Fill-up Fees</a>
-              </div>
-            </li>
-          </ul>
           
           <ul class="navbar-nav ml-auto">
           
           <li class="nav-item">
             <a class="nav-link waves-effect waves-light" href="stu_profile.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
+               
               
               
-              <%= currentUser.getS_name() %>
+              <%= currentAdmin.getAdmin()%>
               
                     
               
@@ -98,7 +77,7 @@
           </li>
           
            <li class="nav-item">
-            <a class="nav-link waves-effect waves-light" href="logoutController">
+            <a class="nav-link waves-effect waves-light" href="adminLogout">
               <i class="fas fa-sign-in-alt"></i> 
               
               
@@ -177,7 +156,7 @@
       <div class="container">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.jsp">BUPayments</a>
+        <a class="navbar-brand" href="#">BUPayments</a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -190,44 +169,19 @@
 
           <!-- Links -->
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.jsp">Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
-            </li>
+           
+           
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Services</a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
-                <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
-                <a class="dropdown-item" href="formFillUp.jsp">Form Fill-up Fees</a>
-              </div>
-            </li>
-          </ul>
-          
+         
           <ul class="navbar-nav ml-auto">
           
           <li class="nav-item">
-            <a class="nav-link waves-effect waves-light" href="login.jsp">
+            <a class="nav-link waves-effect waves-light" href="adminlogin.jsp">
               <i class="fas fa-sign-in-alt"></i> 
               Login
                </a>
           </li>
-          	<li class="nav-item">
-            <a class="nav-link waves-effect waves-light" href="signup.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
-              SignUp
-               </a>
-          </li>
+          
           </ul>
           <!-- Links -->
           

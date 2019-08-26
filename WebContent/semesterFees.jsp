@@ -14,6 +14,14 @@
     	Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
     %>
      
+        <style>
+.jumbotron {
+    margin-left: auto;
+    margin-right: auto;
+    width: 750px;
+    margin-top: 20px;
+}
+</style>
    
            <script>
 function clearForms()
@@ -89,7 +97,7 @@ return false;
 </script>
   
   <!--Section: Contact v.2-->
-<section class="m-4">
+<section class="">
 <div class="jumbotron">
     <!--Section heading-->
     <h2 class="h2-responsive font-weight-bold text-center ">University of Barishal</h2>
@@ -100,7 +108,7 @@ return false;
     <div class="row">
 
         <!--Grid column-->
-        <div class="col-md-8 mb-md-0 mb-5 p-5">
+        <div class="col-md-12 mb-md-0 mb-5 ">
         	
            
 

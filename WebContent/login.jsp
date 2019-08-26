@@ -65,15 +65,16 @@ if (y==null || y=="")
                   
 			<div class="card-body m-5">
 			 <!-- Header -->
-                  <div class="form-header mdb-color darken-3 text-center " style="border-radius: 25px;" >
+                  <div class="form-header  text-center " style="border-radius: 25px;
+    background-color: #b1040e;" >
                     <h3 class="font-weight-500 my-2 py-1 text-light">Login</h3>
                   </div>
                   
 
                   <div class="md-form">
                     <i class="far fa-envelope prefix"></i>
-                    <input type="text" id="orangeForm-email" name="email" id="email" class="form-control">
-                    <label for="orangeForm-email" class="">Your email</label>
+                    <input type="text" id="orangeForm-email" name="student_id" id="student_id" class="form-control">
+                    <label for="orangeForm-email" class="">Your Student Id</label>
                   </div>
 
                   <div class="md-form">
@@ -84,9 +85,10 @@ if (y==null || y=="")
 
                   <div class="text-center">
                     
-                    <input type="submit" class="btn  btn-primary  mdb-color darken-3 waves-effect waves-light" value="Login" > 
+                    <input type="submit" class=" btn waves-effect text-light" value="Login" style="border-radius: 25px;
+    background-color: #b1040e; color:white"> 
                     
-                    <p class="mt-4">Don't Have an Account? Please Sign Up First <a href="signup.jsp" >Sign-up</a></p>
+                    <p class="mt-4">Don't Have an Id / password ! <br>Please Contact our Office Room</p>
    				 </div>      
          </div>
 <!-- Jumbotron -->

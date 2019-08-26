@@ -80,13 +80,13 @@ ArrayList<Student> al = new ArrayList<Student>();
 		  PreparedStatement myStmt = null;
 		  ResultSet myRs = null;
 			
-	      String email = login_student.getS_email();
+	      String roll = login_student.getS_roll();
 	      String password = login_student.getS_password();
 	     
 		  
 			
 			// create sql statement
-			String sql = "select * from student where s_Email = '"+email+"' AND s_Pass = '"+password+"'";
+			String sql = "select * from student where s_Roll = '"+roll+"' AND s_Pass = '"+password+"'";
 			
 			
 			

@@ -19,6 +19,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title><%= currentUser.getS_name() %></title>
+<style>
+.pcolor{
+	color:black
+	}
+
+</style>
 </head>
 <body>
    <input type="hidden" name ="s_Roll" value="<%= currentUser.getS_roll() %>" >
@@ -39,10 +45,7 @@
                     <div class="col-md-4">
                         <div class="profile-img">
                             <img src="images/default-profile-picture-gmail-2.png" style="width:250px" alt="default image"/>
-                            <div class="file btn btn-primary">
-                                Change Photo
-                                <input type="file" name="file"/>
-                            </div>
+                           
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -56,24 +59,22 @@
                                     <p class="proile-rating">University of Barishal</p>
                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                 <li class="nav-item">
-                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true"><span class="pcolor">About</span></a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false"><span class="pcolor">Timeline</span></a>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="col-md-2">
-                        <input type="button" class="btn btn-primary"  value="Edit Profile"/>
-                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
                             <p>Contact Info:</p>
-                            <a href=""><%= currentUser.getS_email() %></a><br/>
-                            <a href=""><%= currentUser.getS_phone() %></a><br/>
+                            <a href=""><span class="pcolor"><%= currentUser.getS_email() %></span></a><br/>
+                            <a href=""><span class="pcolor"><%= currentUser.getS_phone() %></span></a><br/>
                       
                         </div>
                     </div>

@@ -32,6 +32,15 @@
     body {
         box-sizing: border-box;
     }
+        header {
+    background-color: #b1040e;
+    
+	}
+	.licolor{
+	color:white
+	}
+
+
 </style>
 </head>
 <body>
@@ -40,13 +49,13 @@
   <header>
   
     <!--Navbar some color 'peach-gradient' 'purple-gradient' 'aqua-gradient' 'blue-gradient'-->
-    <nav class="navbar navbar-expand-lg navbar-dark   mdb-color darken-3 py-4 font-weight-bold z-depth-1" >
+    <nav class="navbar navbar-expand-lg  py-4 font-weight-bold z-depth-1" >
 
       <!-- Additional container -->
       <div class="container">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.jsp">BUPayments</a>
+        <a class="navbar-brand" href="index.jsp"><span class="licolor">Bupayments</span></a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -60,21 +69,21 @@
           <!-- Links -->
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a class="nav-link" href="index.jsp">Home
-                <span class="sr-only">(current)</span>
+              <a class="nav-link"  href="index.jsp"><span class="licolor">Home</span>
+                <span class="sr-only" >(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
+              <a class="nav-link" href="#"><span class="licolor">Payments Method</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#"><span class="licolor">About</span></a>
             </li>
 
             <!-- Dropdown -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Services</a>
+                aria-expanded="false"><span class="licolor">Services</span></a>
               <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
                 <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
@@ -87,10 +96,10 @@
           
           <li class="nav-item">
             <a class="nav-link waves-effect waves-light" href="stu_profile.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
+               
               
+              <span class="licolor"><%= currentUser.getS_name() %></span>
               
-              <%= currentUser.getS_name() %>
               
                     
               
@@ -99,10 +108,10 @@
           
            <li class="nav-item">
             <a class="nav-link waves-effect waves-light" href="logoutController">
-              <i class="fas fa-sign-in-alt"></i> 
+               
               
               
-             Logout
+             <span class="licolor">Logout</span>
               
                     
               
@@ -163,6 +172,13 @@
     body {
         box-sizing: border-box;
     }
+      header {
+    background-color: #b1040e;
+    
+	}
+	.licolor{
+	color:white
+	}
 </style>
 </head>
 <body>
@@ -171,13 +187,13 @@
   <header>
   
     <!--Navbar some color 'peach-gradient' 'purple-gradient' 'aqua-gradient' 'blue-gradient'-->
-    <nav class="navbar navbar-expand-lg navbar-dark   mdb-color darken-3 py-4 font-weight-bold z-depth-1" >
+    <nav class="navbar navbar-expand-lg  py-4 font-weight-bold z-depth-1" >
 
       <!-- Additional container -->
       <div class="container">
 
         <!-- Navbar brand -->
-        <a class="navbar-brand" href="index.jsp">BUPayments</a>
+        <a class="navbar-brand" href="index.jsp"><span class="licolor">Bupayments</span></a></a>
 
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -191,21 +207,21 @@
           <!-- Links -->
           <ul class="navbar-nav">
             <li class="nav-item ">
-              <a class="nav-link" href="index.jsp">Home
+              <a class="nav-link" href="index.jsp"><span class="licolor">Home</span>
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Payment Methods</a>
+              <a class="nav-link" href="#"><span class="licolor">Payments Method</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">About</a>
+              <a class="nav-link" href="#"><span class="licolor">About</span></a>
             </li>
 
             <!-- Dropdown -->
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">Services</a>
+                aria-expanded="false"><span class="licolor">Services</span></a>
               <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
                 <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
@@ -218,16 +234,11 @@
           
           <li class="nav-item">
             <a class="nav-link waves-effect waves-light" href="login.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
-              Login
+             
+              <span class="licolor"><span class="licolor">Login</span></a></span>
                </a>
           </li>
-          	<li class="nav-item">
-            <a class="nav-link waves-effect waves-light" href="signup.jsp">
-              <i class="fas fa-sign-in-alt"></i> 
-              SignUp
-               </a>
-          </li>
+          
           </ul>
           <!-- Links -->
           

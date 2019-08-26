@@ -31,12 +31,12 @@ public class logInController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String email = request.getParameter("email");
+		String id = request.getParameter("student_id");
 		String password = request.getParameter("password");
 		
 		
 		Student login_student  = new Student();
-		login_student.setS_email(email);
+		login_student.setS_roll(id);
 		login_student.setS_password(password);
 		
 		login_student = mainController.login(login_student);

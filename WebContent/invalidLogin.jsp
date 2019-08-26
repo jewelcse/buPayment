@@ -3,7 +3,7 @@
    
       <body >
          <center class=" mt-5">
-            Sorry, you are not a registered user! Please sign up first <a href="signup.jsp">Sign-Up</a>
+            Sorry, you are not a registered our Databse ! Please contact our Office room 
          </center>
     
    

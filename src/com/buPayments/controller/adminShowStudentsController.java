@@ -24,7 +24,7 @@ public class adminShowStudentsController extends HttpServlet {
 	ArrayList<Student> al = new ArrayList<Student>();
 	
 	public ArrayList<Student> showData(){
-		String sql = "select * from student";
+		String sql = "select * from student ORDER BY s_Id DESC ";
 		Connection con = db.getCon();
 		try {
 			//Statement stmt = con.createStatement();

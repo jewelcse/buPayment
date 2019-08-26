@@ -1,7 +1,84 @@
-<%@include file="adminheader.jsp" %>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    %>
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>devFees</title>
+<!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="assets/css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="icon" type="image/png" href="images/s_icon.png" />
+  
+  <style>
+    body {
+        box-sizing: border-box;
+    }        header {
+    background-color: #b1040e;
+    
+	}
+	.licolor{
+	color:white
+	}
+</style>
+</head>
+<body>
+
+	<!--Main Navigation-->
+  <header>
+  
+    <!--Navbar some color 'peach-gradient' 'purple-gradient' 'aqua-gradient' 'blue-gradient'-->
+    <nav class="navbar navbar-expand-lg  py-4 font-weight-bold z-depth-1" >
+
+      <!-- Additional container -->
+      <div class="container">
+
+        <!-- Navbar brand -->
+        <a class="navbar-brand" href="#"><span class="licolor">Bupayments</span></a></a>
+
+        <!-- Collapse button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+          aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Collapsible content -->
+        <div class="collapse navbar-collapse" id="basicExampleNav">
+
+          <!-- Links -->
+          <ul class="navbar-nav">
+           
+           
+
+         
+          <ul class="navbar-nav ">
+          
+         
+          
+          </ul>
+          <!-- Links -->
+          
+          
+          
+          
+  </div>
+
+        </div>
+        <!-- Collapsible content -->
+
+      </div>
+      <!-- Additional container -->
+
+    </nav>
+    <!--/.Navbar-->
+
+  </header>
+  <!--Main Navigation-->
+
+    	
+
 
 <script>
 function clearForms()
@@ -51,7 +128,8 @@ if (y==null || y=="")
                   
 			<div class="card-body m-5">
 			 <!-- Header -->
-                  <div class="form-header mdb-color darken-3 text-center " style="border-radius: 25px;" >
+                  <div class="form-header  text-center "  style="border-radius: 25px;
+    background-color: #b1040e;" >
                     <h3 class="font-weight-500 my-2 py-1 text-light">Admin Login</h3>
                   </div>
                   
@@ -70,7 +148,8 @@ if (y==null || y=="")
 
                   <div class="text-center">
                     
-                    <input type="submit" class="btn  btn-primary  mdb-color darken-3 waves-effect waves-light" value="Login" > 
+                    <input type="submit" class="btn  waves-effect waves-light" style="border-radius: 25px;
+    background-color: #b1040e; color:white" value="Login" > 
                     
                    
    				 </div>      

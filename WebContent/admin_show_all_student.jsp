@@ -21,14 +21,16 @@
 
 <body>
 	<section class="p-5">
-		<h3 class="inline"><u>Students Table</u></h3>
-		<button class="btn" style="float:right;
+		
+		<button onclick="printData()" class="btn" style="float:right;
     background-color: #b1040e; color:white">Print Data</button>
 		<button class="btn" style="float:right;
     background-color: #b1040e;''">
-    <a href="#" id="test" onClick="javascript:fnExcelReport();" style="''color:white">Export Data</a>
+    <a href="#" id="test" onClick="javascript:fnExcelReport();"><span  style="color:white">Export Data</span></a>
     
     </button>
+    <div id="printData">
+    <h3 class="inline"><u>Students Table</u></h3>
 		<table class="table table-hover" id="myTable">
 			<tr>
 
@@ -109,6 +111,7 @@
 
 
 		</table>
+		</div>
 	</section>
 </body>
 
@@ -141,11 +144,20 @@ function fnExcelReport() {
         }
     } else {
         $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
-        $('#test').attr('download', 'Test file.xls');
+        $('#test').attr('download', 'Student-table.xls');
     }
 
-}''
-
+}
+function printData() {
+		var print_div = document.getElementById("printData");
+		var print_area = window.open();
+		print_area.document.write(print_div.innerHTML);
+		print_area.document.close();
+		print_area.focus();
+		print_area.print();
+		print_area.close();
+				
+	}
 
 </script>
 <%

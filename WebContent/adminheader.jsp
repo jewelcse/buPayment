@@ -55,7 +55,7 @@
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span style="color:white''" class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Collapsible content -->
@@ -63,18 +63,16 @@
 
           <!-- Links -->
           <ul class="navbar-nav">
-            
-
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"><span class="licolor">Actions</span></a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="admin_add_student.jsp">Add Student</a>
-                <a class="dropdown-item" href="adminShowStudentsController">Show all Student</a>
-                <a class="dropdown-item" href="#">Paymnets</a>
-              </div>
+             <li class="nav-item">
+              <a class="nav-link" href="admin_add_student.jsp"><span class="licolor">Add Student</span></a>
             </li>
+			 <li class="nav-item">
+              <a class="nav-link" href="adminShowStudentsController"><span class="licolor">Show all Student</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#"><span class="licolor">Payments</span></a>
+            </li>
+           
           </ul>
           
           <ul class="navbar-nav ml-auto">

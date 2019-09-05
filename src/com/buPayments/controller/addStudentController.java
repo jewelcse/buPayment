@@ -36,7 +36,7 @@ public class addStudentController extends HttpServlet {
 		String phone = request.getParameter("s_phone");
 		
 //		System.out.print(roll);
-		 // Generate random integers in range 0 to 999 
+		 // Generate random password in range 0 to 999 
 		 Random rand = new Random(); 
 	     Integer min = 1000;
 	     Integer max = 10000;

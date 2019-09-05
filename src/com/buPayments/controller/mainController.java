@@ -157,16 +157,16 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 			// create sql for insert
 			String sql = "insert into development_fees "
-					   + "(s_roll,dev_fee_semester,amount) "
+					   + "(fee_of_development,amount,s_id) "
 					   + "values (?,?,?)";
 			
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			
 			// set the param values for the student
 		
-			myStmt.setString(1, newDevfees.getS_roll());
-			myStmt.setString(2, newDevfees.getS_semester());
-			myStmt.setString(3, newDevfees.getS_development_fee());
+			myStmt.setString(1, newDevfees.getS_semester());
+			myStmt.setString(2, newDevfees.getS_development_fee());
+			myStmt.setString(3, newDevfees.getS_id());
 			
 
 
@@ -256,20 +256,15 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 			// create sql for insert
 			String sql = "insert into  formfillup_fees "
-					   + "(s_roll,s_reg,s_name,s_department,s_semester,s_formfillup_fee,s_phone) "
-					   + "values (?,?,?,?,?,?,?)";
+					   + "(fee_of_formfillup,amount,s_id) "
+					   + "values (?,?,?)";
 			
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			
 			// set the param values for the student
-			myStmt.setString(1, newFormfillup.getS_roll());
-			myStmt.setString(2, newFormfillup.getS_reg());
-			myStmt.setString(3, newFormfillup.getS_name());
-			myStmt.setString(4, newFormfillup.getS_department());
-			myStmt.setString(5, newFormfillup.getS_semester());
-			myStmt.setString(6, newFormfillup.getS_formfillup_fee());
-			myStmt.setString(7, newFormfillup.getS_phone());
-
+			myStmt.setString(1, newFormfillup.getS_formfillup_fee());
+			myStmt.setString(2, newFormfillup.getS_semester());
+			myStmt.setString(3, newFormfillup.getS_id());
 
 			// execute sql insert
 			myStmt.execute();

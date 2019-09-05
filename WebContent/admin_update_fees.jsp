@@ -17,13 +17,13 @@
 <form id="myForm" action="ChangedFeesController"  method="post"  name="myForm">
               
                   <div class="md-form">
-                    <input type="text" id="roll" name="roll" class="form-control">
+                    <input type="text" id="roll" name="roll" class="form-control" required>
                     <label for="roll" class="">Enter roll no to change amount:</label>
                   </div>
                   
                      <div class="md-form">
                         <div class="md-form mb-0">
-                            <select id="ssemester" class="browser-default custom-select custom-select-lg mb-3" name="ssemester">
+                            <select id="ssemester" class="browser-default custom-select custom-select-lg mb-3" name="ssemester" required>
   								<option selected>Semester</option>
  								<option value="1st">1<sup>st</sup></option>
   								<option value="2nd">2<sup>nd</sup></option>
@@ -38,7 +38,7 @@
                     </div>
                   
                   <div class="md-form">
-                    <input type="text" id="changed_amount" name="changed_amount" class="form-control">
+                    <input type="text" id="changed_amount" name="changed_amount" class="form-control" required>
                     <label for="changed_amount" class="">Enter new amount : </label>
                   </div>
 

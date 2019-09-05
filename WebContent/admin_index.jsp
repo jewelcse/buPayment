@@ -11,9 +11,9 @@
 %>
 <%@include file="adminheader.jsp"%>
 <div class="container">
-	<div class="row">
+	<div class="row ml-5 mt-5">
 
-		
+		<h1>Admin Pannel</h1>
 
 
 	</div>

@@ -31,20 +31,22 @@ public class devFeesController extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+//		Integer id = Integer.parseInt(request.getParameter("s_id"));
 		String roll = request.getParameter("s_roll");
-		String reg = request.getParameter("s_reg");
-		String name = request.getParameter("s_name");
-		String mother_name = request.getParameter("s_mother_name");
-		String father_name = request.getParameter("s_father_name");
-		String faculty = request.getParameter("s_faculty");
-		String department = request.getParameter("s_department");
+//		String reg = request.getParameter("s_reg");
+//		String name = request.getParameter("s_name");
+//		String mother_name = request.getParameter("s_mother_name");
+//		String father_name = request.getParameter("s_father_name");
+//		String faculty = request.getParameter("s_faculty");
+//		String department = request.getParameter("s_department");
 		String semester = request.getParameter("s_semester");
 		String s_development_fee = request.getParameter("s_development_fee");
-		String phone = request.getParameter("s_phone");
 		
-//		System.out.print(roll);
+
+		//int id2 = Integer.parseInt(id);
 		
-		Devfees newDevfees = new Devfees(roll, reg, name, department, semester, s_development_fee, phone);
+		
+		Devfees newDevfees = new Devfees(roll, semester, s_development_fee);
 		
 		try {
 			mainController.addDevFeestoDb(newDevfees);

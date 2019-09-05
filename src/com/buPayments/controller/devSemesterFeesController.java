@@ -24,18 +24,13 @@ public class devSemesterFeesController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String roll = request.getParameter("s_roll");
-		String reg = request.getParameter("s_reg");
-		String name = request.getParameter("s_name");
-		String mother_name = request.getParameter("s_mother_name");
-		String father_name = request.getParameter("s_father_name");
-		String faculty = request.getParameter("s_faculty");
-		String department = request.getParameter("s_department");
+		String id = request.getParameter("s_id");
 		String semester = request.getParameter("s_semester");
 		String semester_fee = request.getParameter("s_semester_fee");
-		String phone = request.getParameter("s_phone");
 		
-SemesterFees newsemesterFee = new SemesterFees(roll, reg, name, department, semester, semester_fee, phone);
+		System.out.print(id);
+		
+		SemesterFees newsemesterFee = new SemesterFees(id,semester,semester_fee);
 		
 		try {
 			mainController.addsemesterFeestoDb(newsemesterFee);

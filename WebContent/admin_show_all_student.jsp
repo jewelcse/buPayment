@@ -33,7 +33,8 @@
     <h3 class="inline"><u>Students Table</u></h3>
 		<table class="table table-hover" id="myTable">
 			<tr>
-
+				<th>Roll No</th>
+				<th>Password</th>
 				<th>Registration</th>
 				<th>Name</th>
 				<th>Father Name</th>
@@ -53,9 +54,17 @@
 					for (int i = 0; i < al.size(); i++) {
 			%>
 			<tr>
+				
+				<td>
 				<%
-					//out.println(al.get(i).getId());
+					out.println(al.get(i).getS_roll());
 				%>
+				</td>
+				<td>
+				<%
+					out.println(al.get(i).getS_password());
+				%>
+				</td>
 				<td>
 					<%
 						out.println(al.get(i).getS_reg());

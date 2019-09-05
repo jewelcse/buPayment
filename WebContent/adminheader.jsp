@@ -72,6 +72,10 @@
             <li class="nav-item">
               <a class="nav-link" href="#"><span class="licolor">Payments</span></a>
             </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="admin_update_fees.jsp"><span class="licolor">Update fees</span></a>
+            </li>
            
           </ul>
           

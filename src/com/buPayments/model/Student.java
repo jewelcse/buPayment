@@ -2,7 +2,7 @@ package com.buPayments.model;
 
 public class Student {
 	
-	private int id;
+	private String id;
 	private String s_roll;
 	private String s_reg;
 	private String s_name;
@@ -16,7 +16,9 @@ public class Student {
 	private String s_password;
 	public boolean valid;
 	
-	public Student(int id, String s_roll, String s_reg, String s_name,
+
+	
+	public Student(String id, String s_roll, String s_reg, String s_name,
 			String s_mother_name, String s_father_name, String s_email,
 			String s_faculty, String s_department, String s_semester,
 			String s_phone, String s_password) {
@@ -64,11 +66,11 @@ public class Student {
 
 	}
 
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 

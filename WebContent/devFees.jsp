@@ -114,10 +114,11 @@ return false;
         <div class="col-md-12 mb-md-0 mb-5  ">
         	
             <form action="devFeesController"  id="myForm" onsubmit="return validateForm()" method="post"  name="myForm">
-
+				
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
+                     <input type="hidden" id="" name="s_id" class="form-control" value="<%= currentUser.getId() %>">
                     <div class="col-md-6">
                         <div class="md-form mb-0">
                             <input type="text" id="classRoll" name="s_roll" class="form-control" value="<%= currentUser.getS_roll() %>">

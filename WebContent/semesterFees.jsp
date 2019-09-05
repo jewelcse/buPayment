@@ -113,6 +113,7 @@ return false;
            
 
               <form action="devSemesterFeesController"  id="myForm" onsubmit="return validateForm()" method="post"  name="myForm">
+                            <input type="hidden" id="" name="s_id" class="form-control" value="<%= currentUser.getId() %>">
 
                 <!--Grid row-->
                 <div class="row">

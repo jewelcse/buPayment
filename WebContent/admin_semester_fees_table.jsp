@@ -67,9 +67,9 @@
 				</td>
 			
 				<td> 
-				<a href='adminSemesterFeesTableEdit?Edit_id=<%
+				<button class="btn btn-primary"><a href='adminSemesterFeesTableEdit?Edit_id=<%
 						out.println(al.get(i).getId());
-					%>'>Update</a>
+					%>'>Update</a></button>
 				 </td>
 
 			</tr>

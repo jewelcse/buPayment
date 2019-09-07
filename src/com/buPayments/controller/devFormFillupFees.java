@@ -28,17 +28,11 @@ public class devFormFillupFees extends HttpServlet {
 		String semester = request.getParameter("s_semester");
 		String formfillup_fee = request.getParameter("s_formfillup_fee");
 
-		
-		FormfillupFees newFormfillup = new FormfillupFees(formfillup_fee, semester, id);
+		System.out.println(id + semester+ formfillup_fee);
+		FormfillupFees newFormfillup = new FormfillupFees(id,semester,formfillup_fee);
 		
 		try {
 			mainController.addFormfillupFeestoDb(newFormfillup);
-			
-//			HttpSession session = request.getSession(true);       
-//		    session.setAttribute("devProcess",100); 
-		      
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("devprocess.jsp");
-//			dispatcher.forward(request, response);
 			response.sendRedirect("devprocess.jsp");
 				
 		} catch (SQLException e) {

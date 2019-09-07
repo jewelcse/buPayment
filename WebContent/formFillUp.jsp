@@ -141,7 +141,7 @@ return false;
   								<option value="null">select your semester</option>
  								<option value="1st">1<sup>st</sup></option>
   								<option value="2nd">2<sup>nd</sup></option>
-  								<option value="3th">3<sup>rd</sup></option>
+  								<option value="3rd">3<sup>rd</sup></option>
   								<option value="4th">4<sup>th</sup></option>
   								<option value="5th">5<sup>th</sup></option>
   								<option value="6th">6<sup>th</sup></option>
@@ -178,11 +178,7 @@ return false;
                     <input type="text" id="facaname" name="s_faculty" value="<%= currentUser.getS_faculty() %>" class="form-control">
                     <label for="orangeForm-faname" class="">Faculty Name</label>
                   </div>
-                  <div class="md-form">
-                    
-                    <input type="number" id="phone" name="s_phone" value="" maxlength="11" class="form-control">
-                    <label for="orangeForm-phone" class="">Phone No:</label>
-                  </div>
+                
            
                 <input type="hidden" name ="s_formfillup_fee" value="2500" >
              

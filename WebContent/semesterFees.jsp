@@ -142,7 +142,7 @@ return false;
   								<option value="null">select your semester</option>
  								<option value="1st">1<sup>st</sup></option>
   								<option value="2nd">2<sup>nd</sup></option>
-  								<option value="3th">3<sup>rd</sup></option>
+  								<option value="3rd">3<sup>rd</sup></option>
   								<option value="4th">4<sup>th</sup></option>
   								<option value="5th">5<sup>th</sup></option>
   								<option value="6th">6<sup>th</sup></option>

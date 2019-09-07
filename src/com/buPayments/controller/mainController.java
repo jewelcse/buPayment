@@ -286,14 +286,14 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 			// create sql for insert
 			String sql = "insert into  formfillup_fees "
-					   + "(fee_of_formfillup,amount,s_id) "
+					   + "(semester,amount,s_id) "
 					   + "values (?,?,?)";
 			
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			
 			// set the param values for the student
-			myStmt.setString(1, newFormfillup.getS_formfillup_fee());
-			myStmt.setString(2, newFormfillup.getS_semester());
+			myStmt.setString(1, newFormfillup.getS_semester());
+			myStmt.setString(2, newFormfillup.getS_amount());
 			myStmt.setString(3, newFormfillup.getS_id());
 
 			// execute sql insert

@@ -4,11 +4,11 @@ public class FormfillupFees {
 
 	private String s_id;
 	private String s_semester;
-	private String s_formfillup_fee;
+	private String s_amount;
 
-	public FormfillupFees( String formfillup_fee, String semester, String id) {
+	public FormfillupFees( String s_id, String s_semester, String s_amount) {
 		
-		this.s_formfillup_fee = s_formfillup_fee;
+		this.s_amount = s_amount;
 		this.s_semester = s_semester;
 		this.s_id = s_id;
 	}
@@ -24,11 +24,11 @@ public class FormfillupFees {
 	public void setS_semester(String s_semester) {
 		this.s_semester = s_semester;
 	}
-	public String getS_formfillup_fee() {
-		return s_formfillup_fee;
+	public String getS_amount() {
+		return s_amount;
 	}
-	public void setS_formfillup_fee(String s_formfillup_fee) {
-		this.s_formfillup_fee = s_formfillup_fee;
+	public void setS_amount(String s_amount) {
+		this.s_amount = s_amount;
 	}
 
 	

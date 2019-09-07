@@ -10,8 +10,12 @@ import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+
+
 
 
 
@@ -157,16 +161,16 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 			// create sql for insert
 			String sql = "insert into development_fees "
-					   + "(fee_of_development,amount,s_id) "
+					   + "(s_id,fee_of_development,amount) "
 					   + "values (?,?,?)";
 			
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			
 			// set the param values for the student
-		
-			myStmt.setString(1, newDevfees.getS_semester());
-			myStmt.setString(2, newDevfees.getS_development_fee());
-			myStmt.setString(3, newDevfees.getS_id());
+			myStmt.setString(1, newDevfees.getS_id());
+			myStmt.setString(2, newDevfees.getS_semester());
+			myStmt.setString(3, newDevfees.getS_semester_fee());
+			
 			
 
 
@@ -369,4 +373,47 @@ ArrayList<Student> al = new ArrayList<Student>();
 		}
 		return al;
 	}
+
+
+
+	public static  String check_development_fee(String semester, String roll) throws SQLException {
+	
+		String amount ="";
+		String main = "";
+		String misce = "";
+		Integer sum = 0;
+		String sql = "select * from  changed_development_fee where roll_no = '"+roll+"' AND fee_of_semester = '"+semester+"' ";
+		Connection con = db.getCon();
+	
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		  
+		  
+		    //System.out.print(myRs);
+		    if (myRs.next()) {
+
+		    	 amount = myRs.getString("changed_amount");
+		    	 System.out.print("line 397" + amount);
+		    }
+		    else{
+		    	String sql2 = "select * from  admin_development_fees_table where semester = '"+semester+"' ";
+				Connection con2 = db.getCon();
+				
+				//Statement stmt = con.createStatement();
+				PreparedStatement ps2 = (PreparedStatement) con2.prepareStatement(sql2);
+				ResultSet myRs2 =	ps2.executeQuery(sql2);
+				if(myRs2.next()){
+					//main = myRs2.getString("main_fee");
+			    	misce = myRs2.getString("misce_fee");
+			    	sum =Integer.parseInt(misce);
+			    	amount = String.valueOf(sum);
+			    	System.out.print("line 411" + amount);
+				}
+				
+		    }
+		    	
+		return amount;
+	}
+	
 }

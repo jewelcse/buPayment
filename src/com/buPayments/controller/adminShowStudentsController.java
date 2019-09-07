@@ -43,6 +43,7 @@ public class adminShowStudentsController extends HttpServlet {
 		    	String d_semester  = myRs.getString("s_Semester");
 		    	String d_dept  = myRs.getString("s_Department");
 		    	String d_faculty  = myRs.getString("s_Faculty");
+		    	String d_pass  = myRs.getString("s_Pass");
 		        System.out.println("Welcome " + d_name);
 		        // login_student.setS_name(name);
 		    	
@@ -56,6 +57,7 @@ public class adminShowStudentsController extends HttpServlet {
 		        newStudent.setS_faculty(d_faculty);
 		        newStudent.setS_semester(d_semester);
 		        newStudent.setS_department(d_dept);
+		        newStudent.setS_password(d_pass);
 		        newStudent.setValid(true);
 		        al.add(newStudent);
 			}

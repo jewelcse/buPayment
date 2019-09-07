@@ -17,11 +17,19 @@
 
 <%@include file="adminheader.jsp"%>
 
+<style>
 
+h3.inline {
+    margin-left: 40%;
+    margin-right: 50%;
+    width: 100%;
+}
+
+</style>
 
 <body>
 	<section class="p-5">
-		
+		<input type="text" id="myInput1" onkeyup="searchByFunction()" placeholder="Search by Semester">
 		<button onclick="printData()" class="btn" style="float:right;
     background-color: #b1040e; color:white">Print Data</button>
 		<button class="btn" style="float:right;
@@ -31,7 +39,7 @@
     </button>
     <div id="printData">
     <h3 class="inline"><u>Students Table</u></h3>
-		<table class="table table-hover" id="myTable">
+		<table class="table table-hover" id="myTable"  border="2px solid black">
 			<tr>
 				<th>Roll No</th>
 				<th>Password</th>
@@ -166,7 +174,31 @@ function printData() {
 		print_area.print();
 		print_area.close();
 				
-	}
+}
+	
+
+function searchByFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput1");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[8];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if ((txtValue.toUpperCase().indexOf(filter) > -1)) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+
 
 </script>
 <%

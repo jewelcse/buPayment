@@ -20,7 +20,7 @@
 	<div class="row ml-5 mt-5">
 
 	<h3 class="inline"><u>Semester Fees Table</u></h3>
-		<table class="table table-hover" id="myTable">
+		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
 				<th>Semester</th>
 				<th>Main Fee</th>
@@ -67,7 +67,7 @@
 				</td>
 			
 				<td> 
-				<button class="btn btn-primary"><a href='adminSemesterFeesTableEdit?Edit_id=<%
+				<button class="btn "><a href='adminSemesterFeesTableEdit?Edit_id=<%
 						out.println(al.get(i).getId());
 					%>'>Update</a></button>
 				 </td>

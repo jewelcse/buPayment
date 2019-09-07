@@ -83,8 +83,8 @@
                 aria-expanded="false"><span class="licolor">Set Time</span></a>
               <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
                 <a class="dropdown-item" href="adminDevelopmentFeesTableController">Development Fees</a>
-                <a class="dropdown-item" href="#">Semester Fees</a>
-                <a class="dropdown-item" href="#">Form Fill-up Fees</a>
+                <a class="dropdown-item" href="adminSemesterFeesTableController">Semester Fees</a>
+                <a class="dropdown-item" href="adminFormFillUpFeesTableController">Form Fill-up Fees</a>
               </div>
             </li>
            

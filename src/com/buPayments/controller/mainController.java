@@ -39,6 +39,10 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+
+
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Devfees;
@@ -46,6 +50,8 @@ import com.buPayments.model.FormfillupFees;
 import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
 import com.buPayments.model.adminDevelopmentFeesTable;
+import com.buPayments.model.adminFormFillUpFeesTable;
+import com.buPayments.model.adminSemesterFeesTable;
 import com.mysql.jdbc.PreparedStatement;
 
 public class mainController {
@@ -438,74 +444,10 @@ ArrayList<Student> al = new ArrayList<Student>();
 
 
 
-	public static adminDevelopmentFeesTable getStudentItemById(String newId) {
-		
-		String sql = "select * from  admin_development_fees_table where id = '"+newId+"'";
-		Connection con = db.getCon();
-		adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
-		try {
-			//Statement stmt = con.createStatement();
-			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		    ResultSet myRs =	ps.executeQuery(sql);
-		    System.out.print(myRs);
-		    while (myRs.next()) {
-		    	
-		    	//Integer newid = Integer.parseInt(myRs.getString("id"));
-		    	newItem.setId(myRs.getString("id"));
-		    	newItem.setSemester(myRs.getString("semester"));
-		    	newItem.setMain_fee(myRs.getString("main_fee"));
-		    	newItem.setMisce_fee(myRs.getString("misce_fee"));
-		    	newItem.setStart_date(myRs.getString("start_date"));
-		    	newItem.setEnd_date(myRs.getString("end_date"));
+
+
+
 	
-		
-		    	//return newItem;
-		    }
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return newItem;
-		
-
- }
-
-
-
-	public static void updateDevelopmentFeesTable(adminDevelopmentFeesTable devfee) {
-		
-		
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		
-		
-			// get a connection
-			myConn =db.getCon();
-			try {
-			// create sql for insert
-			String sql = "update admin_development_fees_table  set semester=?,main_fee=?,misce_fee=?,start_date=?,end_date=? where id=?";
-					  
-			
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			
-			    myStmt.setString(1,devfee.getSemester());  
-			    myStmt.setString(2,devfee.getMain_fee());  
-			    myStmt.setString(3,devfee.getMisce_fee()); 
-			    myStmt.setString(4,devfee.getStart_date()); 
-			    myStmt.setString(5,devfee.getEnd_date()); 
-			    myStmt.setString(6,devfee.getId());
-
-			//myStmt.execute();
-			myStmt.executeUpdate();  
-		
-		       
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		
-	}
 
 
 
@@ -552,35 +494,286 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    }else{
 		    	System.out.println("error sql");
 		    }
-		}
-		    /*try {
-		    	if(myRs.next()) {
-			    	String startDate = myRs.getString("start_date");
-			    	String endDate = myRs.getString("end_date");
-			    	
-			    	
-			    	//if(stratDate <= currentDate && currentDate <= endDate){
-			    		
-			    	//}
-			    	result = true;
-			    }else{
-			    	result = false;
-			    }
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+		
+		
 		    
-		}else if(feeType=="semfee"){
-			;
-		}else if(feeType=="formfee"){
-			;
+		}else if(feeType.equals("semfee")){
+			sql = "select * from  admin_semester_fees_table where semester = '"+semester+"' ";
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs = ps.executeQuery(sql);
+		    if(myRs.next()) {
+		    	String startDate = myRs.getString("start_date");
+		    	String endDate = myRs.getString("end_date");
+		    	
+		    	if(startDate!=null && endDate!=null){
+		    		Date s_date = sdf.parse(startDate);
+			    	Date e_date = sdf.parse(endDate);
+				    	//System.out.println(s_date+ " "+e_date);
+				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
+				            System.out.println("curr is after s_date");
+				            System.out.println("and curr is before e_date");
+				            result = "semester_page";
+				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
+				            System.out.println("Date1 is equal to Date2");
+				            result = "semester_page";
+				        } else {
+				            System.out.println("expire");
+				            result = "false";
+				        }
+		    	}else{
+		    		System.out.println("ohh no");
+		    		result = "false";
+		    	}
+		    	
+		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
+		    }else{
+		    	System.out.println("error sql");
+		    }
+		}else if(feeType.equals("formfee")){
+			
+			sql = "select * from  admin_formfillup_fees_table where semester = '"+semester+"' ";
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs = ps.executeQuery(sql);
+		    if(myRs.next()) {
+		    	String startDate = myRs.getString("start_date");
+		    	String endDate = myRs.getString("end_date");
+		    	
+		    	if(startDate!=null && endDate!=null){
+		    		Date s_date = sdf.parse(startDate);
+			    	Date e_date = sdf.parse(endDate);
+				    	//System.out.println(s_date+ " "+e_date);
+				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
+				            System.out.println("curr is after s_date");
+				            System.out.println("and curr is before e_date");
+				            result = "formfillup_page";
+				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
+				            System.out.println("Date1 is equal to Date2");
+				            result = "formfillup_page";
+				        } else {
+				            System.out.println("expire");
+				            result = "false";
+				        }
+		    	}else{
+		    		System.out.println("ohh no");
+		    		result = "false";
+		    	}
+		    	
+		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
+		    }else{
+		    	System.out.println("error sql");
+		    }
 		}else{
-			;
-		}*/
+			result = "false";
+		}
 		
 		System.out.println(result);
 		return result;
 	}
+
+
+	public static adminDevelopmentFeesTable getDevelopmentItemById(String newId) {
+		
+		String sql = "select * from  admin_development_fees_table where id = '"+newId+"'";
+		Connection con = db.getCon();
+		adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
+		try {
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		    System.out.print(myRs);
+		    while (myRs.next()) {
+		    	
+		    	//Integer newid = Integer.parseInt(myRs.getString("id"));
+		    	newItem.setId(myRs.getString("id"));
+		    	newItem.setSemester(myRs.getString("semester"));
+		    	newItem.setMain_fee(myRs.getString("main_fee"));
+		    	newItem.setMisce_fee(myRs.getString("misce_fee"));
+		    	newItem.setStart_date(myRs.getString("start_date"));
+		    	newItem.setEnd_date(myRs.getString("end_date"));
+	
+		
+		    	//return newItem;
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return newItem;
+		
+
+ }
+
+
+	public static adminSemesterFeesTable getSemesterItemById(String id) {
+		
+		String sql = "select * from  admin_semester_fees_table where id = '"+id+"'";
+		Connection con = db.getCon();
+		adminSemesterFeesTable newItem = new adminSemesterFeesTable();
+		try {
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		    System.out.print(myRs);
+		    while (myRs.next()) {
+		    	
+		    	//Integer newid = Integer.parseInt(myRs.getString("id"));
+		    	newItem.setId(myRs.getString("id"));
+		    	newItem.setSemester(myRs.getString("semester"));
+		    	newItem.setMain_fee(myRs.getString("main_fee"));
+		    	newItem.setMisce_fee(myRs.getString("misce_fee"));
+		    	newItem.setStart_date(myRs.getString("start_date"));
+		    	newItem.setEnd_date(myRs.getString("end_date"));
+	
+		
+		    	//return newItem;
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return newItem;
+	}
+
+	public static adminFormFillUpFeesTable getFormFillUpItemById(String id) {
+		
+		String sql = "select * from  admin_formfillup_fees_table where id = '"+id+"'";
+		Connection con = db.getCon();
+		adminFormFillUpFeesTable newItem = new adminFormFillUpFeesTable();
+		try {
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		    System.out.print(myRs);
+		    while (myRs.next()) {
+		    	
+		    	//Integer newid = Integer.parseInt(myRs.getString("id"));
+		    	newItem.setId(myRs.getString("id"));
+		    	newItem.setSemester(myRs.getString("semester"));
+		    	newItem.setMain_fee(myRs.getString("main_fee"));
+		    	newItem.setMisce_fee(myRs.getString("misce_fee"));
+		    	newItem.setStart_date(myRs.getString("start_date"));
+		    	newItem.setEnd_date(myRs.getString("end_date"));
+	
+		
+		    	//return newItem;
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return newItem;
+	}
+	
+ 
+	// update development fee table
+	public static void updateDevelopmentFeesTable(adminDevelopmentFeesTable devfee) {
+		
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			try {
+			// create sql for insert
+			String sql = "update admin_development_fees_table  set semester=?,main_fee=?,misce_fee=?,start_date=?,end_date=? where id=?";
+					  
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			
+			    myStmt.setString(1,devfee.getSemester());  
+			    myStmt.setString(2,devfee.getMain_fee());  
+			    myStmt.setString(3,devfee.getMisce_fee()); 
+			    myStmt.setString(4,devfee.getStart_date()); 
+			    myStmt.setString(5,devfee.getEnd_date()); 
+			    myStmt.setString(6,devfee.getId());
+
+			//myStmt.execute();
+			myStmt.executeUpdate();  
+		
+		       
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+
+	//update semester fee table
+	public static void updateSemesterFeesTable(adminSemesterFeesTable devfee) {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			try {
+			// create sql for insert
+			String sql = "update admin_semester_fees_table  set semester=?,main_fee=?,misce_fee=?,start_date=?,end_date=? where id=?";
+					  
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			
+			    myStmt.setString(1,devfee.getSemester());  
+			    myStmt.setString(2,devfee.getMain_fee());  
+			    myStmt.setString(3,devfee.getMisce_fee()); 
+			    myStmt.setString(4,devfee.getStart_date()); 
+			    myStmt.setString(5,devfee.getEnd_date()); 
+			    myStmt.setString(6,devfee.getId());
+
+			//myStmt.execute();
+			myStmt.executeUpdate();  
+		
+		       
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+
+
+	// update formfillup table
+
+	public static void updateFormFillUpFeesTable(adminFormFillUpFeesTable formfillupfee) {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			try {
+			// create sql for insert
+			String sql = "update admin_formfillup_fees_table  set semester=?,main_fee=?,misce_fee=?,start_date=?,end_date=? where id=?";
+					  
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			
+			    myStmt.setString(1,formfillupfee.getSemester());  
+			    myStmt.setString(2,formfillupfee.getMain_fee());  
+			    myStmt.setString(3,formfillupfee.getMisce_fee()); 
+			    myStmt.setString(4,formfillupfee.getStart_date()); 
+			    myStmt.setString(5,formfillupfee.getEnd_date()); 
+			    myStmt.setString(6,formfillupfee.getId());
+
+			//myStmt.execute();
+			myStmt.executeUpdate();  
+		
+		       
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	}
+
+
+
 	
 }

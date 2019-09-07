@@ -38,7 +38,7 @@ public class adminDevelopmentFeesTableEdit extends HttpServlet {
 	        //Integer newId=Integer.parseInt(id); 
 	        System.out.println("ID Line number 39 "+id);
 	        
-	        adminDevelopmentFeesTable devItem=mainController.getStudentItemById(id);  
+	        adminDevelopmentFeesTable devItem=mainController.getDevelopmentItemById(id);  
 	          
 	          
 	        out.print("<form action='adminDevelopmentFeesTableController' method='post'>");  

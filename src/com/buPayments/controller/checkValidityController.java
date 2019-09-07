@@ -43,7 +43,19 @@ public class checkValidityController extends HttpServlet {
 			if(res.equals("dev_page")){
 				RequestDispatcher dispatcher =  request.getRequestDispatcher("devFees.jsp");
 		    	dispatcher.forward(request, response);
-			}else{
+			}
+			else if(res.equals("semester_page")){
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("semesterFees.jsp");
+		    	dispatcher.forward(request, response);
+				
+			}
+			
+			else if(res.equals("formfillup_page")){
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("formFillUp.jsp");
+		    	dispatcher.forward(request, response);
+				
+			}
+			else{
 				RequestDispatcher dispatcher =  request.getRequestDispatcher("check_devFees.jsp");
 		    	dispatcher.forward(request, response);
 			}

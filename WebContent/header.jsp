@@ -33,7 +33,7 @@
         box-sizing: border-box;
     }
         header {
-    background-color: #b1040e;
+    background-color: #0080ff;
     
 	}
 	.licolor{
@@ -79,17 +79,21 @@
             <li class="nav-item">
               <a class="nav-link" href="#"><span class="licolor">About</span></a>
             </li>
+            
+             <li class="nav-item">
+              <a class="nav-link" href="check_devFees.jsp"><span class="licolor">Service</span></a>
+            </li>
 
-            <!-- Dropdown -->
+            <!-- Dropdown 
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
                 aria-expanded="false"><span class="licolor">Services</span></a>
               <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
+                <a class="dropdown-item" href="check_devFees.jsp">Development Fees</a>
                 <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
                 <a class="dropdown-item" href="formFillUp.jsp">Form Fill-up Fees</a>
               </div>
-            </li>
+            </li> -->
           </ul>
           
           <ul class="navbar-nav ml-auto">
@@ -218,16 +222,7 @@
               <a class="nav-link" href="#"><span class="licolor">About</span></a>
             </li>
 
-            <!-- Dropdown -->
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false"><span class="licolor">Services</span></a>
-              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="devFees.jsp">Development Fees</a>
-                <a class="dropdown-item" href="semesterFees.jsp">Semester Fees</a>
-                <a class="dropdown-item" href="formFillUp.jsp">Form Fill-up Fees</a>
-              </div>
-            </li>
+        
           </ul>
           
           <ul class="navbar-nav ml-auto">

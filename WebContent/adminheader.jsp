@@ -76,6 +76,17 @@
             <li class="nav-item">
               <a class="nav-link" href="admin_update_fees.jsp"><span class="licolor">Update fees</span></a>
             </li>
+            
+              <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><span class="licolor">Set Time</span></a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="adminDevelopmentFeesTableController">Development Fees</a>
+                <a class="dropdown-item" href="#">Semester Fees</a>
+                <a class="dropdown-item" href="#">Form Fill-up Fees</a>
+              </div>
+            </li>
            
           </ul>
           

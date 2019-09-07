@@ -5,7 +5,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Random;
 
 import javax.servlet.RequestDispatcher;
@@ -20,12 +28,24 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+
+
+
+
+
+
+
+
+
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Devfees;
 import com.buPayments.model.FormfillupFees;
 import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
+import com.buPayments.model.adminDevelopmentFeesTable;
 import com.mysql.jdbc.PreparedStatement;
 
 public class mainController {
@@ -414,6 +434,153 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    }
 		    	
 		return amount;
+	}
+
+
+
+	public static adminDevelopmentFeesTable getStudentItemById(String newId) {
+		
+		String sql = "select * from  admin_development_fees_table where id = '"+newId+"'";
+		Connection con = db.getCon();
+		adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
+		try {
+			//Statement stmt = con.createStatement();
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs =	ps.executeQuery(sql);
+		    System.out.print(myRs);
+		    while (myRs.next()) {
+		    	
+		    	//Integer newid = Integer.parseInt(myRs.getString("id"));
+		    	newItem.setId(myRs.getString("id"));
+		    	newItem.setSemester(myRs.getString("semester"));
+		    	newItem.setMain_fee(myRs.getString("main_fee"));
+		    	newItem.setMisce_fee(myRs.getString("misce_fee"));
+		    	newItem.setStart_date(myRs.getString("start_date"));
+		    	newItem.setEnd_date(myRs.getString("end_date"));
+	
+		
+		    	//return newItem;
+		    }
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return newItem;
+		
+
+ }
+
+
+
+	public static void updateDevelopmentFeesTable(adminDevelopmentFeesTable devfee) {
+		
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			try {
+			// create sql for insert
+			String sql = "update admin_development_fees_table  set semester=?,main_fee=?,misce_fee=?,start_date=?,end_date=? where id=?";
+					  
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			
+			    myStmt.setString(1,devfee.getSemester());  
+			    myStmt.setString(2,devfee.getMain_fee());  
+			    myStmt.setString(3,devfee.getMisce_fee()); 
+			    myStmt.setString(4,devfee.getStart_date()); 
+			    myStmt.setString(5,devfee.getEnd_date()); 
+			    myStmt.setString(6,devfee.getId());
+
+			//myStmt.execute();
+			myStmt.executeUpdate();  
+		
+		       
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
+	}
+
+
+
+	public static String checkValidity(String feeType, String semester) throws SQLException, ParseException{
+		String sql="";
+		Connection con = db.getCon();
+		String result="";
+		 //current date
+		LocalDate today = LocalDate.now(ZoneId.systemDefault()) ;
+		String strDate = today.toString() ; 
+         
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        Date curr = sdf.parse(strDate);
+		
+		if(feeType.equals("devfee")){
+			sql = "select * from  admin_development_fees_table where semester = '"+semester+"' ";
+			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+		    ResultSet myRs = ps.executeQuery(sql);
+		    if(myRs.next()) {
+		    	String startDate = myRs.getString("start_date");
+		    	String endDate = myRs.getString("end_date");
+		    	
+		    	if(startDate!=null && endDate!=null){
+		    		Date s_date = sdf.parse(startDate);
+			    	Date e_date = sdf.parse(endDate);
+				    	//System.out.println(s_date+ " "+e_date);
+				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
+				            System.out.println("curr is after s_date");
+				            System.out.println("and curr is before e_date");
+				            result = "dev_page";
+				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
+				            System.out.println("Date1 is equal to Date2");
+				            result = "dev_page";
+				        } else {
+				            System.out.println("expire");
+				            result = "false";
+				        }
+		    	}else{
+		    		System.out.println("ohh no");
+		    		result = "false";
+		    	}
+		    	
+		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
+		    }else{
+		    	System.out.println("error sql");
+		    }
+		}
+		    /*try {
+		    	if(myRs.next()) {
+			    	String startDate = myRs.getString("start_date");
+			    	String endDate = myRs.getString("end_date");
+			    	
+			    	
+			    	//if(stratDate <= currentDate && currentDate <= endDate){
+			    		
+			    	//}
+			    	result = true;
+			    }else{
+			    	result = false;
+			    }
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
+		}else if(feeType=="semfee"){
+			;
+		}else if(feeType=="formfee"){
+			;
+		}else{
+			;
+		}*/
+		
+		System.out.println(result);
+		return result;
 	}
 	
 }

@@ -14,11 +14,12 @@
 	<div class="row ml-5 mt-5">
 
 		<h1 class="mr-3">Update Fees : </h1>
-<form id="myForm" action="ChangedFeesController"  method="post"  name="myForm">
+		<br><br><br><br>
+<form class="form-controll" id="myForm" action="ChangedFeesController"  method="post"  name="myForm">
               
                   <div class="md-form">
                     <input type="text" id="roll" name="roll" class="form-control" required>
-                    <label for="roll" class="">Enter roll no to change amount:</label>
+                    <label for="roll" class="">Roll No:</label>
                   </div>
                   
                      <div class="md-form">
@@ -27,7 +28,7 @@
   								<option selected>Semester</option>
  								<option value="1st">1<sup>st</sup></option>
   								<option value="2nd">2<sup>nd</sup></option>
-  								<option value="3th">3<sup>rd</sup></option>
+  								<option value="3rd">3<sup>rd</sup></option>
   								<option value="4th">4<sup>th</sup></option>
   								<option value="5th">5<sup>th</sup></option>
   								<option value="6th">6<sup>th</sup></option>
@@ -45,8 +46,8 @@
 
                   <div class="text-center">
                     
-                    <input type="submit" class="btn  waves-effect waves-light" style="border-radius: 25px;
-    background-color: #b1040e; color:white" value="Click to change" > 
+                    <input type="submit" class="btn  waves-effect waves-light mb-5" style="border-radius: 25px;
+    background-color: #008000; color:white" value="Click to change" > 
                     
                    
    				 </div>      
@@ -66,3 +67,5 @@
 <%
 	}
 %>
+
+<%@include file="adminfooter.jsp"%>

@@ -16,7 +16,7 @@
     body {
         box-sizing: border-box;
     }        header {
-    background-color: #b1040e;
+    background-color: #008000;
     
 	}
 	.licolor{
@@ -129,7 +129,7 @@ if (y==null || y=="")
 			<div class="card-body m-5">
 			 <!-- Header -->
                   <div class="form-header  text-center "  style="border-radius: 25px;
-    background-color: #b1040e;" >
+    background-color: #008000;" >
                     <h3 class="font-weight-500 my-2 py-1 text-light">Admin Login</h3>
                   </div>
                   
@@ -149,7 +149,7 @@ if (y==null || y=="")
                   <div class="text-center">
                     
                     <input type="submit" class="btn  waves-effect waves-light" style="border-radius: 25px;
-    background-color: #b1040e; color:white" value="Login" > 
+    background-color: #008000; color:white" value="Login" > 
                     
                    
    				 </div>      
@@ -176,4 +176,4 @@ if (y==null || y=="")
 
 
 
-
+<%@include file="adminfooter.jsp" %>

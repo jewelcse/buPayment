@@ -116,7 +116,7 @@
 						<div class="form-header  text-center "
 							style="border-radius: 25px;">
 							<h3 class="font-weight-500 my-2 py-1 text-light" style="border-radius: 25px;
-    background-color: #b1040e; color:white">Add New
+    background-color: #008000; color:white">Add New
 								Student</a></h3>
 						</div>
 						<!-- Body -->
@@ -251,7 +251,7 @@
 						<div class="text-center">
 							<input type="submit" value="Add record"
 								class="btn " style="border-radius: 25px;
-    background-color: #b1040e; color:white">
+    background-color: #008000; color:white">
 
 						</div>
 					</div>
@@ -278,7 +278,6 @@
 
 <br>
 <br>
-<%@include file="footer.jsp"%>
 </html>
 
 <%
@@ -289,3 +288,4 @@
 <%
 	}
 %>
+<%@include file="adminfooter.jsp" %>

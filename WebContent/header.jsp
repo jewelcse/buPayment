@@ -33,7 +33,7 @@
         box-sizing: border-box;
     }
         header {
-    background-color: #0080ff;
+    background-color: #4B0082;
     
 	}
 	.licolor{
@@ -177,7 +177,7 @@
         box-sizing: border-box;
     }
       header {
-    background-color: #b1040e;
+    background-color: #4B0082;
     
 	}
 	.licolor{

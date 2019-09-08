@@ -29,3 +29,4 @@
 <%
 	}
 %>
+<%@include file="adminfooter.jsp" %>

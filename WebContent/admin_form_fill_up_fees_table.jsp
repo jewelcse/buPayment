@@ -87,7 +87,7 @@
 
 
 </div>
-
+<%@include file="adminfooter.jsp"%>
 <%
 	} else {
 %>

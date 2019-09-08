@@ -33,7 +33,7 @@
         box-sizing: border-box;
     }
          header {
-    background-color: #b1040e;
+    background-color: #008000;
     
 	}
 	.licolor{
@@ -68,9 +68,6 @@
             </li>
 			 <li class="nav-item">
               <a class="nav-link" href="adminShowStudentsController"><span class="licolor">Show all Student</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="admin_category.jsp"><span class="licolor">Category</span></a>
             </li>
             
             <li class="nav-item">

@@ -31,7 +31,7 @@
 
 
 	$(document).ready(function() {
-		$('#SSemester').blur(function(event) {
+		$('#SSemester').change(function(event) {
 			var semester = $('#SSemester').find(":selected").val();
 			console.log(semester);
 			var roll = $('#classRoll').val();
@@ -158,23 +158,37 @@
 							<!--Grid column-->
 
 						</div>
-						<div class="md-form">
-							<div class="md-form mb-0">
-								<select onchange="selected()"
-									class="browser-default custom-select custom-select-lg mb-3"
-									name="s_semester" id="SSemester">
-									<option value="null">select your semester</option>
-									<option value="1st">1<sup>st</sup></option>
-									<option value="2nd">2<sup>nd</sup></option>
-									<option value="3rd">3<sup>rd</sup></option>
-									<option value="4th">4<sup>th</sup></option>
-									<option value="5th">5<sup>th</sup></option>
-									<option value="6th">6<sup>th</sup></option>
-									<option value="7th">7<sup>th</sup></option>
-									<option value="8th">8<sup>th</sup></option>
-								</select>
-							</div>
-						</div>
+						
+							<% 
+						
+						String semester = request.getParameter("semester");
+						if(semester != null){
+							session.setAttribute("semester_session",semester);
+						}
+						 
+						
+						%> 
+					 <div class="md-form">
+                        <div class="md-form mb-0">
+                            <select class="browser-default custom-select custom-select-lg mb-3" name="s_semester" id="SSemester">
+  								<option>Confirm Semester</option>
+  								<option value="<% 
+								String semester1 =(String)session.getAttribute("semester_session"); 
+                            	out.print(semester1);
+  								
+								%>">
+								<% 
+								out.print(semester1); 
+								if(session != null)
+								{
+									session.removeAttribute("semester_session");
+							    }
+								%>
+								</option>
+ 								
+							</select>
+                        </div>
+                    </div>
 						<!--Grid row-->
 
 						<div class="md-form">
@@ -219,6 +233,7 @@
 									<tr>
 										<th scope="col">Sector</th>
 										<th scope="col">Amount</th>
+										
 									</tr>
 								</thead>
 								<tbody>

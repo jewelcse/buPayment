@@ -96,3 +96,5 @@
 <%
 	}
 %>
+
+<%@include file="adminfooter.jsp" %>

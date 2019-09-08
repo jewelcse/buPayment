@@ -66,7 +66,7 @@ if (y==null || y=="")
 			<div class="card-body m-5">
 			 <!-- Header -->
                   <div class="form-header  text-center " style="border-radius: 25px;
-    background-color: #b1040e;" >
+    background-color: #4B0082;" >
                     <h3 class="font-weight-500 my-2 py-1 text-light">Login</h3>
                   </div>
                   
@@ -86,7 +86,7 @@ if (y==null || y=="")
                   <div class="text-center">
                     
                     <input type="submit" class=" btn waves-effect text-light" value="Login" style="border-radius: 25px;
-    background-color: #b1040e; color:white"> 
+    background-color: #4B0082; color:white"> 
                     
                     <p class="mt-4">Don't Have an Id / password ! <br>Please Contact our Office Room</p>
    				 </div>      

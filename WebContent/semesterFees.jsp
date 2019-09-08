@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
     import="com.buPayments.model.Student"
+    import="java.util.HashMap"
     %>
     <%@include file="header.jsp" %>
      <% 
@@ -136,22 +137,38 @@ return false;
                     <!--Grid column-->
 
                 </div>
+                	<% 
+						
+						String semester = request.getParameter("semester");
+						if(semester != null){
+							session.setAttribute("semester_session",semester);
+						}
+						 
+						
+						%> 
+                
+                
                 <div class="md-form">
                         <div class="md-form mb-0">
                             <select class="browser-default custom-select custom-select-lg mb-3" name="s_semester" id="SSemester">
-  								<option value="null">select your semester</option>
- 								<option value="1st">1<sup>st</sup></option>
-  								<option value="2nd">2<sup>nd</sup></option>
-  								<option value="3rd">3<sup>rd</sup></option>
-  								<option value="4th">4<sup>th</sup></option>
-  								<option value="5th">5<sup>th</sup></option>
-  								<option value="6th">6<sup>th</sup></option>
-  								<option value="7th">7<sup>th</sup></option>
-  								<option value="8th">8<sup>th</sup></option>
+  								<option value="<% 
+								String semester1 =(String)session.getAttribute("semester_session"); 
+                            	out.print(semester1);
+  								
+								%>">
+								<% 
+								out.print(semester1); 
+								if(session != null)
+								{
+									session.removeAttribute("semester_session");
+							    }
+								%>
+								</option>
+ 								
 							</select>
                         </div>
                     </div>
-                <!--Grid row-->
+                <!--Grid row -->
                 
                 <div class="md-form">
                     <input type="text" id="sname" name="s_name" disabled class="form-control" value="<%= currentUser.getS_name() %>">

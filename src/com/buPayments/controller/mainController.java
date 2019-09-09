@@ -237,6 +237,34 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 		
 	}
+	
+public static void addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQLException {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			
+			// create sql for insert
+			String sql = "insert into  formfillup_fees "
+					   + "(semester,amount,s_id) "
+					   + "values (?,?,?)";
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			// set the param values for the student
+			myStmt.setString(1, newFormfillup.getS_semester());
+			myStmt.setString(2, newFormfillup.getS_amount());
+			myStmt.setString(3, newFormfillup.getS_id());
+
+			// execute sql insert
+			myStmt.execute();
+			System.out.print("formfillup-payment-successfulls");
+	}
+
+
 
 
 	public static void ChangedFeesNow(ChangedFees changedFees){
@@ -275,33 +303,7 @@ ArrayList<Student> al = new ArrayList<Student>();
 		
 	}
 
-	public static void addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQLException {
-		
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		
-		
-			// get a connection
-			myConn =db.getCon();
-			
-			// create sql for insert
-			String sql = "insert into  formfillup_fees "
-					   + "(semester,amount,s_id) "
-					   + "values (?,?,?)";
-			
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			// set the param values for the student
-			myStmt.setString(1, newFormfillup.getS_semester());
-			myStmt.setString(2, newFormfillup.getS_amount());
-			myStmt.setString(3, newFormfillup.getS_id());
-
-			// execute sql insert
-			myStmt.execute();
-			System.out.print("formfillup-payment-successfulls");
-	}
-
-
+	
 
 	public static Admin admin_login(Admin login_admin) {
 		
@@ -473,16 +475,15 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
 			    	Date e_date = sdf.parse(endDate);
-				    	//System.out.println(s_date+ " "+e_date);
+				    	
 				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
-				            System.out.println("curr is after s_date");
-				            System.out.println("and curr is before e_date");
+				            System.out.println("valid date to pay development fee");
 				            result = "dev_page";
 				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
-				            System.out.println("Date1 is equal to Date2");
+				            System.out.println("same day and valid date to pay development fee");
 				            result = "dev_page";
 				        } else {
-				            System.out.println("expire");
+				            System.out.println("expire date for development fee");
 				            result = "false";
 				        }
 		    	}else{
@@ -490,7 +491,6 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    		result = "false";
 		    	}
 		    	
-		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
 		    }else{
 		    	System.out.println("error sql");
 		    }
@@ -508,16 +508,15 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
 			    	Date e_date = sdf.parse(endDate);
-				    	//System.out.println(s_date+ " "+e_date);
+				    	
 				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
-				            System.out.println("curr is after s_date");
-				            System.out.println("and curr is before e_date");
+				            System.out.println("valid date to pay semester fee");
 				            result = "semester_page";
 				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
-				            System.out.println("Date1 is equal to Date2");
+				            System.out.println("same day and valid date to pay semester fee");
 				            result = "semester_page";
 				        } else {
-				            System.out.println("expire");
+				            System.out.println("expire date for semester fee");
 				            result = "false";
 				        }
 		    	}else{
@@ -525,7 +524,7 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    		result = "false";
 		    	}
 		    	
-		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
+		    	
 		    }else{
 		    	System.out.println("error sql");
 		    }
@@ -541,16 +540,15 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
 			    	Date e_date = sdf.parse(endDate);
-				    	//System.out.println(s_date+ " "+e_date);
+			
 				    	if (curr.compareTo(s_date) > 0 && curr.compareTo(e_date) < 0) {
-				            System.out.println("curr is after s_date");
-				            System.out.println("and curr is before e_date");
+				            System.out.println("valid date to pay form fill up fee ");
 				            result = "formfillup_page";
 				        } else if (curr.compareTo(s_date) == 0 || curr.compareTo(e_date) == 0) {
-				            System.out.println("Date1 is equal to Date2");
+				            System.out.println("same day and valid date to pay form fill up fee");
 				            result = "formfillup_page";
 				        } else {
-				            System.out.println("expire");
+				            System.out.println("expire date for form fill up fee");
 				            result = "false";
 				        }
 		    	}else{
@@ -558,7 +556,6 @@ ArrayList<Student> al = new ArrayList<Student>();
 		    		result = "false";
 		    	}
 		    	
-		    	//System.out.println(curr+ " "+s_date+ " "+e_date);
 		    }else{
 		    	System.out.println("error sql");
 		    }

@@ -86,8 +86,6 @@
 
 
 
-			</div>
-		</div>
 	</section>
 	<!--Section: Contact v.2-->
 

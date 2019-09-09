@@ -74,7 +74,7 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#"><span class="licolor">Payments Method</span></a>
+              <a class="nav-link" href="application_form.jsp"><span class="licolor">Application</span></a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#"><span class="licolor">About</span></a>

@@ -130,7 +130,7 @@
 				<!--Grid column-->
 				<div class="col-md-12 mb-md-0 mb-5  ">
 
-					<form action="devFeesController" id="myForm"
+					<form action="devFeesController?devfees_id=devfees" id="myForm"
 						onsubmit="return validateForm()" method="post" name="myForm">
 
 						<!--Grid row-->

@@ -196,7 +196,7 @@ return false;
                   </div>
                 
            
-                <input type="hidden" name ="s_formfillup_fee" value="2500" >
+                
              
                 
               
@@ -237,7 +237,7 @@ return false;
     
      <tr>
       <td>Total</td>
-      <td>2500/=</td>
+      <td><input type="text" name ="s_formfillup_fee" value="2500" readonly></td>
     </tr>
    
   </tbody>

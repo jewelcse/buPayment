@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 26, 2019 at 05:34 PM
+-- Generation Time: Sep 11, 2019 at 12:52 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -42,47 +42,161 @@ INSERT INTO `admin` (`id`, `admin`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `admin_development_fees_table`
+--
+
+CREATE TABLE `admin_development_fees_table` (
+  `id` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `main_fee` int(11) NOT NULL,
+  `misce_fee` int(11) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_development_fees_table`
+--
+
+INSERT INTO `admin_development_fees_table` (`id`, `semester`, `main_fee`, `misce_fee`, `start_date`, `end_date`) VALUES
+(1, '1st', 600, 1000, '2019-09-01', '2019-09-02'),
+(2, '2nd', 600, 1200, '2019-09-08', '2019-09-08'),
+(3, '3rd', 600, 1000, '2019-09-10', '2019-09-10'),
+(4, '4th', 600, 1000, '2019-09-10', '2019-09-07'),
+(5, '5th', 600, 900, '2019-09-07', '2019-09-20'),
+(6, '6th', 600, 1000, '2019-09-01', '2019-09-25'),
+(7, '7th', 600, 1200, '2019-09-01', '2019-09-25'),
+(8, '8th', 600, 1200, '2019-09-01', '2019-09-10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_formfillup_fees_table`
+--
+
+CREATE TABLE `admin_formfillup_fees_table` (
+  `id` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `main_fee` int(11) NOT NULL,
+  `misce_fee` int(11) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `admin_formfillup_fees_table`
+--
+
+INSERT INTO `admin_formfillup_fees_table` (`id`, `semester`, `main_fee`, `misce_fee`, `start_date`, `end_date`) VALUES
+(1, '1st', 2500, 0, '2019-09-08', '2019-09-10'),
+(2, '2nd', 2500, 0, '2019-09-07', '2019-09-27'),
+(3, '3rd', 2500, 0, '2019-09-01', '2019-10-01'),
+(4, '4th', 2500, 0, '2019-09-09', '2019-09-24'),
+(5, '5th', 2500, 0, '2019-09-17', '2019-09-18'),
+(6, '6th', 2500, 0, '2019-09-11', '2019-09-16'),
+(7, '7th', 2500, 0, '2019-09-09', '2019-09-09'),
+(8, '8th', 2500, 0, '2019-09-05', '2019-09-16');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin_semester_fees_table`
+--
+
+CREATE TABLE `admin_semester_fees_table` (
+  `id` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `main_fee` int(11) NOT NULL,
+  `misce_fee` int(11) NOT NULL,
+  `start_date` varchar(255) NOT NULL,
+  `end_date` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+
+--
+-- Dumping data for table `admin_semester_fees_table`
+--
+
+INSERT INTO `admin_semester_fees_table` (`id`, `semester`, `main_fee`, `misce_fee`, `start_date`, `end_date`) VALUES
+(1, '1st', 1500, 100, '2019-09-01', '2019-09-06'),
+(2, '2nd', 1500, 0, '2019-09-03', '2019-09-07'),
+(3, '3rd', 1500, 0, '2019-09-02', '2019-09-01'),
+(4, '4th', 1500, 0, '2019-09-24', '2019-09-28'),
+(5, '5th', 1500, 0, '2019-09-08', '2019-09-16'),
+(6, '6th', 1500, 0, '2019-09-08', '2019-09-08'),
+(7, '7th', 1500, 0, '2019-09-01', '2019-09-08'),
+(8, '8th', 1500, 0, '2019-09-01', '2019-09-23');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `application_form_table`
+--
+
+CREATE TABLE `application_form_table` (
+  `id` int(11) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `subject` varchar(255) NOT NULL,
+  `feeType` varchar(255) NOT NULL,
+  `reason` text NOT NULL,
+  `student_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `application_form_table`
+--
+
+INSERT INTO `application_form_table` (`id`, `semester`, `subject`, `feeType`, `reason`, `student_id`) VALUES
+(2, '5th', 'Reduceing', 'Development fee ', '', 1),
+(3, '5th', 'Reduceing', 'Development fee ', '', 1),
+(4, '5th', 'Reduceing', 'Semester fee ', '', 1),
+(5, '5th', 'Reduceing', 'Semester fee ', 'I amJewel Chowdhury bearing roll no. 16CSE045 studying in \r\n5th\r\n at the department of Computer Science & Engineering University of Barishal.Application for Reduceing and/or Time extend for Development fee Semester fee Form Fill up fee . Now i am unable to pay fees for my (Write down your reasons)', 1),
+(6, '6th', 'ReduceingTime extend', 'Semester fee ', '', 1),
+(7, '6th', 'Reduceing', 'Development fee ', '', 1),
+(8, '7th', 'Reduceing and Time extend', 'Development fee ', 'sdasd', 1),
+(9, '7th', 'Reduceing and Time extend', 'Semester fee ', 'wwwwwwwwwwwwwwwww', 1),
+(10, '5th', 'Reduceing and Time extend', 'Development fee ', 'dddddddddddddd', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `changed_development_fee`
+--
+
+CREATE TABLE `changed_development_fee` (
+  `id` int(11) NOT NULL,
+  `roll_no` varchar(255) NOT NULL,
+  `semester` varchar(255) NOT NULL,
+  `changed_amount` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `changed_development_fee`
+--
+
+INSERT INTO `changed_development_fee` (`id`, `roll_no`, `semester`, `changed_amount`) VALUES
+(5, '16CSE020', '6th', 500),
+(8, '16CSE045', '6th', 200),
+(9, '16CSE045', '8th', 500);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `development_fees`
 --
 
 CREATE TABLE `development_fees` (
   `id` int(11) NOT NULL,
-  `s_roll` varchar(255) NOT NULL,
-  `s_reg` varchar(255) NOT NULL,
-  `s_name` text NOT NULL,
-  `s_department` varchar(255) NOT NULL,
-  `s_semester` varchar(255) NOT NULL,
-  `s_development_fee` int(11) NOT NULL,
-  `s_phone` int(11) NOT NULL
+  `semester` varchar(255) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `development_fees`
 --
 
-INSERT INTO `development_fees` (`id`, `s_roll`, `s_reg`, `s_name`, `s_department`, `s_semester`, `s_development_fee`, `s_phone`) VALUES
-(1, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 1930792666),
-(2, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', 'Semester', 1600, 1930792666),
-(3, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '2nd', 1600, 1930792666),
-(4, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 1930792666),
-(5, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '5th', 1600, 120182981),
-(6, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 1930792666),
-(7, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '8th', 1600, 1930792677),
-(8, '16CSE019', '110-019-16', 'Balam', 'Botany', '6th', 1600, 193828211),
-(9, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '5th', 1600, 1930792666),
-(10, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 193038932),
-(11, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 1930792662),
-(12, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 9),
-(13, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 1930793232),
-(14, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 80878787),
-(15, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 323232323),
-(16, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '5th', 1600, 547),
-(17, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '8th', 1600, 445322323),
-(18, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '5th', 1600, 5644664),
-(19, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 565656566),
-(20, '17CHE023', '110-023-17', 'Saimun Islam', 'Chemistry', '7th', 1600, 212321212),
-(21, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1600, 9932244),
-(22, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '8th', 1600, 193908766);
+INSERT INTO `development_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
+(27, '7th', 1200, 1);
 
 -- --------------------------------------------------------
 
@@ -92,50 +206,38 @@ INSERT INTO `development_fees` (`id`, `s_roll`, `s_reg`, `s_name`, `s_department
 
 CREATE TABLE `formfillup_fees` (
   `id` int(11) NOT NULL,
-  `s_roll` varchar(255) NOT NULL,
-  `s_reg` varchar(255) NOT NULL,
-  `s_name` varchar(255) NOT NULL,
-  `s_department` varchar(255) NOT NULL,
-  `s_semester` varchar(255) NOT NULL,
-  `s_formfillup_fee` int(11) NOT NULL,
-  `s_phone` int(11) NOT NULL
+  `semester` varchar(255) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `formfillup_fees`
 --
 
-INSERT INTO `formfillup_fees` (`id`, `s_roll`, `s_reg`, `s_name`, `s_department`, `s_semester`, `s_formfillup_fee`, `s_phone`) VALUES
-(1, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 2500, 19737232),
-(2, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '4th', 2500, 9767676),
-(3, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '4th', 2500, 9767676),
-(4, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '6th', 2500, 12121208);
+INSERT INTO `formfillup_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
+(8, '1st', 2500, 1),
+(9, '4th', 2500, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `semester_fees`
+-- Table structure for table `semester_fees2`
 --
 
-CREATE TABLE `semester_fees` (
+CREATE TABLE `semester_fees2` (
   `id` int(11) NOT NULL,
-  `s_roll` varchar(255) NOT NULL,
-  `s_reg` varchar(255) NOT NULL,
-  `s_name` varchar(255) NOT NULL,
-  `s_department` varchar(255) NOT NULL,
-  `s_semester` varchar(255) NOT NULL,
-  `s_semester_fee` int(11) NOT NULL,
-  `s_phone` int(11) NOT NULL
+  `semester` varchar(11) NOT NULL,
+  `amount` int(11) NOT NULL,
+  `s_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `semester_fees`
+-- Dumping data for table `semester_fees2`
 --
 
-INSERT INTO `semester_fees` (`id`, `s_roll`, `s_reg`, `s_name`, `s_department`, `s_semester`, `s_semester_fee`, `s_phone`) VALUES
-(1, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1500, 1930792666),
-(2, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1500, 19232317),
-(3, '16CSE045', '110-045-16', 'Jewel Chowdhury', 'Computer Science & Engineering', '7th', 1500, 1992323232);
+INSERT INTO `semester_fees2` (`id`, `semester`, `amount`, `s_id`) VALUES
+(18, '8th', 1500, 1);
 
 -- --------------------------------------------------------
 
@@ -173,7 +275,7 @@ INSERT INTO `student` (`s_Id`, `s_Roll`, `s_Reg`, `s_Name`, `s_Father_name`, `s_
 (15, '16CSE020', '110-045-16', 'stu name', 'fa name', 'mo name', 'dhrubo9250@gmail.com', '01712346378', '8146', '6th', 'Computer Science & Engineering', 'Science & Engineering'),
 (21, '13CSE007', '110-007-13', 'Md Mainul Islam Raju', 'Mainul\'s dad name', 'Mainul\'s mom name', 'mainul@gmail.com', '01922623321', '6238', '6th', 'Computer Science & Engineering', 'Science & Engineering'),
 (22, '11', '11', '11', '11', '11', '11', '11111', '1207', '1st', 'Computer Science & Engineering', 'Science & Engineering'),
-(25, '15cse34', '121223', 'sasasdasa', 'adssdsdsd', 'fgfgfgfg', 'jewelcse045@gmail.com', '12232323', '2223', '3th', 'Computer Science & Engineering', 'Science & Engineering');
+(23, '17CSE014', '110-014-17', 'Md Islam', 'Father\'s name', 'Mother\'s name', 'islam@gmail.com', '2222222', '12345', '4th', 'Computer Science & Engineering', 'Science & Engineering');
 
 -- --------------------------------------------------------
 
@@ -197,22 +299,56 @@ ALTER TABLE `admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `admin_development_fees_table`
+--
+ALTER TABLE `admin_development_fees_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_formfillup_fees_table`
+--
+ALTER TABLE `admin_formfillup_fees_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `admin_semester_fees_table`
+--
+ALTER TABLE `admin_semester_fees_table`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `application_form_table`
+--
+ALTER TABLE `application_form_table`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `student_id` (`student_id`);
+
+--
+-- Indexes for table `changed_development_fee`
+--
+ALTER TABLE `changed_development_fee`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `s_id` (`s_id`);
 
 --
 -- Indexes for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `s_id` (`s_id`);
 
 --
--- Indexes for table `semester_fees`
+-- Indexes for table `semester_fees2`
 --
-ALTER TABLE `semester_fees`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `semester_fees2`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `s_id` (`s_id`);
 
 --
 -- Indexes for table `student`
@@ -236,30 +372,83 @@ ALTER TABLE `transaction_method`
 ALTER TABLE `admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT for table `admin_development_fees_table`
+--
+ALTER TABLE `admin_development_fees_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `admin_formfillup_fees_table`
+--
+ALTER TABLE `admin_formfillup_fees_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `admin_semester_fees_table`
+--
+ALTER TABLE `admin_semester_fees_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `application_form_table`
+--
+ALTER TABLE `application_form_table`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `changed_development_fee`
+--
+ALTER TABLE `changed_development_fee`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
--- AUTO_INCREMENT for table `semester_fees`
+-- AUTO_INCREMENT for table `semester_fees2`
 --
-ALTER TABLE `semester_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+ALTER TABLE `semester_fees2`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 --
 -- AUTO_INCREMENT for table `transaction_method`
 --
 ALTER TABLE `transaction_method`
   MODIFY `T_id` int(4) NOT NULL AUTO_INCREMENT;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `application_form_table`
+--
+ALTER TABLE `application_form_table`
+  ADD CONSTRAINT `application_form_table_ibfk_1` FOREIGN KEY (`student_id`) REFERENCES `student` (`s_Id`);
+
+--
+-- Constraints for table `development_fees`
+--
+ALTER TABLE `development_fees`
+  ADD CONSTRAINT `development_fees_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`);
+
+--
+-- Constraints for table `formfillup_fees`
+--
+ALTER TABLE `formfillup_fees`
+  ADD CONSTRAINT `formfillup_fees_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`);
+
+--
+-- Constraints for table `semester_fees2`
+--
+ALTER TABLE `semester_fees2`
+  ADD CONSTRAINT `semester_fees2_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

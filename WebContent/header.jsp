@@ -60,7 +60,7 @@
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" ></span>
         </button>
 
         <!-- Collapsible content -->
@@ -68,20 +68,13 @@
 
           <!-- Links -->
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link"  href="index.jsp"><span class="licolor">Home</span>
-                <span class="sr-only" >(current)</span>
-              </a>
-            </li>
             <li class="nav-item">
               <a class="nav-link" href="application_form.jsp"><span class="licolor">Application</span></a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="licolor">About</span></a>
-            </li>
+
             
              <li class="nav-item">
-              <a class="nav-link" href="check_devFees.jsp"><span class="licolor">Service</span></a>
+              <a class="nav-link" href="check_devFees.jsp"><span class="licolor">Pay Fee</span></a>
             </li>
 
             <!-- Dropdown 
@@ -202,7 +195,7 @@
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+          <span class="navbar-toggler-icon" style="color:white"></span>
         </button>
 
         <!-- Collapsible content -->
@@ -210,18 +203,8 @@
 
           <!-- Links -->
           <ul class="navbar-nav">
-            <li class="nav-item ">
-              <a class="nav-link" href="index.jsp"><span class="licolor">Home</span>
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="licolor">Payments Method</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><span class="licolor">About</span></a>
-            </li>
 
+ 
         
           </ul>
           

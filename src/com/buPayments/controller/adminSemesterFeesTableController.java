@@ -31,7 +31,7 @@ public class adminSemesterFeesTableController extends HttpServlet {
     }
 
     
-    static dbConnection db = new dbConnection(); 
+static dbConnection db = new dbConnection(); 
     
 ArrayList<adminSemesterFeesTable> devId = new ArrayList<adminSemesterFeesTable>();
 	

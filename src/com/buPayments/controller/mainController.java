@@ -46,6 +46,8 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Devfees;
@@ -422,7 +424,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		    	String d_dept  = myRs.getString("s_Department");
 		    	String d_faculty  = myRs.getString("s_Faculty");
 		       
-		    	System.out.print(s_id);
+		    	//System.out.print(s_id);
 		        // login_student.setS_name(name);
 		    	
 		    	newStudent.setId(s_id);
@@ -441,9 +443,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		        al.add(newStudent);
 			}
 		    
-//			for(int i=0;i<al.size();i++){
-//				System.out.println(al.get(i).getId());
-//			}
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -818,6 +818,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 				e.printStackTrace();
 			}
 	}
+	
 
 
 

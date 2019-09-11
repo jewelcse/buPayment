@@ -33,17 +33,19 @@ public class devSemesterFeesController extends HttpServlet {
 		SemesterFees newsemesterFee = new SemesterFees(id,semester,semester_fee);
 		
 		try {
-			mainController.addsemesterFeestoDb(newsemesterFee);
 			
-//			HttpSession session = request.getSession(true);       
-//		    session.setAttribute("devProcess",100); 
-		      
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("devprocess.jsp");
-//			dispatcher.forward(request, response);
-			response.sendRedirect("devprocess.jsp");
+			String rs = mainController.addsemesterFeestoDb(newsemesterFee);
+			
+			if(rs.equals("success")){
+				
+				response.sendRedirect("devprocess.jsp");
+			}
+			else{
+				response.sendRedirect("already_payment.jsp");
+			}	
 				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

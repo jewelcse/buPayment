@@ -25,24 +25,20 @@ public class devFeesController extends HttpServlet {
 
     public devFeesController() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		//RequestDispatcher rd=null;
+
 		String semester = request.getParameter("s_semester");
 		String roll= request.getParameter("s_roll");
-		
-		//System.out.print(roll + "  " +semester);
+
 		
 		try {
 
 			String	amount =  mainController.check_development_fee(semester,roll);
 
-			
-		    //System.out.println(amount);
 			PrintWriter out = response.getWriter();  
 			//request.setAttribute("amount", amount);
 			
@@ -53,7 +49,6 @@ public class devFeesController extends HttpServlet {
 	        //rd=request.getRequestDispatcher("/test.jsp");
 	        
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -76,25 +71,28 @@ public class devFeesController extends HttpServlet {
 			String id = request.getParameter("s_id");
 			String semester = request.getParameter("s_semester");
 			String development_fee = request.getParameter("amount");
-			
 
-			
-			System.out.println("Amount Line no 75 "+development_fee);
 
 			
 			Devfees newDevfees = new Devfees(id,semester,development_fee);
 			
 			try {
-				mainController.addDevFeestoDb(newDevfees);
-
-				response.sendRedirect("devprocess.jsp");
+				String rs = mainController.addDevFeestoDb(newDevfees);
+				
+				if(rs.equals("success")){
+					
+					response.sendRedirect("devprocess.jsp");
+				}
+				else{
+					response.sendRedirect("already_payment.jsp");
+				}	
 					
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			
 		}
+		
 		else if(sub.equals("application_form")){
 		
 			String id = request.getParameter("id");
@@ -117,48 +115,38 @@ public class devFeesController extends HttpServlet {
 			else{
 				newSub="";
 			}
+			
 			Connection myConn = null;
 			PreparedStatement myStmt = null;
+
+			myConn =db.getCon();
 			
-			
-				// get a connection
-				myConn =db.getCon();
-				
-				// create sql for insert
-				String sql = "insert into application_form_table "
+			String sql = "insert into application_form_table "
 						   + "(semester,subject,feeType,reason,student_id) "
 						   + "values (?,?,?,?,?)";
 				
 				try {
 					myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-					// set the param values for the student
 					myStmt.setString(1, semester);
 					myStmt.setString(2, newSub);
 					myStmt.setString(3, feetype);
 					myStmt.setString(4, reason);
 					myStmt.setString(5, id);
 				
-
-
-					// execute sql insert
 					myStmt.execute();
-					System.out.print("application-submit-success");
 					
+					System.out.print("application-submit-success");
 					response.sendRedirect("success_form.jsp");
+					
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				
 				
 		}
 		else{
 			System.out.println("nothing");
 		}
-		
-		
-		
-		
+	
 		
 	}
 

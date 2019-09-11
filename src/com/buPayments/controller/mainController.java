@@ -43,6 +43,9 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
+
+
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Devfees;
@@ -176,92 +179,138 @@ ArrayList<Student> al = new ArrayList<Student>();
 
 
 
-	public static void addDevFeestoDb(Devfees newDevfees) throws SQLException {
+	public static String addDevFeestoDb(Devfees newDevfees) throws SQLException {
 		
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
+		Statement stmt = null;
+		myConn =db.getCon();
+		ResultSet myRs = null;
+		String result = "";
+			
+		String id = newDevfees.getS_id();
+		String semester = newDevfees.getS_semester();
+		System.out.println(id  + " " + semester);
 		
-		
-			// get a connection
-			myConn =db.getCon();
-			
-			// create sql for insert
-			String sql = "insert into development_fees "
-					   + "(s_id,fee_of_development,amount) "
-					   + "values (?,?,?)";
-			
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			// set the param values for the student
-			myStmt.setString(1, newDevfees.getS_id());
-			myStmt.setString(2, newDevfees.getS_semester());
-			myStmt.setString(3, newDevfees.getS_semester_fee());
-			
-			
+		String select_sql = "select * from development_fees where s_id = '"+id+"' AND semester = '"+semester+"'";
+		stmt=myConn.createStatement();
+		myRs = stmt.executeQuery(select_sql);
+		  
+		boolean more = myRs.next();
+		    
+		    if (!more) {
+		    	
+		    	String sql = "insert into development_fees "
+						   + "(s_id,semester,amount) "
+						   + "values (?,?,?)";
+				
+				myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 
-
-			// execute sql insert
-			myStmt.execute();
-			System.out.print("admission-payment-successfulls");
+				myStmt.setString(1, newDevfees.getS_id());
+				myStmt.setString(2, newDevfees.getS_semester());
+				myStmt.setString(3, newDevfees.getS_semester_fee());
+				
 			
-			
+				myStmt.execute();
+				System.out.print("admission-payment-successfulls");
+				
+				return result = "success";
+		    }
+		    else{
+		    	
+		    	System.out.println("already paid !!!!");
+		    	return result = "failed";
+		    }
 	}
 
 
 
-	public static void addsemesterFeestoDb(SemesterFees newsemesterFee) throws SQLException {
+	public static String addsemesterFeestoDb(SemesterFees newsemesterFee) throws SQLException {
 
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		
-		
-			// get a connection
-			myConn =db.getCon();
-			
-			// create sql for insert
-			String sql = "insert into semester_fees2 "
-					   + "(s_id,fee_of_semester,amount) "
-					   + "values (?,?,?)";
-			
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			// set the param values for the student
-			myStmt.setString(1, newsemesterFee.getS_id());
-			myStmt.setString(2, newsemesterFee.getS_semester());
-			myStmt.setString(3, newsemesterFee.getS_semester_fee());
+		Statement stmt = null;
+		myConn =db.getCon();
+		ResultSet myRs = null;
+		String result = "";
 
-			System.out.print(newsemesterFee.getS_id());
-			// execute sql insert
-			myStmt.execute();
-			System.out.print("semseter-payment-successfulls");
-			
+		String id = newsemesterFee.getS_id();
+		String semester = newsemesterFee.getS_semester();
 		
+		System.out.println(id  + " " + semester);
+		
+		String select_sql = "select * from semester_fees2 where s_id = '"+id+"' AND semester = '"+semester+"'";
+		stmt = myConn.createStatement();
+		myRs = stmt.executeQuery(select_sql);
+		  
+		boolean more = myRs.next();
+		    
+		    if (!more) {
+		    	
+		    	String sql = "insert into semester_fees2 "
+						   + "(s_id,semester,amount) "
+						   + "values (?,?,?)";
+				
+				myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+				myStmt.setString(1, newsemesterFee.getS_id());
+				myStmt.setString(2, newsemesterFee.getS_semester());
+				myStmt.setString(3, newsemesterFee.getS_semester_fee());
+
+				myStmt.execute();
+				System.out.print("semseter-payment-successfulls");
+		    	
+				return result = "success";
+		    }
+		    else{
+		    	
+		    	System.out.println("already paid !!!!");
+		    	return result = "failed";
+		    }
+		
+	
 	}
 	
-public static void addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQLException {
+public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQLException {
 		
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
-		
-		
-			// get a connection
-			myConn =db.getCon();
-			
-			// create sql for insert
+		Statement stmt = null;
+		myConn =db.getCon();
+		ResultSet myRs = null;
+		String result = "";
+
+		String id = newFormfillup.getS_id();
+		String semester = newFormfillup.getS_semester();
+	
+		System.out.println(id  + " " + semester);
+	
+		String select_sql = "select * from formfillup_fees where s_id = '"+id+"' AND semester = '"+semester+"'";
+		stmt = myConn.createStatement();
+		myRs = stmt.executeQuery(select_sql);
+	  
+		boolean more = myRs.next();
+	    
+	    if (!more) {
 			String sql = "insert into  formfillup_fees "
 					   + "(semester,amount,s_id) "
 					   + "values (?,?,?)";
 			
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			// set the param values for the student
+
 			myStmt.setString(1, newFormfillup.getS_semester());
 			myStmt.setString(2, newFormfillup.getS_amount());
 			myStmt.setString(3, newFormfillup.getS_id());
 
-			// execute sql insert
 			myStmt.execute();
 			System.out.print("formfillup-payment-successfulls");
+			return result = "success";
+	    }
+	    else{
+	    	
+	    	System.out.println("already paid !!!!");
+	    	return result = "failed";
+	    }
 	}
 
 
@@ -279,7 +328,7 @@ public static void addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQ
 			
 			// create sql for insert
 			String sql = "insert into changed_development_fee "
-					   + "(roll_no,fee_of_semester,changed_amount) "
+					   + "(roll_no,semester,changed_amount) "
 					   + "values (?,?,?)";
 			
 			try {
@@ -410,7 +459,7 @@ public static void addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQ
 		String main = "";
 		String misce = "";
 		Integer sum = 0;
-		String sql = "select * from  changed_development_fee where roll_no = '"+roll+"' AND fee_of_semester = '"+semester+"' ";
+		String sql = "select * from  changed_development_fee where roll_no = '"+roll+"' AND semester = '"+semester+"' ";
 		Connection con = db.getCon();
 	
 			//Statement stmt = con.createStatement();

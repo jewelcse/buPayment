@@ -27,7 +27,7 @@ public class adminShowStudentsController extends HttpServlet {
 		String sql = "select * from student ORDER BY s_Id DESC ";
 		Connection con = db.getCon();
 		try {
-			//Statement stmt = con.createStatement();
+
 			PreparedStatement ps = con.prepareStatement(sql);
 		    ResultSet myRs =	ps.executeQuery(sql);
 		    while (myRs.next()) {
@@ -64,7 +64,6 @@ public class adminShowStudentsController extends HttpServlet {
 		    
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return al;

@@ -45,8 +45,8 @@ public class adminFormFillUpFeesTableEdit extends HttpServlet {
         out.print("<table>");  
         out.print("<tr><td></td><td><input type='hidden' name='id' value='"+Item.getId()+"'/></td></tr>");          
         out.print("<tr><td>Semester:</td><td><input type='text' name='semester' value='"+Item.getSemester()+"' readonly/></td></tr>");  
-        out.print("<tr><td>Main Fee:</td><td><input type='text' name='main_fee' value='"+Item.getMain_fee()+"'/></td></tr>");
-        out.print("<tr><td>Misce Fee:</td><td><input type='text' name='misce_fee' value='"+Item.getMisce_fee()+"'/></td></tr>");
+        out.print("<tr><td>Main Fee:</td><td><input type='text' name='main_fee' value='"+Item.getMain_fee()+"' readonly/></td></tr>");
+        out.print("<tr><td>Misce Fee:</td><td><input type='text' name='misce_fee' value='"+Item.getMisce_fee()+"' readonly/></td></tr>");
         out.print("<tr><td>Start date:</td><td><input type='Date' name='start_date' value='"+Item.getStart_date()+"'/></td></tr>");
         out.print("<tr><td>End Date:</td><td><input type='Date' name='end_date' value='"+Item.getEnd_date()+"'/></td></tr>");
         out.print("<tr><td><input type='submit' value='Edit & Save '/></td></tr>");  

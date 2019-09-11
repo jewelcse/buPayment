@@ -36,12 +36,7 @@ public class ChangedFeesController extends HttpServlet {
 		ChangedFees changedFees = new ChangedFees(roll,semester,changed_amount);
 		
 		mainController.ChangedFeesNow(changedFees);
-		
-//			HttpSession session = request.getSession(true);       
-//		    session.setAttribute("devProcess",100); 
-		  
-//			RequestDispatcher dispatcher = request.getRequestDispatcher("devprocess.jsp");
-//			dispatcher.forward(request, response);
+
 		response.sendRedirect("admin_index.jsp");
 	}
 }

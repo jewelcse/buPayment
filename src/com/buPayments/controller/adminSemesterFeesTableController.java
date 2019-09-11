@@ -24,13 +24,10 @@ import com.buPayments.model.adminSemesterFeesTable;
 @WebServlet("/adminSemesterFeesTableController")
 public class adminSemesterFeesTableController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+
     public adminSemesterFeesTableController() {
         super();
-        // TODO Auto-generated constructor stub
+
     }
 
     
@@ -83,9 +80,7 @@ ArrayList<adminSemesterFeesTable> devId = new ArrayList<adminSemesterFeesTable>(
 		dispatcher.forward(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		response.setContentType("text/html");  

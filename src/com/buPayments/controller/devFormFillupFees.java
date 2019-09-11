@@ -32,11 +32,19 @@ public class devFormFillupFees extends HttpServlet {
 		FormfillupFees newFormfillup = new FormfillupFees(id,semester,formfillup_fee);
 		
 		try {
-			mainController.addFormfillupFeestoDb(newFormfillup);
-			response.sendRedirect("devprocess.jsp");
+			
+			String rs = mainController.addFormfillupFeestoDb(newFormfillup);
+			
+			if(rs.equals("success")){
+				
+				response.sendRedirect("devprocess.jsp");
+			}
+			else{
+				response.sendRedirect("already_payment.jsp");
+			}	
 				
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 	}

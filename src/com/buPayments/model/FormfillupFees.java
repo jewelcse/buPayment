@@ -6,6 +6,10 @@ public class FormfillupFees {
 	private String s_semester;
 	private String s_amount;
 
+	
+	public FormfillupFees() {
+		super();
+	}
 	public FormfillupFees( String s_id, String s_semester, String s_amount) {
 		
 		this.s_amount = s_amount;

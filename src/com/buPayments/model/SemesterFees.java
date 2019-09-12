@@ -7,6 +7,10 @@ public class SemesterFees {
 	private String s_semester_fee;
 	
 	
+	
+	public SemesterFees() {
+		super();
+	}
 	public SemesterFees(String s_id, String s_semester, String s_semester_fee) {
 
 		this.s_id = s_id;

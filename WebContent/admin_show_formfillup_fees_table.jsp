@@ -30,7 +30,7 @@ h3.inline {
 <body>
 	<section class="p-5">
 		<input type="text" id="myInput1"  class="mb-4"onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
-		<a href="admin_add_student.jsp"><img src="images/plus.png" style="width:35px"> Add new Record</a>
+		
 		<button onclick="printData()" class="btn" style="float:right;
     background-color: #b1040e; color:white">Print Data</button>
 		<button class="btn" style="float:right;
@@ -39,86 +39,39 @@ h3.inline {
     
     </button>
     <div id="printData">
-    <h3 class="inline"><u>Students Table</u></h3>
+    <h3 class="inline"><u>Paid Form Fill Up Fees table</u></h3>
 		<table class="table table-hover" id="myTable"  border="2px solid black">
 			<tr>
-				<th>Roll No</th>
-				<th>Password</th>
-				<th>Registration</th>
-				<th>Name</th>
-				<th>Father Name</th>
-				<th>Mother Name</th>
-				<th>Email</th>
-				<th>Phone</th>
 				<th>Semester</th>
-				<th>Department</th>
-				<th>Faculty</th>
+				<th>Amount</th>
+				<th>Student Id</th>
 			</tr>
 
 			<%
-				adminShowStudentsController dao = new adminShowStudentsController();
-					ArrayList<Student> al = new ArrayList<Student>();
-					al = dao.showData();
+			adminShowAllFeesController formfillupItem = new adminShowAllFeesController();
+					ArrayList<FormfillupFees> item = new ArrayList<FormfillupFees>();
+					item = formfillupItem.showAllFormfillupFee();
 
-					for (int i = 0; i < al.size(); i++) {
+					for (int i = 0; i < item.size(); i++) {
 			%>
 			<tr>
 				
 				<td>
 				<%
-					out.println(al.get(i).getS_roll());
+					out.println(item.get(i).getS_semester());
 				%>
 				</td>
 				<td>
 				<%
-					out.println(al.get(i).getS_password());
+					out.println(item.get(i).getS_amount());
 				%>
 				</td>
 				<td>
 					<%
-						out.println(al.get(i).getS_reg());
+						out.println(item.get(i).getS_id());
 					%>
 				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_name());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_father_name());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_mother_name());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_email());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_phone());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_semester());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_department());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_faculty());
-					%>
-				</td>
+
 
 			</tr>
 
@@ -162,7 +115,7 @@ function fnExcelReport() {
         }
     } else {
         $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
-        $('#test').attr('download', 'Student-table.xls');
+        $('#test').attr('download', 'all_form_fill_up_fees.xls');
     }
 
 }

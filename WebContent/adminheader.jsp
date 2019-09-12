@@ -55,7 +55,7 @@
         <!-- Collapse button -->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
           aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span style="color:white''" class="navbar-toggler-icon"></span>
+          <span style="color:white" class="navbar-toggler-icon"></span>
         </button>
 
         <!-- Collapsible content -->
@@ -82,6 +82,17 @@
                 <a class="dropdown-item" href="adminDevelopmentFeesTableController">Development Fees</a>
                 <a class="dropdown-item" href="adminSemesterFeesTableController">Semester Fees</a>
                 <a class="dropdown-item" href="adminFormFillUpFeesTableController">Form Fill-up Fees</a>
+              </div>
+            </li>
+            
+               <!-- Dropdown -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false"><span class="licolor">All Fees</span></a>
+              <div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="admin_show_development_fees_table.jsp">Development Fees</a>
+                <a class="dropdown-item" href="admin_show_semester_fees_table.jsp">Semester Fees</a>
+                <a class="dropdown-item" href="admin_show_formfillup_fees_table.jsp">Form Fill-up Fees</a>
               </div>
             </li>
            

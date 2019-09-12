@@ -15,7 +15,7 @@
 
   <!-- Copyright -->
   <div class="footer-copyright text-center py-3"> BU Payment - Copyright © 2019 <br>
-    <a href="https://mdbootstrap.com/education/bootstrap/">Developed by <br> 3rd Batch, Dept. of CSE, BU</a>
+    <a href="#">Developed by <br> 3rd Batch, Dept. of CSE, BU</a>
   </div>
   <!-- Copyright -->
 

@@ -115,7 +115,7 @@
 						<!-- Header -->
 						<div class="form-header  text-center "
 							style="border-radius: 25px;">
-							<h3 class="font-weight-500 my-2 py-1 text-light" style="border-radius: 25px;
+							<h3 class="font-weight-500 my-2 py-1 text-light" style="border-radius: 2''px;
     background-color: #008000; color:white">Add New
 								Student</a></h3>
 						</div>

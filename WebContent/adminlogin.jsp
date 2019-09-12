@@ -128,7 +128,7 @@ if (y==null || y=="")
                   
 			<div class="card-body m-5">
 			 <!-- Header -->
-                  <div class="form-header  text-center "  style="border-radius: 25px;
+                  <div class="form-header  text-center "  style="border-radius: 2px;
     background-color: #008000;" >
                     <h3 class="font-weight-500 my-2 py-1 text-light">Admin Login</h3>
                   </div>

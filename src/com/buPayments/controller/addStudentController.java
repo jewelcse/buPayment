@@ -48,7 +48,7 @@ public class addStudentController extends HttpServlet {
 			
 		try {
 			mainController.addStudent(newStudent);
-			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_index.jsp");
+			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_add_student.jsp");
 			dispatcher.forward(request, response);
 				
 		} catch (SQLException e) {

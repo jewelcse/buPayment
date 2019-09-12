@@ -178,10 +178,10 @@ function compare(dateTimeA, currentTime , dateTimeB) {
   							
  if((current_date.compareTo(devitem.get(i).getStart_date()) > 0 && current_date.compareTo(devitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(devitem.get(i).getStart_date()) == 0 || current_date.compareTo(devitem.get(i).getEnd_date())==0)){
 	 
-	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px; box-shadow: 5px 5px; opacity:0.6;'>"+ devitem.get(i).getSemester()+" Start Date:" + devitem.get(i).getStart_date()+" End Date: " + devitem.get(i).getEnd_date()+" ============= > Valid");
+	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px; '>"+ devitem.get(i).getSemester()+" Start Date:" + devitem.get(i).getStart_date()+" End Date: " + devitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/iprogress.gif'>");
  }
  else{
-	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px; box-shadow: 5px 5px; opacity:0.6;'> "+ devitem.get(i).getSemester()+" Start Date:"+ devitem.get(i).getStart_date()+" End Date: "+ devitem.get(i).getEnd_date()+" ============= > InValid");
+	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px;  '> "+ devitem.get(i).getSemester()+" Start Date:"+ devitem.get(i).getStart_date()+" End Date: "+ devitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/time_up.gif'>");
  }
   							
 %>
@@ -212,10 +212,10 @@ function compare(dateTimeA, currentTime , dateTimeB) {
   							
  if((current_date.compareTo(semitem.get(i).getStart_date()) > 0 && current_date.compareTo(semitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(semitem.get(i).getStart_date()) == 0 || current_date.compareTo(semitem.get(i).getEnd_date())==0)){
 	 
-	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px; box-shadow: 5px 5px; opacity:0.6;'>"+ semitem.get(i).getSemester()+" Start Date:" + semitem.get(i).getStart_date()+" End Date: " + semitem.get(i).getEnd_date()+" ============= > Valid");
+	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px;'>"+ semitem.get(i).getSemester()+" Start Date:" + semitem.get(i).getStart_date()+" End Date: " + semitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/iprogress.gif'>");
  }
  else{
-	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px; box-shadow: 5px 5px; opacity:0.6;'> "+ semitem.get(i).getSemester()+" Start Date:"+ semitem.get(i).getStart_date()+" End Date: "+ semitem.get(i).getEnd_date()+" ============= > InValid");
+	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px; '> "+ semitem.get(i).getSemester()+" Start Date:"+ semitem.get(i).getStart_date()+" End Date: "+ semitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/time_up.gif'>");
  }
   							
 %>						
@@ -250,10 +250,10 @@ function compare(dateTimeA, currentTime , dateTimeB) {
   							
  if((current_date.compareTo(formfillupitem.get(i).getStart_date()) > 0 && current_date.compareTo(formfillupitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(formfillupitem.get(i).getStart_date()) == 0 || current_date.compareTo(formfillupitem.get(i).getEnd_date())==0)){
 	 
-	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px; box-shadow: 5px 5px; opacity:0.6;'>"+ formfillupitem.get(i).getSemester()+" Start Date:" + formfillupitem.get(i).getStart_date()+" End Date: " + formfillupitem.get(i).getEnd_date()+" ============= > Valid");
+	 out.println(" <div style='background-color: #007E33;color:white;padding:10px;border-color: green; border-radius:20px; border:2px solid green; margin:5px;'>"+ formfillupitem.get(i).getSemester()+" Start Date:" + formfillupitem.get(i).getStart_date()+" End Date: " + formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/iprogress.gif'>");
  }
  else{
-	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px; box-shadow: 5px 5px; opacity:0.6;'> "+ formfillupitem.get(i).getSemester()+" Start Date:"+ formfillupitem.get(i).getStart_date()+" End Date: "+ formfillupitem.get(i).getEnd_date()+" ============= > InValid");
+	 out.println(" <div style='background-color: #ff4444;color:white;padding:10px;border-color: red; border-radius:20px; border:2px solid red; margin:5px;'> "+ formfillupitem.get(i).getSemester()+" Start Date:"+ formfillupitem.get(i).getStart_date()+" End Date: "+ formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:200px' src='images/time_up.gif'>");
  }
   							
 %>								

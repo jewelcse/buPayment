@@ -83,56 +83,56 @@
 
 	<div class="container">
 		<div class="row">
-			<div class="col-md-8 m-auto pt-4">
-				<div class="card p-4">
+			<div class="col-md-8 m-auto pt-2">
+				<div class="p-4">
 					<h1>Successfully Application Submitted!!</h1>
 					
 				</div>
 			
 			</div>
 		</div>
+	 </div>
+	 
 		
-		<div class="col-md-8 m-auto pt-4">
-				<div class="card p-4">
-			<p>To<br>
-			The Chairman<br>
-			<% out.print(session_dept); %><br>
-			University of Barishal<br>
-			</p>
+	
+		<div class="col-md-8 m-auto"  id="HTMLtoPDF" >
+		<div class="card p-5 m-5">	
+			<p>To</p>
+			<p>The Chairman</p>
+			<p><% out.print(session_dept); %></p>
+			<p>University of Barishal</p>
+			
 			<p>
 			<strong>Subject:</strong> Application for <% out.print(newsub); %> of 
 										<% out.print(session_feetype); %>
 			</p>
 			<p>
-			Sir,<br>
-			I am <% out.print(session_name); %> bearing roll no:
+			Sir,</p>
+			<p>I am <% out.print(session_name); %> bearing roll no:
 			 <% out.print(session_roll); %> studying in <% out.print(session_semester); %>  semester 
 			 in the department of <% out.print(session_dept); %> at
 			University of Barishal.
-			<br>
-			<% out.print(session_reason); %>
-			<br>
-			
 			</p>
+			<p><% out.print(session_reason); %>
+			</p>
+		
 			<p>
 			In the circumstance, I hope that you would be kind enough to consider my problems and grant my application
 			</p>
 			
 			<p>
-			Your Obediently, <br>
-			<% out.print(session_name); %><br>
-			Class Roll: <% out.print(session_roll); %><br>
-			Department of <% out.print(session_dept); %><br>
-			University of Barisal
-			</p>
+			Your Obediently,</p>
+			<p><% out.print(session_name); %></p>
+			<p>Class Roll: <% out.print(session_roll); %></p>
+			<p>Department of <% out.print(session_dept); %></p>
+			<p>University of Barisal</p>
 			</div>
 		</div>
 		
-		<div class="col-md-8 m-auto pt-4">
+		
+<a href="#" onclick="HTMLtoPDF()" style="float:right" class="mr-5">Download PDF</a>
 			
-		</div>
-		<a href="#">Download a copy</a>
-	</div>
+
 
 
 	<%  }
@@ -151,6 +151,48 @@
 				session.removeAttribute("session_feetype");
 		    }*/
 		%>
+		
+<script>
+
+function HTMLtoPDF(){
+	var pdf = new jsPDF('p', 'pt', 'letter');
+	source = $('#HTMLtoPDF')[0];
+	specialElementHandlers = {
+		'#bypassme': function(element, renderer){
+			return true
+		}
+	}
+	margins = {
+	    top: 50,
+	    left: 60,
+	    width: 545
+	  };
+	pdf.fromHTML(
+	  	source // HTML string or DOM elem ref.
+	  	, margins.left // x coord
+	  	, margins.top // y coord
+	  	, {
+	  		'width': margins.width // max width of content on PDF
+	  		, 'elementHandlers': specialElementHandlers
+	  	},
+	  	function (dispose) {
+	  	  // dispose: object with X, Y of the last line add to the PDF
+	  	  //          this allow the insertion of new lines after html
+	        pdf.save('html2pdf.pdf');
+	      }
+	  )		
+	}
+
+
+
+
+
+
+</script>
+		
+	<script type="text/javascript" src="assets/js/jspdf.js"></script>
+    <script type="text/javascript" src="assets/js/pdfFromHTML.js"></script>
+    <script type="text/javascript" src="assets/js/jquery-2.1.3.js"></script>
 </body>
 
 <br><br>

@@ -136,6 +136,8 @@ public class devFeesController extends HttpServlet {
 					myStmt.execute();
 					
 					System.out.print("application-submit-success");
+					//response.setContentType("application/pdf");
+					//response.setHeader("content-disposition","attachment; filename="+"Filename.pdf");
 					RequestDispatcher dispatcher =  request.getRequestDispatcher("success_form.jsp");
 					dispatcher.forward(request, response);
 					

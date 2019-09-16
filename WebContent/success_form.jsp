@@ -1,13 +1,157 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<button onclick="printData()" class="btn" style="float:right;
-    background-color: #b1040e; color:white">Print Data</button>
+    pageEncoding="ISO-8859-1"
+    import="com.buPayments.model.Student"
+    %>
+    <%@include file="header.jsp" %>
+     <% 
+    response.setHeader("Cache-Control","no-store,must-revalidate"); 
+    response.setHeader("Pragma","no-cache"); 
+    response.setDateHeader ("Expires", -1); 
+    new java.util.Date();
+    if(session.getAttribute("currentSessionStudent")!=null)
+    {
+    	Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
+    %>
+
+							<% 
+							String subject = "";
+							String subject2 = "";
+							
+							String name = request.getParameter("s_name");
+							String roll = request.getParameter("s_roll");
+							String semester = request.getParameter("semester");
+							String dept = request.getParameter("s_dept");
+							String feetype = request.getParameter("feetype");
+							String reason = request.getParameter("reason");
+							
+							session.setAttribute("s_name",name);
+							session.setAttribute("s_roll",roll);
+							session.setAttribute("s_dept",dept);
+							session.setAttribute("feetype",feetype);
+							session.setAttribute("reason",reason);
+							
+							System.out.print(name);
+						if(semester != null ){
+							if(request.getParameter("subject") !=null){
+								subject = request.getParameter("subject");
+								session.setAttribute("subject1",subject);
+							}
+							if(request.getParameter("subject2") !=null ) {
+								subject2 = request.getParameter("subject2");
+								session.setAttribute("subject2",subject2);
+							}
+								
+							session.setAttribute("semester",semester);
+						}
+						else{
+							System.out.print("semester nei");
+						}
+						 
+						
+						%>
+						
+						<% 
+								String session_name =(String)session.getAttribute("s_name"); 
+								String session_roll =(String)session.getAttribute("s_roll"); 
+								String session_dept =(String)session.getAttribute("s_dept");
+								String session_semester =(String)session.getAttribute("semester");
+								String session_subject1 =(String)session.getAttribute("subject1");
+								String session_subject2 =(String)session.getAttribute("subject2");
+								String session_feetype=(String)session.getAttribute("feetype");
+								String session_reason =(String)session.getAttribute("reason");
+  								String newsub="";
+  								
+								if(session_subject1!=null){
+									newsub = session_subject1;
+								}
+								if(session_subject2!=null){
+									newsub = newsub+ " and " +session_subject2;
+								}
+								
+								if(session_name != null){
+									
+									System.out.println(session_name);
+								}
+								
+								%>
+							
+								
+								
+								
+								
+								
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-8 m-auto pt-4">
+				<div class="card p-4">
+					<h1>Successfully Application Submitted!!</h1>
+					
+				</div>
+			
+			</div>
+		</div>
+		
+		<div class="col-md-8 m-auto pt-4">
+				<div class="card p-4">
+			<p>To<br>
+			The Chairman<br>
+			<% out.print(session_dept); %><br>
+			University of Barishal<br>
+			</p>
+			<p>
+			<strong>Subject:</strong> Application for <% out.print(newsub); %> of 
+										<% out.print(session_feetype); %>
+			</p>
+			<p>
+			Sir,<br>
+			I am <% out.print(session_name); %> bearing roll no:
+			 <% out.print(session_roll); %> studying in <% out.print(session_semester); %>  semester 
+			 in the department of <% out.print(session_dept); %> at
+			University of Barishal.
+			<br>
+			<% out.print(session_reason); %>
+			<br>
+			
+			</p>
+			<p>
+			In the circumstance, I hope that you would be kind enough to consider my problems and grant my application
+			</p>
+			
+			<p>
+			Your Obediently, <br>
+			<% out.print(session_name); %><br>
+			Class Roll: <% out.print(session_roll); %><br>
+			Department of <% out.print(session_dept); %><br>
+			University of Barisal
+			</p>
+			</div>
+		</div>
+		
+		<div class="col-md-8 m-auto pt-4">
+			
+		</div>
+		<a href="#">Download a copy</a>
+	</div>
+
+
+	<%  }
+    
+    else{
+    	
+    }
+			/* if(session != null)
+			{
+				session.removeAttribute("session_name");
+				session.removeAttribute("session_roll");
+				session.removeAttribute("session_dept");
+				session.removeAttribute("session_semester");
+				session.removeAttribute("session_subject1");
+				session.removeAttribute("session_subject2");
+				session.removeAttribute("session_feetype");
+		    }*/
+		%>
 </body>
-</html>
+
+<br><br>
+<%@include file="footer.jsp" %>

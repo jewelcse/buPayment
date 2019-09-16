@@ -1,8 +1,9 @@
-
+<%@page import="com.buPayments.controller.* "%>
 <%@ page import = "java.util.Date" %>
 <%@ page import = "java.text.SimpleDateFormat" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
+	pageEncoding="ISO-8859-1" 
+	import="com.buPayments.model.*"
 	import="com.buPayments.model.Devfees"
 	import="com.buPayments.controller.*"
 	import="java.util.ArrayList"

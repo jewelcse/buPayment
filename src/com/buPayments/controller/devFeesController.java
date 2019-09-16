@@ -5,7 +5,7 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import netscape.javascript.JSObject;
+//import netscape.javascript.JSObject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -136,7 +136,8 @@ public class devFeesController extends HttpServlet {
 					myStmt.execute();
 					
 					System.out.print("application-submit-success");
-					response.sendRedirect("success_form.jsp");
+					RequestDispatcher dispatcher =  request.getRequestDispatcher("success_form.jsp");
+					dispatcher.forward(request, response);
 					
 				} catch (SQLException e) {
 					e.printStackTrace();

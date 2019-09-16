@@ -30,17 +30,36 @@
 			
 			<p style="font-size:20px">
 			
-			<p>I am <label> <strong> <%=currentUser.getS_name()%></strong></label> bearing roll no.
-			 <u><%=currentUser.getS_roll()%></u>  studying in 
+			<p>I am 
+				<div class="md-form ">
+  					<input type="text" name="s_name" class="form-control" value="<%=currentUser.getS_name()%>" readonly > 
+				</div>
+			bearing roll no:
+			<div class="md-form ">
+  					<input type="text" name="s_roll" class="form-control" value="<%=currentUser.getS_roll()%>" readonly >  
+			</div>
+			
+			
+			  studying in 
 			 <input type="hidden" name="id" value="<%=currentUser.getId()%>">
-			 <input type="text" name="semester" placeholder="semester" required>
-			 at the department of <u><%=currentUser.getS_department()%></u>
+			 <div class="md-form ">
+  					 <input type="text" name="semester" class="form-control" placeholder="Enter your semester" required> 
+			</div>
+			 
+			 
+			
+			 at the department of 
+			  <div class="md-form ">
+  					 <input type="text" name="s_dept" class="form-control" value="<%=currentUser.getS_department()%>" readonly >
+			</div>
+			 
+			  
 			University of Barishal.</p>
 			<p>
 			Application for
 			
-			<input type="checkbox" name="subject" value="Reduceing">Reduceing and/or
-			<input type="checkbox" name="subject2" value="Time extend" >Time extend for  
+			<input type="checkbox" name="subject" value="reducing amount">reducing amount /
+			<input type="checkbox" name="subject2" value="extending time" >extending time for the  
 			</p>
 			<p>
 			<input type="radio" name="feetype" value="Development fee " >Development fee 

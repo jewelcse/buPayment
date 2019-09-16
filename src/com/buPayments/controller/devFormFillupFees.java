@@ -28,7 +28,7 @@ public class devFormFillupFees extends HttpServlet {
 		String semester = request.getParameter("s_semester");
 		String formfillup_fee = request.getParameter("s_formfillup_fee");
 
-		System.out.println(id + semester+ formfillup_fee);
+		//System.out.println(id + semester+ formfillup_fee);
 		FormfillupFees newFormfillup = new FormfillupFees(id,semester,formfillup_fee);
 		
 		try {

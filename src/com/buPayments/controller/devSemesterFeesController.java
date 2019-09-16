@@ -28,7 +28,7 @@ public class devSemesterFeesController extends HttpServlet {
 		String semester = request.getParameter("s_semester");
 		String semester_fee = request.getParameter("s_semester_fee");
 		
-		System.out.print(id);
+		//System.out.print(id);
 		
 		SemesterFees newsemesterFee = new SemesterFees(id,semester,semester_fee);
 		

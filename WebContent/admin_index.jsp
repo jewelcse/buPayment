@@ -13,14 +13,14 @@
 <div class="container">
 	<div class="row ml-5 mt-5">
 
-		<h1>Admin Pannel</h1>
+		<h1>Admin Panel</h1>
 
 
 	</div>
 
 
 </div>
-
+<%@include file="adminfooter.jsp" %>
 <%
 	} else {
 %>
@@ -29,4 +29,3 @@
 <%
 	}
 %>
-<%@include file="adminfooter.jsp" %>

@@ -153,7 +153,7 @@ ArrayList<Student> al = new ArrayList<Student>();
 				    	String d_semester  = myRs.getString("s_Semester");
 				    	String d_dept  = myRs.getString("s_Department");
 				    	String d_faculty  = myRs.getString("s_Faculty");
-				        System.out.println("Welcome " + d_name);
+				        //System.out.println("Welcome " + d_name);
 				        // login_student.setS_name(name);
 				    	
 				        login_student.setId(d_id);

@@ -101,6 +101,7 @@ public class devFeesController extends HttpServlet {
 			String subject2 = request.getParameter("subject2");
 			String feetype= request.getParameter("feetype");
 			String reason= request.getParameter("reason");
+			String dept= request.getParameter("s_dept");
 			String newSub = "";
 			
 			if(subject!=null && subject2!=null){
@@ -122,8 +123,8 @@ public class devFeesController extends HttpServlet {
 			myConn =db.getCon();
 			
 			String sql = "insert into application_form_table "
-						   + "(semester,subject,feeType,reason,student_id) "
-						   + "values (?,?,?,?,?)";
+						   + "(semester,subject,feeType,reason,student_id,department) "
+						   + "values (?,?,?,?,?,?)";
 				
 				try {
 					myStmt = (PreparedStatement) myConn.prepareStatement(sql);
@@ -132,6 +133,7 @@ public class devFeesController extends HttpServlet {
 					myStmt.setString(3, feetype);
 					myStmt.setString(4, reason);
 					myStmt.setString(5, id);
+					myStmt.setString(6, dept);
 				
 					myStmt.execute();
 					

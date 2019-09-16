@@ -71,7 +71,7 @@
             </li>
             
              <li class="nav-item">
-              <a class="nav-link" href="#"><span class="licolor">ALL Applications</span></a>
+              <a class="nav-link" href="admin_all_application.jsp"><span class="licolor">ALL Applications</span></a>
             </li>
             
             <li class="nav-item">

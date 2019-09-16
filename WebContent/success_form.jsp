@@ -97,35 +97,35 @@
 	
 		<div class="col-md-8 m-auto"  id="HTMLtoPDF" >
 		<div class="card p-5 m-5">	
-			<p>To</p>
-			<p>The Chairman</p>
-			<p><% out.print(session_dept); %></p>
-			<p>University of Barishal</p>
+			<p>To</br>
+			The Chairman</br>
+			<% out.print(session_dept); %></br>
+			University of Barishal</p>
 			
 			<p>
 			<strong>Subject:</strong> Application for <% out.print(newsub); %> of 
 										<% out.print(session_feetype); %>
 			</p>
 			<p>
-			Sir,</p>
-			<p>I am <% out.print(session_name); %> bearing roll no:
+			Sir,</br>
+			I am <% out.print(session_name); %> bearing roll no:
 			 <% out.print(session_roll); %> studying in <% out.print(session_semester); %>  semester 
 			 in the department of <% out.print(session_dept); %> at
-			University of Barishal.
-			</p>
-			<p><% out.print(session_reason); %>
-			</p>
+			University of Barishal.</br>
+			
+			<% out.print(session_reason); %> </br>
+			
 		
 			<p>
-			In the circumstance, I hope that you would be kind enough to consider my problems and grant my application
+			In the circumstance, I hope that you would be kind enough to consider my problems and grant my application.
 			</p>
 			
 			<p>
-			Your Obediently,</p>
-			<p><% out.print(session_name); %></p>
-			<p>Class Roll: <% out.print(session_roll); %></p>
-			<p>Department of <% out.print(session_dept); %></p>
-			<p>University of Barisal</p>
+			Your Obediently,</br>
+			<% out.print(session_name); %></br>
+			Class Roll: <% out.print(session_roll); %></br>
+			Department of <% out.print(session_dept); %></br>
+			University of Barisal</p>
 			</div>
 		</div>
 		

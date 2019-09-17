@@ -27,14 +27,14 @@ h3.inline {
 
 </style>
 
-        <!-- Breadcrumbs-->
+
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Applications</li>
         </ol>
-	<section class="p-5">
+<section class="p-1">
 		
     <h3 class="inline"><u>List of All Application</u></h3>
 		<table class="table table-hover" id="myTable"  border="2px solid black">
@@ -48,9 +48,9 @@ h3.inline {
 			</tr>
 
 			<%
-			admin_all_application_controller semItem = new admin_all_application_controller();
+			admin_all_application_controller appItem = new admin_all_application_controller();
 					ArrayList<allApplication> item = new ArrayList<allApplication>();
-					item = semItem.showAllApplicationFun();
+					item = appItem.showAllApplicationFun();
 
 					for (int i = 0; i < item.size(); i++) {
 			%>
@@ -82,9 +82,9 @@ h3.inline {
 					%>
 				</td>
 				<td>
-					<a class="btn btn-primary" href="admin_all_application_controller?stu_id=<%
-						out.println(item.get(i).getId());
-					%>">Preview</a>
+					<a class="btn btn-primary"
+					href="admin_all_application_controller?application_id=<% out.println(item.get(i).getId());
+					%>&&stu_id=<% out.println(item.get(i).getStudent_id());%>">Preview</a>
 				</td>
 
 
@@ -98,7 +98,7 @@ h3.inline {
 
 		</table>
 
-	</section>
+</section>
 
 
 <%@include file="admin-footer.jsp"%>

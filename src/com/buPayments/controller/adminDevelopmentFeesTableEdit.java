@@ -29,31 +29,27 @@ public class adminDevelopmentFeesTableEdit extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-		
-		 	response.setContentType("text/html");  
-	        PrintWriter out=response.getWriter();  
-	        out.println("<h1>Update Development Fees table</h1>");  
+
+
 	        String id=request.getParameter("Edit_id");  
-	        //Integer newId=Integer.parseInt(id); 
-	        System.out.println("ID Line number 39 "+id);
+
 	        
 	        adminDevelopmentFeesTable devItem=mainController.getDevelopmentItemById(id);  
 	          
-	          
-	        out.print("<form action='adminDevelopmentFeesTableController' method='post'>");  
-	        out.print("<table>");  
-	        out.print("<tr><td></td><td><input type='hidden' name='id' value='"+devItem.getId()+"'/></td></tr>");          
-	        out.print("<tr><td>Semester:</td><td><input type='text' name='semester' value='"+devItem.getSemester()+"' readonly/></td></tr>");  
-	        out.print("<tr><td>Main Fee:</td><td><input type='text' name='main_fee' value='"+devItem.getMain_fee()+"' readonly/></td></tr>");
-	        out.print("<tr><td>Misce Fee:</td><td><input type='text' name='misce_fee' value='"+devItem.getMisce_fee()+"' readonly/></td></tr>");
-	        out.print("<tr><td>Start date:</td><td><input type='Date' name='start_date' value='"+devItem.getStart_date()+"'/></td></tr>");
-	        out.print("<tr><td>End Date:</td><td><input type='Date' name='end_date' value='"+devItem.getEnd_date()+"'/></td></tr>");
-	        out.print("<tr><td><input type='submit' value='Edit & Save '/></td></tr>");  
-	        out.print("<table>"); 
-	        out.print("</form>");  
-	          
-	        out.close();  
+	        devItem.setId(devItem.getId());
+	        devItem.setSemester(devItem.getSemester());
+	        devItem.setMain_fee(devItem.getMain_fee());
+	        devItem.setMisce_fee(devItem.getMisce_fee());
+	        devItem.setStart_date(devItem.getStart_date());
+	        devItem.setEnd_date(devItem.getEnd_date());
+	        
+	        
+	 	     request.setAttribute("devItem", devItem);
+		  	    
+		  	    
+	 		request.getRequestDispatcher("development_fees_edit.jsp").forward(request, response);
+	        
+
 	     
 	}
 

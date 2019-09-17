@@ -88,7 +88,9 @@ public class admin_all_application_controller extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String application_id =request.getParameter("stu_id");
+		String application_id =request.getParameter("application_id");
+		String stu_id =request.getParameter("stu_id");
+		
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		Statement stmt = null;
@@ -150,7 +152,7 @@ public class admin_all_application_controller extends HttpServlet {
 		    	
 		    	 //// PrintWriter out = response.getWriter();  
 		  	     request.setAttribute("newItem", newItem);
-		  	   request.setAttribute("stuItem", stuItem);
+		  	     request.setAttribute("stuItem", stuItem);
 		  	    
 		  	    
 		  		request.getRequestDispatcher("admin_preview_application.jsp").forward(request, response);

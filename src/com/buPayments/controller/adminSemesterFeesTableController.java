@@ -47,7 +47,6 @@ ArrayList<adminSemesterFeesTable> devId = new ArrayList<adminSemesterFeesTable>(
 		    	adminSemesterFeesTable newItem = new adminSemesterFeesTable();
 		    	
 		    	String id  = myRs.getString("id");
-		    	Integer newId = Integer.parseInt(id);
 		    	String semester  = myRs.getString("semester");
 		    	String main_fee  = myRs.getString("main_fee");
 		    	String misce_fee  = myRs.getString("misce_fee");

@@ -11,10 +11,13 @@
       <footer class="sticky-footer">
         <div class="container my-auto">
           <div class="copyright text-center my-auto">
-            <span>Copyright Â© Your Website 2019</span>
+            BU Payment - Copyright © 2019 <br>
+    <a href="#">Developed by <br> 3rd Batch, Dept. of CSE, BU</a>
           </div>
         </div>
       </footer>
+      
+<!-- Footer -->
 
     </div>
     <!-- /.content-wrapper -->

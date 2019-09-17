@@ -22,8 +22,8 @@
 <body class="bg-dark">
 
   <div class="container">
-    <div class="card card-login mx-auto mt-5">
-      <div class="card-header">Login</div>
+    <div class="card card-login mx-auto mt-5 ">
+      <div class="card-header text-center">Admin Login Panel</div>
       <div class="card-body">
         <form action="adminController" method="post">
           <div class="form-group">
@@ -38,14 +38,7 @@
               <label for="password">Password</label>
             </div>
           </div>
-          <div class="form-group">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" value="remember-me">
-                Remember Password
-              </label>
-            </div>
-          </div>
+
           
            <div class="text-center">
                <input type="submit" class="btn btn-primary" value="Login" > 

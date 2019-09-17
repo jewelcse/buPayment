@@ -9,28 +9,31 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionAdmin") != null) {
 %>
+
 <%@include file="admin-header.jsp"%>
 
 
-        <!-- Breadcrumbs-->
+
+
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Update Dev Fee</li>
         </ol>
         
         
-<div class="container">
+
+
 	<div class="row ml-5 mt-5">
 
-		<h1 class="mr-3">Update Fees : </h1>
-		<br><br><br><br>
-<form class="form-controll" id="myForm" action="ChangedFeesController"  method="post"  name="myForm">
+		<h3 class="mr-3">Update Fee : </h3>
+		
+		
+		<form class="form-controll" action="ChangedFeesController"  method="post">
               
                   <div class="md-form mb-2">
-                    <input type="text" id="roll" name="roll" class="form-control" placeholder="Roll No." required>
-                    
+                    <input type="text" id="roll" name="roll" class="form-control" placeholder="Roll No." required>  
                   </div>
                   
                      <div class="md-form">
@@ -50,25 +53,20 @@
                     </div>
                   
                   <div class="md-form mb-2">
-                    <input type="text" id="changed_amount" name="changed_amount" class="form-control" placeholder="Amount..." required>
-                   
+                    <input type="text" id="changed_amount" name="changed_amount" class="form-control" placeholder="Amount..." required>  
                   </div>
 
 
                   <div class="text-center">
-                    
-                    <input type="submit" class="btn  waves-effect waves-light mb-5" style="border-radius: 25px;
-    background-color: #008000; color:white" value="Click to change" > 
-                    
-                   
+                    <input type="submit" class="btn btn-primary" value="Click to change" > 
    				 </div>      
 
-</form>
+		</form>
 
 	</div>
 
 
-</div>
+
 <%@include file="admin-footer.jsp"%>
 <%
 	} else {

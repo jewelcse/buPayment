@@ -40,11 +40,11 @@ public class adminController extends HttpServlet {
 		      HttpSession session = request.getSession(true);       
 		      session.setAttribute("currentSessionAdmin",login_admin); 
 		      response.sendRedirect("super-admin.jsp"); //logged-in page           
-			  System.out.print("admin wow");
+			  System.out.print("admin login success");
 		 }
 		       
 		 else 
-		      response.sendRedirect("adminlogin.jsp"); //error page 
+		      response.sendRedirect("admin-login.jsp"); //error page 
 		
 		
 	}

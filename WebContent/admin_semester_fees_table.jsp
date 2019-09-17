@@ -21,14 +21,14 @@
         <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Semester Fees</li>
         </ol>
         
         
 
-  <section class="p-5">  
+<section class="p-1">  
 	<h3 class="inline"><u>Semester Fees Table</u></h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
@@ -77,11 +77,11 @@
 				</td>
 			
 				<td> 
-				<button class="btn ">
-				<a href='adminSemesterFeesTableEdit?Edit_id=<%
+			
+				<a class="btn btn-primary" href='adminSemesterFeesTableEdit?Edit_id=<%
 						out.println(al.get(i).getId());
 					%>'>Update</a>
-					</button>
+					
 				 </td>
 
 			</tr>
@@ -90,9 +90,7 @@
 				}
 			%>
 
-
-
-		</table>
+	</table>
 </section>
 
 <%@include file="admin-footer.jsp"%>

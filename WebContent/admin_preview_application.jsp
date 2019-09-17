@@ -27,9 +27,17 @@ h3.inline {
 
 </style>
 
-<body>
+
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="super-admin.jsp">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Preview</li>
+        </ol>
 
 
+
+		<a href="#" onclick="HTMLtoPDF()" style="float:right" class="mr-5">Download PDF</a>
 
 			<div class="col-md-8 m-auto"  id="HTMLtoPDF" >
 			<div class="card p-5 m-5">	
@@ -70,7 +78,6 @@ h3.inline {
 
 		</div>
 		
-		<a href="#" onclick="HTMLtoPDF()" style="float:right" class="mr-5">Download PDF</a>
 	
 </body>
 
@@ -114,6 +121,9 @@ function HTMLtoPDF(){
 	<script type="text/javascript" src="assets/js/jspdf.js"></script>
     <script type="text/javascript" src="assets/js/pdfFromHTML.js"></script>
     <script type="text/javascript" src="assets/js/jquery-2.1.3.js"></script>
+    
+ <%@include file="admin-footer.jsp"%>
+ 
 <%
 	} else {
 %>

@@ -27,25 +27,20 @@ h3.inline {
 
 </style>
 
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Students Table</li>
         </ol>
 
-	<section class="p-0">
-		<input type="text" id="myInput1"  class="mb-4"onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
-		<a href="admin_add_student.jsp"><img src="images/plus.png" style="width:35px"> Add new Record</a>
-		<button onclick="printData()" class="btn" style="float:right;
-    background-color: #b1040e; color:white">Print Data</button>
-		<button class="btn" style="float:right;
-    background-color: #b1040e;''">
-    <a href="#" id="test" onClick="javascript:fnExcelReport();"><span  style="color:white">Export Data</span></a>
-    
-    </button>
-    <div id="printData">
+<section class="p-1">
+		<input type="text" id="myInput1"  class=" form-control mb-4" onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
+    		<a href="#" class="btn btn-primary" id="test" onClick="javascript:fnExcelReport();">Export Data</a>
+    		<a href="#" class="btn btn-primary" id="test" onclick="printData()">Print Data</a>
+    		<a href="admin_add_student.jsp"><img src="images/plus.png" style="width:35px"> Add new Record</a>
+
+ 	<div id="printData">
     <h3 class="inline"><u>Students Table</u></h3>
 		<table class="table table-hover" id="myTable"  border="2px solid black">
 			<tr>
@@ -76,7 +71,7 @@ h3.inline {
 					out.println(al.get(i).getS_roll());
 				%>
 				</td>
-				<td>
+				<td  width="20px">
 				<%
 					out.println(al.get(i).getS_password());
 				%>
@@ -101,7 +96,7 @@ h3.inline {
 						out.println(al.get(i).getS_mother_name());
 					%>
 				</td>
-				<td>
+				<td  width="20px">
 					<%
 						out.println(al.get(i).getS_email());
 					%>
@@ -136,8 +131,8 @@ h3.inline {
 
 
 		</table>
-		</div>
-	</section>
+	</div>
+</section>
 
 
 <script>

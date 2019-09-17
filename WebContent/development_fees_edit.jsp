@@ -18,18 +18,18 @@
 <%@include file="admin-header.jsp"%>
 
 
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
             <a href="#">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Update Semester Fee</li>
+          <li class="breadcrumb-item active">Update Development Fee</li>
         </ol>
+
 		
 		<!--Grid column-->
 		<div class="col-md-5  m-auto pt-1 pb-3">
 
-			<form method="post" action="adminSemesterFeesTableController">
+			<form method="post" action="adminDevelopmentFeesTableController">
 
 				<div class="card">
 
@@ -37,43 +37,42 @@
 						<!-- Header -->
 						<div class="form-header  text-center "
 							style="border-radius: 25px;">
-							<h3>Update Semester Fee</h3>
+							<h3>Update Development Fee</h3>
 						</div>
 						
 						<!-- Body -->
 						
 						<div class="md-form">
 						
-							<input type="hidden" id="semester" name="id" class="form-control" value="${semItem.id}" required> 
+							<input type="hidden" id="semester" name="id" class="form-control" value="${devItem.id}" required> 
 						</div>
 						
-						<div class="md-form mb-2">
+						<div class="md-form">
 						<label for="semester"
 								class="">Semester:</label>
-							<input type="text" id="semester" name="semester" class="form-control" value="${semItem.semester}" readonly> 
+							<input type="text" id="semester" name="semester" class="form-control" value="${devItem.semester}" readonly> 
 						</div>
 
-						<div class="md-form mb-2">
+						<div class="md-form">
 						<label for="main_fee"
 								class="">Main Fee</label>
-							<input type="text" id="main_fee" name="main_fee" class="form-control" value="${semItem.main_fee}" required> 
+							<input type="text" id="main_fee" name="main_fee" class="form-control" value="${devItem.main_fee}" required> 
 						</div>
 
-						<div class="md-form mb-2"> 
-						<label for="misce_fee"
+						<div class="md-form mb-2"> <label for="misce_fee"
 								class="">Misce_fee</label>
-							<input type="text" id="misce_fee" name="misce_fee" class="form-control" value="${semItem.misce_fee}" required>
+							<input type="text" id="misce_fee" name="misce_fee" class="form-control" value="${devItem.misce_fee}" required>
 						</div>
 
 						<div class="md-form mb-2">
 						<label for="date" class="">Start date</label>
-							<input type="date" name="start_date" value="${semItem.start_date}" required> 
+							<input type="date" name="start_date" value="${devItem.start_date}" required> 
 							
 						</div>
+						
 						<div class="md-form mb-2">
 						<label for="date" class="">End date</label>
-							<input type="date" name="end_date" value="${semItem.end_date}" required> 
-							
+							<input type="date" name="end_date" value="${devItem.end_date}" required> 	
 						</div>
 						
 						
@@ -85,7 +84,7 @@
 				</form>
 			</div>
 			
-		
+	
 	
 
 <%@include file="admin-footer.jsp"%>

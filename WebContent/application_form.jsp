@@ -54,7 +54,7 @@
 			</div>
 			 
 			  
-			University of Barishal.</p>
+			University of Barishal.
 			<p>
 			Application for
 			
@@ -73,7 +73,7 @@
  				 <textarea id="reason" name="reason" class="md-textarea form-control" rows="3"></textarea>
   					
 				</div>
-			</p>
+		
 
 
 						<div class="text-center text-md-right">
@@ -88,32 +88,6 @@
 							
 
 	</section>
-	
-<script>
-
-/*function exportLog(){
-    var elHtml = document.getElementById('application').innerText;
-    var link = document.createElement('a');
-    var mimeType = 'text/plain';
-
-    link.setAttribute('download', 'application');
-    link.setAttribute('href', 'data:' + mimeType  +  ';charset=utf-8,' + encodeURIComponent(elHtml));
-    link.click();
-}
-function printData() {
-	var print_div = document.getElementById("application");
-	var print_area = window.open();
-	print_area.document.write(print_div.innerHTML);
-	print_area.document.close();
-	print_area.focus();
-	print_area.print();
-	print_area.close();
-			
-}
-
-*/
-
-</script>
 
 </body>
 

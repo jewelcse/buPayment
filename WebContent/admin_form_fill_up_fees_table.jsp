@@ -18,15 +18,14 @@
 <%@include file="admin-header.jsp"%>
 
 
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Form Fillup Fees</li>
         </ol>
         
-   <section class="p-5">         
+<section class="p-1">         
 	<h3 class="inline"><u>Form Fill Up Fees Table</u></h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
@@ -75,9 +74,9 @@
 				</td>
 			
 				<td> 
-				<button class="btn "><a href='adminFormFillUpFeesTableEdit?Edit_id=<%
+				<a class="btn btn-primary" href='adminFormFillUpFeesTableEdit?Edit_id=<%
 						out.println(al.get(i).getId());
-					%>'>Update</a></button>
+					%>'>Update</a>
 				 </td>
 
 			</tr>
@@ -86,12 +85,9 @@
 				}
 			%>
 
-
-
 		</table>
-
-
 </section>
+
 <%@include file="admin-footer.jsp"%>
 <%
 	} else {

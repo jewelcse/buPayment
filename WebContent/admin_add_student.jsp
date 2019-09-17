@@ -15,119 +15,29 @@
 
 <%@include file="admin-header.jsp"%>
 
-<script>
-	function clearForms() {
-		var i;
-		for (i = 0; (i < document.forms.length); i++) {
-			document.forms[i].reset();
-		}
-	}
-	function validateForm() {
-		var roll = document.forms["myForm"]["sroll"].value;
-		var reg = document.forms["myForm"]["sreg"].value;
-		var semester = document.forms["myForm"]["ssemester"].value;
-		var sname = document.forms["myForm"]["sname"].value;
-		var moname = document.forms["myForm"]["moname"].value;
-		var faname = document.forms["myForm"]["faname"].value;
-		var daname = document.forms["myForm"]["sdepartment"].value;
-		var faculty = document.forms["myForm"]["sfaculty"].value;
-		var email = document.forms["myForm"]["semail"].value;
-		var phone = document.forms["myForm"]["sphone"].value;
-		var pass = document.forms["myForm"]["spass"].value;
 
-		if (roll == null || roll == "") {
-			alert("class Roll must be filled out");
-			return false;
-		}
-
-		if (reg == null || reg == "") {
-			alert("reg Number must be filled out");
-			return false;
-		}
-
-		if (sname == null || sname == "") {
-			alert("student name must be filled out");
-			return false;
-		}
-		if (moname == null || moname == "") {
-			alert("mother name must be filled out");
-			return false;
-		}
-		if (faname == null || faname == "") {
-			alert("father name must be filled out");
-			return false;
-		}
-
-		if (email == null || email == "") {
-			alert("email must be filled out");
-			return false;
-		}
-
-		if (faculty == null || faculty == "") {
-			alert("faculty must be filled out");
-			return false;
-		}
-
-		if (daname == null || daname == "") {
-			alert("department must be filled out");
-			return false;
-		}
-
-		if (phone == null || phone == "") {
-			alert("phone must be filled out");
-			return false;
-		}
-
-		if (semester == null || semester == "") {
-			alert("Semester must be filled out");
-			return false;
-		}
-
-		if (pass == null || pass == "") {
-			alert("password must be filled out");
-			return false;
-		}
-
-	}
-</script>
-
-        <!-- Breadcrumbs-->
         <ol class="breadcrumb">
           <li class="breadcrumb-item">
-            <a href="#">Dashboard</a>
+            <a href="super-admin.jsp">Dashboard</a>
           </li>
           <li class="breadcrumb-item active">Add Record</li>
         </ol>
 
 
-<body onLoad="clearForms()" onunload="clearForms()">
-	<!--Main Navigation-->
-	<div class="row">
 
 		<!--Grid column-->
-		<div class="col-md-10  m-auto pt-3 ">
+		<div class="col-md-10  m-auto pt-3  ">
 
-			<form id="myForm" onsubmit="return validateForm()" method="post"
-				name="myForm" action="addStudentController">
+			<form  method="post"action="addStudentController">
 
-
-
-
-				<div class="card wow fadeIn animated" data-wow-delay="0.3s"
-					style="visibility: visible; animation-name: fadeIn; animation-delay: 0.3s;">
-
-
-
+				<div class="card mb-5">
 
 					<div class="card-body m-4">
-						<!-- Header -->
-						<div class="form-header  text-center "
-							style="border-radius: 25px;">
-							<h3 class="font-weight-500 my-2 py-1 text-light" style="border-radius: 2''px;
-    background-color: #008000; color:white">Add New
-								Student</a></h3>
+	
+						<div class="form-header text-center" style="border-radius: 25px;">
+							<h3>Add New Student</h3>
 						</div>
-						<!-- Body -->
+						
 						<div class="md-form mb-1">
 						
 						<input type="text" id="sroll" name="s_roll" class="form-control" placeholder="Roll No." required>
@@ -233,27 +143,24 @@
 						</div>
 
 						<div class="md-form mb-2">
-						<input type="number"
-								id="sphone" name="s_phone" class="form-control" placeholder="Phone No..." required>
+						
+						<input type="number" id="sphone" name="s_phone" class="form-control" placeholder="Phone No..." required>
 						</div>
 
 
 						<div class="text-center">
-							<input type="submit" value="Add record"
-								class="btn " style="border-radius: 25px;
-    background-color: #008000; color:white">
-
+							<input type="submit" value="Add record" class="btn btn-primary">
 						</div>
 					</div>
-					<!-- Jumbotron -->
+					
 				</div>
 
 			</form>
 		</div>
-	</div>
 
 
-</body>
+
+
 
 
 <%@include file="admin-footer.jsp" %>

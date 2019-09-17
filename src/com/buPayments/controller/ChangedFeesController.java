@@ -37,7 +37,7 @@ public class ChangedFeesController extends HttpServlet {
 		
 		mainController.ChangedFeesNow(changedFees);
 
-		response.sendRedirect("admin_index.jsp");
+		response.sendRedirect("super-admin.jsp");
 	}
 }
 

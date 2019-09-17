@@ -9,7 +9,18 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionAdmin") != null) {
 %>
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
+
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Update Dev Fee</li>
+        </ol>
+        
+        
 <div class="container">
 	<div class="row ml-5 mt-5">
 
@@ -17,9 +28,9 @@
 		<br><br><br><br>
 <form class="form-controll" id="myForm" action="ChangedFeesController"  method="post"  name="myForm">
               
-                  <div class="md-form">
-                    <input type="text" id="roll" name="roll" class="form-control" required>
-                    <label for="roll" class="">Roll No:</label>
+                  <div class="md-form mb-2">
+                    <input type="text" id="roll" name="roll" class="form-control" placeholder="Roll No." required>
+                    
                   </div>
                   
                      <div class="md-form">
@@ -38,9 +49,9 @@
                         </div>
                     </div>
                   
-                  <div class="md-form">
-                    <input type="text" id="changed_amount" name="changed_amount" class="form-control" required>
-                    <label for="changed_amount" class="">Enter new amount : </label>
+                  <div class="md-form mb-2">
+                    <input type="text" id="changed_amount" name="changed_amount" class="form-control" placeholder="Amount..." required>
+                   
                   </div>
 
 
@@ -58,14 +69,13 @@
 
 
 </div>
-
+<%@include file="admin-footer.jsp"%>
 <%
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>
 
-<%@include file="adminfooter.jsp"%>

@@ -13,7 +13,7 @@
 
 
 
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
 
 <script>
 	function clearForms() {
@@ -91,13 +91,21 @@
 	}
 </script>
 
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Add Record</li>
+        </ol>
+
 
 <body onLoad="clearForms()" onunload="clearForms()">
 	<!--Main Navigation-->
 	<div class="row">
 
 		<!--Grid column-->
-		<div class="col-md-5  m-auto pt-3 ">
+		<div class="col-md-10  m-auto pt-3 ">
 
 			<form id="myForm" onsubmit="return validateForm()" method="post"
 				name="myForm" action="addStudentController">
@@ -120,41 +128,30 @@
 								Student</a></h3>
 						</div>
 						<!-- Body -->
-						<div class="md-form">
-							<i class="far fa-user prefix "></i> <input type="text" id="sroll"
-								name="s_roll" class="form-control" required> <label for="sroll"
-								class="">Roll no</label>
+						<div class="md-form mb-1">
+						
+						<input type="text" id="sroll" name="s_roll" class="form-control" placeholder="Roll No." required>
 						</div>
 
-						<div class="md-form">
-							<i class="far fa-user prefix "></i> <input type="text" id="sreg"
-								name="s_reg" class="form-control" required> <label for="sreg"
-								class="">Reg no</label>
+						<div class="md-form mb-1">
+						<input type="text" id="sreg" name="s_reg" class="form-control" placeholder="Reg. No." required>
 						</div>
 
-						<div class="md-form">
-							<i class="far fa-user prefix "></i> <input type="text" id="sname"
-								name="s_name" class="form-control" required> <label for="sname"
-								class="">Student's Name</label>
+						<div class="md-form mb-1">
+						<input type="text" id="sname" name="s_name" class="form-control" placeholder="Name..." required>
 						</div>
 
-						<div class="md-form">
-							<i class="far fa-user prefix "></i> <input type="text"
-								id="moname" name="s_mother_name" class="form-control" required> <label
-								for="moname" class="">Mother's Name</label>
+						<div class="md-form mb-1">
+						 <input type="text" id="moname" name="s_mother_name" class="form-control" placeholder="Mother Name..." required>
 						</div>
 
-						<div class="md-form">
-							<i class="far fa-user prefix "></i> <input type="text"
-								id="faname" name="s_father_name" class="form-control" required> <label
-								for="faname" class="">Father's Name</label>
+						<div class="md-form mb-1">
+						<input type="text" id="faname" name="s_father_name" class="form-control" placeholder="Father Name..." required>
 						</div>
 
 
-						<div class="md-form">
-							<i class="far fa-envelope prefix"></i> <input type="email"
-								id="semail" name="s_email" class="form-control" required> <label
-								for="semail" class="">Your email</label>
+						<div class="md-form mb-1">
+						<input type="email" id="semail" name="s_email" class="form-control" placeholder="Gmail..." required>
 						</div>
 
 						<div class="md-form">
@@ -235,17 +232,10 @@
 							</div>
 						</div>
 
-
-
-
-						<div class="md-form">
-							<i class="fas fa-lock prefix"></i> <input type="number"
-								id="sphone" name="s_phone" class="form-control" required> <label
-								for="sphone" class="">Phone No</label>
+						<div class="md-form mb-2">
+						<input type="number"
+								id="sphone" name="s_phone" class="form-control" placeholder="Phone No..." required>
 						</div>
-
-
-
 
 
 						<div class="text-center">
@@ -263,29 +253,16 @@
 	</div>
 
 
-
-	<!-- SCRIPTS -->
-	<!-- JQuery -->
-	<script type="text/javascript" src="assets/js/jquery-3.4.1.min.js"></script>
-	<!-- Bootstrap tooltips -->
-	<script type="text/javascript" src="assets/js/popper.min.js"></script>
-	<!-- Bootstrap core JavaScript -->
-	<script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-	<!-- MDB core JavaScript -->
-	<script type="text/javascript" src="assets/js/mdb.min.js"></script>
 </body>
-</html>
 
-<br>
-<br>
-</html>
+
+<%@include file="admin-footer.jsp" %>
 
 <%
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>
-<%@include file="adminfooter.jsp" %>

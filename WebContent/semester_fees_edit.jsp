@@ -15,7 +15,7 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionAdmin") != null) {
 %>
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
 
 <div class="container">
 	<div class="row">
@@ -89,8 +89,8 @@
 <%} else{ %>
 
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 
 <%} %>
 
-<%@include file="adminfooter.jsp"%>
+<%@include file="admin-footer.jsp"%>

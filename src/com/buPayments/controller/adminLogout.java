@@ -26,7 +26,7 @@ public class adminLogout extends HttpServlet {
 		       HttpSession session=request.getSession(false);
 		       session.removeAttribute("currentSessionAdmin");
 		       session.invalidate();
-		       response.sendRedirect("adminlogin.jsp");
+		       response.sendRedirect("admin-login.jsp");
 		       System.out.print("log-out");
 		 }      
 		 catch (Throwable theException)        

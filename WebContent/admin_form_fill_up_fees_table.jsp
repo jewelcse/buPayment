@@ -15,10 +15,18 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionAdmin") != null) {
 %>
-<%@include file="adminheader.jsp"%>
-<div class="container">
-	<div class="row ml-5 mt-5">
+<%@include file="admin-header.jsp"%>
 
+
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Form Fillup Fees</li>
+        </ol>
+        
+   <section class="p-5">         
 	<h3 class="inline"><u>Form Fill Up Fees Table</u></h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
@@ -83,16 +91,13 @@
 		</table>
 
 
-	</div>
-
-
-</div>
-<%@include file="adminfooter.jsp"%>
+</section>
+<%@include file="admin-footer.jsp"%>
 <%
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>

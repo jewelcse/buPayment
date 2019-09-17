@@ -15,7 +15,7 @@
 
 
 
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
 
 <style>
 
@@ -26,8 +26,15 @@ h3.inline {
 }
 
 </style>
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Developments Fees</li>
+        </ol>
 
-<body>
+
 	<section class="p-5">
 		<input type="text" id="myInput1"  class="mb-4"onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
 		
@@ -84,7 +91,7 @@ h3.inline {
 		</table>
 		</div>
 	</section>
-</body>
+
 
 <script>
 
@@ -155,11 +162,13 @@ function searchByFunction() {
 
 
 </script>
+
+<%@include file="admin-footer.jsp"%>
 <%
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>

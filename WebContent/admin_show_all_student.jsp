@@ -15,7 +15,7 @@
 
 
 
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
 
 <style>
 
@@ -27,8 +27,15 @@ h3.inline {
 
 </style>
 
-<body>
-	<section class="p-5">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Students Table</li>
+        </ol>
+
+	<section class="p-0">
 		<input type="text" id="myInput1"  class="mb-4"onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
 		<a href="admin_add_student.jsp"><img src="images/plus.png" style="width:35px"> Add new Record</a>
 		<button onclick="printData()" class="btn" style="float:right;
@@ -131,7 +138,7 @@ h3.inline {
 		</table>
 		</div>
 	</section>
-</body>
+
 
 <script>
 
@@ -202,11 +209,12 @@ function searchByFunction() {
 
 
 </script>
+<%@include file="admin-footer.jsp"%>
 <%
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>

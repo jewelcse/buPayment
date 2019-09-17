@@ -15,7 +15,7 @@
 
 
 
-<%@include file="adminheader.jsp"%>
+<%@include file="admin-header.jsp"%>
 
 <style>
 
@@ -118,7 +118,7 @@ function HTMLtoPDF(){
 	} else {
 %>
 
-<%@include file="adminlogin.jsp"%>
+<%@include file="admin-login.jsp"%>
 <%
 	}
 %>

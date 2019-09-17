@@ -51,7 +51,7 @@ public class checkValidityController extends HttpServlet {
 			}
 			else{
 				
-				RequestDispatcher dispatcher =  request.getRequestDispatcher("check_devFees.jsp");
+				RequestDispatcher dispatcher =  request.getRequestDispatcher("index.jsp");
 		    	dispatcher.forward(request, response);
 			}
 		} catch (SQLException | ParseException e) {

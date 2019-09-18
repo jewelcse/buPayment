@@ -53,7 +53,7 @@ ArrayList<adminDevelopmentFeesTable> devId = new ArrayList<adminDevelopmentFeesT
 		    	String start_date  = myRs.getString("start_date");
 		    	String end_date  = myRs.getString("end_date");
 		    
-		       System.out.print("53 lin of admin devlopment fess conteoller "+id);
+		       //System.out.print("53 lin of admin devlopment fess conteoller "+id);
 		    	
 		    	newItem.setId(id);
 		    	newItem.setSemester(semester);

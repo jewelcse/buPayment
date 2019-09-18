@@ -22,80 +22,16 @@
     width: 750px;
     margin-top: 20px;
 }
+
+                    
+                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
+-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
 </style>
-   
-           <script>
-function clearForms()
-{
-  var i;
-  for (i = 0; (i < document.forms.length); i++) {
-    document.forms[i].reset();
-  }
-}
-function validateForm()
-{
-var classRoll=document.forms["myForm"]["classRoll"].value;
-var regNumber=document.forms["myForm"]["regNumber"].value;
-var SSemester=document.forms["myForm"]["SSemester"].value;
-var sname=document.forms["myForm"]["sname"].value;
-var moname=document.forms["myForm"]["moname"].value;
-var faname=document.forms["myForm"]["faname"].value;
-var daname=document.forms["myForm"]["daname"].value;
-var facaname=document.forms["myForm"]["facaname"].value;
-var phone=document.forms["myForm"]["phone"].value;
 
-if (classRoll==null || classRoll=="")
-  {
- alert("class Roll must be filled out");
-  return false;
-  }
-  
-if (regNumber==null || regNumber=="")
-  {
- alert("reg Number must be filled out");
-  return false;
-  }
-  
-  
-if (SSemester==null || SSemester=="null")
-{
-alert("Semester must be filled out");
-return false;
-}
-if (sname==null || sname=="")
-{
-alert("student name must be filled out");
-return false;
-}
-if (moname==null || moname=="")
-{
-alert("mother name must be filled out");
-return false;
-}
-if (faname==null || faname=="")
-{
-alert("father name must be filled out");
-return false;
-}
-if (daname==null || daname=="")
-{
-alert("department must be filled out");
-return false;
-}
 
-if (facaname==null || facaname=="")
-{
-alert("faculty must be filled out");
-return false;
-}
-
-if (phone==null || phone=="")
-{
-alert("phone must be filled out");
-return false;
-}
-}
-</script>
   
   <!--Section: Contact v.2-->
 <section class="">
@@ -113,25 +49,25 @@ return false;
         	
            
 
-              <form action="devSemesterFeesController"  id="myForm" onsubmit="return validateForm()" method="post"  name="myForm">
+              <form action="devSemesterFeesController" method="post">
                             <input type="hidden" id="" name="s_id" class="form-control" value="<%= currentUser.getId() %>">
 
                 <!--Grid row-->
                 <div class="row">
                     <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="classRoll" name="s_roll" disabled class="form-control" value="<%= currentUser.getS_roll() %>">
-                            <label for="classRoll" class="">Class Roll</label>
+                    <div class="col-md-6 mb-1">
+                        <div class="md-form mb-0"><label for="classRoll" class="">Class Roll</label>
+                            <input type="text" id="classRoll" name="s_roll" readonly class="form-control" value="<%= currentUser.getS_roll() %>">
+                            
                         </div>
                     </div>
                     <!--Grid column-->
 
                     <!--Grid column-->
                     <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="regNumber" name="s_reg" disabled class="form-control" value="<%= currentUser.getS_reg() %>">
-                            <label for="regNumber" class="">Registration No.</label>
+                        <div class="md-form mb-0"><label for="regNumber" class="">Registration No.</label>
+                            <input type="text" id="regNumber" name="s_reg" readonly class="form-control" value="<%= currentUser.getS_reg() %>">
+                            
                         </div>
                     </div>
                     <!--Grid column-->
@@ -140,65 +76,51 @@ return false;
                 	<% 
 						
 						String semester = request.getParameter("semester");
-						if(semester != null){
-							session.setAttribute("semester_session",semester);
-						}
-						 
-						
+
 						%> 
                 
                 
-                <div class="md-form">
-                        <div class="md-form mb-0">
-                            <select class="browser-default custom-select custom-select-lg mb-3" name="s_semester" id="SSemester">
-  								<option value="<% 
-								String semester1 =(String)session.getAttribute("semester_session"); 
-                            	out.print(semester1);
+                   
+                        <div class="md-form"><label for="regNumber" class="">Semester </label>
+                            <input type="text" id="s_semester" name="s_semester" readonly class="form-control" value="<% 
+								
+                            	out.print(semester);
   								
 								%>">
-								<% 
-								out.print(semester1); 
-								if(session != null)
-								{
-									session.removeAttribute("semester_session");
-							    }
-								%>
-								</option>
- 								
-							</select>
+                            
                         </div>
-                    </div>
+                    
                 <!--Grid row -->
                 
-                <div class="md-form">
-                    <input type="text" id="sname" name="s_name" disabled class="form-control" value="<%= currentUser.getS_name() %>">
-                    <label for="orangeForm-name" class="">Student's Name</label>
-                  </div>
-                  
-                  <div class="md-form">
-                    <input type="text" id="moname" name="s_mother_name" disabled value="<%= currentUser.getS_mother_name() %>" class="form-control">
-                    <label for="orangeForm-moname" class="">Mother's Name</label>
-                  </div>
-                  
-                  <div class="md-form">
-                    <input type="text" id="faname" name="s_father_name" disabled value="<%= currentUser.getS_father_name() %>" class="form-control">
-                    <label for="orangeForm-faname" class="">Father's Name</label>
-                  </div>
-                  
-                    <div class="md-form">
-                  
-                    <input type="text" id="daname" name="s_department" disabled value="<%= currentUser.getS_department() %>" class="form-control">
-                    <label for="orangeForm-faname" class="">Department Name</label>
-                  </div>
-                  
-                    <div class="md-form">
+                <div class="md-form"><label for="orangeForm-name" class="">Student's Name</label>
+                    <input type="text" id="sname" name="s_name" readonly class="form-control" value="<%= currentUser.getS_name() %>">
                     
-                    <input type="text" id="facaname" name="s_faculty" disabled value="<%= currentUser.getS_faculty() %>" class="form-control">
-                    <label for="orangeForm-faname" class="">Faculty Name</label>
+                  </div>
+                  
+                  <div class="md-form"> <label for="orangeForm-moname" class="">Mother's Name</label>
+                    <input type="text" id="moname" name="s_mother_name" readonly value="<%= currentUser.getS_mother_name() %>" class="form-control">
+                   
+                  </div>
+                  
+                  <div class="md-form"><label for="orangeForm-faname" class="">Father's Name</label>
+                    <input type="text" id="faname" name="s_father_name" readonly value="<%= currentUser.getS_father_name() %>" class="form-control">
+                    
+                  </div>
+                  
+                    <div class="md-form"><label for="orangeForm-faname" class="">Department Name</label>
+                  
+                    <input type="text" id="daname" name="s_department" readonly value="<%= currentUser.getS_department() %>" class="form-control">
+                    
+                  </div>
+                  
+                    <div class="md-form"><label for="orangeForm-faname" class="">Faculty Name</label>
+                    
+                    <input type="text" id="facaname" name="s_faculty" readonly value="<%= currentUser.getS_faculty() %>" class="form-control">
+                    
                   </div>
 
            
-                <input type="hidden" name ="s_semester_fee" value="1500" >
+                
              
                 
               
@@ -239,7 +161,7 @@ return false;
     
      <tr>
       <td>Total</td>
-      <td>1500/=</td>
+      <td><input type="text" name ="s_semester_fee" value="1500" readonly></td>
     </tr>
    
   </tbody>
@@ -263,19 +185,7 @@ return false;
     </div>
 </div>
 </section>
-<!--Section: Contact v.2-->
 
-
-
-  <!-- SCRIPTS -->
-  <!-- JQuery -->
-  <script type="text/javascript" src="assets/js/jquery-3.4.1.min.js"></script>
-  <!-- Bootstrap tooltips -->
-  <script type="text/javascript" src="assets/js/popper.min.js"></script>
-  <!-- Bootstrap core JavaScript -->
-  <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
-  <!-- MDB core JavaScript -->
-  <script type="text/javascript" src="assets/js/mdb.min.js"></script>
 </body>
 </html>
 

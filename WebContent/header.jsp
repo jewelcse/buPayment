@@ -24,6 +24,7 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
             <link href="assets/css/bootstrap.min.css" rel="stylesheet">
             <link href="assets/css/style.css" rel="stylesheet">
+            <link href="assets/css/index_style.css" rel="stylesheet">
 
             <style>
                 body {
@@ -38,6 +39,7 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
                 .licolor {
                     color: white
                 }
+          
             </style>
 
         </head>
@@ -111,6 +113,8 @@ else{ %>
                 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
                 <link href="assets/css/style.css" rel="stylesheet">
                 <link rel="icon" type="image/png" href="images/s_icon.png" />
+                
+            <link href="assets/css/index_style.css" rel="stylesheet">
 
                 <style>
                     body {
@@ -125,6 +129,8 @@ else{ %>
                     .licolor {
                         color: white
                     }
+                    
+
                 </style>
             </head>
 

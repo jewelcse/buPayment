@@ -22,6 +22,12 @@ if (session.getAttribute("currentSessionStudent") != null) {
                         width: 750px;
                         margin-top: 20px;
                     }
+                    
+                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
+-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
                 </style>
 
 
@@ -64,7 +70,7 @@ if (session.getAttribute("currentSessionStudent") != null) {
                 </script>
 
 
-                <body onLoad="clearForms()" onunload="clearForms()">
+                <body>
                     <section class="">
                         <div class="jumbotron">
                             <!--Section heading-->
@@ -75,13 +81,13 @@ if (session.getAttribute("currentSessionStudent") != null) {
 
                             <div class="row">
                                 <div class="col-md-12 mb-md-0 mb-5  ">
-                                    <form action="devFeesController?devfees_id=devfees" id="myForm" onsubmit="return validateForm()" method="post" name="myForm">
+                                    <form action="devFeesController?devfees_id=devfees" method="post">
                                         <div class="row">
                                             <input type="hidden" name="s_id" class="form-control" value="<%=currentUser.getId()%>">
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 mb-1">
                                                 <div class="md-form mb-0">
                                                     <label for="classRoll" class="">Class Roll</label>
-                                                    <input type="text" id="classRoll" name="s_roll" disabled class="form-control" value="<%=currentUser.getS_roll()%>">
+                                                    <input type="text" id="classRoll" name="s_roll" readonly class="form-control" value="<%=currentUser.getS_roll()%>">
 
                                                 </div>
                                             </div>
@@ -89,7 +95,7 @@ if (session.getAttribute("currentSessionStudent") != null) {
                                             <div class="col-md-6">
                                                 <div class="md-form mb-0">
                                                     <label for="regNumber" class="">Registration No.</label>
-                                                    <input type="text" id="regNumber" name="s_reg" disabled class="form-control" value="<%=currentUser.getS_reg()%>">
+                                                    <input type="text" id="regNumber" name="s_reg" readonly class="form-control" value="<%=currentUser.getS_reg()%>">
 
                                                 </div>
                                             </div>
@@ -126,33 +132,33 @@ if (session.getAttribute("currentSessionStudent") != null) {
                                             </div>
                                             <div class="md-form">
                                                 <label for="orangeForm-name" class="">Student's Name</label>
-                                                <input type="text" id="sname" name="s_name" disabled class="form-control" value="<%=currentUser.getS_name()%>">
+                                                <input type="text" id="sname" name="s_name" readonly class="form-control" value="<%=currentUser.getS_name()%>">
 
                                             </div>
 
                                             <div class="md-form">
                                                 <label for="orangeForm-moname" class="">Mother's Name</label>
-                                                <input type="text" id="moname" name="s_mother_name" disabled value="<%=currentUser.getS_mother_name()%>" class="form-control">
+                                                <input type="text" id="moname" name="s_mother_name" readonly value="<%=currentUser.getS_mother_name()%>" class="form-control">
 
                                             </div>
 
                                             <div class="md-form">
                                                 <label for="orangeForm-faname" class="">Father's Name</label>
-                                                <input type="text" id="faname" name="s_father_name" disabled value="<%=currentUser.getS_father_name()%>" class="form-control">
+                                                <input type="text" id="faname" name="s_father_name" readonly value="<%=currentUser.getS_father_name()%>" class="form-control">
 
                                             </div>
 
                                             <div class="md-form">
                                                 <label for="orangeForm-faname" class="">Department Name</label>
 
-                                                <input type="text" id="daname" name="s_department" disabled value="<%=currentUser.getS_department()%>" class="form-control">
+                                                <input type="text" id="daname" name="s_department" readonly value="<%=currentUser.getS_department()%>" class="form-control">
 
                                             </div>
 
                                             <div class="md-form">
                                                 <label for="orangeForm-faname" class="">Faculty Name</label>
 
-                                                <input type="text" id="facaname" name="s_faculty" disabled value="<%=currentUser.getS_faculty()%>" class="form-control">
+                                                <input type="text" id="facaname" name="s_faculty" readonly value="<%=currentUser.getS_faculty()%>" class="form-control">
 
                                             </div>
 

@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"
-    import="com.buPayments.model.Student"
-    %>
-    <%@include file="header.jsp" %>
-     <% 
-    response.setHeader("Cache-Control","no-store,must-revalidate"); 
-    response.setHeader("Pragma","no-cache"); 
-    response.setDateHeader ("Expires", -1); 
-    new java.util.Date();
-    if(session.getAttribute("currentSessionStudent")!=null)
-    {
-    	Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
-    %>
+pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
+import="com.buPayments.model.Devfees"%>
+
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+        <%@include file="header.jsp"%>
+
+
+            <%
+response.setHeader("Cache-Control", "no-store,must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", -1);
+new java.util.Date();
+if (session.getAttribute("currentSessionStudent") != null) {
+    Student currentUser = (Student) (session
+            .getAttribute("currentSessionStudent"));
+%>
 
 							<% 
 							String subject = "";
@@ -131,26 +134,7 @@
 		
 		
 <a href="#" onclick="HTMLtoPDF()" style="float:right" class="mr-5">Download PDF</a>
-			
-
-
-
-	<%  }
-    
-    else{
-    	
-    }
-			/* if(session != null)
-			{
-				session.removeAttribute("session_name");
-				session.removeAttribute("session_roll");
-				session.removeAttribute("session_dept");
-				session.removeAttribute("session_semester");
-				session.removeAttribute("session_subject1");
-				session.removeAttribute("session_subject2");
-				session.removeAttribute("session_feetype");
-		    }*/
-		%>
+		
 		
 <script>
 
@@ -193,7 +177,14 @@ function HTMLtoPDF(){
 	<script type="text/javascript" src="assets/js/jspdf.js"></script>
     <script type="text/javascript" src="assets/js/pdfFromHTML.js"></script>
     <script type="text/javascript" src="assets/js/jquery-2.1.3.js"></script>
+    
+    <br>
+    <br>
 </body>
+<%@include file="footer.jsp"%>
+                    <%
+} else{
+    response.sendRedirect("login.jsp");
 
-<br><br>
-<%@include file="footer.jsp" %>
+}
+%>

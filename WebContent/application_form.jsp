@@ -12,9 +12,13 @@ pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
 			Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 			%>
                 <style>
-                    .cover-img {
-                        width: 100%;
-                    }
+
+                                        
+                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
+-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
                 </style>
 
                 <body>

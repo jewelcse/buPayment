@@ -2,182 +2,58 @@
     <%@ page import = "java.util.Date" %>
         <%@ page import = "java.text.SimpleDateFormat" %>
             <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-        pageEncoding="ISO-8859-1" 
-        import="com.buPayments.model.*"
-        import="com.buPayments.model.Devfees"
-        import="com.buPayments.controller.*"
-        import="java.util.ArrayList"
+pageEncoding="ISO-8859-1" 
+import="com.buPayments.model.*"
+import="com.buPayments.model.Devfees"
+import="com.buPayments.controller.*"
+import="java.util.ArrayList"
 
-    %>
+%>
 
                 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
                     <%@include file="header.jsp"%>
 
-                        <style>
-                            .cover-img {
-                                width: 100%;
-                            }
 
+
+                        <%
+                  SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                  String current_date = sdf.format(new Date());
+
+            %>
+            
+            <style>
                             .section1 {
                                 background-image: url("images/BUM.jpg");
-                                background-size: contain;
                                 background-repeat: no-repeat;
                                 background-size: cover;
 
                             }
-                          
-                            .css-typing p {
-                             margin-left:auto;
-                            margin-right:auto;
-  border-right: .15em solid orange;
-  font-family: "Courier";
-  font-size: 25px;
-  white-space: nowrap;
-  overflow: hidden;
+            
+            .form-control:focus {border-color:rgba(100,100,100,1)!important;
+-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
 }
-.css-typing p:nth-child(1) {
-  width:32.5em;
-  color:green;
-  background-color:#b2beb5;
-  padding:5px;
-  -webkit-animation: type 3s steps(50, end);
-  animation: type 3s steps(50, end);
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
-.notice-board p:nth-child(1) {
-  width: 7.5em;
-  opacity: 0;
-  -webkit-animation: type2 2s steps(40, end);
-  animation: type2 2s steps(40, end);
-  -webkit-animation-delay: 2s;
-  animation-delay: 4s;
-  -webkit-animation-fill-mode: forwards;
-  animation-fill-mode: forwards;
-}
-
-
-@keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@-webkit-keyframes type {
-  0% {
-    width: 0;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    border: none;
-  }
-}
-
-@keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-@-webkit-keyframes type2 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  99.9% {
-    border-right: .15em solid orange;
-  }
-  100% {
-    opacity: 1;
-    border: none;
-  }
-}
-
-@keyframes type3 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@-webkit-keyframes type3 {
-  0% {
-    width: 0;
-  }
-  1% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  50% {
-    border-color: transparent;
-  }
-}
-@-webkit-keyframes blink {
-  50% {
-    border-color: tranparent;
-  }
-}
-
-
-
-
-                        </style>
-                        
-                       
-                        <%
-                          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                          String current_date = sdf.format(new Date());
-
-                    %>
+            
+            </style>
 
 
                             <body onload="noBack();">
                                 <div class="row section1">
                                     <div class="col-md-8">
-            
-                  <div class="mt-5">
+
+                                        <div class="mt-5">
                                             <div class="css-typing m-auto">
-                                            
-                                            	<p>Well-come to Barishal University Online Payment System</p>
-                                            
-                                            
-											</div>
-                                            	
-                                            
-											</div>
-            
-            
+
+                                                <p>Well-come to Barishal University Online Payment System</p>
+                                                <p>University of Barishal</p>
+
+                                            </div>
+
+
+                                        </div>
+
+
                                     </div>
 
                                     <div class="col-md-4">
@@ -245,22 +121,22 @@
 
                                 </div>
                                 <hr>
-									<div class="css-typing m-auto notice-board">
-                                            
-                                           
-                                            	<p>Notice Board</p>
-                                            
-                                            
-											</div>
-                                
-                                      
+                                <div class="">
+
+
+                                    <p id="notice-board">Notice Board</p>
+
+
+                                </div>
+
+
                                 <hr>
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-8 ">
+                                    <div class="col-md-6 ">
 
-                                        <div class="p-1 mt-5">
+                                        <div class="p-2 mt-3 ">
                                             <ul class="nav nav-tabs" id="myTab" role="tablist">
                                                 <li class="nav-item">
                                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Development Fees</a>
@@ -277,18 +153,18 @@
 
 
                                                     <%	
-                                                    
-    adminDevelopmentFeesTableController dev = new adminDevelopmentFeesTableController();			
-    ArrayList<adminDevelopmentFeesTable> devitem = new ArrayList<adminDevelopmentFeesTable>();
-    devitem = dev.showDevelopmentFeesTable();
-    for (int i = 0; i < devitem.size(); i++){   	
-        
-                                                    %>
+                                            
+adminDevelopmentFeesTableController dev = new adminDevelopmentFeesTableController();			
+ArrayList<adminDevelopmentFeesTable> devitem = new ArrayList<adminDevelopmentFeesTable>();
+devitem = dev.showDevelopmentFeesTable();
+for (int i = 0; i < devitem.size(); i++){   	
+
+                                            %>
 
 
 
                                                         <%
-                      
+              
 if((current_date.compareTo(devitem.get(i).getStart_date()) > 0 && current_date.compareTo(devitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(devitem.get(i).getStart_date()) == 0 || current_date.compareTo(devitem.get(i).getEnd_date())==0)){
 
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px; '>"+ devitem.get(i).getSemester()+" Start Date:" + devitem.get(i).getStart_date()+" End Date: " + devitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
@@ -296,33 +172,33 @@ out.println(" <div style='padding:5px;border-color: green; border-radius:5px; bo
 else{
 out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;  '> "+ devitem.get(i).getSemester()+" Start Date:"+ devitem.get(i).getStart_date()+" End Date: "+ devitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
-                      
+              
 %>
 
                                                 </div>
 
                                                 <% 
-                                                
-                                                } 
-                                                
-                                                %>
+                                        
+                                        } 
+                                        
+                                        %>
 
                                             </div>
                                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
 
 
                                                 <%			
-      adminSemesterFeesTableController sem = new adminSemesterFeesTableController();
-    
-    ArrayList<adminSemesterFeesTable> semitem = new ArrayList<adminSemesterFeesTable>();
-    semitem = sem.showSemesterFeesTable();
+adminSemesterFeesTableController sem = new adminSemesterFeesTableController();
 
-    for (int i = 0; i < semitem.size(); i++){   
-    
-                                                %>
+ArrayList<adminSemesterFeesTable> semitem = new ArrayList<adminSemesterFeesTable>();
+semitem = sem.showSemesterFeesTable();
+
+for (int i = 0; i < semitem.size(); i++){   
+
+                                        %>
 
                                                     <%
-                      
+              
 if((current_date.compareTo(semitem.get(i).getStart_date()) > 0 && current_date.compareTo(semitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(semitem.get(i).getStart_date()) == 0 || current_date.compareTo(semitem.get(i).getEnd_date())==0)){
 
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px;'>"+ semitem.get(i).getSemester()+" Start Date:" + semitem.get(i).getStart_date()+" End Date: " + semitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
@@ -330,29 +206,29 @@ out.println(" <div style='padding:5px;border-color: green; border-radius:5px; bo
 else{
 out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px; '> "+ semitem.get(i).getSemester()+" Start Date:"+ semitem.get(i).getStart_date()+" End Date: "+ semitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
-                      
-                                                    %>
+              
+                                            %>
 
                                             </div>
                                             <% 
-                                            
-                                            }
-    
-                                            %>
+                                    
+                                    }
+
+                                    %>
 
                                         </div>
                                         <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
                                             <%
-    
-      adminFormFillUpFeesTableController formfillup = new adminFormFillUpFeesTableController();
-    
-    ArrayList<adminFormFillUpFeesTable> formfillupitem = new ArrayList<adminFormFillUpFeesTable>();
-    formfillupitem = formfillup.showFormFillUpFeesTable();
 
-    for (int i = 0; i < formfillupitem.size(); i++){   %>
+adminFormFillUpFeesTableController formfillup = new adminFormFillUpFeesTableController();
+
+ArrayList<adminFormFillUpFeesTable> formfillupitem = new ArrayList<adminFormFillUpFeesTable>();
+formfillupitem = formfillup.showFormFillUpFeesTable();
+
+for (int i = 0; i < formfillupitem.size(); i++){   %>
 
                                                 <%
-                      
+              
 if((current_date.compareTo(formfillupitem.get(i).getStart_date()) > 0 && current_date.compareTo(formfillupitem.get(i).getEnd_date()) < 0) || (current_date.compareTo(formfillupitem.get(i).getStart_date()) == 0 || current_date.compareTo(formfillupitem.get(i).getEnd_date())==0)){
 
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px;'>"+ formfillupitem.get(i).getSemester()+" Start Date:" + formfillupitem.get(i).getStart_date()+" End Date: " + formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
@@ -360,18 +236,25 @@ out.println(" <div style='padding:5px;border-color: green; border-radius:5px; bo
 else{
 out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;'> "+ formfillupitem.get(i).getSemester()+" Start Date:"+ formfillupitem.get(i).getStart_date()+" End Date: "+ formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
-                      
-                                                    %>
+              
+                                            %>
                                         </div>
                                         <%
-                                        
-                                        } 
-                                        
-                                        %>
+                                
+                                } 
+                                
+                                %>
                                     </div>
-								</div>
-                                 
-                               </div></div></div>
+                                </div>
+                                </div>
+                                </div>
+                                <div class="col-md-6">
+                                   
+                                </div>
+                                </div>
+
+
+
 
                             </body>
 

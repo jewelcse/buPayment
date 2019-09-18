@@ -1,12 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-<h1>already payment !!!</h1>
-</body>
-</html>
+pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
+import="com.buPayments.model.Devfees"%>
+
+    <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+        <%@include file="header.jsp"%>
+
+
+            <%
+response.setHeader("Cache-Control", "no-store,must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", -1);
+new java.util.Date();
+if (session.getAttribute("currentSessionStudent") != null) {
+    Student currentUser = (Student) (session
+            .getAttribute("currentSessionStudent"));
+%>
+
+
+                <body>
+                	<h3 class="text-center">ALready payment !</h3>
+                </body>
+
+                <br>
+                <br>
+                <%@include file="footer.jsp" %>
+                
+                <%} else{ 
+                	response.sendRedirect("login.jsp");
+               }  %>

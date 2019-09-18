@@ -15,7 +15,18 @@
     Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
     
     %>
+<style>
+                    
+                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
+-webkit-box-shadow: none!important;
+    -moz-box-shadow: none!important;
+    box-shadow: none!important;
+}
 
+
+
+
+</style>
 
             <body>
                 <div class="row">
@@ -59,7 +70,7 @@
 
                     <div class="col-md-6  mt-5">
 
-                        <h1>Already logedIn !!</h1>
+                        <h1>Already logged!</h1>
                     </div>
 
                     <%@include file="footer.jsp" %>

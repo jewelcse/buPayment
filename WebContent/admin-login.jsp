@@ -24,8 +24,10 @@
   <div class="container">
     <div class="card card-login mx-auto mt-5 ">
       <div class="card-header text-center">Admin Login Panel</div>
-      <div class="card-body">
-        <form action="adminController" method="post">
+      <div class="card-body"><p>Login as:</p>
+        <form action="adminController?action=login" method="post">
+        	<label><input type="radio" name="admin_status" value="SuperAdmin" required>Super Admin</label>
+        	<label><input type="radio" name="admin_status" value="Admin" >Admin</label><br><br>
           <div class="form-group">
             <div class="form-label-group">
               <input type="text" id="admin" name="admin" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">

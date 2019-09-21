@@ -23,11 +23,38 @@ public class adminLogout extends HttpServlet {
 
 			   Admin logoutAdmin  = new Admin();
 			  
-		       HttpSession session=request.getSession(false);
-		       session.removeAttribute("currentSessionAdmin");
-		       session.invalidate();
-		       response.sendRedirect("admin-login.jsp");
-		       System.out.print("log-out");
+			   HttpSession session = request.getSession(true);
+			        
+		       
+		       if (session.getAttribute("currentSessionForSuperAdmin") != null)
+				 {
+				       
+				             
+			       HttpSession session1=request.getSession(false);
+			       session1.removeAttribute("currentSessionForSuperAdmin");
+			      
+			       session1.invalidate();
+			       response.sendRedirect("admin-login.jsp");
+			       System.out.print("super-admin-log-out");           
+					  
+				 }
+				 
+				 else if(session.getAttribute("currentSessionForSubAdmin") != null) {
+					 
+					 HttpSession session2=request.getSession(false);
+					 session2.removeAttribute("currentSessionForSubAdmin");  
+					 session2.invalidate();
+				     response.sendRedirect("admin-login.jsp");
+				     System.out.print("sub-admin-log-out");  
+					 
+					 
+				 }
+				       
+				 else 
+				      response.sendRedirect("admin-login.jsp"); //error page 
+				
+
+		       
 		 }      
 		 catch (Throwable theException)        
 		 {

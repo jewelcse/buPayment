@@ -5,7 +5,12 @@
                             #notice-board {
                                 text-align: center;
                             }
-
+							.jumbotron.mt-4.mr-5.validity {
+   								OPACITY: 0.8;
+    							background-color: #151a6b;
+    							color: white;
+							}
+       
 
 
                             .css-typing p {
@@ -20,8 +25,9 @@
 
                             .css-typing p:nth-child(1) {
                                 width: 32.8em;
-                                color: green;
-                                background-color: #b2beb5;
+                                color: white;
+                                background-color: #151a6b;
+                                OPACITY: 0.8;
                                 padding: 5px;
                                 -webkit-animation: type 3s steps(50, end);
                                 animation: type 3s steps(50, end);
@@ -33,7 +39,7 @@
                                 width: 13.7em;
                                 opacity: 0;
                                 color: green;
-                                background-color: #b2beb5;
+                                background-color: #151a6b;
                                 padding: 5px;
                                 -webkit-animation: type2 2s steps(40, end);
                                 animation: type2 2s steps(40, end);

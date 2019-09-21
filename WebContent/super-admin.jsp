@@ -1,18 +1,27 @@
 
+	<%@include file="admin-header.jsp"%>
+
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"%>
+	pageEncoding="ISO-8859-1" 
+	import="com.buPayments.model.Admin"
+	import="com.buPayments.model.adminFormFillUpFeesTable"
+	import="com.buPayments.controller.*" import="com.buPayments.model.*"
+	import="java.util.ArrayList"
+	
+	%>
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if (session.getAttribute("currentSessionAdmin") != null) {
+	
+
+	if( (session.getAttribute("currentSessionForSuperAdmin") != null) || (session.getAttribute("currentSessionForSubAdmin") != null ) ) {
 %>
 
 
-<%@include file="admin-header.jsp"%>
 
 
 

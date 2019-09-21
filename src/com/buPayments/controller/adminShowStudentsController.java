@@ -44,7 +44,7 @@ public class adminShowStudentsController extends HttpServlet {
 		    	String d_dept  = myRs.getString("s_Department");
 		    	String d_faculty  = myRs.getString("s_Faculty");
 		    	String d_pass  = myRs.getString("s_Pass");
-		        System.out.println("Welcome " + d_name);
+		        //System.out.println("Welcome " + d_name);
 		        // login_student.setS_name(name);
 		    	
 		        newStudent.setS_roll(d_roll);

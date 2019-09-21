@@ -360,41 +360,67 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		
 		//preparing some objects for connection 
 	      Statement stmt = null;    
-		
 		  Connection myConn = null;
 		  PreparedStatement myStmt = null;
 		  ResultSet myRs = null;
 			
-	      String admin = login_admin.getAdmin();
+	      String admin = login_admin.getName();
 	      String password = login_admin.getPassword();
+	      String adminType = login_admin.getAdminType();
 	     
-		  
+		  if(adminType.equals("SuperAdmin")) {
+			  String sql1 = "select * from super_admin where name = '"+admin+"' AND password = '"+password+"'";	  
+				try {
+			    	myConn = db.getCon();
+					stmt=myConn.createStatement();
+					 myRs = stmt.executeQuery(sql1);
+					    boolean more = myRs.next();
+					    
+					    if (!more) 
+					      {
+					         System.out.println("super-admin-login-failed");
+					         login_admin.setSuperAdminIsvalid(false);
+					      } 
+					    
+					    else if (more) 
+					      {
+					    	login_admin.setSuperAdminIsvalid(true);
+					        System.out.println("super-admin-login-success");
+					      }
+					    
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			  
+		  }
+		  else {
+			  
+			  String sql2 = "select * from sub_admin where name = '"+admin+"' AND password = '"+password+"'";	  
+				try {
+			    	myConn = db.getCon();
+					stmt=myConn.createStatement();
+					 myRs = stmt.executeQuery(sql2);
+					    boolean more = myRs.next();
+					    
+					    if (!more) 
+					      {
+					         System.out.println("sub-admin-login-failed");
+					         login_admin.setSubAdminIsvalid(false);
+					      } 
+					    
+					    else if (more) 
+					      {
+					    	login_admin.setSubAdminIsvalid(true);
+					        System.out.println("sub-admin-login-success");
+					      }
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		  }
 			
-			// create sql statement
-			String sql = "select * from admin where admin = '"+admin+"' AND password = '"+password+"'";
-			
-			try {
-		    	myConn = db.getCon();
-				stmt=myConn.createStatement();
-				 myRs = stmt.executeQuery(sql);
-				    boolean more = myRs.next();
-				    
-				    if (!more) 
-				      {
-				         System.out.println("login-failed");
-				         login_admin.setValid(false);
-				      } 
-				    
-				    else if (more) 
-				      {
-				    	login_admin.setValid(true);
-				        System.out.println("login-success");
-				      }
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		   
+ 
 			
 			
 		return login_admin;
@@ -818,9 +844,102 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 				e.printStackTrace();
 			}
 	}
+
+
+
+	public static boolean addNewAdmin(Admin newadmin) {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+	    Statement stmt = null;    
+
+		ResultSet myRs = null;
+		String adminName = newadmin.getName();
+		
+		boolean retrunStatus = false;
+		
+		
+	    try {
+	    	String sql = "select * from sub_admin where name = '"+adminName+"' ";
 	
+	    	myConn = db.getCon();
+			stmt=myConn.createStatement();
+			 myRs = stmt.executeQuery(sql);
+			    boolean more = myRs.next();
+			    
+			    if (!more) 
+			      {
+
+					
+					// create sql for insert
+					String inserQuery = "insert into sub_admin "
+							   + "(name,password) "
+							   + "values (?,?)";
+					
+					myStmt = (PreparedStatement) myConn.prepareStatement(inserQuery);
+	
+					myStmt.setString(1, newadmin.getName());
+					myStmt.setString(2, newadmin.getPassword());
+
+					myStmt.execute();
+					retrunStatus = true;
+					System.out.print("new sub-admin created successfully\n");
+			      } 
+			    
+			    else  {
+			     
+			    	System.out.println("Alread have " + adminName);
+			    	retrunStatus = false;
+			    }
+	
+	    }
+	    
+	    catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return retrunStatus;
+
+	}
 
 
 
+	public static void deleteAdmin(String delete_id) throws SQLException {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		  
+			  
+	       
+			// get a connection
+			myConn =db.getCon();
+			
+			// create sql for insert
+			String sql = "delete from sub_admin  where id = '"+delete_id+"'";
+			  
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+			myStmt.execute();
+			System.out.println("Deleted Sub-admin Id " + delete_id + "\n");
+		
+	}
+
+
+
+	public static void updateSubAdmin(String id, String name) throws SQLException {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn =db.getCon();
+		
+		String sql = "UPDATE sub_admin SET name ='"+name+"' WHERE id='"+id+"'";
+		
+		myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+		myStmt.execute();
+		System.out.println("Update Sub-admin \n");
+		
+	}
+	
 	
 }

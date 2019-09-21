@@ -9,7 +9,7 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if (session.getAttribute("currentSessionAdmin") != null) {
+	if (session.getAttribute("currentSessionForSuperAdmin") != null) {
 %>
 
 

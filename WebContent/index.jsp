@@ -22,6 +22,10 @@ import="java.util.ArrayList"
             %>
             
             <style>
+            
+            *{
+            box-sizing:border-box;
+            }
                             .section1 {
                                 background-image: url("images/BUM.jpg");
                                 background-repeat: no-repeat;
@@ -34,7 +38,13 @@ import="java.util.ArrayList"
     -moz-box-shadow: none!important;
     box-shadow: none!important;
 }
-            
+.notice-board{
+height:300px;
+border: 2px solid black;
+margin:20px;
+box-sizing:border-box;
+}
+     
             </style>
 
 
@@ -134,7 +144,7 @@ import="java.util.ArrayList"
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-6 ">
+                                    <div class="col-md-6 notice-board">
 
                                         <div class="p-2 mt-3 ">
                                             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -170,7 +180,7 @@ if((current_date.compareTo(devitem.get(i).getStart_date()) > 0 && current_date.c
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px; '>"+ devitem.get(i).getSemester()+" Start Date:" + devitem.get(i).getStart_date()+" End Date: " + devitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
 }
 else{
-out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;  '> "+ devitem.get(i).getSemester()+" Start Date:"+ devitem.get(i).getStart_date()+" End Date: "+ devitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
+out.println(" <div style='display:none;padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;  '> "+ devitem.get(i).getSemester()+" Start Date:"+ devitem.get(i).getStart_date()+" End Date: "+ devitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
               
 %>
@@ -204,7 +214,7 @@ if((current_date.compareTo(semitem.get(i).getStart_date()) > 0 && current_date.c
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px;'>"+ semitem.get(i).getSemester()+" Start Date:" + semitem.get(i).getStart_date()+" End Date: " + semitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
 }
 else{
-out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px; '> "+ semitem.get(i).getSemester()+" Start Date:"+ semitem.get(i).getStart_date()+" End Date: "+ semitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
+out.println(" <div style='display:none;padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px; '> "+ semitem.get(i).getSemester()+" Start Date:"+ semitem.get(i).getStart_date()+" End Date: "+ semitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
               
                                             %>
@@ -234,7 +244,7 @@ if((current_date.compareTo(formfillupitem.get(i).getStart_date()) > 0 && current
 out.println(" <div style='padding:5px;border-color: green; border-radius:5px; border:1px solid green; margin:2px;'>"+ formfillupitem.get(i).getSemester()+" Start Date:" + formfillupitem.get(i).getStart_date()+" End Date: " + formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:80px' src='images/iprogress.gif'>");
 }
 else{
-out.println(" <div style='padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;'> "+ formfillupitem.get(i).getSemester()+" Start Date:"+ formfillupitem.get(i).getStart_date()+" End Date: "+ formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
+out.println(" <div style='display:none;padding:5px;border-color: red; border-radius:5px; border:1px solid red; margin:2px;'> "+ formfillupitem.get(i).getSemester()+" Start Date:"+ formfillupitem.get(i).getStart_date()+" End Date: "+ formfillupitem.get(i).getEnd_date()+" ============= > <img style='width:70px' src='images/time_up.gif'>");
 }
               
                                             %>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2019 at 06:43 PM
+-- Generation Time: Sep 22, 2019 at 09:58 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -21,25 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `development`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `admin` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`id`, `admin`, `password`) VALUES
-(1, 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -152,7 +133,9 @@ INSERT INTO `application_form_table` (`id`, `semester`, `subject`, `feeType`, `r
 (80, '4th', 'reducing amount and extending time', 'Development fee ', 'i have no money', 1, 'Computer Science & Engineering'),
 (81, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
 (82, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
-(83, '6th', 'reducing amount and extending time', 'Form Fill up fee ', ' i have no money right now', 1, 'Computer Science & Engineering');
+(83, '6th', 'reducing amount and extending time', 'Form Fill up fee ', ' i have no money right now', 1, 'Computer Science & Engineering'),
+(84, '7th', 'reducing amount', 'Development fee ', 'ssasas', 6, 'Computer Science & Engineering'),
+(85, '6TH', 'reducing amount', 'Semester fee ', 'rerererererer', 6, 'Computer Science & Engineering');
 
 -- --------------------------------------------------------
 
@@ -199,7 +182,10 @@ CREATE TABLE `development_fees` (
 INSERT INTO `development_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
 (28, '7th', 1200, 1),
 (29, '7th', 1200, 24),
-(30, '5th', 900, 1);
+(30, '5th', 900, 1),
+(31, '8th', 500, 1),
+(32, '7th', 1200, 6),
+(33, '8th', 1200, 6);
 
 -- --------------------------------------------------------
 
@@ -220,7 +206,9 @@ CREATE TABLE `formfillup_fees` (
 
 INSERT INTO `formfillup_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
 (8, '1st', 2500, 1),
-(9, '4th', 2500, 1);
+(9, '4th', 2500, 1),
+(10, '3rd', 2500, 6),
+(11, '4th', 2500, 6);
 
 -- --------------------------------------------------------
 
@@ -240,7 +228,8 @@ CREATE TABLE `semester_fees2` (
 --
 
 INSERT INTO `semester_fees2` (`id`, `semester`, `amount`, `s_id`) VALUES
-(18, '8th', 1500, 1);
+(18, '8th', 1500, 1),
+(20, '8th', 1500, 6);
 
 -- --------------------------------------------------------
 
@@ -284,6 +273,46 @@ INSERT INTO `student` (`s_Id`, `s_Roll`, `s_Reg`, `s_Name`, `s_Father_name`, `s_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `sub_admin`
+--
+
+CREATE TABLE `sub_admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `sub_admin`
+--
+
+INSERT INTO `sub_admin` (`id`, `name`, `password`) VALUES
+(26, 'admin22', '4369'),
+(27, 'jewel', '6816'),
+(28, 'imran', '9426');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `super_admin`
+--
+
+CREATE TABLE `super_admin` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `super_admin`
+--
+
+INSERT INTO `super_admin` (`id`, `name`, `password`) VALUES
+(1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `transaction_method`
 --
 
@@ -291,16 +320,11 @@ CREATE TABLE `transaction_method` (
   `T_id` int(4) NOT NULL,
   `T_method` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+-- Error reading data for table development.transaction_method: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`transaction_method`' at line 1
 
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `admin_development_fees_table`
@@ -361,6 +385,18 @@ ALTER TABLE `student`
   ADD PRIMARY KEY (`s_Id`);
 
 --
+-- Indexes for table `sub_admin`
+--
+ALTER TABLE `sub_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `super_admin`
+--
+ALTER TABLE `super_admin`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transaction_method`
 --
 ALTER TABLE `transaction_method`
@@ -369,12 +405,6 @@ ALTER TABLE `transaction_method`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `admin_development_fees_table`
@@ -398,7 +428,7 @@ ALTER TABLE `admin_semester_fees_table`
 -- AUTO_INCREMENT for table `application_form_table`
 --
 ALTER TABLE `application_form_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=84;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 
 --
 -- AUTO_INCREMENT for table `changed_development_fee`
@@ -410,25 +440,37 @@ ALTER TABLE `changed_development_fee`
 -- AUTO_INCREMENT for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `semester_fees2`
 --
 ALTER TABLE `semester_fees2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
+--
+-- AUTO_INCREMENT for table `sub_admin`
+--
+ALTER TABLE `sub_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+
+--
+-- AUTO_INCREMENT for table `super_admin`
+--
+ALTER TABLE `super_admin`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `transaction_method`

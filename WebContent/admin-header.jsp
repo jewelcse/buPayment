@@ -106,11 +106,7 @@
         </a>
       </li>
  
-      <li class="nav-item">
-        <a class="nav-link" href="admin_add_student.jsp">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Add Record</span></a>
-      </li>
+
       <li class="nav-item">
         <a class="nav-link" href="admin_update_fees.jsp">
           <i class="fas fa-fw fa-chart-area"></i>
@@ -120,12 +116,12 @@
       <li class="nav-item">
         <a class="nav-link" href="adminShowStudentsController">
           <i class="fas fa-fw fa-table"></i>
-          <span>Students Table</span></a>
+          <span>Students Information</span></a>
       </li>
             <li class="nav-item">
         <a class="nav-link" href="admin_all_application.jsp">
           <i class="fas fa-fw fa-table"></i>
-          <span>Applications</span></a>
+          <span>Application Letters</span></a>
       </li>
       
      <li class="nav-item dropdown">
@@ -141,21 +137,23 @@
         </div>
       </li> 
 
-      <li class="nav-item">
-        <a class="nav-link" href="adminDevelopmentFeesTableController">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Development Fees</span></a>
+
+
+	   <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Update Information</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="adminDevelopmentFeesTableController">Development Fees</a>
+          <a class="dropdown-item" href="adminSemesterFeesTableController">Semester Fees</a>
+          <a class="dropdown-item" href="adminFormFillUpFeesTableController">Form Fillup Fee</a>
+
+        </div>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="adminSemesterFeesTableController">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Semester Fees</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="adminFormFillUpFeesTableController">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Form Fillup Fees</span></a>
-      </li>      
+      
+      
+      
     
     </ul>
 
@@ -262,17 +260,12 @@
         </a>
       </li>
  
-      <li class="nav-item">
-        <a class="nav-link" href="admin_add_student.jsp">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Add Record</span></a>
-      </li>
    
       
       <li class="nav-item">
         <a class="nav-link" href="adminShowStudentsController">
           <i class="fas fa-fw fa-table"></i>
-          <span>Students Table</span></a>
+          <span>Students Information</span></a>
       </li>
 
       

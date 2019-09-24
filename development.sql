@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 22, 2019 at 09:58 AM
+-- Generation Time: Sep 24, 2019 at 05:59 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -124,18 +124,7 @@ CREATE TABLE `application_form_table` (
   `student_id` int(11) NOT NULL,
   `department` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `application_form_table`
---
-
-INSERT INTO `application_form_table` (`id`, `semester`, `subject`, `feeType`, `reason`, `student_id`, `department`) VALUES
-(80, '4th', 'reducing amount and extending time', 'Development fee ', 'i have no money', 1, 'Computer Science & Engineering'),
-(81, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
-(82, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
-(83, '6th', 'reducing amount and extending time', 'Form Fill up fee ', ' i have no money right now', 1, 'Computer Science & Engineering'),
-(84, '7th', 'reducing amount', 'Development fee ', 'ssasas', 6, 'Computer Science & Engineering'),
-(85, '6TH', 'reducing amount', 'Semester fee ', 'rerererererer', 6, 'Computer Science & Engineering');
+-- Error reading data for table development.application_form_table: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`application_form_table`' at line 1
 
 -- --------------------------------------------------------
 
@@ -149,18 +138,7 @@ CREATE TABLE `changed_development_fee` (
   `semester` varchar(255) NOT NULL,
   `changed_amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `changed_development_fee`
---
-
-INSERT INTO `changed_development_fee` (`id`, `roll_no`, `semester`, `changed_amount`) VALUES
-(5, '16CSE020', '6th', 500),
-(8, '16CSE045', '6th', 200),
-(9, '16CSE045', '8th', 500),
-(10, '16CSE029', '6th', 200),
-(11, '16CSE029', '6th', 300),
-(12, '16CSE029', '7th', 300);
+-- Error reading data for table development.changed_development_fee: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`changed_development_fee`' at line 1
 
 -- --------------------------------------------------------
 
@@ -279,17 +257,24 @@ INSERT INTO `student` (`s_Id`, `s_Roll`, `s_Reg`, `s_Name`, `s_Father_name`, `s_
 CREATE TABLE `sub_admin` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+  `update_development_fee` int(1) NOT NULL,
+  `student_information` int(1) NOT NULL,
+  `application_letters` int(1) NOT NULL,
+  `update_development_fees_table` int(1) NOT NULL,
+  `update_semester_fees_table` int(1) NOT NULL,
+  `update_formfillup_fees_table` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `sub_admin`
 --
 
-INSERT INTO `sub_admin` (`id`, `name`, `password`) VALUES
-(26, 'admin22', '4369'),
-(27, 'jewel', '6816'),
-(28, 'imran', '9426');
+INSERT INTO `sub_admin` (`id`, `name`, `password`, `update_development_fee`, `student_information`, `application_letters`, `update_development_fees_table`, `update_semester_fees_table`, `update_formfillup_fees_table`) VALUES
+(39, 'Jewel Chowdhury', '3358', 1, 1, 0, 0, 1, 0),
+(40, 'sohan', '3022', 1, 0, 1, 0, 0, 1),
+(47, 'jewel', '8539', 0, 1, 1, 1, 1, 1),
+(48, 'sojib', '1756', 1, 0, 1, 0, 0, 1);
 
 -- --------------------------------------------------------
 
@@ -320,7 +305,6 @@ CREATE TABLE `transaction_method` (
   `T_id` int(4) NOT NULL,
   `T_method` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
--- Error reading data for table development.transaction_method: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`transaction_method`' at line 1
 
 --
 -- Indexes for dumped tables
@@ -434,7 +418,7 @@ ALTER TABLE `application_form_table`
 -- AUTO_INCREMENT for table `changed_development_fee`
 --
 ALTER TABLE `changed_development_fee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `development_fees`
@@ -464,7 +448,7 @@ ALTER TABLE `student`
 -- AUTO_INCREMENT for table `sub_admin`
 --
 ALTER TABLE `sub_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `super_admin`

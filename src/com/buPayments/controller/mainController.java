@@ -412,6 +412,12 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 					    else if (more) 
 					      {
 					    	login_admin.setSubAdminIsvalid(true);
+					    	login_admin.setItem1(myRs.getString("update_development_fee"));
+					    	login_admin.setItem2(myRs.getString("student_information"));
+					    	login_admin.setItem3(myRs.getString("application_letters"));
+					    	login_admin.setItem4(myRs.getString("update_development_fees_table"));
+					    	login_admin.setItem5(myRs.getString("update_semester_fees_table"));
+					    	login_admin.setItem6(myRs.getString("update_formfillup_fees_table"));
 					        System.out.println("sub-admin-login-success");
 					      }
 				} catch (SQLException e) {
@@ -939,6 +945,59 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		myStmt.execute();
 		System.out.println("Update Sub-admin \n");
 		
+	}
+
+
+
+	public static boolean addNewAdmin(String newAdminName, String password, String item1, String item2, String item3,
+			String item4, String item5, String item6) {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+	    Statement stmt = null;    
+
+		ResultSet myRs = null;
+		
+		boolean retrunStatus = false;
+		
+		
+	    try {
+	    	String sql = "select * from sub_admin where name = '"+newAdminName+"' ";
+	
+	    	myConn = db.getCon();
+			stmt=myConn.createStatement();
+			 myRs = stmt.executeQuery(sql);
+			    boolean more = myRs.next();
+			    
+			    if (!more) 
+			      {
+
+					
+					// create sql for insert
+					String inserQuery = "insert into sub_admin "
+							   + "(name,password,update_development_fee,student_information,application_letters,update_development_fees_table,update_semester_fees_table,update_formfillup_fees_table) "
+							   + "values ('"+newAdminName+"','"+password+"','"+item1+"','"+item2+"','"+item3+"','"+item4+"','"+item5+"','"+item6+"')";
+					
+					myStmt = (PreparedStatement) myConn.prepareStatement(inserQuery);
+					myStmt.execute();
+					retrunStatus = true;
+					System.out.print("new sub-admin created successfully\n");
+			      } 
+			    
+			    else  {
+			     
+			    	System.out.println("Alread have " + newAdminName);
+			    	retrunStatus = false;
+			    }
+	
+	    }
+	    
+	    catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		return retrunStatus;
+
 	}
 	
 	

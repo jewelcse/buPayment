@@ -7,7 +7,7 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if (session.getAttribute("currentSessionForSuperAdmin") != null) {
+	if (session.getAttribute("currentSessionForSuperAdmin") != null || session.getAttribute("admin_update_fees") != null ) {
 %>
 
 <%@include file="admin-header.jsp"%>

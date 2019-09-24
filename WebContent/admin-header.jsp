@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"
-    import="com.buPayments.model.*"
+    import="com.buPayments.model.Admin"
+	import="com.buPayments.controller.*" 
+	import="com.buPayments.model.*"
+	import="java.util.ArrayList"
     %>
     
      <% 
@@ -86,7 +89,7 @@
           </span>
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-        	<a class="dropdown-item" href="adminSettings.jsp">Add Admin</a>
+        	<a class="dropdown-item" href="all_sub_admin.jsp">All Sub Admin</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" href="adminLogout" data-toggle="modal" data-target="#logoutModal">Logout</a>
         </div>
@@ -166,7 +169,7 @@
    
    
    else if  (session.getAttribute("currentSessionForSubAdmin") != null ){
-   
+	   Admin currentsubAdmin = (Admin)(session.getAttribute("currentSessionForSubAdmin"));
    %>
 <!DOCTYPE html>
 <html lang="en">
@@ -229,7 +232,7 @@
         </a>
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#"><%= currentsubAdmin.getName() %></a>
         </div>
       </li>
       <li class="nav-item dropdown no-arrow">
@@ -262,12 +265,102 @@
  
    
       
+    <% if(currentsubAdmin.getItem2().equals("1")){
+    	
+    	session.setAttribute("show_student_table","show_student_table"); 
+    	
+    	%>
+       
       <li class="nav-item">
         <a class="nav-link" href="adminShowStudentsController">
           <i class="fas fa-fw fa-table"></i>
           <span>Students Information</span></a>
       </li>
+       
+					<% 	} else{;}  %>
+							
+					
+      
+       <% if(currentsubAdmin.getItem1().equals("1")){ 
+       
+    	   session.setAttribute("admin_update_fees","admin_update_fees");
+       %>
+       
+         <li class="nav-item">
+        	<a class="nav-link" href="admin_update_fees.jsp">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Update Dev Fee</span></a>
+      </li>
+       
+					<% 	} else {  ; }   %>
+					
+					
+					
+	       <% if(currentsubAdmin.getItem3().equals("1")){ 
+	       
+	       
+	    	   session.setAttribute("admin_all_application","admin_all_application");
+	       
+	       %>
+       
+             <li class="nav-item">
+        <a class="nav-link" href="admin_all_application.jsp">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Application Letters</span></a>
+      </li>
+       
+					<% 	} else {  ; }   %>
 
+      
+      	  
+      
+      
+
+      
+
+      
+      
+      	   <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Update Information</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        
+             <% if(currentsubAdmin.getItem4().equals("1")){ 
+             
+            	 session.setAttribute("adminDevelopmentFeesTableController","adminDevelopmentFeesTableController");
+             
+             %>
+       
+ <a class="dropdown-item" href="adminDevelopmentFeesTableController">Development Fees</a>
+       
+					<% 	} else {  ; }   %>
+					
+				 <% if(currentsubAdmin.getItem5().equals("1")){ 
+					 
+					 session.setAttribute("adminSemesterFeesTableController","adminSemesterFeesTableController");
+				 %>
+       
+      <a class="dropdown-item" href="adminSemesterFeesTableController">Semester Fees</a>
+      
+					<% 	} else {  ; }   %>
+        
+          
+          
+      	       <% if(currentsubAdmin.getItem6().equals("1")){ 
+      	       
+      	    	 session.setAttribute("adminFormFillUpFeesTableController","adminFormFillUpFeesTableController");
+      	       %>
+       
+ <a class="dropdown-item" href="adminFormFillUpFeesTableController">Form Fillup Fee</a>
+       
+					<% 	} else {  ; }   %>
+         
+
+        </div>
+      </li>
+      
       
      <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -275,6 +368,8 @@
           <span>All Payment</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        
+        
           <a class="dropdown-item" href="admin_show_development_fees_table.jsp">Development Fees</a>
           <a class="dropdown-item" href="admin_show_semester_fees_table.jsp">Semester Fees</a>
           <a class="dropdown-item" href="admin_show_formfillup_fees_table.jsp">Form Fillup Fee</a>
@@ -290,7 +385,11 @@
 
       <div class="container-fluid">
       
-      <% } else{;} %>
+      <% } else{ %>
+    	  
+    	  <h1>Opps! have a greate problem.</h1>
+    	  
+    <% } %>	
 
 
 

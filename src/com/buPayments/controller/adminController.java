@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import javax.servlet.ServletException;
@@ -42,11 +44,23 @@ public class adminController extends HttpServlet {
 		    	String id = myRs.getString("id");
 		    	String name  = myRs.getString("name");
 		    	String password  = myRs.getString("password");
+		    	String item1 = myRs.getString("update_development_fee");
+		    	String item2 = myRs.getString("student_information");
+		    	String item3 = myRs.getString("application_letters");
+		    	String item4 = myRs.getString("update_development_fees_table");
+		    	String item5 = myRs.getString("update_semester_fees_table");
+		    	String item6 = myRs.getString("update_formfillup_fees_table");
 
 		    	
 		    	newAdmin.setId(id);
 		    	newAdmin.setName(name);
 		    	newAdmin.setPassword(password);
+		    	newAdmin.setItem1(item1);
+		    	newAdmin.setItem2(item2);
+		    	newAdmin.setItem3(item3);
+		    	newAdmin.setItem4(item4);
+		    	newAdmin.setItem5(item5);
+		    	newAdmin.setItem6(item6);
 		 
 		    	adminList.add(newAdmin);
 			}
@@ -66,7 +80,7 @@ public class adminController extends HttpServlet {
 		
 		try {
 			mainController.deleteAdmin(delete_id);
-			response.sendRedirect("adminSettings.jsp?success"); 
+			response.sendRedirect("all_sub_admin.jsp?success"); 
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -130,8 +144,56 @@ public class adminController extends HttpServlet {
 		else if(action.equals("addNewAdmin")) {
 			
 			String newAdminName = request.getParameter("name");
+			String item1 = request.getParameter("item1");
+			String item2 = request.getParameter("item2");
+			String item3 = request.getParameter("item3");
+			String item4 = request.getParameter("item4");
+			String item5 = request.getParameter("item5");
+			String item6 = request.getParameter("item6");
 			
-			Admin newadmin  = new Admin();
+			//System.out.println(item1+item2+item3+item4+item5+item6);
+			
+			if(item1==null) {
+				item1="0";
+			}
+			if(item2==null) {
+				item2="0";
+			}
+			if(item3==null) {
+				item3="0";
+			}
+			if(item4==null) {
+				item4="0";
+			}
+			if(item5==null) {
+				item5="0";
+			}
+			if(item6==null) {
+				item6="0";
+			}
+			
+			
+			System.out.println(item1+item2+item3+item4+item5+item6);
+			
+			Random rand = new Random(); 
+		     Integer min = 1000;
+		     Integer max = 10000;
+	         Integer rand_int1 =rand.nextInt((max - min) + 1) + min;
+		     String password = String.valueOf(rand_int1);
+			
+			
+			if(mainController.addNewAdmin(newAdminName,password,item1,item2,item3,item4,item5,item6) == true) {
+				
+				response.sendRedirect("all_sub_admin.jsp?success"); 
+				
+				}
+				
+				else {
+					
+					response.sendRedirect("adminSettings.jsp?error"); 
+				}
+			
+			/*Admin newadmin  = new Admin();
 			
 			Random rand = new Random(); 
 		     Integer min = 1000;
@@ -153,7 +215,9 @@ public class adminController extends HttpServlet {
 			else {
 				
 				response.sendRedirect("adminSettings.jsp?error"); 
-			}
+			}*/
+			
+		
 		}
 		
 		else if(action.equals("editSubAdmin")) {

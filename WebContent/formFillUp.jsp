@@ -13,29 +13,13 @@
     {
     	Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
     %>
-          <style>
-.jumbotron {
-    margin-left: auto;
-    margin-right: auto;
-    width: 750px;
-    margin-top: 20px;
-}
-
-                    
-                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
--webkit-box-shadow: none!important;
-    -moz-box-shadow: none!important;
-    box-shadow: none!important;
-}
-
-
-</style>
+ 
      
 
   
 
 <section class="">
-<div class="jumbotron">
+<div class="box">
     
     <h2 class="h2-responsive font-weight-bold text-center ">University of Barishal</h2>
     <h6 class="h6-responsive font-weight-bold text-center ">Barishal-8200</h6>

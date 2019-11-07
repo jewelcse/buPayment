@@ -27,6 +27,15 @@
 
 		<!--Grid column-->
 		<div class="col-md-10  m-auto pt-3  ">
+		
+		<div class="mb-4">
+			<form enctype="multipart/form-data"  action="TestCSVServlet" method="post">
+				<table align="center" border="1px solid black">
+					<tr><td><input type="file" name="chooser" ></td></tr>
+					<tr><td><input type="submit" value="Submit"></td></tr>
+				</table>
+			</form>
+		</div>
 
 			<form  method="post"action="addStudentController">
 

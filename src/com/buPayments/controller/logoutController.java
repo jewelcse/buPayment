@@ -33,7 +33,7 @@ public class logoutController extends HttpServlet {
        HttpSession session=request.getSession(false);
        session.removeAttribute("currentSessionStudent");
        session.invalidate();
-       response.sendRedirect("index.jsp");
+       response.sendRedirect("index.jsp?successfully-logout");
        System.out.print("log-out");
  }      
  catch (Throwable theException)        

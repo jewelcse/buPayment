@@ -51,8 +51,9 @@ public class checkValidityController extends HttpServlet {
 			}
 			else{
 				
-				RequestDispatcher dispatcher =  request.getRequestDispatcher("index.jsp");
-		    	dispatcher.forward(request, response);
+				//RequestDispatcher dispatcher =  request.getRequestDispatcher("index.jsp");
+		    	//dispatcher.forward(request, response);
+				response.sendRedirect("index.jsp?date_expire"); 
 			}
 		} catch (SQLException | ParseException e) {
 

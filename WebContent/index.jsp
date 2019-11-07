@@ -22,29 +22,12 @@ import="java.util.ArrayList"
             %>
             
             <style>
-            
-            *{
-            box-sizing:border-box;
-            }
-                            .section1 {
-                                background-image: url("images/BUM.jpg");
-                                background-repeat: no-repeat;
-                                background-size: cover;
+         
 
-                            }
-            
-            .form-control:focus {border-color:rgba(100,100,100,1)!important;
--webkit-box-shadow: none!important;
-    -moz-box-shadow: none!important;
-    box-shadow: none!important;
-}
-.notice-board{
-height:300px;
-border: 2px solid black;
-margin:20px;
-box-sizing:border-box;
-}
-     
+
+       
+                      
+   
             </style>
 
 
@@ -147,8 +130,8 @@ box-sizing:border-box;
                                     <div class="col-md-6 notice-board">
 
                                         <div class="p-2 mt-3 ">
-                                            <ul class="nav nav-tabs" id="myTab" role="tablist">
-                                                <li class="nav-item">
+                                            <ul class="nav nav-tabs" id="myTab" role="tablist" >
+                                                <li class="nav-item" class="licolor">
                                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Development Fees</a>
                                                 </li>
                                                 <li class="nav-item">
@@ -185,7 +168,7 @@ out.println(" <div style='display:none;padding:5px;border-color: red; border-rad
               
 %>
 
-                                                </div>
+</div>
 
                                                 <% 
                                         

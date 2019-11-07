@@ -54,6 +54,7 @@ import com.buPayments.model.Devfees;
 import com.buPayments.model.FormfillupFees;
 import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
+import com.buPayments.model.TestCSVModel;
 import com.buPayments.model.adminDevelopmentFeesTable;
 import com.buPayments.model.adminFormFillUpFeesTable;
 import com.buPayments.model.adminSemesterFeesTable;
@@ -503,7 +504,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		    if (myRs.next()) {
 
 		    	 amount = myRs.getString("changed_amount");
-		    	 System.out.print("line 397" + amount);
+		    	 //System.out.print("line 397" + amount);
 		    }
 		    else{
 		    	String sql2 = "select * from  admin_development_fees_table where semester = '"+semester+"' ";
@@ -517,7 +518,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			    	misce = myRs2.getString("misce_fee");
 			    	sum =Integer.parseInt(misce);
 			    	amount = String.valueOf(sum);
-			    	System.out.print("line 411" + amount);
+			    	//System.out.print("line 411" + amount);
 				}
 				
 		    }
@@ -998,6 +999,41 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			}
 		return retrunStatus;
 
+	}
+
+
+
+	public static void saveCSVData(TestCSVModel testCSVModel) {
+		
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		
+		
+			// get a connection
+			myConn =db.getCon();
+			try {
+			// create sql for insert
+			String sql = "insert into testcsv "
+					   + "(name,price,description) "
+					   + "values (?,?,?)";
+					  
+			
+			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+			
+			
+			    myStmt.setString(1,testCSVModel.getName());  
+			    myStmt.setString(2,testCSVModel.getPrice());  
+			    myStmt.setString(3,testCSVModel.getDescription());
+
+			//myStmt.execute();
+			myStmt.executeUpdate();  
+		
+		       
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 	}
 	
 	

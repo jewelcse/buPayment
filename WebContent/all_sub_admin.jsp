@@ -60,7 +60,7 @@ a {
 		<div class="adbtn m-2" >
 			<a href="adminSettings.jsp"><img src="images/plus.png" style="width:35px"> Add new Sub Admin</a>
 		</div>
-		<button class="item1false"><img src="images/cross.jpg" ></button>
+		
 			<table class="table"  border="2px solid black">
 				<thead>
 					<tr>

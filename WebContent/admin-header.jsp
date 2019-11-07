@@ -109,6 +109,11 @@
         </a>
       </li>
  
+ 	<li class="nav-item">
+        <a class="nav-link" href="all_sub_admin.jsp">
+          <i class="fas fa-fw fa-chart-area"></i>
+          <span>Sub-admins</span></a>
+      </li>
 
       <li class="nav-item">
         <a class="nav-link" href="admin_update_fees.jsp">

@@ -11,19 +11,11 @@ pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
 			session.getAttribute("currentSessionStudent");
 			Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 			%>
-                <style>
 
-                                        
-                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
--webkit-box-shadow: none!important;
-    -moz-box-shadow: none!important;
-    box-shadow: none!important;
-}
-                </style>
 
                 <body>
                     <section class="col-md-8 m-auto pt-4">
-                        <div class="jumbotron" id="application">
+                        <div class="box" id="application">
                             <h2 class="h6-responsive font-weight-bold text-center">Application Form</h2>
                             <form action="devFeesController?devfees_id=application_form" method="post">
                                 <div  class="p-4" style="font-size:20px">

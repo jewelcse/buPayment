@@ -33,7 +33,7 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
 
         <body>
             <header>
-                <nav class="navbar navbar-expand-lg ">
+                <nav class="navbar navbar-expand-lg mb-2 ">
                     <div class="container">
                         <a class="navbar-brand" href="index.jsp">
                             <span class="licolor">Bupayments</span>
@@ -92,7 +92,7 @@ else{ %>
             <html>
 
             <head>
-                <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+                <meta name="viewport" content="width=device-width" http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
                 <title>devFees</title>
 
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
@@ -106,7 +106,7 @@ else{ %>
 
             <body>
                 <header>
-                    <nav class="navbar navbar-expand-lg ">
+                    <nav class="navbar navbar-expand-lg mb-2 ">
                         <div class="container">
                             <a class="navbar-brand" href="index.jsp">
                                 <span class="licolor">Bupayments</span>

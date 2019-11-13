@@ -42,7 +42,7 @@ h3.inline {
 
  	<div id="printData">
     <h3 class="inline"><u>Students Table</u></h3>
-		<table class="table table-hover" id="myTable"  border="2px solid black">
+		<table class="table table-bordered table-striped text-center" id="myTable"  border="2px solid black">
 			<tr>
 				<th>Roll No</th>
 				<th>Password</th>

@@ -5,10 +5,17 @@
             	
             	 body {
                     color:white;
-                    background-color:darkslategray;
+                    background-color:#006064;
                     min-height: 100vh; 
                 }
-            
+                
+              header{             
+              background-color:#004040;
+              }
+
+                .licolor {
+                    color: white
+                }
             .css-typing p,p,h1,h2,h3,h4,h5,h6 {
   				font-size: 1rem;
 			}
@@ -36,14 +43,7 @@
                 	color:white;
                 }
 
-                header {
-                    background-color: #343a40;
-
-                }
-
-                .licolor {
-                    color: white
-                }
+              
                 
                 .checkBox{
                 	padding:5px;
@@ -88,17 +88,6 @@
     				box-shadow: none!important;
 				}
 				
-             				.section1 {
-             					background-image: url("images/bu.jpg");
-                				background-repeat: no-repeat;
-                				background-size: cover;
-                				background-color:red;
-                				
-
-           					}
-           					.cover-img {
-                                width: 100%;
-                            }
 
 							#notice-board{
 								color:white;
@@ -220,18 +209,15 @@
                             }
                             
                             
-#sticky-footer {
-  flex-shrink: none;
-}
 
 
-.footer {
+footer {
   
-  position: fixed;
+  position: relative;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: red;
+  background-color: #004040;
   color: white;
   text-align: center;
 }

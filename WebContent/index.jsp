@@ -12,19 +12,30 @@ import="java.util.ArrayList"
 
                 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
                     <%@include file="header.jsp"%>
+                    
+                    
 <style>
 
-
              				.section1 {
-             					background-image: url("images/bu.jpg");
+             					background-image:url("images/BU.jpg");
                 				background-repeat: no-repeat;
                 				background-size: cover;
                 				background-color:red;
                 				
 
            					}
+           					.cover-img {
+                                width: 100%;
+                            }
 
-      .css-typing h4 {
+             				.section1 {
+                				background-repeat: no-repeat;
+                				background-size: cover;
+                				background-color:red;
+                				
+           					}
+
+     						.css-typing h4 {
                                 margin-left: auto;
                                 margin-right: auto;
                                 border-right: .15em solid orange;
@@ -36,7 +47,7 @@ import="java.util.ArrayList"
                             .css-typing h4:nth-child(1) {
                                 width: 13.7em;
                                 color: white;
-                                background-color: #151a6b;
+                                background-color: #004040;
                                 OPACITY: 0.8;
                                 padding: 5px;
                                 -webkit-animation: type 3s steps(50, end);
@@ -47,9 +58,9 @@ import="java.util.ArrayList"
 
                             .css-typing h4:nth-child(2) {
                                 width: 13.7em;
-                                opacity: 0;
+                                opacity: 0.7;
                                 color: white;
-                                background-color: #151a6b;
+                                background-color: #004040;
                                 padding: 5px;
                                 -webkit-animation: type2 2s steps(40, end);
                                 animation: type2 2s steps(40, end);
@@ -99,8 +110,16 @@ import="java.util.ArrayList"
                                                     <h6 class="h5 text-responsive font-weight-bold text-center ">Barishal-8200</h6>
                                                     <h6 class="h5 text-responsive font-weight-bold text-center">Computer Science & Engineering</h6>
                                                     <p class="text-center ">(
-                                                        <strong>Checking validity</strong>)</p>
-
+                                                        <strong>Checking validity</strong>)
+ <%
+    if (request.getParameter("date_expire") == null) { 
+    
+       
+  } else {
+	  out.println("<span style='color:red;font-weight:bold'> Date Over</span>");
+    }
+%>
+</p>
                                                     <form action="checkValidityController" method="get">
                                                         <div class="md-form">
                                                             <div class="md-form mb-0">
@@ -158,14 +177,18 @@ import="java.util.ArrayList"
                                          	<div class="col-md-6">
                                          		<article class="row single-post mt-5 no-gutters">
         <div class="col-md-12">
-            <div class="image-wrapper float-left pr-3">
-                <img src="https://placeimg.com/150/150/animals" alt="">
+            <div class="">
+            	<div class="image-wrapper float-left pr-3">
+                <img src="images/logo.png"  class="rounded-circle" alt="">
             </div>
-            <div class="single-post-content-wrapper p-3">
+            </div>
+           <div class="">
+           	 <div class="single-post-content-wrapper p-3">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil ad, ex eaque fuga minus reprehenderit asperiores earum incidunt. Possimus maiores dolores voluptatum enim soluta omnis debitis quam ab nemo necessitatibus.
                 <br><br>
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil ad, ex eaque fuga minus reprehenderit asperiores earum incidunt. Possimus maiores dolores voluptatum enim soluta omnis debitis quam ab nemo necessitatibus.
             </div>
+           </div>
         </div>
     </article>
                                          	
@@ -314,6 +337,9 @@ out.println(" <div style='display:none;padding:5px;border-color: red; border-rad
                                          
                                          
                                       </div><!--  end container -->
+                                      
+                                      
+
                                       
                                       
                  <script>

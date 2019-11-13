@@ -22,12 +22,7 @@ if (session.getAttribute("currentSessionStudent") != null) {
                 </body>
 
                 <br>
-                <br>
-                                     <footer  class="footer py-4 bg-dark text-white-50">
-    <div class="container text-center">
-      <small>Copyright &copy; Your Website</small>
-    </div>
-  </footer>
+                <br><%@include file="footer.jsp" %>
                 
                 <%} else{ 
                 	response.sendRedirect("login.jsp");

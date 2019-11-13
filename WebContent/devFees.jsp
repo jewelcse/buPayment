@@ -58,17 +58,18 @@ if (session.getAttribute("currentSessionStudent") != null) {
 
 
                 <body>
-                    <section class="">
-                        <div class="box">
-                            <!--Section heading-->
-                            <h2 class="h2-responsive font-weight-bold text-center ">University of Barishal</h2>
-                            <h6 class="h6-responsive font-weight-bold text-center ">Barishal-8200</h6>
-                            <h6 class="h6-responsive font-weight-bold text-center">Computer Science & Engineering</h6>
-                            <h3 class="h3-responsive font-weight-bold text-center my-4">Development Fees Payment Form</h3>
+              <div class="container">
 
-                            <div class="row">
+    <div class="row">
+		<div class="box">
+		    <h2 class="text-responsive font-weight-bold text-center ">University of Barishal</h2>
+    		<h6 class="text-responsive font-weight-bold text-center ">Barishal-8200</h6>
+    		<h6 class="text-responsive font-weight-bold text-center">Computer Science & Engineering</h6></br>
+    		<u><h3 class="text-responsive font-weight-bold text-center ">Development Fees Payment Form</h3>	</u>
+	
+		
                                 <div class="col-md-12 mb-md-0 mb-5  ">
-                                    <form action="devFeesController?devfees_id=devfees" method="post">
+                                    <form  action="devFeesController?devfees_id=devfees" method="post">
                                         <div class="row">
                                             <input type="hidden" name="s_id" class="form-control" value="<%=currentUser.getId()%>">
                                             <div class="col-md-6 mb-1">
@@ -90,9 +91,9 @@ if (session.getAttribute("currentSessionStudent") != null) {
 
                                         <%  String semester = request.getParameter("semester");     %>
                                             <div class="md-form">
-                                                <div class="md-form mb-0">
-                                                    <select class="browser-default custom-select custom-select-lg mb-3" name="s_semester" id="SSemester">
-                                                        <option>Confirm Semester</option>
+                                                <div class="md-form mb-0 mt-2">
+                                                    <select  class="browser-default custom-select custom-select-lg mb-3" name="s_semester" id="SSemester">
+                                                        <option value="0">Confirm Semester</option>
                                                         <option value="<%  out.print(semester);%>">
                                                             <%  out.print(semester);   %>
                                                         </option>
@@ -164,14 +165,30 @@ if (session.getAttribute("currentSessionStudent") != null) {
                                                 </table>
                                             </div>
                                             <div class="text-center text-md-right">
-                                                <input type="submit" class="btn btn-primary mdb-color darken-3" value="pay now">
+                                                <input type="submit" class="btn btn-primary submitBtn" onclick="check_semester()"  value="pay now">
                                             </div>
                                     </form>
                                     <div class="status"></div>
                                 </div>
                             </div>
                         </div>
-                    </section>
+                  </div>
+                  
+                  <script>
+                  
+                  
+                	  function check_semester(){
+                		  
+                		  var semester =  document.getElementById('SSemester').selectedOptions[0].value;
+                		  console.log(semester);
+                		  
+                		  if(semester == "0")
+                          {
+                    	  		alert("Confirm your Semester");
+                    	  }
+                		  
+                	  	}
+                  </script>
                 </body>
 
                 </html>

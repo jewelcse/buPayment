@@ -72,9 +72,9 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-work">
-                            <p>Contact Info:</p>
-                            <a href=""><span class="pcolor"><%= currentUser.getS_email() %></span></a><br/>
-                            <a href=""><span class="pcolor"><%= currentUser.getS_phone() %></span></a><br/>
+                            <p><u>Contact Info:</u></p>
+                            <p><%= currentUser.getS_email() %></p>
+                            <p><%= currentUser.getS_phone() %></p><br/>
                       
                         </div>
                     </div>

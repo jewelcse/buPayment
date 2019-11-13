@@ -14,7 +14,8 @@ pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
 
 
                 <body>
-                    <section class="col-md-8 m-auto pt-4">
+                <div class="container">
+                	<div class="row">
                         <div class="box" id="application">
                             <h2 class="h6-responsive font-weight-bold text-center">Application Form</h2>
                             <form action="devFeesController?devfees_id=application_form" method="post">
@@ -44,12 +45,13 @@ pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
                                     </div>
 
                                     <div class="text-center text-md-right">
-                                        <input type="submit" class="btn btn-primary" value="Submit Form">
+                                        <input type="submit" class="btn btn-primary submitBtn" value="Submit Form">
                                     </div>
                                 </div>
                             </form>
                         </div>
-                    </section>
+                    </div>
+                    </div>
                 </body>
 
                 <br>

@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class checkValidityController
@@ -29,11 +30,16 @@ public class checkValidityController extends HttpServlet {
 		String semester = request.getParameter("semester");
 		String feeType = request.getParameter("fee_type");
 
-		
+		HttpSession session = request.getSession(true);
 		
 		try {
 			String res = mainController.checkValidity(feeType,semester);
 			
+			String pagename = "checkValidityController?fee_type="+feeType+"&semester="+semester;
+			
+		    System.out.println(pagename);
+		    session.setAttribute("current_page",pagename); 
+		    
 			if(res.equals("dev_page")){
 				RequestDispatcher dispatcher =  request.getRequestDispatcher("devFees.jsp");
 		    	dispatcher.forward(request, response);

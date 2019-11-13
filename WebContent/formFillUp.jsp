@@ -16,17 +16,17 @@
  
      
 
-  
-
-<section class="">
-<div class="box">
-    
-    <h2 class="h2-responsive font-weight-bold text-center ">University of Barishal</h2>
-    <h6 class="h6-responsive font-weight-bold text-center ">Barishal-8200</h6>
-    <h6 class="h6-responsive font-weight-bold text-center">Computer Science & Engineering</h6>
-    <h3 class="h3-responsive font-weight-bold text-center my-4">Form Fill Up Fees Payment Form</h3>
+  <div class="container">
 
     <div class="row">
+		<div class="box">
+		    <h2 class="text-responsive font-weight-bold text-center ">University of Barishal</h2>
+    		<h6 class="text-responsive font-weight-bold text-center ">Barishal-8200</h6>
+    		<h6 class="text-responsive font-weight-bold text-center">Computer Science & Engineering</h6></br>
+    		<u><h3 class="text-responsive font-weight-bold text-center ">Form Fill up Fees Payment Form</h3>	</u>
+	
+		
+
 
        
         <div class="col-md-12 mb-md-0 mb-5 ">
@@ -151,7 +151,7 @@
             </div>
 
             <div class="text-center text-md-right">
-                <input type="submit" class="btn btn-primary mdb-color darken-3" value="pay now">
+                <input type="submit" class="btn btn-primary submitBtn" value="pay now">
             </div>
             
             </form>
@@ -161,10 +161,9 @@
 
 
       
-
+</div>
     </div>
 </div>
-</section>
 
 
 

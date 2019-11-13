@@ -18,207 +18,13 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
         <html>
 
         <head>
-            <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
             <title>devFees</title>
-
+			<meta name="viewport" content="width=device-width" http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
             <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-            <link href="assets/css/style.css" rel="stylesheet">
-
+			<link href="style.css" rel="stylesheet">
             <style>
-                body {
-                    box-sizing: border-box;
-                    color:white;
-                    
-                }
-                
-                h1,h2,h3,h4,h5,h6,th,td{
-                	color:white;
-                }
-
-                header {
-                    background-color: #4B0082;
-
-                }
-
-                .licolor {
-                    color: white
-                }
-                
-                .box {
-					padding:5px;
-    				margin-left: auto;
-    				margin-right: auto;
-   	 				width: 750px;
-    				margin-top: 20px;
-    				border:2px solid white;
-    				background-color:;
-				}
-                
-               .form-control:focus {
-               		border-color:rgba(100,100,100,1)!important;
-					-webkit-box-shadow: none!important;
-    				-moz-box-shadow: none!important;
-    				box-shadow: none!important;
-				}
-				
-											
-							*{
-           						box-sizing:border-box;
-            				}
-            				
-             				.section1 {
-             					background-image: url("images/BUM.jpg");
-                				background-repeat: no-repeat;
-                				background-size: cover;
-
-           					}
-           					.cover-img {
-                                width: 100%;
-                            }
-
-							#notice-board{
-								color:white;
-								font-size:30px;
-								text-align: center;
-							}
-                          
-							.jumbotron.mt-4.mr-5.validity {
-   								OPACITY: 0.8;
-    							background-color: #151a6b;
-    							color: white;
-							}
-       
-
-
-                            .css-typing p {
-                                margin-left: auto;
-                                margin-right: auto;
-                                border-right: .15em solid orange;
-                                font-family: "Courier";
-                                font-size: 25px;
-                                white-space: nowrap;
-                                overflow: hidden;
-                            }
-
-                            .css-typing p:nth-child(1) {
-                                width: 32.8em;
-                                color: white;
-                                background-color: #151a6b;
-                                OPACITY: 0.8;
-                                padding: 5px;
-                                -webkit-animation: type 3s steps(50, end);
-                                animation: type 3s steps(50, end);
-                                -webkit-animation-fill-mode: forwards;
-                                animation-fill-mode: forwards;
-                            }
-
-                            .css-typing p:nth-child(2) {
-                                width: 13.7em;
-                                opacity: 0;
-                                color: green;
-                                background-color: #151a6b;
-                                padding: 5px;
-                                -webkit-animation: type2 2s steps(40, end);
-                                animation: type2 2s steps(40, end);
-                                -webkit-animation-delay: 2s;
-                                animation-delay: 3s;
-                                -webkit-animation-fill-mode: forwards;
-                                animation-fill-mode: forwards;
-                            }
-
-
-                            @keyframes type {
-                                0% {
-                                    width: 0;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    border: none;
-                                }
-                            }
-
-                            @-webkit-keyframes type {
-                                0% {
-                                    width: 0;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    border: none;
-                                }
-                            }
-
-                            @keyframes type2 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    opacity: 1;
-                                    border: none;
-                                }
-                            }
-
-                            @-webkit-keyframes type2 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    opacity: 1;
-                                    border: none;
-                                }
-                            }
-
-                            @keyframes type3 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                100% {
-                                    opacity: 1;
-                                }
-                            }
-
-                            @-webkit-keyframes type3 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                100% {
-                                    opacity: 1;
-                                }
-                            }
-
-                            @keyframes blink {
-                                50% {
-                                    border-color: transparent;
-                                }
-                            }
-
-                            @-webkit-keyframes blink {
-                                50% {
-                                    border-color: tranparent;
-                                }
-                            }
+            
           
             </style>
 
@@ -291,27 +97,10 @@ else{ %>
 
                 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
                 <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-                <link href="assets/css/style.css" rel="stylesheet">
                 <link rel="icon" type="image/png" href="images/s_icon.png" />
-                
-            <link href="assets/css/index_style.css" rel="stylesheet">
+                <link href="style.css" rel="stylesheet">
 
-                <style>
-                    body {
-                        box-sizing: border-box;
-                    }
-
-                    header {
-                        background-color: #4B0082;
-
-                    }
-
-                    .licolor {
-                        color: white
-                    }
-                    
-
-                </style>
+           
             </head>
 
 

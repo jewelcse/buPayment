@@ -45,7 +45,15 @@ public class logInController extends HttpServlet {
 		       
 		      HttpSession session = request.getSession(true);       
 		      session.setAttribute("currentSessionStudent",login_student); 
-		      response.sendRedirect("index.jsp?user=id.login-successfully"); //logged-in page            
+		      
+		      String pagename = (String) session.getAttribute("current_page");
+		      
+		      if(pagename == null) {
+		      response.sendRedirect("index.jsp?user=id.login-successfully"); //logged-in page    
+		      }
+		      else {
+		      response.sendRedirect(pagename);
+		      }
 		 }
 		       
 		 else 

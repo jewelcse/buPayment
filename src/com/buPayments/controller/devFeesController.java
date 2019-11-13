@@ -71,26 +71,34 @@ public class devFeesController extends HttpServlet {
 			String id = request.getParameter("s_id");
 			String semester = request.getParameter("s_semester");
 			String development_fee = request.getParameter("amount");
+			System.out.println(semester);
 
-
+			if( ! semester.equals("0")) {
 			
-			Devfees newDevfees = new Devfees(id,semester,development_fee);
+				Devfees newDevfees = new Devfees(id,semester,development_fee);
 			
-			try {
-				String rs = mainController.addDevFeestoDb(newDevfees);
+				try {
+					String rs = mainController.addDevFeestoDb(newDevfees);
 				
-				if(rs.equals("success")){
+						if(rs.equals("success")){
 					
-					response.sendRedirect("devprocess.jsp");
-				}
-				else{
-					response.sendRedirect("already_payment.jsp");
-				}	
+							response.sendRedirect("devprocess.jsp");
+						}
+						else{
+							response.sendRedirect("already_payment.jsp");
+						}	
 					
-			} catch (SQLException e) {
-				e.printStackTrace();
+					} catch (SQLException e) {
+						e.printStackTrace();
+					}
 			}
-			
+			else {
+				HttpSession session = request.getSession(true);  
+				 String pagename = (String) session.getAttribute("current_page");
+				System.out.println("show js msg for confirm semester");
+				
+				response.sendRedirect(pagename);
+			}
 		}
 		
 		else if(sub.equals("application_form")){

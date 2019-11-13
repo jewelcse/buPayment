@@ -15,48 +15,43 @@
     Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
     
     %>
-<style>
-                    
-                    .form-control:focus {border-color:rgba(100,100,100,1)!important;
--webkit-box-shadow: none!important;
-    -moz-box-shadow: none!important;
-    box-shadow: none!important;
-}
+
+                 
 
 
-
-
-</style>
 
             <body>
-                <div class="row">
-                    <div class="col-md-4 m-auto pt-4">
-                        <form action="logInController" method="post">
-                            <div class="card">
-                                <div class="card-body m-5">
+            	<div class="container">
+                	<div class="row">
+                    	<div class="col-md-4 m-auto pt-4">
+                    		<div class="login-box">
+                        		<form action="logInController" method="post">
+                            
+                                <div class=" m-5">
                                     <div class="form-header  text-center ">
                                         <h3 class="font-weight-500 my-2 py-1">Login</h3>
                                     </div>
 
                                     <div class="md-form mb-2">
-                                        <label for="orangeForm-email" class="">Your Student Id</label>
+                                        <label for="orangeForm-email" class="">Student Id</label>
                                         <input type="text" id="orangeForm-email" name="student_id" id="student_id" class="form-control">
                                     </div>
 
                                     <div class="md-form mb-2">
-                                        <label for="orangeForm-pass" class="">Your password</label>
+                                        <label for="orangeForm-pass" class="">Password</label>
                                         <input type="password" id="orangeForm-pass" name="password" id="password" class="form-control">
                                     </div>
 
                                     <div class="text-center mb-2">
-                                        <input type="submit" class=" btn btn-primary" value="Login">
+                                        <input type="submit" class=" btn btn-primary submitBtn" value="Login">
                                         <p class="mt-4">Don't Have an Id / password !
                                             <br>Please Contact our Office Room</p>
                                     </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
+                </div>
                 </div>
             </body>
 
@@ -68,12 +63,29 @@
 
     else{ %>
 
-                    <div class="col-md-6  mt-5">
+                   <div class="container">
+                   <div class="row">
+                    <div class="col-md-12 mt-5 mr-auto ml-auto">
+                    
+                    	<div class="already-logged-msg text-center text-responsive">
+                    		<h1>Already logged!</h1>
+                    	
+                    	</div>
 
-                        <h1>Already logged!</h1>
+                        
                     </div>
+                   
+                   </div>
+                   
+                   </div>
+                   
 
-                    <%@include file="footer.jsp" %>
+
+                     <footer  class="footer py-4 bg-dark text-white-50">
+    <div class="container text-center">
+      <small>Copyright &copy; Your Website</small>
+    </div>
+  </footer>
 
                         <%     }
 

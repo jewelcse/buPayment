@@ -193,6 +193,7 @@ ArrayList<Student> al = new ArrayList<Student>();
 			
 		String id = newDevfees.getS_id();
 		String semester = newDevfees.getS_semester();
+		
 		System.out.println(id  + " " + semester);
 		
 		String select_sql = "select * from development_fees where s_id = '"+id+"' AND semester = '"+semester+"'";

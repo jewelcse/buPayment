@@ -69,6 +69,22 @@ import="java.util.ArrayList"
                                 -webkit-animation-fill-mode: forwards;
                                 animation-fill-mode: forwards;
                             }
+                            
+                            #btn1{
+                            	margin-bottom:100px;
+                            	height:50px;
+                            	width:100px;
+                            	background-color: #004040;
+                            	opacity:.8;
+                            }
+                            
+                            #btn2{
+                            	margin-bottom:100px;
+                            	width:180px;
+                            	height:50px;
+                            	background-color: #004040;
+                            	opacity:.8;
+                            }
 
 
 </style>
@@ -87,95 +103,52 @@ import="java.util.ArrayList"
 
                             <body onload="noBack();">
                                 <div class="container">
-                                    <div class="row section1 mb-4">
-                                            <div class="col-md-8">
-                                            	<div class="mt-5">
-                                                    <div class="css-typing m-auto ">
-                                                        <h4 class="text-responsive font-weight-bold ">
-                                                        Online Payment System
-                                                        </h4>
-                                                        <h4 class="text-responsive font-weight-bold">
-                                                        University of Barishal
-                                                        </h4>
-                                                        
-                                                        
-                                                    </div>
-												</div>
-											</div>
-											
-											<div class="col-md-4">
-                                                <div class="checkBox m-4 validity">
-
-                                                    <h2 class="h4 text-responsive font-weight-bold text-center ">University of Barishal</h2>
-                                                    <h6 class="h5 text-responsive font-weight-bold text-center ">Barishal-8200</h6>
-                                                    <h6 class="h5 text-responsive font-weight-bold text-center">Computer Science & Engineering</h6>
-                                                    <p class="text-center ">(
-                                                        <strong>Checking validity</strong>)
- <%
-    if (request.getParameter("date_expire") == null) { 
-    
-       
-  } else {
-	  out.println("<span style='color:red;font-weight:bold'> Date Over</span>");
-    }
-%>
-</p>
-                                                    <form action="checkValidityController" method="get">
-                                                        <div class="md-form">
-                                                            <div class="md-form mb-0">
-                                                                <select required onchange="selected()" class="browser-default custom-select custom-select-lg mb-3" name="fee_type" id="fee_type">
-                                                                    <option value="">Select</option>
-                                                                    <option value="devfee">Development Fee</option>
-                                                                    <option value="semfee">Semester fee</option>
-                                                                    <option value="formfee">FormFill Up fee</option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
-
-                                                        <div class="md-form">
-                                                            <div class="md-form mb-0">
-                                                                <select onchange="selected()" required class="browser-default custom-select custom-select-lg mb-3" name="semester" id="semester">
-                                                                    <option value="">Select semester</option>
-                                                                    <option value="1st">1
-                                                                        <sup>st</sup>
-                                                                    </option>
-                                                                    <option value="2nd">2
-                                                                        <sup>nd</sup>
-                                                                    </option>
-                                                                    <option value="3rd">3
-                                                                        <sup>rd</sup>
-                                                                    </option>
-                                                                    <option value="4th">4
-                                                                        <sup>th</sup>
-                                                                    </option>
-                                                                    <option value="5th">5
-                                                                        <sup>th</sup>
-                                                                    </option>
-                                                                    <option value="6th">6
-                                                                        <sup>th</sup>
-                                                                    </option>
-                                                                    <option value="7th">7
-                                                                        <sup>th</sup>
-                                                                    </option>
-                                                                    <option value="8th">8
-                                                                        <sup>th</sup>
-                                                                    </option>
-                                                                </select>
-                                                            </div>
-                                                        </div>
+                                    <div class="row section10 mb-4">
+                                            <div class="col-md-12">
+                                            
+                                            
+                                            
+                                            
+ <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="images/slider/slider1.jpg" alt="First slide">
+       <div class="carousel-caption d-none d-md-block">
+    	<!--  <a href="payment.jsp" ><button type="submit" id="btn1" class="btn btn-primary ">Pay now</button></a>
+    	<a href="application_form.jsp" ><button type="submit" id="btn2" class="btn btn-primary ">Application now</button></a>-->
+    	</div>
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="images/slider/slider2.jpg" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src="images/slider/slider3.jpg" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>   
+</div>
+</div> <!--  end row -->
 
 
-                                                        <div class="text-center text-md-right">
-                                                            <input type="submit" class="btn btn-primary submitBtn1" onclick="check_field()" value="Click here ">
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                         </div> <!--  end row -->
                                          
                                          <div class="row">
-                                         	<div class="col-md-6">
-                                         		<article class="row single-post mt-5 no-gutters">
+                                         
+                                         	<!--  <div class="col-md-6">
+                                         	
+       <article class="row single-post mt-5 no-gutters">
         <div class="col-md-12">
             <div class="">
             	<div class="image-wrapper float-left pr-3">
@@ -190,11 +163,18 @@ import="java.util.ArrayList"
             </div>
            </div>
         </div>
-    </article>
+    </article>-->
+    
+    
+    
+    
+    
+    
                                          	
                                          	</div><!--  end col-md-6 -->
                                          	
-                                         	<div class="col-md-6">
+                                         	<div class="col-md-12">
+                                         	
                                          		<div class="notics">
                                          			
                                          			
@@ -342,33 +322,7 @@ out.println(" <div style='display:none;padding:5px;border-color: red; border-rad
 
                                       
                                       
-                 <script>
-                 
-                 
-                 
-                 
-                 
-                 function check_fields(){
-           		  
-           		  var semester =  document.getElementById('semester').selectedOptions[0].value;
-           		var semester =  document.getElementById('fee_type').selectedOptions[0].value;
-           		  console.log(semester);
-           		  
-           		  if(semester == "0")
-                     {
-               	  		alert("Confirm your Semester");
-               	  }
-           		  
-           	  	}
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 </script>  <%@include file="footer.jsp" %>
+                <%@include file="footer.jsp" %>
                                </body>
 
                            

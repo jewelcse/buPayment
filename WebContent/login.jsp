@@ -44,8 +44,7 @@
 
                                     <div class="text-center mb-2">
                                         <input type="submit" class=" btn btn-primary submitBtn" value="Login">
-                                        <p class="mt-4">Don't Have an Id / password !
-                                            <br>Please Contact our Office Room</p>
+                                        
                                     </div>
                                 </div>
                             </form>

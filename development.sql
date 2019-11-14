@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 24, 2019 at 05:59 PM
+-- Generation Time: Nov 14, 2019 at 02:35 PM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.1.32
 
@@ -42,14 +42,14 @@ CREATE TABLE `admin_development_fees_table` (
 --
 
 INSERT INTO `admin_development_fees_table` (`id`, `semester`, `main_fee`, `misce_fee`, `start_date`, `end_date`) VALUES
-(1, '1st', 600, 1000, '2019-09-01', '2019-09-02'),
+(1, '1st', 600, 1000, '2019-09-25', '2019-10-05'),
 (2, '2nd', 800, 1000, '2019-09-08', '2019-09-23'),
-(3, '3rd', 600, 1000, '2019-09-10', '2019-09-10'),
-(4, '4th', 600, 1000, '2019-09-10', '2019-09-07'),
+(3, '3rd', 600, 1000, '2019-09-10', '2019-12-31'),
+(4, '4th', 600, 1000, '2019-09-10', '2019-12-20'),
 (5, '5th', 600, 900, '2019-09-07', '2019-09-20'),
-(6, '6th', 600, 1000, '2019-09-01', '2019-09-16'),
-(7, '7th', 600, 1200, '2019-09-01', '2019-09-25'),
-(8, '8th', 600, 1200, '2019-09-01', '2019-09-24');
+(6, '6th', 600, 1000, '2019-09-01', '2019-10-26'),
+(7, '7th', 600, 1200, '2019-09-01', '2019-12-27'),
+(8, '8th', 600, 1000, '2019-09-01', '2019-10-24');
 
 -- --------------------------------------------------------
 
@@ -77,7 +77,7 @@ INSERT INTO `admin_formfillup_fees_table` (`id`, `semester`, `main_fee`, `misce_
 (4, '4th', 2500, 0, '2019-09-09', '2019-09-24'),
 (5, '5th', 2500, 0, '2019-09-17', '2019-09-18'),
 (6, '6th', 2500, 0, '2019-09-11', '2019-09-16'),
-(7, '7th', 2500, 0, '2019-09-09', '2019-09-10'),
+(7, '7th', 2500, 0, '2019-10-15', '2019-11-26'),
 (8, '8th', 2500, 500, '2019-09-05', '2019-09-24');
 
 -- --------------------------------------------------------
@@ -100,13 +100,13 @@ CREATE TABLE `admin_semester_fees_table` (
 --
 
 INSERT INTO `admin_semester_fees_table` (`id`, `semester`, `main_fee`, `misce_fee`, `start_date`, `end_date`) VALUES
-(1, '1st', 1500, 100, '2019-09-01', '2019-09-06'),
+(1, '1st', 1500, 100, '2019-09-24', '2019-10-05'),
 (2, '2nd', 1500, 0, '2019-09-03', '2019-09-07'),
 (3, '3rd', 1500, 0, '2019-09-02', '2019-09-01'),
 (4, '4th', 1500, 0, '2019-09-24', '2019-09-28'),
 (5, '5th', 1200, 0, '2019-09-08', '2019-09-17'),
 (6, '6th', 1500, 0, '2019-09-08', '2019-09-25'),
-(7, '7th', 1500, 0, '2019-09-01', '2019-09-08'),
+(7, '7th', 1500, 0, '2019-10-29', '2019-11-28'),
 (8, '8th', 1500, 0, '2019-09-01', '2019-09-23');
 
 -- --------------------------------------------------------
@@ -124,7 +124,21 @@ CREATE TABLE `application_form_table` (
   `student_id` int(11) NOT NULL,
   `department` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
--- Error reading data for table development.application_form_table: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`application_form_table`' at line 1
+
+--
+-- Dumping data for table `application_form_table`
+--
+
+INSERT INTO `application_form_table` (`id`, `semester`, `subject`, `feeType`, `reason`, `student_id`, `department`) VALUES
+(80, '4th', 'reducing amount and extending time', 'Development fee ', 'i have no money', 1, 'Computer Science & Engineering'),
+(81, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
+(82, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
+(83, '6th', 'reducing amount and extending time', 'Form Fill up fee ', ' i have no money right now', 1, 'Computer Science & Engineering'),
+(84, '7th', 'reducing amount', 'Development fee ', 'ssasas', 6, 'Computer Science & Engineering'),
+(85, '6TH', 'reducing amount', 'Semester fee ', 'rerererererer', 6, 'Computer Science & Engineering'),
+(87, '6th', 'reducing amount', 'Semester fee ', 'I have no money right now.', 6, 'Computer Science & Engineering'),
+(88, '7th', 'reducing amount', 'Semester fee ', 'no problem', 6, 'Computer Science & Engineering'),
+(89, '4th', 'reducing amount', 'Development fee ', 'erwerwerw', 1, 'Computer Science & Engineering');
 
 -- --------------------------------------------------------
 
@@ -138,7 +152,20 @@ CREATE TABLE `changed_development_fee` (
   `semester` varchar(255) NOT NULL,
   `changed_amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
--- Error reading data for table development.changed_development_fee: #1064 - You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'FROM `development`.`changed_development_fee`' at line 1
+
+--
+-- Dumping data for table `changed_development_fee`
+--
+
+INSERT INTO `changed_development_fee` (`id`, `roll_no`, `semester`, `changed_amount`) VALUES
+(5, '16CSE020', '6th', 500),
+(8, '16CSE045', '6th', 200),
+(9, '16CSE045', '8th', 500),
+(10, '16CSE029', '6th', 200),
+(11, '16CSE029', '6th', 300),
+(12, '16CSE029', '7th', 300),
+(13, '16CSE020', '8th', 600),
+(14, '16CSE029', '3rd', 444);
 
 -- --------------------------------------------------------
 
@@ -158,12 +185,9 @@ CREATE TABLE `development_fees` (
 --
 
 INSERT INTO `development_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
-(28, '7th', 1200, 1),
-(29, '7th', 1200, 24),
-(30, '5th', 900, 1),
-(31, '8th', 500, 1),
-(32, '7th', 1200, 6),
-(33, '8th', 1200, 6);
+(35, '8th', 500, 1),
+(36, '4th', 1000, 6),
+(37, '7th', 1200, 6);
 
 -- --------------------------------------------------------
 
@@ -183,10 +207,7 @@ CREATE TABLE `formfillup_fees` (
 --
 
 INSERT INTO `formfillup_fees` (`id`, `semester`, `amount`, `s_id`) VALUES
-(8, '1st', 2500, 1),
-(9, '4th', 2500, 1),
-(10, '3rd', 2500, 6),
-(11, '4th', 2500, 6);
+(12, '7th', 2500, 6);
 
 -- --------------------------------------------------------
 
@@ -206,8 +227,8 @@ CREATE TABLE `semester_fees2` (
 --
 
 INSERT INTO `semester_fees2` (`id`, `semester`, `amount`, `s_id`) VALUES
-(18, '8th', 1500, 1),
-(20, '8th', 1500, 6);
+(22, '7th', 1500, 1),
+(23, '7th', 1500, 6);
 
 -- --------------------------------------------------------
 
@@ -246,7 +267,66 @@ INSERT INTO `student` (`s_Id`, `s_Roll`, `s_Reg`, `s_Name`, `s_Father_name`, `s_
 (23, '17CSE014', '110-014-17', 'Md Islam', 'Father\'s name', 'Mother\'s name', 'islam@gmail.com', '2222222', '12345', '4th', 'Computer Science & Engineering', 'Science & Engineering'),
 (24, '16CSE041', '110-041-16', 'Bipul Mondal', 'Fathers name', 'Mothers name', 'bipul@gmail.com', '01927382323', '2305', '7th', 'Computer Science & Engineering', 'Science & Engineering'),
 (25, '16CSE030', '110-030-16', 'Md. Imam Hossain', 'Fathers name', 'Mothers Name', 'imam@gmail.com', '01792712112', '5052', '7th', 'Computer Science & Engineering', 'Science & Engineering'),
-(26, '16CSE029', '110-029-16', 'Md. Showkat Imam', 'Fathers name', 'Mothers name', 'Showkat@gmail.com', '019212718212', '4481', '6th', 'Computer Science & Engineering', 'Science & Engineering');
+(26, '16CSE029', '110-029-16', 'Md. Showkat Imam', 'Fathers name', 'Mothers name', 'Showkat@gmail.com', '019212718212', '4481', '6th', 'Computer Science & Engineering', 'Science & Engineering'),
+(44, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1382', '7th', 'CSE', 'Science and engineering'),
+(45, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1913', '8th', 'CSE', 'Science and engineering'),
+(46, '16CSE003', '110-045-18', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5364', '9th', 'CSE', 'Science and engineering'),
+(47, '16CSE004', '110-045-19', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1973', '10th', 'CSE', 'Science and engineering'),
+(48, '16CSE005', '110-045-20', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '9604', '11th', 'CSE', 'Science and engineering'),
+(49, '16CSE006', '110-045-21', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6516', '12th', 'CSE', 'Science and engineering'),
+(50, '16CSE007', '110-045-22', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5807', '13th', 'CSE', 'Science and engineering'),
+(51, '16CSE008', '110-045-23', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1611', '14th', 'CSE', 'Science and engineering'),
+(52, '16CSE009', '110-045-24', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1258', '15th', 'CSE', 'Science and engineering'),
+(53, '16CSE010', '110-045-25', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7423', '16th', 'CSE', 'Science and engineering'),
+(54, '16CSE011', '110-045-26', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4023', '17th', 'CSE', 'Science and engineering'),
+(55, '16CSE012', '110-045-27', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '3759', '18th', 'CSE', 'Science and engineering'),
+(56, '16CSE013', '110-045-28', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '9808', '19th', 'CSE', 'Science and engineering'),
+(57, '16CSE014', '110-045-29', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '8190', '20th', 'CSE', 'Science and engineering'),
+(58, '16CSE015', '110-045-30', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2518', '21st', 'CSE', 'Science and engineering'),
+(59, '16CSE016', '110-045-31', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5172', '22nd', 'CSE', 'Science and engineering'),
+(60, '16CSE017', '110-045-32', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1765', '23rd', 'CSE', 'Science and engineering'),
+(61, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '8449', '7th', 'CSE', 'Science and engineering'),
+(62, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6037', '8th', 'CSE', 'Science and engineering'),
+(63, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '3526', '7th', 'CSE', 'Science and engineering'),
+(64, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4288', '8th', 'CSE', 'Science and engineering'),
+(65, '16CSE003', '110-045-18', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4584', '9th', 'CSE', 'Science and engineering'),
+(66, '16CSE004', '110-045-19', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '8607', '10th', 'CSE', 'Science and engineering'),
+(67, '16CSE005', '110-045-20', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '3259', '11th', 'CSE', 'Science and engineering'),
+(68, '16CSE006', '110-045-21', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5892', '12th', 'CSE', 'Science and engineering'),
+(69, '16CSE007', '110-045-22', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4584', '13th', 'CSE', 'Science and engineering'),
+(70, '16CSE008', '110-045-23', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6925', '14th', 'CSE', 'Science and engineering'),
+(71, '16CSE009', '110-045-24', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '3118', '15th', 'CSE', 'Science and engineering'),
+(72, '16CSE010', '110-045-25', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4261', '16th', 'CSE', 'Science and engineering'),
+(73, '16CSE011', '110-045-26', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2104', '17th', 'CSE', 'Science and engineering'),
+(74, '16CSE012', '110-045-27', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6775', '18th', 'CSE', 'Science and engineering'),
+(75, '16CSE013', '110-045-28', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7490', '19th', 'CSE', 'Science and engineering'),
+(76, '16CSE014', '110-045-29', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6949', '20th', 'CSE', 'Science and engineering'),
+(77, '16CSE015', '110-045-30', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6569', '21st', 'CSE', 'Science and engineering'),
+(78, '16CSE016', '110-045-31', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2992', '22nd', 'CSE', 'Science and engineering'),
+(79, '16CSE017', '110-045-32', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6681', '23rd', 'CSE', 'Science and engineering'),
+(80, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5256', '7th', 'CSE', 'Science and engineering'),
+(81, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2806', '8th', 'CSE', 'Science and engineering'),
+(82, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6300', '7th', 'CSE', 'Science and engineering'),
+(83, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2438', '8th', 'CSE', 'Science and engineering'),
+(84, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2797', '7th', 'CSE', 'Science and engineering'),
+(85, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '9802', '8th', 'CSE', 'Science and engineering'),
+(86, '16CSE001', '110-045-16', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '5854', '7th', 'CSE', 'Science and engineering'),
+(87, '16CSE002', '110-045-17', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '9007', '8th', 'CSE', 'Science and engineering'),
+(88, '16CSE003', '110-045-18', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '6383', '9th', 'CSE', 'Science and engineering'),
+(89, '16CSE004', '110-045-19', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1038', '10th', 'CSE', 'Science and engineering'),
+(90, '16CSE005', '110-045-20', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4590', '11th', 'CSE', 'Science and engineering'),
+(91, '16CSE006', '110-045-21', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7154', '12th', 'CSE', 'Science and engineering'),
+(92, '16CSE007', '110-045-22', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '4626', '13th', 'CSE', 'Science and engineering'),
+(93, '16CSE008', '110-045-23', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7225', '14th', 'CSE', 'Science and engineering'),
+(94, '16CSE009', '110-045-24', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1410', '15th', 'CSE', 'Science and engineering'),
+(95, '16CSE010', '110-045-25', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '2385', '16th', 'CSE', 'Science and engineering'),
+(96, '16CSE011', '110-045-26', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7286', '17th', 'CSE', 'Science and engineering'),
+(97, '16CSE012', '110-045-27', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '1741', '18th', 'CSE', 'Science and engineering'),
+(98, '16CSE013', '110-045-28', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '9696', '19th', 'CSE', 'Science and engineering'),
+(99, '16CSE014', '110-045-29', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7226', '20th', 'CSE', 'Science and engineering'),
+(100, '16CSE015', '110-045-30', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '3455', '21st', 'CSE', 'Science and engineering'),
+(101, '16CSE016', '110-045-31', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '7659', '22nd', 'CSE', 'Science and engineering'),
+(102, '16CSE017', '110-045-32', 'Hafsa', 'Fathersname', 'Mothersname', 'hafsa@gmail.com', '1927372234', '8156', '23rd', 'CSE', 'Science and engineering');
 
 -- --------------------------------------------------------
 
@@ -271,10 +351,8 @@ CREATE TABLE `sub_admin` (
 --
 
 INSERT INTO `sub_admin` (`id`, `name`, `password`, `update_development_fee`, `student_information`, `application_letters`, `update_development_fees_table`, `update_semester_fees_table`, `update_formfillup_fees_table`) VALUES
-(39, 'Jewel Chowdhury', '3358', 1, 1, 0, 0, 1, 0),
 (40, 'sohan', '3022', 1, 0, 1, 0, 0, 1),
-(47, 'jewel', '8539', 0, 1, 1, 1, 1, 1),
-(48, 'sojib', '1756', 1, 0, 1, 0, 0, 1);
+(47, 'jewel', '8539', 0, 1, 1, 1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -294,6 +372,27 @@ CREATE TABLE `super_admin` (
 
 INSERT INTO `super_admin` (`id`, `name`, `password`) VALUES
 (1, 'admin', 'admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `testcsv`
+--
+
+CREATE TABLE `testcsv` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `price` text NOT NULL,
+  `description` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `testcsv`
+--
+
+INSERT INTO `testcsv` (`id`, `name`, `price`, `description`) VALUES
+(1, 'Jewel', '100', 'this is description'),
+(2, 'Imam', '200', 'this is description');
 
 -- --------------------------------------------------------
 
@@ -381,6 +480,12 @@ ALTER TABLE `super_admin`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `testcsv`
+--
+ALTER TABLE `testcsv`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `transaction_method`
 --
 ALTER TABLE `transaction_method`
@@ -412,7 +517,7 @@ ALTER TABLE `admin_semester_fees_table`
 -- AUTO_INCREMENT for table `application_form_table`
 --
 ALTER TABLE `application_form_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `changed_development_fee`
@@ -424,37 +529,43 @@ ALTER TABLE `changed_development_fee`
 -- AUTO_INCREMENT for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
 
 --
 -- AUTO_INCREMENT for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `semester_fees2`
 --
 ALTER TABLE `semester_fees2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
-  MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
 
 --
 -- AUTO_INCREMENT for table `sub_admin`
 --
 ALTER TABLE `sub_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `super_admin`
 --
 ALTER TABLE `super_admin`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `testcsv`
+--
+ALTER TABLE `testcsv`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `transaction_method`

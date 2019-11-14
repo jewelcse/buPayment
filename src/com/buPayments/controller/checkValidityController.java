@@ -27,18 +27,21 @@ public class checkValidityController extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+
 		String semester = request.getParameter("semester");
 		String feeType = request.getParameter("fee_type");
 
+		//System.out.println(semester+"Check Validity:  "+feeType);
 		HttpSession session = request.getSession(true);
 		
 		try {
 			String res = mainController.checkValidity(feeType,semester);
 			
+			System.out.println("Res value: "+res);
 			String pagename = "checkValidityController?fee_type="+feeType+"&semester="+semester;
-			
-		    System.out.println(pagename);
-		    session.setAttribute("current_page",pagename); 
+			session.setAttribute("current_page",pagename); 
+		    
+		    
 		    
 			if(res.equals("dev_page")){
 				RequestDispatcher dispatcher =  request.getRequestDispatcher("devFees.jsp");
@@ -56,10 +59,9 @@ public class checkValidityController extends HttpServlet {
 				
 			}
 			else{
-				
-				//RequestDispatcher dispatcher =  request.getRequestDispatcher("index.jsp");
-		    	//dispatcher.forward(request, response);
-				response.sendRedirect("index.jsp?date_expire"); 
+			
+				response.sendRedirect("payment.jsp?expire_date"); 
+				System.out.println("line no 63");
 			}
 		} catch (SQLException | ParseException e) {
 
@@ -71,6 +73,10 @@ public class checkValidityController extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String test=request.getParameter("action");
+		
+		System.out.println("Action: "+test);
 		
 	}
 

@@ -53,6 +53,12 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
                                         <span class="licolor">Application</span>
                                     </a>
                                 </li>
+                                
+                                 <li class="nav-item">
+                                    <a class="nav-link" href="payment.jsp">
+                                        <span class="licolor">Payment</span>
+                                    </a>
+                                </li>
                             </ul>
 
                             <ul class="navbar-nav ml-auto">
@@ -112,6 +118,8 @@ else{ %>
                                 <span class="licolor">Bupayments</span>
                             </a>
                             
+                            
+                            
                          <button class="navbar-toggler text-white" type="button" data-toggle="collapse" data-target="#basicExampleNav" aria-controls="basicExampleNav"
                             aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fas fa-bars"></i>
@@ -119,6 +127,14 @@ else{ %>
 
                             <div class="collapse navbar-collapse" id="basicExampleNav">
                                 <ul class="navbar-nav">
+                                
+                                <li class="nav-item">
+                                    <a class="nav-link" href="payment.jsp">
+                                        <span class="licolor">Payment</span>
+                                    </a>
+                                </li>
+                                
+                                
                                 </ul>
                                 <ul class="navbar-nav ml-auto">
                                     <li class="nav-item">

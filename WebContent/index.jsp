@@ -16,75 +16,11 @@ import="java.util.ArrayList"
                     
 <style>
 
-             				.section1 {
-             					background-image:url("images/BU.jpg");
-                				background-repeat: no-repeat;
-                				background-size: cover;
-                				background-color:red;
-                				
+             			
 
-           					}
-           					.cover-img {
-                                width: 100%;
-                            }
-
-             				.section1 {
-                				background-repeat: no-repeat;
-                				background-size: cover;
-                				background-color:red;
-                				
-           					}
-
-     						.css-typing h4 {
-                                margin-left: auto;
-                                margin-right: auto;
-                                border-right: .15em solid orange;
-                                font-family: "Courier";
-                                white-space: nowrap;
-                                overflow: hidden;
-                            }
-
-                            .css-typing h4:nth-child(1) {
-                                width: 13.7em;
-                                color: white;
-                                background-color: #004040;
-                                OPACITY: 0.8;
-                                padding: 5px;
-                                -webkit-animation: type 3s steps(50, end);
-                                animation: type 3s steps(50, end);
-                                -webkit-animation-fill-mode: forwards;
-                                animation-fill-mode: forwards;
-                            }
-
-                            .css-typing h4:nth-child(2) {
-                                width: 13.7em;
-                                opacity: 0.7;
-                                color: white;
-                                background-color: #004040;
-                                padding: 5px;
-                                -webkit-animation: type2 2s steps(40, end);
-                                animation: type2 2s steps(40, end);
-                                -webkit-animation-delay: 2s;
-                                animation-delay: 3s;
-                                -webkit-animation-fill-mode: forwards;
-                                animation-fill-mode: forwards;
-                            }
+     						
                             
-                            #btn1{
-                            	margin-bottom:100px;
-                            	height:50px;
-                            	width:100px;
-                            	background-color: #004040;
-                            	opacity:.8;
-                            }
-                            
-                            #btn2{
-                            	margin-bottom:100px;
-                            	width:180px;
-                            	height:50px;
-                            	background-color: #004040;
-                            	opacity:.8;
-                            }
+                           
 
 
 </style>
@@ -101,7 +37,7 @@ import="java.util.ArrayList"
 
 
 
-                            <body onload="noBack();">
+                            <body>
                                 <div class="container">
                                     <div class="row section10 mb-4">
                                             <div class="col-md-12">

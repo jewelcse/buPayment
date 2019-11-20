@@ -13,6 +13,8 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionStudent") != null) {
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
+		
+		
 %>
 
 <style>
@@ -109,6 +111,8 @@
 
 <%
 	} else {
+		String pagename = "payment.jsp";
+		session.setAttribute("current_page",pagename);
 		response.sendRedirect("login.jsp");
 	}
 %>

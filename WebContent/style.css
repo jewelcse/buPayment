@@ -1,92 +1,89 @@
 
-            	*{
-           		box-sizing:border-box;
-            	}
+            				*{
+           						box-sizing:border-box;
+            				}
             	
-            	 body {
-                    color:white;
-                    background-color:#006064;
-                    min-height: 100vh; 
-                }
+            	 			body {
+                    			color:white;
+                    			background-color:#006064;
+                    			min-height: 100vh; 
+                			}
                 
-              header{             
-              background-color:#004040;
-              }
+              				header{             
+              					background-color:#004040;
+              				}
+              
+               				#btn1{
+                            	margin-bottom:100px;
+                            	height:50px;
+                            	width:100px;
+                            	background-color: #004040;
+                            	opacity:.8;
+                            }
+                            
+                            #btn2{
+                            	margin-bottom:100px;
+                            	width:180px;
+                            	height:50px;
+                            	background-color: #004040;
+                            	opacity:.8;
+                            }
 
-                .licolor {
-                    color: white
-                }
-            .css-typing p,p,h1,h2,h3,h4,h5,h6 {
-  				font-size: 1rem;
-			}
-
-			@include media-breakpoint-up(sm) {
-  			.css-typing h4 {
-    			font-size: 1.2rem;
-  				}
-			}
-
-			@include media-breakpoint-up(md) {
-  			.css-typing h4 {
-    			font-size: 1.4rem;
-  				}
-			}
-
-			@include media-breakpoint-up(lg) {
-  			.css-typing h4 {
-    			font-size: 1.6rem;
-  				}
-			}
+                			.licolor {
+                    			color: white
+                			}
+          
+			
                
                 
-                h1,h2,h3,h4,h5,h6,th,td{
-                	color:white;
-                }
+                			h1,h2,h3,h4,h5,h6,th,td{
+                				color:white;
+                			}
 
               
                 
-                .checkBox{
-                	padding:5px;
-    				margin-left: auto;
-    				margin-right: auto;
-    				margin-top: 20px;
-    				border:2px solid white;
-                }
+                			.checkBox{
+                				padding:5px;
+    							margin-left: auto;
+    							margin-right: auto;
+    							margin-top: 20px;
+    							border:2px solid white;
+                			}
                 
-                .box {
-					padding:5px;
-    				margin-left: auto;
-    				margin-right: auto;
-   	 				width: 750px;
-    				margin-top: 20px;
-    				border:2px solid white;
-    				background-color:;
-				}
+                			.box {
+								padding:5px;
+    							margin-left: auto;
+    							margin-right: auto;
+   	 							width: 750px;
+    							margin-top: 20px;
+    							border:2px solid white;
+    							background-color:;
+							}
 				
-				.login-box {
-					padding:5px;
-    				margin-left: auto;
-    				margin-right: auto;
-    				margin-top: 20px;
-    				border:2px solid white;
-				}
+							.login-box {
+								padding:5px;
+    							margin-left: auto;
+    							margin-right: auto;
+    							margin-top: 20px;
+    							border:2px solid white;
+							}
 				
-				.already-logged-msg {
-    				width: 200px;
-    				height: auto;
-    				background-color: green;
-    				border: 5px solid #408080;
-    				border-radius: 50%;
-    				margin:auto;
-    				padding: 30px;
-}
+							.already-logged-msg {
+    							width: 200px;
+    							height: auto;
+    							background-color: green;
+    							border: 5px solid #408080;
+    							border-radius: 50%;
+    							margin:auto;
+    							padding: 30px;
+							}
                 
-               .form-control:focus {
-               		border-color:rgba(100,100,100,1)!important;
-					-webkit-box-shadow: none!important;
-    				-moz-box-shadow: none!important;
-    				box-shadow: none!important;
-				}
+               				.form-control:focus {
+               					border-color:rgba(100,100,100,1)!important;
+								-webkit-box-shadow: none!important;
+    							-moz-box-shadow: none!important;
+    							box-shadow: none!important;
+							}
 				
 
 							#notice-board{
@@ -103,11 +100,7 @@
     							background: transparent;
     							background-color: darkslategray;
 							}
-       
 
-
-                      
-                            
                             .aboutDept{
                             	height:400px;
                             	border:2px solid green;
@@ -115,112 +108,22 @@
                             
                             }
 
-
-                            @keyframes type {
-                                0% {
-                                    width: 0;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    border: none;
-                                }
-                            }
-
-                            @-webkit-keyframes type {
-                                0% {
-                                    width: 0;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    border: none;
-                                }
-                            }
-
-                            @keyframes type2 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    opacity: 1;
-                                    border: none;
-                                }
-                            }
-
-                            @-webkit-keyframes type2 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                99.9% {
-                                    border-right: .15em solid orange;
-                                }
-                                100% {
-                                    opacity: 1;
-                                    border: none;
-                                }
-                            }
-
-                            @keyframes type3 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                100% {
-                                    opacity: 1;
-                                }
-                            }
-
-                            @-webkit-keyframes type3 {
-                                0% {
-                                    width: 0;
-                                }
-                                1% {
-                                    opacity: 1;
-                                }
-                                100% {
-                                    opacity: 1;
-                                }
-                            }
-
-                            @keyframes blink {
-                                50% {
-                                    border-color: transparent;
-                                }
-                            }
-
-                            @-webkit-keyframes blink {
-                                50% {
-                                    border-color: tranparent;
-                                }
-                            }
-                            
-                            
-
-
-footer {
+							footer {
   
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #004040;
-  color: white;
-  text-align: center;
-}
+  								position: relative;
+  								left: 0;
+  								bottom: 0;
+  								width: 100%;
+  								background-color: #004040;
+  								color: white;
+  								text-align: center;
+							}
+							
+
+                           
+                            
+
+
 
                             
                             

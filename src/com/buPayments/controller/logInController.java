@@ -51,8 +51,19 @@ public class logInController extends HttpServlet {
 		      if(pagename == null) {
 		      response.sendRedirect("index.jsp?user=id.login-successfully"); //logged-in page    
 		      }
+		      
+		      else if(pagename.equals("payment.jsp")) {
+		    	  
+		    	  
+		    	  response.sendRedirect(pagename);
+		    	  
+		    
+		      }
 		      else {
-		      response.sendRedirect(pagename);
+		    	  
+		      
+		     // response.sendRedirect(pagename);
+		      
 		      }
 		 }
 		       

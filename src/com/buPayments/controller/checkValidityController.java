@@ -38,8 +38,8 @@ public class checkValidityController extends HttpServlet {
 			String res = mainController.checkValidity(feeType,semester);
 			
 			System.out.println("Res value: "+res);
-			String pagename = "checkValidityController?fee_type="+feeType+"&semester="+semester;
-			session.setAttribute("current_page",pagename); 
+			//String pagename = "checkValidityController?fee_type="+feeType+"&semester="+semester;
+			//session.setAttribute("current_page",pagename); 
 		    
 		    
 		    

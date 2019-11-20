@@ -23,7 +23,7 @@ function goBack() {
 }
 </script>
   <section class="">
-<div class="jumbotron">
+<div class="">
   <div class="container">
     <h3 class="h3-responsive font-weight-bold text-center ">Payment Form</h3>
     

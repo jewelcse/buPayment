@@ -1,13 +1,23 @@
 
             				*{
            						box-sizing:border-box;
+           						
+           						font-family: 'Corben';font-size: 22px;
             				}
+            				
+            				@font-face {
+								font-family: "CustomFont";
+								src: url("assets/fonts/Georgia-PersonalUse.otf");
+
+							}
             	
             	 			body {
                     			color:white;
                     			background-color:#006064;
                     			min-height: 100vh; 
                 			}
+                			
+
                 
               				header{             
               					background-color:#004040;

@@ -4,6 +4,9 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 //import netscape.javascript.JSObject;
 
@@ -16,7 +19,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.buPayments.model.Devfees;
+import com.buPayments.model.Student;
 import com.mysql.jdbc.PreparedStatement;
+
+import  com.buPayments.sslcommerz.TransactionInitiator;
 
 @WebServlet("/devFeesController")
 public class devFeesController extends HttpServlet {
@@ -70,14 +76,40 @@ public class devFeesController extends HttpServlet {
 			
 			String id = request.getParameter("s_id");
 			String semester = request.getParameter("s_semester");
-			String development_fee = request.getParameter("amount");
+			String development_fee = request.getParameter("total_amount");
 			System.out.println(semester);
 
 			if( ! semester.equals("0")) {
 			
 				Devfees newDevfees = new Devfees(id,semester,development_fee);
+				String rand = UUID.randomUUID().toString();
+				Student student = mainController.getStudentByStudentId(id);
+				Devfees devfees = new Devfees();
+				
+				
+				
+				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+				LocalDateTime now = LocalDateTime.now();
+				String time = (dtf.format(now));
+				
+				String trans_id = time + rand;
+				
+				System.out.println(student.toString());
+				
+				devfees.setS_id(id);
+				devfees.setS_semester(semester);
+				devfees.setS_semester_fee(development_fee);
+				devfees.setTrans_id(trans_id);
+				
+				
+				com.buPayments.sslcommerz.TransactionInitiator trans = new com.buPayments.sslcommerz.TransactionInitiator();
+				
+				
+				String response1 = trans.initTrnxnRequest(student, devfees);
+				
+				response.sendRedirect(response1);
 			
-				try {
+				/*try {
 					String rs = mainController.addDevFeestoDb(newDevfees);
 				
 						if(rs.equals("success")){
@@ -90,7 +122,7 @@ public class devFeesController extends HttpServlet {
 					
 					} catch (SQLException e) {
 						e.printStackTrace();
-					}
+					}*/
 			}
 			else {
 				HttpSession session = request.getSession(true);  

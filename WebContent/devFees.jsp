@@ -158,7 +158,7 @@ if (session.getAttribute("currentSessionStudent") != null) {
                                                         <tr>
                                                             <td>Total</td>
                                                             <td>
-                                                                <input type="text" id="sum" name="amount" readonly>
+                                                                <input type="text" id="sum" name="total_amount" readonly>
                                                             </td>
                                                         </tr>
                                                     </tbody>

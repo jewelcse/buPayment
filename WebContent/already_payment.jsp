@@ -22,7 +22,7 @@ if (session.getAttribute("currentSessionStudent") != null) {
                 </body>
 
                 <br>
-                <br><%@include file="footer.jsp" %>
+                
                 
                 <%} else{ 
                 	response.sendRedirect("login.jsp");

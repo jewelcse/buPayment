@@ -20,7 +20,6 @@ Student currentUser = (Student)(session.getAttribute("currentSessionStudent"));
         <head>
             <title>devFees</title>
 			<meta name="viewport" content="width=device-width" http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
-            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
             <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 			<link href="style.css" rel="stylesheet">
             <style>

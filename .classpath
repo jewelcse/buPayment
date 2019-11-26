@@ -22,5 +22,9 @@
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/BU CSE/eclipse-workspace/Demo/WebContent/WEB-INF/lib/gson-2.6.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/BU CSE/eclipse-workspace/Demo/WebContent/WEB-INF/lib/jackson-annotations-2.6.0.jar"/>
+	<classpathentry kind="lib" path="C:/Users/BU CSE/eclipse-workspace/Demo/WebContent/WEB-INF/lib/jackson-core-2.6.3.jar"/>
+	<classpathentry kind="lib" path="C:/Users/BU CSE/eclipse-workspace/Demo/WebContent/WEB-INF/lib/jackson-databind-2.6.3.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -75,7 +75,7 @@ function goBack() {
 
 	
 
-</div> <!-- tab-pane.// -->
+</div>
 
 
 <div class="tab-pane fade" id="nav-tab-paypal">
@@ -100,13 +100,13 @@ function goBack() {
 </dl>
 <p><strong>Note:</strong> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua. </p>
-</div> <!-- tab-pane.// -->
-</div> <!-- tab-content .// -->
+</div> 
+</div> 
 
-</div> <!-- card-body.// -->
+</div>
 
 
-</article> <!-- card.// -->
+</article> 
 
 </section>
 

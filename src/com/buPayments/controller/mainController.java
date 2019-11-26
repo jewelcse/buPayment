@@ -1036,6 +1036,63 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			}
 		
 	}
+
+
+
+	public static Student getStudentByStudentId(String id) {
+		
+			Statement stmt = null;    
+		
+		  Connection myConn = null;
+		  PreparedStatement myStmt = null;
+		  ResultSet myRs = null;
+			
+			String sql = "select * from student where s_Id = '"+id+"'";
+			
+			Student student = new Student();
+			
+		    try {
+		    	myConn = db.getCon();
+				stmt=myConn.createStatement();
+				 myRs = stmt.executeQuery(sql);
+				   myRs.next();
+				    	String d_id  = myRs.getString("s_Id");
+				    	String d_roll  = myRs.getString("s_Roll");
+				    	String d_reg  = myRs.getString("s_Reg");
+				    	String d_name  = myRs.getString("s_Name");
+				    	String d_fname  = myRs.getString("s_Father_name");
+				    	String d_mname  = myRs.getString("s_Mother_name");
+				    	String d_email = myRs.getString("s_Email");
+				    	String d_phone  = myRs.getString("s_Phone");
+				    	String d_semester  = myRs.getString("s_Semester");
+				    	String d_dept  = myRs.getString("s_Department");
+				    	String d_faculty  = myRs.getString("s_Faculty");
+				       
+				    	
+				    
+				    	
+				    	student.setId(d_id);
+				    	student.setS_roll(d_roll);
+				    	student.setS_reg(d_reg);
+				    	student.setS_name(d_name);
+				    	student.setS_father_name(d_fname);
+				    	student.setS_mother_name(d_mname);
+				    	student.setS_email(d_email);
+				    	student.setS_phone(d_phone);
+				    	student.setS_faculty(d_faculty);
+				    	student.setS_semester(d_semester);
+				    	student.setS_department(d_dept);
+				    	
+				    	
+				      
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
+		    return student;
+			
+	}
 	
 	
 }

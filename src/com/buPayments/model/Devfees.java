@@ -9,6 +9,8 @@ public class Devfees {
 	private String start_date;
 	private String end_date;
 	
+	private String trans_id;
+	
 	
 	public Devfees() {
 		super();
@@ -22,6 +24,12 @@ public class Devfees {
 	}
 
 
+	public String getTrans_id() {
+		return trans_id;
+	}
+	public void setTrans_id(String trans_id) {
+		this.trans_id = trans_id;
+	}
 	public Devfees(String s_id, String s_semester, String s_semester_fee) {
 
 		this.s_id = s_id;

@@ -9,7 +9,8 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if ((session.getAttribute("currentSessionForSuperAdmin") != null) || (session.getAttribute("currentSessionForSubAdmin") != null)) {
+	if ((session.getAttribute("currentSessionForSuperAdmin") != null)
+			|| (session.getAttribute("currentSessionForSubAdmin") != null)) {
 %>
 
 
@@ -18,34 +19,35 @@
 <%@include file="admin-header.jsp"%>
 
 <style>
-
 h3.inline {
-    margin-left: 40%;
-    margin-right: 50%;
-    width: 100%;
+	margin-left: 40%;
+	margin-right: 50%;
+	width: 100%;
 }
-
 </style>
 
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="super-admin.jsp">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Developments Fees</li>
-        </ol>
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
+	</li>
+	<li class="breadcrumb-item active">Developments Fees</li>
+</ol>
 
 
 <section class="p-1">
-	
-		<input type="text" id="myInput1"  class=" form-control mb-4" onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
-		
-    		<a href="#" class="btn btn-primary" id="test" onClick="javascript:fnExcelReport();">Export Data</a>
-    		<a href="#" class="btn btn-primary" id="test" onclick="printData()">Print Data</a>
-   
-    <div id="printData">
-    
-    <h3 class="inline"><u>Paid Development Fees table</u></h3>
-		<table class="table table-hover" id="myTable"  border="2px solid black">
+
+	<input type="text" id="myInput1" class=" form-control mb-4"
+		onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
+
+	<a href="#" class="btn btn-primary" id="test"
+		onClick="javascript:fnExcelReport();">Export Data</a> <a href="#"
+		class="btn btn-primary" id="test" onclick="printData()">Print Data</a>
+
+	<div id="printData">
+
+		<h3 class="inline">
+			<u>Paid Development Fees table</u>
+		</h3>
+		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
 				<th>Semester</th>
 				<th>Amount</th>
@@ -53,23 +55,23 @@ h3.inline {
 			</tr>
 
 			<%
-			adminShowAllFeesController devItem = new adminShowAllFeesController();
+				adminShowAllFeesController devItem = new adminShowAllFeesController();
 					ArrayList<Devfees> item = new ArrayList<Devfees>();
 					item = devItem.showAllDevFees();
 
 					for (int i = 0; i < item.size(); i++) {
 			%>
 			<tr>
-				
+
 				<td>
-				<%
-					out.println(item.get(i).getS_semester());
-				%>
+					<%
+						out.println(item.get(i).getS_semester());
+					%>
 				</td>
 				<td>
-				<%
-					out.println(item.get(i).getS_semester_fee());
-				%>
+					<%
+						out.println(item.get(i).getS_semester_fee());
+					%>
 				</td>
 				<td>
 					<%
@@ -92,41 +94,43 @@ h3.inline {
 
 
 <script>
+	function fnExcelReport() {
+		var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
+		tab_text = tab_text
+				+ '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
 
-function fnExcelReport() {
-    var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
-    tab_text = tab_text + '<head><xml><x:ExcelWorkbook><x:ExcelWorksheets><x:ExcelWorksheet>';
+		tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
 
-    tab_text = tab_text + '<x:Name>Test Sheet</x:Name>';
+		tab_text = tab_text
+				+ '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
+		tab_text = tab_text
+				+ '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
 
-    tab_text = tab_text + '<x:WorksheetOptions><x:Panes></x:Panes></x:WorksheetOptions></x:ExcelWorksheet>';
-    tab_text = tab_text + '</x:ExcelWorksheets></x:ExcelWorkbook></xml></head><body>';
+		tab_text = tab_text + "<table border='1px'>";
+		tab_text = tab_text + $('#myTable').html();
+		tab_text = tab_text + '</table></body></html>';
 
-    tab_text = tab_text + "<table border='1px'>";
-    tab_text = tab_text + $('#myTable').html();
-    tab_text = tab_text + '</table></body></html>';
+		var data_type = 'data:application/vnd.ms-excel';
 
-    var data_type = 'data:application/vnd.ms-excel';
-    
-    var ua = window.navigator.userAgent;
-    var msie = ua.indexOf("MSIE ");
-    
-    if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
-        if (window.navigator.msSaveBlob) {
-            var blob = new Blob([tab_text], {
-                type: "application/csv;charset=utf-8;"
-            });
-            navigator.msSaveBlob(blob, 'Test file.xls');
-        }
-    } else {
-        $('#test').attr('href', data_type + ', ' + encodeURIComponent(tab_text));
-        $('#test').attr('download', 'all_development_fees.xls');
-    }
+		var ua = window.navigator.userAgent;
+		var msie = ua.indexOf("MSIE ");
 
-}
+		if (msie > 0 || !!navigator.userAgent.match(/Trident.*rv\:11\./)) {
+			if (window.navigator.msSaveBlob) {
+				var blob = new Blob([ tab_text ], {
+					type : "application/csv;charset=utf-8;"
+				});
+				navigator.msSaveBlob(blob, 'Test file.xls');
+			}
+		} else {
+			$('#test').attr('href',
+					data_type + ', ' + encodeURIComponent(tab_text));
+			$('#test').attr('download', 'all_development_fees.xls');
+		}
 
+	}
 
-function printData() {
+	function printData() {
 		var print_div = document.getElementById("printData");
 		var print_area = window.open();
 		print_area.document.write(print_div.innerHTML);
@@ -134,33 +138,30 @@ function printData() {
 		print_area.focus();
 		print_area.print();
 		print_area.close();
-				
-}
-	
 
-function searchByFunction() {
-  // Declare variables
-   var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("myInput1");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
+	}
 
-  // Loop through all table rows, and hide those who don't match the search query
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[8];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
-      if ((txtValue.toUpperCase().indexOf(filter) > -1)) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
-      }
-    }
-  }
-}
+	function searchByFunction() {
+		// Declare variables
+		var input, filter, table, tr, td, i, txtValue;
+		input = document.getElementById("myInput1");
+		filter = input.value.toUpperCase();
+		table = document.getElementById("myTable");
+		tr = table.getElementsByTagName("tr");
 
-
+		// Loop through all table rows, and hide those who don't match the search query
+		for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("td")[8];
+			if (td) {
+				txtValue = td.textContent || td.innerText;
+				if ((txtValue.toUpperCase().indexOf(filter) > -1)) {
+					tr[i].style.display = "";
+				} else {
+					tr[i].style.display = "none";
+				}
+			}
+		}
+	}
 </script>
 
 <%@include file="admin-footer.jsp"%>

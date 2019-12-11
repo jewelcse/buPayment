@@ -1,91 +1,88 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.Admin"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
 	import="com.buPayments.model.adminFormFillUpFeesTable"
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
-	import="java.util.ArrayList"
-	
-	%>
+	import="java.util.ArrayList"%>
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if (session.getAttribute("currentSessionForSuperAdmin") != null || session.getAttribute("adminFormFillUpFeesTableController") != null) {
+	if (session.getAttribute("currentSessionForSuperAdmin") != null
+			|| session.getAttribute("adminFormFillUpFeesTableController") != null) {
 %>
 <%@include file="admin-header.jsp"%>
 
 
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="super-admin.jsp">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Form Fillup Fees</li>
-        </ol>
-        
-<section class="p-1">         
-	<h3 class="inline"><u>Form Fill Up Fees Table</u></h3>
-		<table class="table table-hover" id="myTable" border="2px solid black">
-			<tr>
-				<th>Semester</th>
-				<th>Main Fee</th>
-				<th>Misce Fee</th>
-				<th>Start date</th>
-				<th>End Date</th>
-				<th>Action</th>
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
+	</li>
+	<li class="breadcrumb-item active">Form Fillup Fees</li>
+</ol>
 
-			</tr>
+<section class="p-1">
+	<h3 class="inline">
+		<u>Form Fill Up Fees Table</u>
+	</h3>
+	<table class="table table-hover" id="myTable" border="2px solid black">
+		<tr>
+			<th>Semester</th>
+			<th>Main Fee</th>
+			<th>Misce Fee</th>
+			<th>Start date</th>
+			<th>End Date</th>
+			<th>Action</th>
 
-			<%
+		</tr>
+
+		<%
 			adminFormFillUpFeesTableController devId = new adminFormFillUpFeesTableController();
-					ArrayList<adminFormFillUpFeesTable> al = new ArrayList<adminFormFillUpFeesTable>();
-					al = devId.showFormFillUpFeesTable();
+				ArrayList<adminFormFillUpFeesTable> al = new ArrayList<adminFormFillUpFeesTable>();
+				al = devId.showFormFillUpFeesTable();
 
-					for (int i = 0; i < al.size(); i++) {
-			%>
-			<tr>
-				
-				<td>
+				for (int i = 0; i < al.size(); i++) {
+		%>
+		<tr>
+
+			<td>
 				<%
 					out.println(al.get(i).getSemester());
 				%>
-				</td>
-				<td>
+			</td>
+			<td>
 				<%
 					out.println(al.get(i).getMain_fee());
 				%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getMisce_fee());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getStart_date());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getEnd_date());
-					%>
-				</td>
-			
-				<td> 
-				<a class="btn btn-primary" href='adminFormFillUpFeesTableEdit?Edit_id=<%
-						out.println(al.get(i).getId());
-					%>'>Update</a>
-				 </td>
+			</td>
+			<td>
+				<%
+					out.println(al.get(i).getMisce_fee());
+				%>
+			</td>
+			<td>
+				<%
+					out.println(al.get(i).getStart_date());
+				%>
+			</td>
+			<td>
+				<%
+					out.println(al.get(i).getEnd_date());
+				%>
+			</td>
 
-			</tr>
+			<td><a class="btn btn-primary"
+				href='adminFormFillUpFeesTableEdit?Edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
+			</td>
 
-			<%
-				}
-			%>
+		</tr>
 
-		</table>
+		<%
+			}
+		%>
+
+	</table>
 </section>
 
 <%@include file="admin-footer.jsp"%>

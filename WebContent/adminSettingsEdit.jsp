@@ -18,43 +18,44 @@
 
 
 
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item">
-            <a href="super-admin.jsp">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active">Update Sub-Admin</li>
-        </ol>
-        
-        
-	<%
-              	String id = request.getParameter("edit_id");
-				String name = request.getParameter("name");
-              	
-              	%>
+<ol class="breadcrumb">
+	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
+	</li>
+	<li class="breadcrumb-item active">Update Sub-Admin</li>
+</ol>
 
-	<div class="row ml-5 mt-5">
-		<div class="col-md-12">
-			<label>Admin Name:</label>
-				<form class="form-controll" action="adminController?action=editSubAdmin"  method="post">
-              	
-              	<input type="hidden" name="id" class="form-control" value="<% out.print(id); %>" > 
-              	
-                  <div class="md-form mb-2">
-                    	<input type="text" name="name" class="form-control" value="<% out.print(name); %>" required>  
-                  </div>
-                  
-                  <div class="text-center">
-                    <input type="submit" class="btn btn-primary" value="Update" > 
-   				 </div>      
 
-				</form>
-		
-		</div>
-		
-		
-		
+<%
+	String id = request.getParameter("edit_id");
+		String name = request.getParameter("name");
+%>
+
+<div class="row ml-5 mt-5">
+	<div class="col-md-12">
+		<label>Admin Name:</label>
+		<form class="form-controll"
+			action="adminController?action=editSubAdmin" method="post">
+
+			<input type="hidden" name="id" class="form-control"
+				value="<%out.print(id);%>">
+
+			<div class="md-form mb-2">
+				<input type="text" name="name" class="form-control"
+					value="<%out.print(name);%>" required>
+			</div>
+
+			<div class="text-center">
+				<input type="submit" class="btn btn-primary" value="Update">
+			</div>
+
+		</form>
 
 	</div>
+
+
+
+
+</div>
 
 
 

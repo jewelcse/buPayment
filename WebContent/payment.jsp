@@ -13,8 +13,6 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionStudent") != null) {
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
-		
-		
 %>
 
 <style>
@@ -43,8 +41,7 @@
 						}
 				%>
 			</p>
-			<form action="checkValidityController"
-				method="get">
+			<form action="checkValidityController" method="get">
 				<div class="md-form">
 					<div class="md-form mb-0">
 						<select required onchange="selected()"
@@ -86,7 +83,7 @@
 
 
 				<div class="text-center text-md-right">
-					<input type="submit" class="btn btn-primary submitBtn1"
+					<input type="submit" class="btn btn-primary submitBtn"
 						value="check">
 				</div>
 			</form>
@@ -112,7 +109,7 @@
 <%
 	} else {
 		String pagename = "payment.jsp";
-		session.setAttribute("current_page",pagename);
+		session.setAttribute("current_page", pagename);
 		response.sendRedirect("login.jsp");
 	}
 %>

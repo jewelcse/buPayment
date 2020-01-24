@@ -962,7 +962,15 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		
 		boolean retrunStatus = false;
 		
-		
+
+	public static boolean addNewAdmin(String newAdminName,String password, String item1, String item2, String item3, String item4,
+			String item5, String item6) {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+	    Statement stmt = null;    
+		ResultSet myRs = null;
+		boolean retrunStatus = false;
+
 	    try {
 	    	String sql = "select * from sub_admin where name = '"+newAdminName+"' ";
 	
@@ -971,8 +979,12 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			 myRs = stmt.executeQuery(sql);
 			    boolean more = myRs.next();
 			    
+
 			    if (!more) 
 			      {
+
+			    if (!more){
+
 
 					
 					// create sql for insert
@@ -987,8 +999,11 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			      } 
 			    
 			    else  {
-			     
+
 			    	System.out.println("Alread have " + newAdminName);
+
+			    	System.out.println("Alread have");
+
 			    	retrunStatus = false;
 			    }
 	
@@ -997,6 +1012,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 	    catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+
 			}
 		return retrunStatus;
 
@@ -1092,6 +1108,12 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		    
 		    return student;
 			
+
+			}		
+		
+		
+		return retrunStatus;
+
 	}
 	
 	

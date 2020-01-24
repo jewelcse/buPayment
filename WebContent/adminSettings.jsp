@@ -124,6 +124,126 @@
 
 
 
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">
+            <a href="super-admin.jsp">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active">Add Sub-Admin</li>
+        </ol>
+        
+        
+
+
+	<div class="row ml-5 mt-5">
+		<div class="col-md-4">
+			<label>Add new Admin:</label>
+				<form class="form-controll" action="adminController?action=addNewAdmin"  method="post">
+				
+				<div class="md-form mb-2">
+                    	<input type="text" name="name" class="form-control" placeholder="Name">  
+                  </div>
+              
+                 <!--  <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="item" value="1" > 
+                    	<label class="form-check-label">Development Fee Update</label> 
+                  </div>
+                   <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="student_information"  value="1" id="student_information">
+                    	 <label class="form-check-label" for="student_information">All Student Information</label>  
+                  </div>
+                  <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="application_letters"  value="1" id="application_letters">
+                    	<label class="form-check-label" for="application_letters">Application Letters</label>   
+                  </div>
+                  <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="update_development_fees_table"  value="1" id="update_development_fees_table">  
+                 		<label class="form-check-label" for="update_development_fees_table">Update Development Fees Table</label> 
+                  </div>
+                  <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="update_semester_fees_table"  value="1" id="update_semester_fees_table"> 
+                    	<label class="form-check-label" for="update_semester_fees_table">Update Semester Fees Table</label>  
+                  </div>
+                  <div class="form-check mb-2">
+                    	<input type="checkbox" class="form-check-input" name="update_formfillup_fees_table"  value="1" id="update_formfillup_fees_table">
+                    	<label class="form-check-label" for="update_formfillup_fees_table">Update Formfillup Fees Table</label>   
+                  </div>
+                  
+                  -->
+                  <div class="">
+                    <input type="submit" class="btn btn-primary" value="Add New Admin" > 
+   				 </div>      
+
+				</form>
+		
+		</div>
+		
+		<div class="col-md-6">
+		
+			<table class="table table-hover"  border="2px solid black">
+				<thead>
+					<tr>
+						<th>Admin name</th>
+						<th>Password</th>
+						<th>Edit</th>
+						<th>Delete</th>
+					</tr>
+				
+				</thead>
+				<tbody>
+					
+						<%
+
+						adminController newAdmin = new adminController();
+						ArrayList<Admin> totalAdmin= new ArrayList<Admin>();
+						totalAdmin = newAdmin.showAllSubAdmin();
+
+					for (int i = 0; i < totalAdmin.size(); i++) {
+			%>
+			<tr>
+				
+	
+				<td>
+				<%
+					out.println(totalAdmin.get(i).getName());
+				%>
+				</td>
+				<td>
+					<%
+						out.println(totalAdmin.get(i).getPassword());
+					%>
+				</td>
+			
+				<td>
+					<a class="btn btn-primary"
+					href="adminSettingsEdit.jsp?edit_id=<%
+						out.println(totalAdmin.get(i).getId());
+					%>&&name=<%
+						out.println(totalAdmin.get(i).getName());
+					%>">Edit</a>
+				</td>
+				
+				<td>
+					<a class="btn btn-primary"
+					href="adminController?delete_id=<%
+						out.println(totalAdmin.get(i).getId());
+					%>">Delete</a>
+				</td>
+
+
+			</tr>
+
+			<%
+				}
+			%>					
+				
+				</tbody>
+			
+			
+			</table>
+		
+		</div>
+
+
 </div>
 
 

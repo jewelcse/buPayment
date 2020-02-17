@@ -17,7 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.buPayment.restapi.model.studentProfile;
+import com.buPayments.restapi.model.studentProfile;
 import com.buPayments.controller.dbConnection;
 import com.mysql.jdbc.PreparedStatement;
 

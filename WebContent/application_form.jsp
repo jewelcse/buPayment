@@ -71,18 +71,6 @@
 						</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 						<p>My problem is</p>
 						<div class="md-form mb-4 pink-textarea active-pink-textarea">
 							<textarea id="reason" name="reason"

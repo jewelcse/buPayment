@@ -18,6 +18,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.text.StringEscapeUtils;
+
 import com.buPayments.model.Devfees;
 import com.buPayments.model.Student;
 import com.mysql.jdbc.PreparedStatement;
@@ -141,6 +143,7 @@ public class devFeesController extends HttpServlet {
 			String subject2 = request.getParameter("subject2");
 			String feetype= request.getParameter("feetype");
 			String reason= request.getParameter("reason");
+			//String reason1 = StringEscapeUtils.
 			String dept= request.getParameter("s_dept");
 			String newSub = "";
 			
@@ -166,26 +169,30 @@ public class devFeesController extends HttpServlet {
 						   + "(semester,subject,feeType,reason,student_id,department) "
 						   + "values (?,?,?,?,?,?)";
 				
-				try {
-					myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-					myStmt.setString(1, semester);
-					myStmt.setString(2, newSub);
-					myStmt.setString(3, feetype);
-					myStmt.setString(4, reason);
-					myStmt.setString(5, id);
-					myStmt.setString(6, dept);
 				
-					myStmt.execute();
+					try {
+						myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+						myStmt.setString(1, semester);
+						myStmt.setString(2, newSub);
+						myStmt.setString(3, feetype);
+						myStmt.setString(4, reason);
+						myStmt.setString(5, id);
+						myStmt.setString(6, dept);
 					
-					System.out.print("application-submit-success");
-					//response.setContentType("application/pdf");
-					//response.setHeader("content-disposition","attachment; filename="+"Filename.pdf");
-					RequestDispatcher dispatcher =  request.getRequestDispatcher("success_form.jsp");
-					dispatcher.forward(request, response);
+						myStmt.execute();
+						
+						System.out.print("application-submit-success");
+						//response.setContentType("application/pdf");
+						//response.setHeader("content-disposition","attachment; filename="+"Filename.pdf");
+						RequestDispatcher dispatcher =  request.getRequestDispatcher("success_form.jsp");
+						dispatcher.forward(request, response);
+						
 					
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+					} catch (SQLException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
 				
 		}
 		else{

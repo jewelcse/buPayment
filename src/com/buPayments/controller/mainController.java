@@ -951,17 +951,6 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 
 
 
-	public static boolean addNewAdmin(String newAdminName, String password, String item1, String item2, String item3,
-			String item4, String item5, String item6) {
-		
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-	    Statement stmt = null;    
-
-		ResultSet myRs = null;
-		
-		boolean retrunStatus = false;
-		
 
 	public static boolean addNewAdmin(String newAdminName,String password, String item1, String item2, String item3, String item4,
 			String item5, String item6) {
@@ -979,9 +968,6 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			 myRs = stmt.executeQuery(sql);
 			    boolean more = myRs.next();
 			    
-
-			    if (!more) 
-			      {
 
 			    if (!more){
 
@@ -1006,19 +992,15 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 
 			    	retrunStatus = false;
 			    }
-	
 	    }
-	    
-	    catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-
-			}
+			    catch (Exception e) {
+					// TODO: handle exception
+				}
 		return retrunStatus;
+		
+   
 
-	}
-
-
+}
 
 	public static void saveCSVData(TestCSVModel testCSVModel) {
 		
@@ -1107,12 +1089,6 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			}
 		    
 		    return student;
-			
-
-			}		
-		
-		
-		return retrunStatus;
 
 	}
 	

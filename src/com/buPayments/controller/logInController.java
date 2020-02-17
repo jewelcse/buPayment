@@ -34,6 +34,7 @@ public class logInController extends HttpServlet {
 		String id = request.getParameter("student_id");
 		String password = request.getParameter("password");
 		
+		System.out.println(id+ " "+password);
 		
 		Student login_student  = new Student();
 		login_student.setS_roll(id);

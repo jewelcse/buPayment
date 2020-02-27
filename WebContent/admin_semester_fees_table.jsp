@@ -41,9 +41,9 @@
 		</tr>
 
 		<%
-			adminSemesterFeesTableController devId = new adminSemesterFeesTableController();
+		adminFeesFindTableController semesterfee = new adminFeesFindTableController();
 				ArrayList<adminSemesterFeesTable> al = new ArrayList<adminSemesterFeesTable>();
-				al = devId.showSemesterFeesTable();
+				al = semesterfee.showSemesterFeesTable();
 
 				for (int i = 0; i < al.size(); i++) {
 		%>
@@ -76,7 +76,7 @@
 			</td>
 
 			<td><a class="btn btn-primary"
-				href='adminSemesterFeesTableEdit?Edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
+				href='adminFeesEditTableController?fee_type=semester_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
 
 			</td>
 

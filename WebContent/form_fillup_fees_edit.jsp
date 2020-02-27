@@ -26,7 +26,7 @@
 <!--Grid column-->
 <div class="col-md-5  m-auto pt-1 pb-3">
 
-	<form method="post" action="adminFormFillUpFeesTableController">
+	<form method="post" action="adminFeesTableController?edit_fee_type=formfillup_fee">
 
 		<div class="card">
 

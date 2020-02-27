@@ -73,17 +73,7 @@ public class admin_all_application_controller extends HttpServlet {
 	}
     
     
-    
-    
-    
-    
-    
-		
-    
-    
-    
-    
-    
+
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		

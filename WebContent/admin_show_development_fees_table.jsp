@@ -49,6 +49,7 @@ h3.inline {
 		</h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
+				
 				<th>Semester</th>
 				<th>Amount</th>
 				<th>Student Id</th>

@@ -1,6 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
-	import="com.buPayments.model.Devfees"%>
+	pageEncoding="ISO-8859-1" 
+	import="com.buPayments.model.Student"
+	import="com.buPayments.controller.*"
+	import="com.buPayments.model.Devfees" 
+	import="java.sql.Connection"
+	import="java.sql.PreparedStatement"
+	import="java.sql.ResultSet"
+	import="java.sql.SQLException"
+	import="java.sql.Statement"
+	import="java.text.ParseException"
+	%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@include file="header.jsp"%>
@@ -34,12 +43,32 @@
 			<p class="text-center ">
 
 				<%
-					if (request.getParameter("date_expire") == null) {
+					//if (request.getParameter("date_expire") == null) {
 
-						} else {
-							out.println("<span style='color:red;font-weight:bold'> Date Over</span>");
-						}
-				%>
+						//} else {
+						//	out.println("<span style='color:red;font-weight:bold'> Date Over</span>");
+						//}
+
+						//Student loggegStudent = new Student();
+						//System.out.println(currentUser.getS_department());
+
+						dbConnection db = new dbConnection();
+
+						Connection myConn = db.getCon();
+						PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM department where dept_name = ?");
+
+						pstmt.setString(1, currentUser.getS_department()); // Assigns "First Class" to first place holder
+
+						ResultSet myRs = pstmt.executeQuery();
+
+
+						while (myRs.next()) {
+
+							String deptid = myRs.getString("id");
+							String name = myRs.getString("dept_name");
+
+							System.out.println("From jsp page the dept id is >>>>>>>>>>>>>>>>" + deptid); %>
+						
 			</p>
 			<form action="checkValidityController" method="get">
 				<div class="md-form">
@@ -81,7 +110,11 @@
 					</div>
 				</div>
 
-
+				<input type="hidden" name="departmentId"
+					value="<%out.println(deptid);%>">
+					
+					<% }
+						%> 
 				<div class="text-center text-md-right">
 					<input type="submit" class="btn btn-primary submitBtn"
 						value="check">

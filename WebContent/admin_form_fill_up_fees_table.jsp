@@ -38,9 +38,9 @@
 		</tr>
 
 		<%
-			adminFormFillUpFeesTableController devId = new adminFormFillUpFeesTableController();
+		adminFeesFindTableController formfillupfee = new adminFeesFindTableController();
 				ArrayList<adminFormFillUpFeesTable> al = new ArrayList<adminFormFillUpFeesTable>();
-				al = devId.showFormFillUpFeesTable();
+				al = formfillupfee.showFormFillUpFeesTable();
 
 				for (int i = 0; i < al.size(); i++) {
 		%>
@@ -73,7 +73,7 @@
 			</td>
 
 			<td><a class="btn btn-primary"
-				href='adminFormFillUpFeesTableEdit?Edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
+				href='adminFeesEditTableController?fee_type=formfillup_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
 			</td>
 
 		</tr>

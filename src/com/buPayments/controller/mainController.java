@@ -23,31 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Devfees;
@@ -111,7 +86,7 @@ ArrayList<Student> al = new ArrayList<Student>();
 
 
 	public static Student login(Student login_student){
-		//preparing some objects for connection 
+		
 	      Statement stmt = null;    
 		
 		  Connection myConn = null;
@@ -536,24 +511,33 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 
 
 
-	public static String checkValidity(String feeType, String semester) throws SQLException, ParseException{
+	public static String checkValidity(String feeType, String semester, String departmentId) throws SQLException, ParseException{
 		String sql="";
 		Connection con = db.getCon();
 		String result="";
-		 //current date
+		 Statement stmt = null;
+		 ResultSet myRs1,myRs2  = null;
+		 
+		 
 		LocalDate today = LocalDate.now(ZoneId.systemDefault()) ;
 		String strDate = today.toString() ; 
+         System.out.println("=================>"+departmentId);
+         
+    
          
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date curr = sdf.parse(strDate);
-		
+        
+        
+    
+    
 		if(feeType.equals("devfee")){
-			sql = "select * from  admin_development_fees_table where semester = '"+semester+"' ";
+			sql = "select * from  admin_development_fees_table where semester = '"+semester+"' AND department = '"+departmentId+"'  ";//AND department = '"+deptname+"'
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		    ResultSet myRs = ps.executeQuery(sql);
-		    if(myRs.next()) {
-		    	String startDate = myRs.getString("start_date");
-		    	String endDate = myRs.getString("end_date");
+		    myRs2 = ps.executeQuery(sql);
+		    if(myRs2.next()) {
+		    	String startDate = myRs2.getString("start_date");
+		    	String endDate = myRs2.getString("end_date");
 		    	
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
@@ -583,10 +567,10 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		}else if(feeType.equals("semfee")){
 			sql = "select * from  admin_semester_fees_table where semester = '"+semester+"' ";
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		    ResultSet myRs = ps.executeQuery(sql);
-		    if(myRs.next()) {
-		    	String startDate = myRs.getString("start_date");
-		    	String endDate = myRs.getString("end_date");
+		    myRs2 = ps.executeQuery(sql);
+		    if(myRs2.next()) {
+		    	String startDate = myRs2.getString("start_date");
+		    	String endDate = myRs2.getString("end_date");
 		    	
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
@@ -615,10 +599,10 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 			
 			sql = "select * from  admin_formfillup_fees_table where semester = '"+semester+"' ";
 			PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-		    ResultSet myRs = ps.executeQuery(sql);
-		    if(myRs.next()) {
-		    	String startDate = myRs.getString("start_date");
-		    	String endDate = myRs.getString("end_date");
+		    myRs2 = ps.executeQuery(sql);
+		    if(myRs2.next()) {
+		    	String startDate = myRs2.getString("start_date");
+		    	String endDate = myRs2.getString("end_date");
 		    	
 		    	if(startDate!=null && endDate!=null){
 		    		Date s_date = sdf.parse(startDate);
@@ -1039,7 +1023,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 
 	public static Student getStudentByStudentId(String id) {
 		
-			Statement stmt = null;    
+		Statement stmt = null;    
 		
 		  Connection myConn = null;
 		  PreparedStatement myStmt = null;
@@ -1091,6 +1075,46 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 		    return student;
 
 	}
+
+
+
 	
+
+
+
+	public static String findDepartmentIdbyName(String deptname) {
+
+		Statement stmt = null;
+		ResultSet myRs = null;
+		String dept="";
+		
+		Connection myConn = db.getCon();
+		
+		String sql1 = "select * from department where dept_name LIKE '%"+deptname+"%'";
+		  
+    	try {
+			stmt=myConn.createStatement();
+			myRs = stmt.executeQuery(sql1);
+			
+			
+			 boolean more = myRs.next();
+			    
+			    if (!more) {
+			  
+			     dept = myRs.getString("id");
+			  
+			     return dept;
+				
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		return dept;
+	}
+		
+		
 	
 }

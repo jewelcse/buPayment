@@ -21,7 +21,7 @@
 </ol>
 
 <div class="col-md-5  m-auto pt-1 pb-3">
-	<form method="post" action="adminDevelopmentFeesTableController">
+	<form method="post" action="adminFeesTableController?edit_fee_type=development_fee">
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">

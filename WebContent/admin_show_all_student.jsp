@@ -1,9 +1,22 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" import="com.buPayments.model.*"
-	import="java.util.ArrayList"%>
-
+	pageEncoding="ISO-8859-1" 
+	import="com.buPayments.model.Admin"
+	import="com.buPayments.controller.*" 
+	import="com.buPayments.model.*"
+	import="java.util.ArrayList"
+	import="java.sql.Connection"
+	import="java.sql.PreparedStatement"
+	import="java.sql.ResultSet"
+	import="java.sql.SQLException"
+	import="java.sql.Statement"
+	import="java.text.ParseException"
+	import="java.lang.*"
+	%>
+	
+	
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -25,10 +38,11 @@ h3.inline {
 	width: 100%;
 }
 
-.container {
-    width: 100%;
-    overflow-x: auto;
-    white-space: nowrap;
+.thorizental { /* this is for horizontal scroll bar class */
+	
+	width: 100%;
+	overflow-x: auto;
+	white-space: nowrap;
 }
 </style>
 
@@ -38,111 +52,98 @@ h3.inline {
 	<li class="breadcrumb-item active">Students Table</li>
 </ol>
 
-<section class="p-1">
-	<input type="text" id="myInput1" class=" form-control mb-4"
-		onkeyup="searchByFunction()" placeholder="Search by Semester"><br>
-	<a href="#" class="btn btn-primary" id="test"
-		onClick="javascript:fnExcelReport();">Export Data</a> <a href="#"
-		class="btn btn-primary" id="test" onclick="printData()">Print Data</a>
-	<a href="admin_add_student.jsp"><img src="images/plus.png"
-		style="width: 35px"> Add new Record</a>
-
-	<div id="printData" class="container">
-		<h3 class="inline">
-			<u>Students Table</u>
-		</h3>
-		<table class="table table-bordered table-striped text-center"
-			id="myTable" border="2px solid black">
-			<tr>
-				<th>Roll No</th>
-				<th>Password</th>
-				<th>Registration</th>
-				<th>Name</th>
-				<th>Father Name</th>
-				<th>Mother Name</th>
-				<th>Email</th>
-				<th>Phone</th>
-				<th>Semester</th>
-				<th>Department</th>
-				<th>Faculty</th>
-			</tr>
-
-			<%
-				adminShowStudentsController dao = new adminShowStudentsController();
-					ArrayList<Student> al = new ArrayList<Student>();
-					al = dao.showData();
-
-					for (int i = 0; i < al.size(); i++) {
-			%>
-			<tr>
-
-				<td>
-					<%
-						out.println(al.get(i).getS_roll());
-					%>
-				</td>
-				<td width="20px">
-					<%
-						out.println(al.get(i).getS_password());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_reg());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_name());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_father_name());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_mother_name());
-					%>
-				</td>
-				<td width="20px">
-					<%
-						out.println(al.get(i).getS_email());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_phone());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_semester());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_department());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(al.get(i).getS_faculty());
-					%>
-				</td>
-
-			</tr>
-
-			<%
-				}
-			%>
-
-
-
-		</table>
+<div class="">
+	<div class="">
+		<input type="text" id="myInput1" class=" form-control mb-4"
+			onkeyup="searchByFunction()" placeholder="Search by Semester">
 	</div>
-</section>
+
+	<div class="">
+		<a href="#" class="btn btn-primary" id="test"
+			onClick="javascript:fnExcelReport();">Export Data</a> <a href="#"
+			class="btn btn-primary" id="test" onclick="printData()">Print
+			Data</a> <a href="admin_add_student.jsp"><img src="images/plus.png"
+			style="width: 35px"> Add new Record</a>
+	</div>
+	<div class="">
+		<div id="printData" class="">
+			<h3 class="inline">
+				<u>Students Table</u>
+			</h3>
+			<table class="table table-bordered table-hover  "
+				id="myTable" border="2px solid black">
+				<tr>
+					<th>Roll No</th>
+					<th>Password</th>
+					<th>Registration</th>
+					<th>Name</th>
+					<th>Father Name</th>
+					<th>Mother Name</th>
+					<th>Email</th>
+					<th>Phone</th>
+					<th>Semester</th>
+					<th>Department</th>
+					<th>Faculty</th>
+				</tr>
+
+				
+				<c:forEach items="${list_student}" var="list">
+				<tr>
+					<td><c:out value=" ${list.getS_roll()}" /></td>
+					<td><c:out value=" ${list.getS_password()}" /></td>
+					<td><c:out value=" ${list.getS_reg()}" /></td>
+					<td><c:out value=" ${list.getS_name()}" /></td>
+					<td><c:out value=" ${list.getS_father_name()}" /></td>
+					<td><c:out value=" ${list.getS_mother_name()}" /></td>
+					<td><c:out value=" ${list.getS_email()}" /></td>
+					<td><c:out value=" ${list.getS_phone()}" /></td>
+					<td><c:out value=" ${list.getS_semester()}" /></td>
+					<td><c:out value=" ${list.getS_department()}" /></td>
+					<td><c:out value=" ${list.getS_faculty()}" /></td>
+					
+					</tr>
+				</c:forEach>
+			</table>
+		</div>
+	</div>
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+		
+		
+		 <!-- -//${fn:length(list)}//////////// important -->
+		 
+		 <%
+		 
+		   dbConnection db = new dbConnection();
+
+			Connection myConn = db.getCon();
+			PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM student");
+			ResultSet myRs = pstmt.executeQuery();
+
+			int studentCount=0;
+			while (myRs.next()) {
+				studentCount++;
+				//System.out.println("from while loop "+ studentCount);
+			}
+		 	float num = studentCount/2;
+		 	System.out.println(num);
+		 	
+		 	//double num1 = Math.ceil(num);
+		 	//System.out.println(num);
+		 
+		 %>
+		 
+		 
+		 	<li class="page-item"><a class="page-link" href="#">Previous</a></li>
+				<%   for(int i=1; i<= num;i++)  {%>
+	
+			<li class="page-item"><a class="page-link" href="adminShowStudentsController?page=<% out.println(i); %>"><% out.println(i); %></a></li>
+			<%} %>
+			
+			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+		</ul>
+	</nav>
+</div>
 
 
 <script>

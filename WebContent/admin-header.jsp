@@ -118,7 +118,7 @@
 					<span>Update Dev Fee</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="adminShowStudentsController"> <i
+				href="adminShowStudentsController?page=1"> <i
 					class="fas fa-fw fa-table"></i> <span>Students Information</span></a></li>
 			<li class="nav-item"><a class="nav-link"
 				href="admin_all_application.jsp"> <i class="fas fa-fw fa-table"></i>

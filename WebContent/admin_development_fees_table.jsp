@@ -40,9 +40,7 @@
 
 				<div class="md-form">
 					<div class="md-form mb-0">
-						<select required onchange="selected()"
-							class="browser-default custom-select custom-select-lg mb-3"
-							name="deptname" id="deptname">
+						<select  type="search" required onchange="selected()" class="select-table-filter browser-default custom-select custom-select-lg mb-3" data-table="order-table" name="deptname" id="deptname">
 							<option value="0">.....</option>
 							
 							<%
@@ -85,29 +83,29 @@
 		
 
 
-$(document).ready(function() {
-	$('#deptname').change(function(event) {
-		var deptId = $('#deptname').find(":selected").val();
-		console.log(deptId);
-		dataType : "json",
-		$.get('adminFeesManageController', {
-			deptId:deptId
-		}, function(data) {
+//$(document).ready(function() {
+	//$('#deptname').change(function(event) {
+	//	var deptId = $('#deptname').find(":selected").val();
+		//console.log(deptId);
+		//dataType : "json",
+		//$.get('adminFeesManageController', {
+		//	deptId:deptId
+		//}, function(data) {
 			
 		
-			alert(data);
-            var json = jQuery.parseJSON(data);
+			//alert(data); // working well
+            //var json = jQuery.parseJSON(data); //
+            //alert(JSON.stringify(data)); //working well
    
             //$('#semester').html(json.semester) ;
             //$('#mainfee').innerHTML = "sdsds";
             //$('#miscefee').innerHTML = json.misce_fee ;
             //$('#startdate').innerHTML = json.start_date ;
             //$('#enddate').innerHTML = json.end_date ;
-
-			
-		});
-	});
-});
+       
+		//});
+	//});
+//});
 
 </script>
 
@@ -120,8 +118,9 @@ $(document).ready(function() {
 		<u>Development Fees Table</u>
 	</h3>
 
-	<table class="table table-hover" id="myTable" border="2px solid black">
-		<tr>
+	<table class="order-table table table-hover" border="2px solid black">
+		<thead>
+			<tr>
 			<th>Department</th>
 			<th>Semester</th>
 			<th>Main Fee</th>
@@ -130,7 +129,12 @@ $(document).ready(function() {
 			<th>End Date</th>
 			<th>Action</th>
 
-		</tr>
+			</tr>
+		
+		
+		
+		</thead>
+		<tbody>
 
 		<%
 		
@@ -157,7 +161,7 @@ $(document).ready(function() {
 				
 				
 		%>
-		<tr id="ajaxGetUserServletResponse">
+		<tr>
 		
 			
 			<td id="semester"><% out.println(al.get(i).getDeptName()); %></td>
@@ -172,7 +176,7 @@ $(document).ready(function() {
 				href='adminFeesEditTableController?fee_type=development_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
 			</td>
 
-		</tr>
+		</tr></tbody>
 
 		<%
 			}
@@ -184,10 +188,60 @@ $(document).ready(function() {
 
 </section>
 
+<script>
+(function(document) {
+	'use strict';
+
+	var LightTableFilter = (function(Arr) {
+
+		
+    	var _select;
+
+		
+    
+		function _onSelectEvent(e) {
+			_select = e.target;
+			var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
+			Arr.forEach.call(tables, function(table) {
+				Arr.forEach.call(table.tBodies, function(tbody) {
+					Arr.forEach.call(tbody.rows, _filterSelect);
+				});
+			});
+		}
+
+	
+    
+		function _filterSelect(row) {
+     
+			var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
+			row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
+
+		}
+
+		return {
+			init: function() {
+				var selects = document.getElementsByClassName('select-table-filter');
+				Arr.forEach.call(selects, function(select) {
+         select.onchange  = _onSelectEvent;
+				});
+			}
+		};
+	})(Array.prototype);
+
+	document.addEventListener('readystatechange', function() {
+		if (document.readyState === 'complete') {
+			LightTableFilter.init();
+		}
+	});
+
+})(document);
 
 
 
+</script>
 
+
+<script src="ddtf.js"></script>
 
 <%@include file="admin-footer.jsp"%>
 <%

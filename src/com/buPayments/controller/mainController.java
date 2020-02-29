@@ -1,6 +1,7 @@
 package com.buPayments.controller;
 
 import java.io.IOException;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -1078,42 +1079,7 @@ public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws 
 
 
 
-	
 
-
-
-	public static String findDepartmentIdbyName(String deptname) {
-
-		Statement stmt = null;
-		ResultSet myRs = null;
-		String dept="";
-		
-		Connection myConn = db.getCon();
-		
-		String sql1 = "select * from department where dept_name LIKE '%"+deptname+"%'";
-		  
-    	try {
-			stmt=myConn.createStatement();
-			myRs = stmt.executeQuery(sql1);
-			
-			
-			 boolean more = myRs.next();
-			    
-			    if (!more) {
-			  
-			     dept = myRs.getString("id");
-			  
-			     return dept;
-				
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		
-		return dept;
-	}
 		
 		
 	

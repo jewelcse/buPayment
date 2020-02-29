@@ -21,14 +21,18 @@
 	if (session.getAttribute("currentSessionForSuperAdmin") != null
 			|| session.getAttribute("adminDevelopmentFeesTableController") != null) {
 %>
-<%@include file="admin-header.jsp"%>
 
+
+<%@include file="admin-header.jsp"%>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
 	</li>
 	<li class="breadcrumb-item active">Development Fees</li>
 </ol>
+
+
 
 <section>
 
@@ -38,8 +42,8 @@
 					<div class="md-form mb-0">
 						<select required onchange="selected()"
 							class="browser-default custom-select custom-select-lg mb-3"
-							name="deptname" id=""deptname"">
-							<option value="">.....</option>
+							name="deptname" id="deptname">
+							<option value="0">.....</option>
 							
 							<%
 							
@@ -76,58 +80,38 @@
 
 </section>
 
-<section id="ajaxGetUserServletResponse">
-
-
-
-
-
-
-</section>
-
-
 
 <script>
-
-
-///$(document).ready(function() {
-	//var name = $('#deptname').val();
-	//alert(name);
-	//console.log(name);
-	//$('#deptname').blur(function() {
-	//	$.ajax({
-	//		url : 'adminManageFeesController',
-	//		data : {
-		//		deptName : name
-		//	},
-		//	success : function(responseText) {
-		//		$('#ajaxGetUserServletResponse').text(responseText);
-		//	}
-		//});
-	//});
-//});
-
-
+		
 
 
 $(document).ready(function() {
 	$('#deptname').change(function(event) {
-		var deptname = $('#deptname').find(":selected").val();
-		console.log(deptname);
+		var deptId = $('#deptname').find(":selected").val();
+		console.log(deptId);
+		dataType : "json",
+		$.get('adminFeesManageController', {
+			deptId:deptId
+		}, function(data) {
+			
 		
-		$.get('adminManageFeesController', {
-			deptname : deptname
-		}, function(responseText) {
-			//$('#id2').val(responseText);
+			alert(data);
+            var json = jQuery.parseJSON(data);
+   
+            //$('#semester').html(json.semester) ;
+            //$('#mainfee').innerHTML = "sdsds";
+            //$('#miscefee').innerHTML = json.misce_fee ;
+            //$('#startdate').innerHTML = json.start_date ;
+            //$('#enddate').innerHTML = json.end_date ;
+
 			
 		});
 	});
 });
 
-
-
-
 </script>
+
+
 
 
 
@@ -149,46 +133,40 @@ $(document).ready(function() {
 		</tr>
 
 		<%
+		
+				
+		
+		
 		       adminFeesFindTableController developmentfee = new adminFeesFindTableController();
 				ArrayList<adminDevelopmentFeesTable> al = new ArrayList<adminDevelopmentFeesTable>();
 				al = developmentfee.showDevelopmentFeesTable();
 
 				for (int i = 0; i < al.size(); i++) {
-		%>
-		<tr>
-		
-			<td>
-				<%
-					out.println(al.get(i).getDeptId());
-				%>
-			</td>
-			
+					
+					adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
+					
+					//out.println(al.get(i).getSemester());
+				//out.println(newItem.getSemester());
+				
+						
+							
+							
 
-			<td>
-				<%
-					out.println(al.get(i).getSemester());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getMain_fee());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getMisce_fee());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getStart_date());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getEnd_date());
-				%>
-			</td>
+
+							
+				
+				
+		%>
+		<tr id="ajaxGetUserServletResponse">
+		
+			
+			<td id="semester"><% out.println(al.get(i).getDeptName()); %></td>
+
+			<td id="semester"><% out.println(al.get(i).getSemester()); %></td>
+			<td id="mainfee"><% out.println(al.get(i).getMain_fee()); %></td>
+			<td id="miscefee"><% out.println(al.get(i).getMisce_fee()); %></td>
+			<td id="startdate"><% out.println(al.get(i).getStart_date()); %></td>
+			<td id="enddate"><% out.println(al.get(i).getEnd_date()); %></td>
 
 			<td><a class="btn btn-primary"
 				href='adminFeesEditTableController?fee_type=development_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
@@ -205,6 +183,7 @@ $(document).ready(function() {
 	</table>
 
 </section>
+
 
 
 

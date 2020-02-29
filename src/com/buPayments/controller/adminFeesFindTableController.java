@@ -24,20 +24,23 @@ public class adminFeesFindTableController extends HttpServlet {
 static dbConnection db = new dbConnection(); 
     
     ArrayList<adminDevelopmentFeesTable> developmentfee = new ArrayList<adminDevelopmentFeesTable>();
-	
+    Connection con;
+    PreparedStatement ps,ps1;
+    ResultSet myRs,myRs1;
 	public ArrayList<adminDevelopmentFeesTable> showDevelopmentFeesTable(){
-		String sql = "select * from admin_development_fees_table ORDER BY id ASC ";
+		String sql = "select * from admin_development_fees_table";
 		Connection con = db.getCon();
 		try {
 			//Statement stmt = con.createStatement();
-			PreparedStatement ps = con.prepareStatement(sql);
-		    ResultSet myRs =	ps.executeQuery(sql);
+			 ps = con.prepareStatement(sql);
+		     myRs =	ps.executeQuery(sql);
 		    while (myRs.next()) {
 		    	adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
 		    	
 		    	String id  = myRs.getString("id");
 		    	Integer newId = Integer.parseInt(id);
 		    	String deptId  = myRs.getString("department");
+		    	//String deptname = myRs.getString("dept_name");
 		    	String semester  = myRs.getString("semester");
 		    	String main_fee  = myRs.getString("main_fee");
 		    	String misce_fee  = myRs.getString("misce_fee");
@@ -46,8 +49,17 @@ static dbConnection db = new dbConnection();
 		    
 		       //System.out.print("53 lin of admin devlopment fess conteoller "+id);
 		    	
+		    	String sql1 = "select * from department where id = '"+deptId+"'";
+		    	 ps1 = con.prepareStatement(sql1);
+			     myRs1 =	ps1.executeQuery(sql1);
+			     while(myRs1.next()) {
+			     String deptname = myRs1.getString("dept_name");
+			     newItem.setDeptName(deptname);
+			     }
+		    	
 		    	newItem.setId(id);
 		    	newItem.setDeptId(deptId);
+		    	
 		    	newItem.setSemester(semester);
 		    	newItem.setMain_fee(main_fee);
 		    	newItem.setMisce_fee(misce_fee);

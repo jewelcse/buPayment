@@ -31,7 +31,7 @@ import com.buPayments.model.TestCSVModel;
 public class TestCSVServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
-	private static String uploadURL = "assets/csv";
+	private static String uploadURL = "assets";
 	dbConnection db = new dbConnection();
 	public TestCSVServlet() {
 
@@ -89,6 +89,8 @@ public class TestCSVServlet extends HttpServlet {
 				
 				dbConnection db = new dbConnection();
 				Student newStudent = new Student(roll,reg,name,father_name,mother_name,email,phone,password,semester,department,faculty);
+				System.out.println("Students file is inserting..........");
+				
 				
 				try {
 					mainController.addStudent(newStudent);

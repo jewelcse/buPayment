@@ -125,28 +125,35 @@ h3.inline {
 				studentCount++;
 				//System.out.println("from while loop "+ studentCount);
 			}
-		 	float num = studentCount/2;
+		 	double num = (double)studentCount/6;
 		 	System.out.println(num);
 		 	
-		 	//double num1 = Math.ceil(num);
-		 	//System.out.println(num);
+		 	double num1 = (double) Math.ceil(num);
+		 	System.out.println(num1);
+		 	int i;
 		 
 		 %>
 		 
 		 
-		 	<li class="page-item"><a class="page-link" href="#">Previous</a></li>
-				<%   for(int i=1; i<= num;i++)  {%>
+		 	<!--  <li class="page-item"><a class="page-link" href="#">Previous</a></li>-->
+				<%   for(i=1; i<= num1;i++)  {%>
 	
-			<li class="page-item"><a class="page-link" href="adminShowStudentsController?page=<% out.println(i); %>"><% out.println(i); %></a></li>
+			<li class="page-item"><a class="page-link" id="prev" href="adminShowStudentsController?page=<% out.println(i); %>"><% out.println(i); %></a></li>
+			
 			<%} %>
 			
-			<li class="page-item"><a class="page-link" href="#">Next</a></li>
+			
+			
+			<!-- <li class="page-item"><a class="page-link" href="adminShowStudentsController?page=<% //out.println(i); %>">Next</a></li> -->
+			
 		</ul>
 	</nav>
 </div>
 
 
 <script>
+
+
 	function fnExcelReport() {
 		var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
 		tab_text = tab_text

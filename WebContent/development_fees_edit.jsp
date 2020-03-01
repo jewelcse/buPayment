@@ -19,9 +19,22 @@
 	<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 	<li class="breadcrumb-item active">Update Development Fee</li>
 </ol>
+<% 
+
+//int pageNo = 10 ;
+
+String url = request.getHeader("referer"); /// get the full url
+
+String pageNo=(String)session.getAttribute("currentPage"); 
+
+%>
+
 
 <div class="col-md-5  m-auto pt-1 pb-3">
-	<form method="post" action="adminFeesTableController?edit_fee_type=development_fee">
+	<form method="post" action="adminFeesTableController?edit_fee_type=development_fee&&page=<% out.println(pageNo);%>">
+	
+	<input type="hidden" name="page" value=<% //out.println(pageNo); %>>
+	
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">

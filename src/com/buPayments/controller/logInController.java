@@ -21,8 +21,7 @@ import com.mysql.jdbc.Statement;
 public class logInController extends HttpServlet {
 	
 	static dbConnection db = new dbConnection();
-	private static final long serialVersionUID = 2562294252731783855L;
-
+	
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

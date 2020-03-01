@@ -23,11 +23,13 @@ public class adminFeesFindTableController extends HttpServlet {
 	
 static dbConnection db = new dbConnection(); 
     
-    ArrayList<adminDevelopmentFeesTable> developmentfee = new ArrayList<adminDevelopmentFeesTable>();
+    
     Connection con;
     PreparedStatement ps,ps1;
     ResultSet myRs,myRs1;
 	public ArrayList<adminDevelopmentFeesTable> showDevelopmentFeesTable(){
+		
+		ArrayList<adminDevelopmentFeesTable> developmentfee = new ArrayList<adminDevelopmentFeesTable>();
 		String sql = "select * from admin_development_fees_table";
 		Connection con = db.getCon();
 		try {

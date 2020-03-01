@@ -24,7 +24,7 @@ public class adminFeesTableController extends HttpServlet {
 		System.out.println(fee_type);
 
 		if (fee_type.equals("development_fee")) {
-
+			
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_development_fees_table.jsp");
 
 			dispatcher.forward(request, response);
@@ -49,7 +49,15 @@ public class adminFeesTableController extends HttpServlet {
 
 		String edit_fee_type = request.getParameter("edit_fee_type");
 
-		if (edit_fee_type.equals("development_fee")) {			
+		if (edit_fee_type.equals("development_fee")) {	
+			//current_page=adminFeesManageController?type=developmentfee&&page=1
+			//adminFeesManageController?type=developmentfee&&page=1
+
+			String pageNo= request.getParameter("page");
+			System.out.println(pageNo);
+			int currentPageNo = Integer.parseInt(pageNo);
+			
+			String prev_page = "adminFeesManageController?type=developmentfee&&page="+currentPageNo;
 			
 			response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
@@ -73,9 +81,10 @@ public class adminFeesTableController extends HttpServlet {
 	        
 	        mainController.updateDevelopmentFeesTable(devfee);
 	        
-	        RequestDispatcher dispatcher =  request.getRequestDispatcher("admin_development_fees_table.jsp");
+	        //RequestDispatcher dispatcher =  request.getRequestDispatcher("admin_development_fees_table.jsp");
 			
-	    	dispatcher.forward(request, response);
+	    	//dispatcher.forward(request, response);
+	        response.sendRedirect(prev_page);
 
 			
 

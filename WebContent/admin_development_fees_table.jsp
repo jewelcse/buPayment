@@ -2,16 +2,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
 	import="com.buPayments.model.adminDevelopmentFeesTable"
-	import="com.buPayments.controller.*" 
-	import="com.buPayments.model.*"
-	import="java.util.ArrayList"
-	import="java.sql.Connection"
-	import="java.sql.PreparedStatement"
-	import="java.sql.ResultSet"
-	import="java.sql.SQLException"
-	import="java.sql.Statement"
-	import="java.text.ParseException"
-	%>
+	import="com.buPayments.controller.*" import="com.buPayments.model.*"
+	import="java.util.ArrayList" import="java.sql.Connection"
+	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
+	import="java.sql.SQLException" import="java.sql.Statement"
+	import="java.text.ParseException"%>
+	
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+	
+	
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -24,7 +24,8 @@
 
 
 <%@include file="admin-header.jsp"%>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
@@ -33,87 +34,7 @@
 </ol>
 
 
-
-<section>
-
-
-
-				<div class="md-form">
-					<div class="md-form mb-0">
-						<select  type="search" required onchange="selected()" class="select-table-filter browser-default custom-select custom-select-lg mb-3" data-table="order-table" name="deptname" id="deptname">
-							<option value="0">.....</option>
-							
-							<%
-							
-							dbConnection db = new dbConnection();
-
-							Connection myConn = db.getCon();
-							PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM department");
-							ResultSet myRs = pstmt.executeQuery();
-
-
-							while (myRs.next()) {
-
-								String deptid = myRs.getString("id");
-								String name = myRs.getString("dept_name");
-								
-								
-								%>
-								
-								<option value="<% out.println(deptid);%>"><%out.println(name);%></option>
-
-							
-						<% 	}
-							
-							%>
-							
-					
-							
-							
-						</select>
-					</div>
-				</div>
-				
-
-
-</section>
-
-
-<script>
-		
-
-
-//$(document).ready(function() {
-	//$('#deptname').change(function(event) {
-	//	var deptId = $('#deptname').find(":selected").val();
-		//console.log(deptId);
-		//dataType : "json",
-		//$.get('adminFeesManageController', {
-		//	deptId:deptId
-		//}, function(data) {
-			
-		
-			//alert(data); // working well
-            //var json = jQuery.parseJSON(data); //
-            //alert(JSON.stringify(data)); //working well
-   
-            //$('#semester').html(json.semester) ;
-            //$('#mainfee').innerHTML = "sdsds";
-            //$('#miscefee').innerHTML = json.misce_fee ;
-            //$('#startdate').innerHTML = json.start_date ;
-            //$('#enddate').innerHTML = json.end_date ;
-       
-		//});
-	//});
-//});
-
-</script>
-
-
-
-
-
- <section class="p-1">
+<section class="p-1">
 	<h3 class="inline">
 		<u>Development Fees Table</u>
 	</h3>
@@ -121,72 +42,86 @@
 	<table class="order-table table table-hover" border="2px solid black">
 		<thead>
 			<tr>
-			<th>Department</th>
-			<th>Semester</th>
-			<th>Main Fee</th>
-			<th>Misce Fee</th>
-			<th>Start date</th>
-			<th>End Date</th>
-			<th>Action</th>
-
+				<th>Department</th>
+				<th>Semester</th>
+				<th>Main Fee</th>
+				<th>Misce Fee</th>
+				<th>Start date</th>
+				<th>End Date</th>
+				<th>Action</th>
 			</tr>
-		
-		
-		
 		</thead>
+
 		<tbody>
-
-		<%
-		
-				
-		
-		
-		       adminFeesFindTableController developmentfee = new adminFeesFindTableController();
-				ArrayList<adminDevelopmentFeesTable> al = new ArrayList<adminDevelopmentFeesTable>();
-				al = developmentfee.showDevelopmentFeesTable();
-
-				for (int i = 0; i < al.size(); i++) {
-					
-					adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
-					
-					//out.println(al.get(i).getSemester());
-				//out.println(newItem.getSemester());
-				
-						
-							
-							
-
-
-							
-				
-				
-		%>
-		<tr>
-		
-			
-			<td id="semester"><% out.println(al.get(i).getDeptName()); %></td>
-
-			<td id="semester"><% out.println(al.get(i).getSemester()); %></td>
-			<td id="mainfee"><% out.println(al.get(i).getMain_fee()); %></td>
-			<td id="miscefee"><% out.println(al.get(i).getMisce_fee()); %></td>
-			<td id="startdate"><% out.println(al.get(i).getStart_date()); %></td>
-			<td id="enddate"><% out.println(al.get(i).getEnd_date()); %></td>
-
-			<td><a class="btn btn-primary"
-				href='adminFeesEditTableController?fee_type=development_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
-			</td>
-
-		</tr></tbody>
-
-		<%
-			}
-		%>
-
-
-
+			<c:forEach items="${development_fees_list}" var="list">
+				<tr>
+					<td><c:out value=" ${list.getDeptName()}" /></td>
+					<td><c:out value=" ${list.getSemester()}" /></td>
+					<td><c:out value=" ${list.getMain_fee()}" /></td>
+					<td><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td><c:out value=" ${list.getStart_date()}" /></td>
+					<td><c:out value=" ${list.getEnd_date()}" /></td>
+					<td><a class="btn btn-primary"
+						href='adminFeesEditTableController?fee_type=development_fee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
+	
+	<%  String pageNo = request.getParameter("page");
+	
+	  session.setAttribute("currentPage", pageNo) ;
+	  
+	  System.out.println(pageNo);
+	
+	%>
+	
+	
+ <%
+		 
+		   dbConnection db = new dbConnection();
+
+			Connection myConn = db.getCon();
+			PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM admin_development_fees_table");
+			ResultSet myRs = pstmt.executeQuery();
+
+			int studentCount=0;
+			while (myRs.next()) {
+				studentCount++;
+				//System.out.println("from while loop "+ studentCount);
+			}
+		 	double num = (double)studentCount/8;
+		 	System.out.println(num);
+		 	
+		 	double num1 = (double) Math.ceil(num);
+		 	System.out.println(num1);
+		 	int i;
+		 
+		 %>
+
+
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+		
+				<%   for(i=1; i<= num1;i++)  {%>
+	
+			<li class="page-item"><a class="page-link" id="prev" href="adminFeesManageController?type=developmentfee&&page=<%out.println(i);%>"><% out.println(i); %></a></li>
+			
+			<%} %>
+			
+		
+			<!-- <li class="page-item"><a class="page-link" href="adminShowStudentsController?page=<% //out.println(i); %>">Next</a></li> -->
+			
+	
+			
+		</ul>
+	</nav>
 
 </section>
+
+
+
 
 <script>
 (function(document) {

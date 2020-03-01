@@ -149,9 +149,9 @@
 			</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 				
-					<a class="dropdown-item" href="adminFeesTableController?type=development_fee">Development Fees</a> 
-					<a class="dropdown-item" href="adminFeesTableController?type=semester_fee">Semester Fees</a> 
-					<a class="dropdown-item" href="adminFeesTableController?type=formfillup_fee">Form Fillup Fee</a>
+					<a class="dropdown-item" href="adminFeesManageController?type=developmentfee&&page=1">Development Fees</a> 
+					<a class="dropdown-item" href="adminFeesTableController?type=semester_fee&&page=1">Semester Fees</a> 
+					<a class="dropdown-item" href="adminFeesTableController?type=formfillup_fee&&page=1">Form Fillup Fee</a>
 
 				</div></li>
 

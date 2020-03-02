@@ -91,7 +91,7 @@
 			</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="all_sub_admin.jsp">All Sub Admin</a>
+					<a class="dropdown-item" href="adminController?target=show_all_admin">All Sub Admin</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="adminLogout" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
@@ -110,7 +110,7 @@
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="all_sub_admin.jsp"> <i class="fas fa-fw fa-chart-area"></i>
+				href="adminController?target=show_all_admin"> <i class="fas fa-fw fa-chart-area"></i>
 					<span>Sub-admins</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"

@@ -3,6 +3,9 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 
 
 <%
@@ -16,8 +19,15 @@
 <%@include file="admin-header.jsp"%>
 
 <style>
+* {
+	margin: 0px;
+	padding: 0px;
+	box-sizing: border-box;
+}
+
 .privilege {
-	border: 1px solid black;
+	border: 2px solid black;
+	padding: 5px;
 }
 
 .custom-control-label::before, .custom-control-label::after {
@@ -36,9 +46,8 @@
 
 
 
-
-<div class="row ml-5 mt-5">
-	<div class="col-md-5">
+<div class="row mt-5">
+	<div class="col-md-5  m-auto pb-3 privilege">
 		<label>Add new Admin:</label>
 		<form class="form-controll"
 			action="adminController?action=addNewAdmin" method="post">
@@ -47,7 +56,7 @@
 				<input type="text" name="name" class="form-control"
 					placeholder="Name" required>
 			</div>
-			<div class="privilege mt-3">
+			<div class=" mt-3">
 				<h3 class="text-canter">Privileges</h3>
 				<div class="items p-2">
 
@@ -99,18 +108,6 @@
 							class="custom-control-label" for="customCheck7">Show All
 							payments</label>
 					</div>
-
-
-
-					<!-- 	<input type="checkbox" name="item1" class="" value="1"> Update Development Fee <br>
-                  	<input type="checkbox" name="item2" class="" value="1"> Students Information <br>
-                  	<input type="checkbox" name="item3" class="" value="1"> Application Letters <br>
-                  	<input type="checkbox" name="item4" class="" value="1"> Update Development Fees Table <br>
-                  	<input type="checkbox" name="item5" class="" value="1"> Update Semester Fees Table  <br>
-                  	<input type="checkbox" name="item6" class="" value="1"> Update Formfillup Fees Table  <br> -->
-
-
-
 				</div>
 
 			</div>
@@ -121,75 +118,6 @@
 		</form>
 
 	</div>
-
-
-		
-		<div class="col-md-6">
-		
-			<table class="table table-hover"  border="2px solid black">
-				<thead>
-					<tr>
-						<th>Admin name</th>
-						<th>Password</th>
-						<th>Edit</th>
-						<th>Delete</th>
-					</tr>
-				
-				</thead>
-				<tbody>
-					
-						<%
-
-						adminController newAdmin = new adminController();
-						ArrayList<Admin> totalAdmin= new ArrayList<Admin>();
-						totalAdmin = newAdmin.showAllSubAdmin();
-
-					for (int i = 0; i < totalAdmin.size(); i++) {
-			%>
-			<tr>
-				
-	
-				<td>
-				<%
-					out.println(totalAdmin.get(i).getName());
-				%>
-				</td>
-				<td>
-					<%
-						out.println(totalAdmin.get(i).getPassword());
-					%>
-				</td>
-			
-				<td>
-					<a class="btn btn-primary"
-					href="adminSettingsEdit.jsp?edit_id=<%
-						out.println(totalAdmin.get(i).getId());
-					%>&&name=<%
-						out.println(totalAdmin.get(i).getName());
-					%>">Edit</a>
-				</td>
-				
-				<td>
-					<a class="btn btn-primary"
-					href="adminController?delete_id=<%
-						out.println(totalAdmin.get(i).getId());
-					%>">Delete</a>
-				</td>
-
-
-			</tr>
-
-			<%
-				}
-			%>					
-				
-				</tbody>
-			
-			
-			</table>
-		
-		</div>
-
 
 </div>
 

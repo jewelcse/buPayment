@@ -91,29 +91,32 @@
 				studentCount++;
 				//System.out.println("from while loop "+ studentCount);
 			}
-		 	double num = (double)studentCount/8;
-		 	System.out.println(num);
+		 	double pages = (double)studentCount/8;
+		 	//System.out.println(num);
 		 	
-		 	double num1 = (double) Math.ceil(num);
-		 	System.out.println(num1);
+		 	double totalPages = (double) Math.ceil(pages);
+		 	//System.out.println(num1);
+		 	int lastPage = (int)totalPages;
 		 	int i;
-		 
+		 	
+		 	int previousPage=1;
+		 	int nextPage=1;
+		 	
 		 %>
 
 
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
 		
-				<%   for(i=1; i<= num1;i++)  {%>
+			<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=1"><<</a></li> 
+			<!-- <li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%//out.println(previousPage);%>"><</a></li>  -->
+				<%  for(i=1; i<= totalPages;i++)  { //  previousPage = i-1; nextPage = i+1;%>
 	
-			<li class="page-item"><a class="page-link" id="prev" href="adminFeesManageController?type=developmentfee&&page=<%out.println(i);%>"><% out.println(i); %></a></li>
+			 	<li class="page-item "><a class="page-link active" href="adminFeesManageController?type=developmentfee&&page=<%out.println(i);%>"><% out.println(i); %></a></li> 
 			
-			<%} %>
-			
-		
-			<!-- <li class="page-item"><a class="page-link" href="adminShowStudentsController?page=<% //out.println(i); %>">Next</a></li> -->
-			
-	
+			<% } %>
+			<!--<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%//out.println(nextPage);%>">></a></li> -->
+			<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%out.println(lastPage);%>">>></a></li> 
 			
 		</ul>
 	</nav>
@@ -121,67 +124,12 @@
 </section>
 
 
-
-
-<script>
-(function(document) {
-	'use strict';
-
-	var LightTableFilter = (function(Arr) {
-
-		
-    	var _select;
-
-		
-    
-		function _onSelectEvent(e) {
-			_select = e.target;
-			var tables = document.getElementsByClassName(_select.getAttribute('data-table'));
-			Arr.forEach.call(tables, function(table) {
-				Arr.forEach.call(table.tBodies, function(tbody) {
-					Arr.forEach.call(tbody.rows, _filterSelect);
-				});
-			});
-		}
-
-	
-    
-		function _filterSelect(row) {
-     
-			var text_select = row.textContent.toLowerCase(), val_select = _select.options[_select.selectedIndex].value.toLowerCase();
-			row.style.display = text_select.indexOf(val_select) === -1 ? 'none' : 'table-row';
-
-		}
-
-		return {
-			init: function() {
-				var selects = document.getElementsByClassName('select-table-filter');
-				Arr.forEach.call(selects, function(select) {
-         select.onchange  = _onSelectEvent;
-				});
-			}
-		};
-	})(Array.prototype);
-
-	document.addEventListener('readystatechange', function() {
-		if (document.readyState === 'complete') {
-			LightTableFilter.init();
-		}
-	});
-
-})(document);
-
-
-
-</script>
-
-
-<script src="ddtf.js"></script>
-
 <%@include file="admin-footer.jsp"%>
+
 <%
 	} else {
 %>
+
 
 <%@include file="admin-login.jsp"%>
 <%

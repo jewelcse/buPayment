@@ -47,8 +47,8 @@
 
 
 <div class="row mt-5">
-	<div class="col-md-5  m-auto pb-3 privilege">
-		<label>Add new Admin:</label>
+	<div class="col-md-5  m-auto  privilege p-4">
+		<div class="mb-2"><h3 class="text-center ">Add new Admin</h3></div>
 		<form class="form-controll"
 			action="adminController?action=addNewAdmin" method="post">
 

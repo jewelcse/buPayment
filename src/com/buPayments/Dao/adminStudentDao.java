@@ -38,7 +38,6 @@ public class adminStudentDao {
 		    	String d_pass  = myRs.getString("s_Pass");
 		        //System.out.println("Welcome " + d_name);
 		        // login_student.setS_name(name);
-		    	
 		        newStudent.setS_roll(d_roll);
 		        newStudent.setS_reg(d_reg);
 		        newStudent.setS_name(d_name);
@@ -52,13 +51,10 @@ public class adminStudentDao {
 		        newStudent.setS_password(d_pass);
 		        newStudent.setValid(true);
 		        al.add(newStudent);
-			}
-		    
-			
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return al;
 	}
-
 }

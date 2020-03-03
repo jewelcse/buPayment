@@ -60,7 +60,7 @@ h3.inline {
 			onkeyup="searchByFunction()" placeholder="Search by Semester">
 	</div>
 
-	<div class="">
+	<div class="col-md-3 border p-2">
 		<a href="#" class="btn btn-primary" id="test"
 			onClick="javascript:fnExcelReport();">Export Data</a> <a href="#"
 			class="btn btn-primary" id="test" onclick="printData()">Print

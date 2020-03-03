@@ -114,7 +114,7 @@
 					<span>Sub-admins</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="admin_update_fees.jsp"> <i class="fas fa-fw fa-chart-area"></i>
+				href="adminController?target=update_development_fee"> <i class="fas fa-fw fa-chart-area"></i>
 					<span>Update Dev Fee</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"

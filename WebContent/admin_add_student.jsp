@@ -28,19 +28,26 @@
 <!--Grid column-->
 <div class="col-md-10  m-auto pt-3  ">
 
-	<div class="mb-4">
-		<form enctype="multipart/form-data" action="TestCSVServlet"
-			method="post">
-			<table align="center" border="1px solid black">
-				<tr>
-					<td><input type="file" name="chooser"></td>
-				</tr>
-				<tr>
-					<td><input type="submit" value="Submit"></td>
-				</tr>
-			</table>
-		</form>
+	<div class="d-inline-block">
+		<a class="nav-link inline" href="adminShowStudentsController?page=1"><span>Back</span></a>
 	</div>
+	<div class="d-inline-block">
+		<div class="mb-4">
+
+			<form enctype="multipart/form-data" action="TestCSVServlet"
+				method="post">
+				<table align="center" border="1px solid black">
+					<tr>
+						<td><input type="file" name="chooser"></td>
+					</tr>
+					<tr>
+						<td><input type="submit" value="Submit"></td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+
 
 	<form method="post" action="addStudentController">
 

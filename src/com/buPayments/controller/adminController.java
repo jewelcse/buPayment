@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 import com.buPayments.Dao.adminDao;
 import com.buPayments.Dao.adminDevelopmentFeesDao;
 import com.buPayments.model.Admin;
+import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Student;
 import com.buPayments.model.adminDevelopmentFeesTable;
 import com.buPayments.model.allApplication;
@@ -32,12 +33,12 @@ public class adminController extends HttpServlet {
 		// target=show_all_admin
 		// target=delete
 		// target=new_admin_create
+		// target=update_development_fee
 
 		String action = request.getParameter("target");
-
 		String delete_id = request.getParameter("delete_id");
-		// System.out.println(delete_id);
-
+		
+		
 		if (action.equals("show_all_admin")) {
 
 			ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
@@ -66,6 +67,19 @@ public class adminController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("adminSettings.jsp");
 
 			dispatcher.forward(request, response);
+		}
+		else if (action.equals("update_development_fee")) {
+
+
+			ArrayList<ChangedFees> list = adminDevelopmentFeesDao.showAllChangedFees();
+
+			PrintWriter out = response.getWriter();
+
+			request.setAttribute("changed_fees_list", list);
+
+			RequestDispatcher view = request.getRequestDispatcher("admin_update_fees.jsp");
+			view.forward(request, response);
+
 		}
 
 	}

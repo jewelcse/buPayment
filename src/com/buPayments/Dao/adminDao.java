@@ -22,9 +22,7 @@ public class adminDao {
 			PreparedStatement ps = con.prepareStatement(sql);
 			ResultSet myRs = ps.executeQuery(sql);
 			while (myRs.next()) {
-
 				Admin newAdmin = new Admin();
-
 				String id = myRs.getString("id");
 				String name = myRs.getString("name");
 				String password = myRs.getString("password");
@@ -34,7 +32,7 @@ public class adminDao {
 				String item4 = myRs.getString("update_development_fees_table");
 				String item5 = myRs.getString("update_semester_fees_table");
 				String item6 = myRs.getString("update_formfillup_fees_table");
-
+				
 				newAdmin.setId(id);
 				newAdmin.setName(name);
 				newAdmin.setPassword(password);
@@ -44,7 +42,6 @@ public class adminDao {
 				newAdmin.setItem4(item4);
 				newAdmin.setItem5(item5);
 				newAdmin.setItem6(item6);
-
 				adminList.add(newAdmin);
 			}
 

@@ -200,52 +200,65 @@ public class mainController {
 		}
 	}
 
-	public  boolean FindDuplicateChangedDevelopmentFees(String roll, String semester) {
+	public static boolean FindDuplicateChangedDevelopmentFees(String roll, String semester) {
 
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		Statement stmt = null;
 		ResultSet myRs = null;
 
+		myConn = db.getCon();
+
 		String select_sql = "select * from changed_development_fee where roll_no = '" + roll + "' AND semester = '"
 				+ semester + "'";
 		try {
 			stmt = myConn.createStatement();
 			myRs = stmt.executeQuery(select_sql);
-			while( myRs.next()) {
-				return true;/////////////having some problem
+
+			boolean more = myRs.next();
+
+			if (more) {
+				return true;
 			}
 		} catch (SQLException e) {
-
 			e.printStackTrace();
 		}
 		return false;
-
 	}
 
 	public static void ChangedFeesNow(ChangedFees changedFees) {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
+		Statement stmt = null;
+		ResultSet myRs = null;
 		myConn = db.getCon();
 
 		String roll = changedFees.getRoll();
 		String semester = changedFees.getSemester_name();
 		String amount = changedFees.getChanged_amount();
 
-		String sql = "insert into changed_development_fee (roll_no,semester,changed_amount) values (?,?,?)";
+		String select_sql = "select * from changed_development_fee where roll_no = '" + roll + "' AND semester = '"
+				+ semester + "'";
+
 		try {
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			myStmt.setString(1, roll);
-			myStmt.setString(2, semester);
-			myStmt.setString(3, amount);
-			myStmt.execute();
-			System.out.print("--->Changed Development Fee Successfull!\n");
+			stmt = myConn.createStatement();
+			myRs = stmt.executeQuery(select_sql);
+			boolean more = myRs.next();
+			if (!more) {
+				String sql = "insert into changed_development_fee (roll_no,semester,changed_amount) values (?,?,?)";
+				myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+				myStmt.setString(1, roll);
+				myStmt.setString(2, semester);
+				myStmt.setString(3, amount);
+				myStmt.execute();
+				System.out.print("--->Changed Development Fee Successfull!\n");
+			}
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-	}
 
-	
+	}
 
 	public static Admin admin_login(Admin login_admin) {
 		Statement stmt = null;
@@ -750,4 +763,5 @@ public class mainController {
 		}
 		return student;
 	}
+
 }

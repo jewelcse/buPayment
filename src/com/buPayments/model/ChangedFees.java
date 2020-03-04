@@ -20,6 +20,13 @@ public class ChangedFees {
 		this.semester_name = semester_name;
 		this.changed_amount = changed_amount;
 	}
+	
+	public ChangedFees( String semester_name, String changed_amount) {
+		super();
+		
+		this.semester_name = semester_name;
+		this.changed_amount = changed_amount;
+	}
 	public ChangedFees() {
 		
 	}

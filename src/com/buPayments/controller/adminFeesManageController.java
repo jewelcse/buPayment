@@ -13,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.buPayments.Dao.adminDevelopmentFeesDao;
 import com.buPayments.model.ChangedFees;
@@ -75,23 +76,20 @@ public class adminFeesManageController extends HttpServlet {
 			String changed_amount = request.getParameter("changed_amount");
 
 			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount);
-			boolean duplicate = true;
 			
-			duplicate = FindDuplicateChangedDevelopmentFees(roll, semester);
+			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester);
+			
+			PrintWriter out = response.getWriter();
 
-			System.out.println(duplicate);
-			
-			
-
-			if(!duplicate) {
+			if (!duplicate) {
 				mainController.ChangedFeesNow(changedFees);
 				response.sendRedirect("adminController?target=update_development_fee");
-			}else {
+			} else {
+				
+				response.sendRedirect("adminController?target=update_development_fee");
 				System.out.println("---->Duplicate Entity found!");
 			}
 
-		
-			
 		}
 
 	}

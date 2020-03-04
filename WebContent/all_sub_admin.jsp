@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" import="com.buPayments.model.*"
+	pageEncoding="ISO-8859-1" 
+	import="com.buPayments.model.Admin"
+	import="com.buPayments.controller.*" 
+	import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -60,6 +62,13 @@ a {
 				src="images/plus.png" style="width: 35px"> Add new Sub Admin</a>
 			</div>
 		</div>
+		<% //request.setAttribute("error", "Duplicate Entity found!");
+		
+		
+		
+		
+		
+		%>
 
 		<table class="table" border="2px solid black">
 			<thead>

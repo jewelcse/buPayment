@@ -5,6 +5,11 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -26,7 +31,8 @@
 <!--Grid column-->
 <div class="col-md-5  m-auto pt-1 pb-3">
 
-	<form method="post" action="adminFeesTableController?edit_fee_type=formfillup_fee">
+	<form method="post"
+		action="adminFeesTableController?edit_fee_type=formfillup_fee">
 
 		<div class="card">
 

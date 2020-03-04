@@ -4,6 +4,11 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -19,22 +24,21 @@
 	<li class="breadcrumb-item"><a href="#">Dashboard</a></li>
 	<li class="breadcrumb-item active">Update Development Fee</li>
 </ol>
-<% 
+<%
+	//int pageNo = 10 ;
 
-//int pageNo = 10 ;
+		String url = request.getHeader("referer"); /// get the full url
 
-String url = request.getHeader("referer"); /// get the full url
-
-String pageNo=(String)session.getAttribute("currentPage"); 
-
+		String pageNo = (String) session.getAttribute("currentPage");
 %>
 
 
 <div class="col-md-5  m-auto pt-1 pb-3">
-	<form method="post" action="adminFeesTableController?edit_fee_type=development_fee&&page=<% out.println(pageNo);%>">
-	
-	<input type="hidden" name="page" value=<% //out.println(pageNo); %>>
-	
+	<form method="post"
+		action="adminFeesTableController?edit_fee_type=development_fee&&page=<%out.println(pageNo);%>">
+
+		<input type="hidden" name="page" value=<%//out.println(pageNo);%>>
+
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">

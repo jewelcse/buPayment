@@ -4,6 +4,11 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -49,7 +54,7 @@ h3.inline {
 		</h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
-				
+
 				<th>Semester</th>
 				<th>Amount</th>
 				<th>Student Id</th>

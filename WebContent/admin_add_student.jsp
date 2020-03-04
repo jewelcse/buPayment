@@ -1,6 +1,12 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -166,8 +172,6 @@
 							<option value="8th">8<sup>th</sup></option>
 						</select>
 
-
-
 						<div class="md-form mb-2">
 
 							<input type="number" id="sphone" name="s_phone"
@@ -181,15 +185,10 @@
 
 					</div>
 				</div>
-
-
 			</div>
+		</div>
 	</form>
 </div>
-
-
-
-
 
 
 <%@include file="admin-footer.jsp"%>

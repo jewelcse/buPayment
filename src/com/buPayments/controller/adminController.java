@@ -34,11 +34,11 @@ public class adminController extends HttpServlet {
 		// target=delete
 		// target=new_admin_create
 		// target=update_development_fee
+		//target=all_application
 
 		String action = request.getParameter("target");
 		String delete_id = request.getParameter("delete_id");
-		
-		
+
 		if (action.equals("show_all_admin")) {
 
 			ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
@@ -67,9 +67,7 @@ public class adminController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("adminSettings.jsp");
 
 			dispatcher.forward(request, response);
-		}
-		else if (action.equals("update_development_fee")) {
-
+		} else if (action.equals("update_development_fee")) {
 
 			ArrayList<ChangedFees> list = adminDevelopmentFeesDao.showAllChangedFees();
 
@@ -78,6 +76,17 @@ public class adminController extends HttpServlet {
 			request.setAttribute("changed_fees_list", list);
 
 			RequestDispatcher view = request.getRequestDispatcher("admin_update_fees.jsp");
+			view.forward(request, response);
+
+		} else if (action.equals("all_application")) {
+
+
+			ArrayList<allApplication> list = adminDao.showAllApplicationFun();
+			PrintWriter out = response.getWriter();
+
+			request.setAttribute("applicationList", list);
+
+			RequestDispatcher view = request.getRequestDispatcher("admin_all_application.jsp");
 			view.forward(request, response);
 
 		}

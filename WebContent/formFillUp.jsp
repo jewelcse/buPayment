@@ -1,7 +1,14 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%@include file="header.jsp"%>
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -68,8 +75,7 @@
 					<div class="md-form">
 						<label for="regNumber" class="">Semester </label> <input
 							type="text" id="s_semester" name="s_semester" readonly
-							class="form-control"
-							value="<%out.print(semester);%>">
+							class="form-control" value="<%out.print(semester);%>">
 
 					</div>
 
@@ -84,16 +90,14 @@
 					<div class="md-form">
 						<label for="orangeForm-moname" class="">Mother's Name</label> <input
 							type="text" id="moname" name="s_mother_name" readonly
-							value="<%=currentUser.getS_mother_name()%>"
-							class="form-control">
+							value="<%=currentUser.getS_mother_name()%>" class="form-control">
 
 					</div>
 
 					<div class="md-form">
 						<label for="orangeForm-faname" class="">Father's Name</label> <input
 							type="text" id="faname" name="s_father_name" readonly
-							value="<%=currentUser.getS_father_name()%>"
-							class="form-control">
+							value="<%=currentUser.getS_father_name()%>" class="form-control">
 
 					</div>
 

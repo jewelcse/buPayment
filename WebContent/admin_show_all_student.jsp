@@ -1,16 +1,9 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" 
-	import="com.buPayments.model.*"
-	import="java.util.ArrayList"
 	import="java.sql.Connection"
 	import="java.sql.PreparedStatement"
 	import="java.sql.ResultSet"
-	import="java.sql.SQLException"
-	import="java.sql.Statement"
-	import="java.text.ParseException"
 	import="java.lang.*"
 	%>
 	

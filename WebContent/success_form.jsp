@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
 	import="com.buPayments.model.Devfees"%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@include file="header.jsp"%>
 
 
@@ -146,13 +147,12 @@
 			Your Obediently,</br>
 			<%
 				out.print(session_name);
-			%></br> Class Roll:<span id="applicantRollNo">
+			%></br> Class Roll:<span id="applicantRollNo"> <%
+ 	out.print(session_roll);
+ %></span></br> Department of
 			<%
-				out.print(session_roll);
-			%></span></br> Department of
-			<%
-				out.print(session_dept);
-			%></br> University of Barisal
+ 	out.print(session_dept);
+ %></br> University of Barisal
 		</p>
 	</div>
 </div>

@@ -1,8 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" import="com.buPayments.model.*"
-	import="java.util.ArrayList"%>
+	pageEncoding="ISO-8859-1"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -12,9 +15,6 @@
 	if (session.getAttribute("currentSessionForSuperAdmin") != null
 			|| session.getAttribute("admin_all_application") != null) {
 %>
-
-
-
 
 <%@include file="admin-header.jsp"%>
 
@@ -39,7 +39,6 @@ h3.inline {
 	</h3>
 	<table class="table table-hover" id="myTable" border="2px solid black">
 		<tr>
-			<th>ID</th>
 			<th>Semester</th>
 			<th>Subject</th>
 			<th>Fee Type</th>
@@ -47,55 +46,18 @@ h3.inline {
 			<th>Preview</th>
 		</tr>
 
-		<%
-			admin_all_application_controller appItem = new admin_all_application_controller();
-				ArrayList<allApplication> item = new ArrayList<allApplication>();
-				item = appItem.showAllApplicationFun();
-
-				for (int i = 0; i < item.size(); i++) {
-		%>
-		<tr>
-
-			<td>
-				<%
-					out.println(i + 1);
-				%>
-			</td>
-			<td>
-				<%
-					out.println(item.get(i).getSemester());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(item.get(i).getSubject());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(item.get(i).getFeeType());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(item.get(i).getReason());
-				%>
-			</td>
-			<td><a class="btn btn-primary"
-				href="admin_all_application_controller?application_id=<%out.println(item.get(i).getId());%>&&stu_id=<%out.println(item.get(i).getStudent_id());%>">Preview</a>
-			</td>
-
-
-		</tr>
-
-		<%
-			}
-		%>
-
-
-
+		<c:forEach items="${applicationList}" var="list">
+			<tr>
+				<td><c:out value=" ${list.getSemester()}" /></td>
+				<td><c:out value=" ${list.getSubject()}" /></td>
+				<td><c:out value=" ${list.getFeeType()}" /></td>
+				<td><c:out value=" ${list.getReason()}" /></td>
+				<td><a class="btn btn-primary"
+					href="admin_all_application_controller?application_id=<c:out value=" ${list.getId()}" />&&stu_id=<c:out value=" ${list.getStudent_id()}"/>">Preview</a>
+				</td>
+			</tr>
+		</c:forEach>
 	</table>
-
 </section>
 
 

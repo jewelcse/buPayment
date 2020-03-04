@@ -1,17 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.Student"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
 	import="com.buPayments.controller.*"
-	import="com.buPayments.model.Devfees" 
-	import="java.sql.Connection"
-	import="java.sql.PreparedStatement"
-	import="java.sql.ResultSet"
-	import="java.sql.SQLException"
-	import="java.sql.Statement"
-	import="java.text.ParseException"
-	%>
+	import="com.buPayments.model.Devfees" import="java.sql.Connection"
+	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
+	import="java.sql.SQLException" import="java.sql.Statement"
+	import="java.text.ParseException"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@include file="header.jsp"%>
 
 
@@ -61,14 +58,14 @@
 
 						ResultSet myRs = pstmt.executeQuery();
 
-
 						while (myRs.next()) {
 
 							String deptid = myRs.getString("id");
 							String name = myRs.getString("dept_name");
 
-							System.out.println("From jsp page the dept id is >>>>>>>>>>>>>>>>" + deptid); %>
-						
+							System.out.println("From jsp page the dept id is >>>>>>>>>>>>>>>>" + deptid);
+				%>
+
 			</p>
 			<form action="checkValidityController" method="get">
 				<div class="md-form">
@@ -112,9 +109,10 @@
 
 				<input type="hidden" name="departmentId"
 					value="<%out.println(deptid);%>">
-					
-					<% }
-						%> 
+
+				<%
+					}
+				%>
 				<div class="text-center text-md-right">
 					<input type="submit" class="btn btn-primary submitBtn"
 						value="check">

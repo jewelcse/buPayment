@@ -3,6 +3,11 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -91,7 +96,8 @@
 			</a>
 				<div class="dropdown-menu dropdown-menu-right"
 					aria-labelledby="userDropdown">
-					<a class="dropdown-item" href="adminController?target=show_all_admin">All Sub Admin</a>
+					<a class="dropdown-item"
+						href="adminController?target=show_all_admin">All Sub Admin</a>
 					<div class="dropdown-divider"></div>
 					<a class="dropdown-item" href="adminLogout" data-toggle="modal"
 						data-target="#logoutModal">Logout</a>
@@ -110,19 +116,19 @@
 			</a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="adminController?target=show_all_admin"> <i class="fas fa-fw fa-chart-area"></i>
-					<span>Sub-admins</span></a></li>
+				href="adminController?target=show_all_admin"> <i
+					class="fas fa-fw fa-chart-area"></i> <span>Sub-admins</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"
-				href="adminController?target=update_development_fee"> <i class="fas fa-fw fa-chart-area"></i>
-					<span>Update Dev Fee</span></a></li>
+				href="adminController?target=update_development_fee"> <i
+					class="fas fa-fw fa-chart-area"></i> <span>Update Dev Fee</span></a></li>
 
 			<li class="nav-item"><a class="nav-link"
 				href="adminShowStudentsController?page=1"> <i
 					class="fas fa-fw fa-table"></i> <span>Students Information</span></a></li>
 			<li class="nav-item"><a class="nav-link"
-				href="admin_all_application.jsp"> <i class="fas fa-fw fa-table"></i>
-					<span>Application Letters</span></a></li>
+				href="adminController?target=all_application"> <i
+					class="fas fa-fw fa-table"></i> <span>Application Letters</span></a></li>
 
 			<li class="nav-item dropdown"><a
 				class="nav-link dropdown-toggle" href="#" id="pagesDropdown"
@@ -148,10 +154,14 @@
 						Information</span>
 			</a>
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
-				
-					<a class="dropdown-item" href="adminFeesManageController?type=developmentfee&&page=1">Development Fees</a> 
-					<a class="dropdown-item" href="adminFeesTableController?type=semester_fee&&page=1">Semester Fees</a> 
-					<a class="dropdown-item" href="adminFeesTableController?type=formfillup_fee&&page=1">Form Fillup Fee</a>
+
+					<a class="dropdown-item"
+						href="adminFeesManageController?type=developmentfee&&page=1">Development
+						Fees</a> <a class="dropdown-item"
+						href="adminFeesTableController?type=semester_fee&&page=1">Semester
+						Fees</a> <a class="dropdown-item"
+						href="adminFeesTableController?type=formfillup_fee&&page=1">Form
+						Fillup Fee</a>
 
 				</div></li>
 

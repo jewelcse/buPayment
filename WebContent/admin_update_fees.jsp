@@ -1,7 +1,11 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.Admin"%>
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -16,8 +20,6 @@
 
 
 
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 
 <ol class="breadcrumb">
@@ -69,7 +71,7 @@
 				</div>
 			</form>
 		</div>
-		
+
 		<div class="col-md-6">
 			<table class="table table-bordered table-hover  " id="myTable"
 				border="2px solid black">
@@ -93,12 +95,12 @@
 	</div>
 </div>
 
-	<%@include file="admin-footer.jsp"%>
-	<%
-		} else {
-	%>
+<%@include file="admin-footer.jsp"%>
+<%
+	} else {
+%>
 
-	<%@include file="admin-login.jsp"%>
-	<%
-		}
-	%>
+<%@include file="admin-login.jsp"%>
+<%
+	}
+%>

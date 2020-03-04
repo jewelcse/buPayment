@@ -5,6 +5,11 @@
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -41,7 +46,7 @@
 		</tr>
 
 		<%
-		adminFeesFindTableController semesterfee = new adminFeesFindTableController();
+			adminFeesFindTableController semesterfee = new adminFeesFindTableController();
 				ArrayList<adminSemesterFeesTable> al = new ArrayList<adminSemesterFeesTable>();
 				al = semesterfee.showSemesterFeesTable();
 

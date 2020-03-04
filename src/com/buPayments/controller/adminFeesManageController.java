@@ -85,9 +85,10 @@ public class adminFeesManageController extends HttpServlet {
 				mainController.ChangedFeesNow(changedFees);
 				response.sendRedirect("adminController?target=update_development_fee");
 			} else {
-				
+				request.setAttribute("error", "Duplicate Entity found!");
 				response.sendRedirect("adminController?target=update_development_fee");
 				System.out.println("---->Duplicate Entity found!");
+				
 			}
 
 		}

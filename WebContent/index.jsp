@@ -2,13 +2,14 @@
 <%@ page import="java.util.Date"%>
 <%@ page import="java.text.SimpleDateFormat"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.*"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
 	import="com.buPayments.model.Devfees"
-	import="com.buPayments.controller.*" 
-	import="java.util.ArrayList"%>
+	import="com.buPayments.controller.*" import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 
 
 <%@include file="header.jsp"%>

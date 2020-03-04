@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
 <%@include file="header.jsp"%>
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -23,11 +27,9 @@
 </style>
 </head>
 <body>
-	<input type="hidden" name="s_Roll"
-		value="<%=currentUser.getS_roll()%>">
+	<input type="hidden" name="s_Roll" value="<%=currentUser.getS_roll()%>">
 	<input type="hidden" name="s_Reg" value="<%=currentUser.getS_reg()%>">
-	<input type="hidden" name="s_Name"
-		value="<%=currentUser.getS_name()%>">
+	<input type="hidden" name="s_Name" value="<%=currentUser.getS_name()%>">
 	<input type="hidden" name="s_Father_name"
 		value="<%=currentUser.getS_father_name()%>">
 	<input type="hidden" name="s_Mother_name"

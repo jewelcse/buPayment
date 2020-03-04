@@ -3,6 +3,11 @@
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
 	import="com.buPayments.model.Devfees"%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");

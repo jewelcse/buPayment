@@ -8,10 +8,12 @@ import java.util.ArrayList;
 
 import com.buPayments.controller.dbConnection;
 import com.buPayments.model.Admin;
+import com.buPayments.model.allApplication;
 
 public class adminDao {
 
 	public static ArrayList<Admin> showAllSubAdmin() {
+
 		dbConnection db = new dbConnection();
 		ArrayList<Admin> adminList = new ArrayList<Admin>();
 
@@ -32,7 +34,7 @@ public class adminDao {
 				String item4 = myRs.getString("update_development_fees_table");
 				String item5 = myRs.getString("update_semester_fees_table");
 				String item6 = myRs.getString("update_formfillup_fees_table");
-				
+
 				newAdmin.setId(id);
 				newAdmin.setName(name);
 				newAdmin.setPassword(password);
@@ -49,6 +51,43 @@ public class adminDao {
 			e.printStackTrace();
 		}
 		return adminList;
+	}
+
+	public static ArrayList<allApplication> showAllApplicationFun() {
+		dbConnection db = new dbConnection();
+		ArrayList<allApplication> applicationList = new ArrayList<allApplication>();
+		String sql = "select * from  application_form_table ORDER BY id DESC ";
+		Connection con = db.getCon();
+		try {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+
+				allApplication newItem = new allApplication();
+
+				String id = myRs.getString("id");
+				String semester = myRs.getString("semester");
+				String subject = myRs.getString("subject");
+				String feeType = myRs.getString("feeType");
+				String reason = myRs.getString("reason");
+				String student_id = myRs.getString("student_id");
+				String dept = myRs.getString("department");
+
+				newItem.setId(id);
+				newItem.setSemester(semester);
+				newItem.setSubject(subject);
+				newItem.setFeeType(feeType);
+				newItem.setReason(reason);
+				newItem.setStudent_id(student_id);
+				newItem.setDept(dept);
+				applicationList.add(newItem);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return applicationList;
 	}
 
 }

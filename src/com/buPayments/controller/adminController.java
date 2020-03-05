@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import com.buPayments.Dao.adminDao;
-import com.buPayments.Dao.adminDevelopmentFeesDao;
+import com.buPayments.Dao.adminFeesDao;
 import com.buPayments.model.Admin;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Student;
@@ -69,7 +69,7 @@ public class adminController extends HttpServlet {
 			dispatcher.forward(request, response);
 		} else if (action.equals("update_development_fee")) {
 
-			ArrayList<ChangedFees> list = adminDevelopmentFeesDao.showAllChangedFees();
+			ArrayList<ChangedFees> list = adminFeesDao.showAllChangedFees();
 
 			PrintWriter out = response.getWriter();
 
@@ -81,7 +81,7 @@ public class adminController extends HttpServlet {
 		} else if (action.equals("all_application")) {
 
 
-			ArrayList<allApplication> list = adminDao.showAllApplicationFun();
+			ArrayList<allApplication> list = adminDao.showAllApplicationForm();
 			PrintWriter out = response.getWriter();
 
 			request.setAttribute("applicationList", list);

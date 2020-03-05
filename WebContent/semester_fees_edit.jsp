@@ -26,67 +26,68 @@
 	<li class="breadcrumb-item active">Update Semester Fee</li>
 </ol>
 
-<!--Grid column-->
-<div class="col-md-5  m-auto pt-1 pb-3">
+<%
+	//int pageNo = 10 ;
+
+		String url = request.getHeader("referer"); /// get the full url
+
+		String pageNo = (String) session.getAttribute("currentPage");
+
+%>
+
+<button onclick="goBack()" class="btn btn-primary">Go Back</button>
+
+<div class="col-md-5 pt-1 pb-2 m-auto">
+
 
 	<form method="post"
-		action="adminFeesTableController?edit_fee_type=semester_fee">
+		action="adminFeesTableController?edit_fee_type=semesterfee&&page=<%out.println(pageNo);%>">
+
+		<input type="hidden" name="page" value=<%//out.println(pageNo);%>>
 
 		<div class="card">
-
 			<div class="card-body mb-5">
-				<!-- Header -->
 				<div class="form-header  text-center " style="border-radius: 25px;">
-					<h3>Update Semester Fee</h3>
+					<h3><c:out value="${semester_fee.getDeptName()}" /> Department :</h3>
 				</div>
-
-				<!-- Body -->
-
 				<div class="md-form">
-
 					<input type="hidden" id="semester" name="id" class="form-control"
-						value="${semItem.id}" required>
+						value="<c:out value="${semester_fee.getId()}" />" required>
 				</div>
-
-				<div class="md-form mb-2">
-					<label for="semester" class="">Semester:</label> <input type="text"
+				<div class="md-form">
+					<label for="semester" class="">Semester</label> <input type="text"
 						id="semester" name="semester" class="form-control"
-						value="${semItem.semester}" readonly>
+						value="<c:out value="${semester_fee.getSemester()}" />" readonly>
 				</div>
-
-				<div class="md-form mb-2">
+				<div class="md-form">
 					<label for="main_fee" class="">Main Fee</label> <input type="text"
 						id="main_fee" name="main_fee" class="form-control"
-						value="${semItem.main_fee}" required>
+						value="<c:out value="${semester_fee.getMain_fee()}" />" required>
 				</div>
-
 				<div class="md-form mb-2">
 					<label for="misce_fee" class="">Misce_fee</label> <input
 						type="text" id="misce_fee" name="misce_fee" class="form-control"
-						value="${semItem.misce_fee}" required>
+						value="<c:out value="${semester_fee.getMisce_fee()}" />" required>
 				</div>
-
 				<div class="md-form mb-2">
 					<label for="date" class="">Start date</label> <input type="date"
-						name="start_date" value="${semItem.start_date}" required>
-
+						name="start_date" value="<c:out value="${semester_fee.getStart_date()}" />" required>
 				</div>
 				<div class="md-form mb-2">
 					<label for="date" class="">End date</label> <input type="date"
-						name="end_date" value="${semItem.end_date}" required>
-
+						name="end_date" value="<c:out value="${semester_fee.getEnd_date()}" />" required>
 				</div>
-
-
 				<input type="submit" class="btn btn-primary" value="Update">
-
-
 			</div>
 		</div>
 	</form>
 </div>
 
-
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
 
 
 <%@include file="admin-footer.jsp"%>

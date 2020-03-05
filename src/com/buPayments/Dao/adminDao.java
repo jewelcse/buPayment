@@ -53,7 +53,7 @@ public class adminDao {
 		return adminList;
 	}
 
-	public static ArrayList<allApplication> showAllApplicationFun() {
+	public static ArrayList<allApplication> showAllApplicationForm() {
 		dbConnection db = new dbConnection();
 		ArrayList<allApplication> applicationList = new ArrayList<allApplication>();
 		String sql = "select * from  application_form_table ORDER BY id DESC ";

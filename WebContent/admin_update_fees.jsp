@@ -36,7 +36,7 @@
 	<div class="row mb-2">
 		<!-- Button to trigger modal -->
 		<button class="btn btn-primary btn-lg" data-toggle="modal"
-			data-target="#modalForm">Reduced TK</button>
+			data-target="#modalForm">Reduce TK</button>
 
 		<!-- Modal -->
 		<div class="modal fade" id="modalForm" role="dialog">

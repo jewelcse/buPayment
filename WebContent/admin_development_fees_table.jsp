@@ -62,13 +62,13 @@
 					<td><c:out value=" ${list.getStart_date()}" /></td>
 					<td><c:out value=" ${list.getEnd_date()}" /></td>
 					<td><a class="btn btn-primary"
-						href='adminFeesEditTableController?fee_type=development_fee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
+						href='adminFeesEditTableController?fee_type=developmentfee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	
+
 	<%  String pageNo = request.getParameter("page");
 	
 	  session.setAttribute("currentPage", pageNo) ;
@@ -76,9 +76,9 @@
 	  System.out.println(pageNo);
 	
 	%>
-	
-	
- <%
+
+
+	<%
 		 
 		   dbConnection db = new dbConnection();
 
@@ -107,17 +107,22 @@
 
 	<nav aria-label="Page navigation example">
 		<ul class="pagination">
-		
-			<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=1"><<</a></li> 
+
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=developmentfee&&page=1"><<</a></li>
 			<!-- <li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%//out.println(previousPage);%>"><</a></li>  -->
-				<%  for(i=1; i<= totalPages;i++)  { //  previousPage = i-1; nextPage = i+1;%>
-	
-			 	<li class="page-item "><a class="page-link active" href="adminFeesManageController?type=developmentfee&&page=<%out.println(i);%>"><% out.println(i); %></a></li> 
-			
+			<%  for(i=1; i<= totalPages;i++)  { //  previousPage = i-1; nextPage = i+1;%>
+
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=developmentfee&&page=<%out.println(i);%>">
+					<% out.println(i); %>
+			</a></li>
+
 			<% } %>
 			<!--<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%//out.println(nextPage);%>">></a></li> -->
-			<li class="page-item "><a class="page-link active"  href="adminFeesManageController?type=developmentfee&&page=<%out.println(lastPage);%>">>></a></li> 
-			
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=developmentfee&&page=<%out.println(lastPage);%>">>></a></li>
+
 		</ul>
 	</nav>
 

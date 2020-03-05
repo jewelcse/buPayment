@@ -1,9 +1,12 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
-	import="com.buPayments.model.adminSemesterFeesTable"
+	import="com.buPayments.model.adminDevelopmentFeesTable"
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
-	import="java.util.ArrayList"%>
+	import="java.util.ArrayList" import="java.sql.Connection"
+	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
+	import="java.sql.SQLException" import="java.sql.Statement"
+	import="java.text.ParseException"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -34,64 +37,97 @@
 	<h3 class="inline">
 		<u>Semester Fees Table</u>
 	</h3>
-	<table class="table table-hover" id="myTable" border="2px solid black">
-		<tr>
-			<th>Semester</th>
-			<th>Main Fee</th>
-			<th>Misce Fee</th>
-			<th>Start date</th>
-			<th>End Date</th>
-			<th>Action</th>
+	<table class="order-table table table-hover" border="2px solid black">
+		<thead>
+			<tr>
+				<th>Department</th>
+				<th>Semester</th>
+				<th>Main Fee</th>
+				<th>Misce Fee</th>
+				<th>Start date</th>
+				<th>End Date</th>
+				<th>Action</th>
+			</tr>
+		</thead>
 
-		</tr>
-
-		<%
-			adminFeesFindTableController semesterfee = new adminFeesFindTableController();
-				ArrayList<adminSemesterFeesTable> al = new ArrayList<adminSemesterFeesTable>();
-				al = semesterfee.showSemesterFeesTable();
-
-				for (int i = 0; i < al.size(); i++) {
-		%>
-		<tr>
-
-			<td>
-				<%
-					out.println(al.get(i).getSemester());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getMain_fee());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getMisce_fee());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getStart_date());
-				%>
-			</td>
-			<td>
-				<%
-					out.println(al.get(i).getEnd_date());
-				%>
-			</td>
-
-			<td><a class="btn btn-primary"
-				href='adminFeesEditTableController?fee_type=semester_fee&&edit_id=<%out.println(al.get(i).getId());%>'>Update</a>
-
-			</td>
-
-		</tr>
-
-		<%
-			}
-		%>
-
+		<tbody>
+			<c:forEach items="${semester_fees_list}" var="list">
+				<tr>
+					<td><c:out value="${list.getDeptName()}" /></td>
+					<td><c:out value=" ${list.getSemester()}" /></td>
+					<td><c:out value=" ${list.getMain_fee()}" /></td>
+					<td><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td><c:out value=" ${list.getStart_date()}" /></td>
+					<td><c:out value=" ${list.getEnd_date()}" /></td>
+					<td><a class="btn btn-primary"
+						href='adminFeesEditTableController?fee_type=semesterfee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
+					</td>
+				</tr>
+			</c:forEach>
+		</tbody>
 	</table>
+
+
+	<%
+		String pageNo = request.getParameter("page");
+
+			session.setAttribute("currentPage", pageNo);
+
+			System.out.println(pageNo);
+	%>
+
+
+	<%
+		dbConnection db = new dbConnection();
+
+			Connection myConn = db.getCon();
+			PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM admin_semester_fees_table");
+			ResultSet myRs = pstmt.executeQuery();
+
+			int studentCount = 0;
+			while (myRs.next()) {
+				studentCount++;
+				//System.out.println("from while loop "+ studentCount);
+			}
+			double pages = (double) studentCount / 8;
+			//System.out.println(num);
+
+			double totalPages = (double) Math.ceil(pages);
+			//System.out.println(num1);
+			int lastPage = (int) totalPages;
+			int i;
+
+			int previousPage = 1;
+			int nextPage = 1;
+	%>
+
+
+	<nav aria-label="Page navigation example">
+		<ul class="pagination">
+
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=semesterfee&&page=1"><<</a></li>
+
+			<%
+				for (i = 1; i <= totalPages; i++) { //  previousPage = i-1; nextPage = i+1;
+			%>
+
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=semesterfee&&page=<%out.println(i);%>">
+					<%
+						out.println(i);
+					%>
+			</a></li>
+
+			<%
+				}
+			%>
+
+			<li class="page-item "><a class="page-link active"
+				href="adminFeesManageController?type=semesterfee&&page=<%out.println(lastPage);%>">>></a></li>
+
+		</ul>
+	</nav>
 </section>
 
 <%@include file="admin-footer.jsp"%>

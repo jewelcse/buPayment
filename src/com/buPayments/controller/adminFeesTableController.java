@@ -20,7 +20,7 @@ public class adminFeesTableController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String fee_type = request.getParameter("type");
+		/*String fee_type = request.getParameter("type");
 		System.out.println(fee_type);
 
 		if (fee_type.equals("development_fee")) {
@@ -40,7 +40,7 @@ public class adminFeesTableController extends HttpServlet {
 			RequestDispatcher dispatcher = request.getRequestDispatcher("admin_form_fill_up_fees_table.jsp");
 			dispatcher.forward(request, response);
 
-		}
+		}*/
 
 	}
 
@@ -48,14 +48,16 @@ public class adminFeesTableController extends HttpServlet {
 			throws ServletException, IOException {
 
 		String edit_fee_type = request.getParameter("edit_fee_type");
+		
+		String pageNo= request.getParameter("page");
+		System.out.println(pageNo);
+		int currentPageNo = Integer.parseInt(pageNo);
+		
 
-		if (edit_fee_type.equals("development_fee")) {	
+		if (edit_fee_type.equals("developmentfee")) {	
 			//current_page=adminFeesManageController?type=developmentfee&&page=1
 			//adminFeesManageController?type=developmentfee&&page=1
 
-			String pageNo= request.getParameter("page");
-			System.out.println(pageNo);
-			int currentPageNo = Integer.parseInt(pageNo);
 			
 			String prev_page = "adminFeesManageController?type=developmentfee&&page="+currentPageNo;
 			
@@ -80,15 +82,14 @@ public class adminFeesTableController extends HttpServlet {
 	        devfee.setEnd_date(end_date);
 	        
 	        mainController.updateDevelopmentFeesTable(devfee);
-	        
-	        //RequestDispatcher dispatcher =  request.getRequestDispatcher("admin_development_fees_table.jsp");
-			
-	    	//dispatcher.forward(request, response);
+	      
 	        response.sendRedirect(prev_page);
 
 			
 
-		} else if (edit_fee_type.equals("semester_fee")) {
+		} else if (edit_fee_type.equals("semesterfee")) {
+			
+			String prev_page = "adminFeesManageController?type=semesterfee&&page="+currentPageNo;
 
 			response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
@@ -111,13 +112,13 @@ public class adminFeesTableController extends HttpServlet {
 	        devfee.setEnd_date(end_date);
 	        
 	        mainController.updateSemesterFeesTable(devfee);
-	        
-	        RequestDispatcher dispatcher =  request.getRequestDispatcher("admin_semester_fees_table.jsp");
-			
-	    	dispatcher.forward(request, response);
+		      
+	        response.sendRedirect(prev_page);
 			
 
-		} else if (edit_fee_type.equals("formfillup_fee")) {
+		} else if (edit_fee_type.equals("formfillupfee")) {
+			
+			String prev_page = "adminFeesManageController?type=formfillupfee&&page="+currentPageNo;
 
 			response.setContentType("text/html");  
 	        PrintWriter out=response.getWriter();  
@@ -141,9 +142,7 @@ public class adminFeesTableController extends HttpServlet {
 	        
 	        mainController.updateFormFillUpFeesTable(formfillupfee);
 	        
-	        RequestDispatcher dispatcher =  request.getRequestDispatcher("admin_form_fill_up_fees_table.jsp");
-			
-	    	dispatcher.forward(request, response);
+	        response.sendRedirect(prev_page);
 
 		}
 

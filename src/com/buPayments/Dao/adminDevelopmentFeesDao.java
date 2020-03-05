@@ -59,6 +59,75 @@ public class adminDevelopmentFeesDao {
 	}
 	
 	
+	public static adminDevelopmentFeesTable getDevelopmentItemById(String newId) {
+		
+		
+		dbConnection db = new dbConnection(); 
+
+		
+		String sql = "select * from  admin_development_fees_table where id = '" + newId + "'";
+		Connection con = db.getCon();
+		adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
+			
+		try {
+			PreparedStatement ps,ps1;
+			ResultSet myRs,myRs1;
+			ps = (PreparedStatement) con.prepareStatement(sql);
+			myRs= ps.executeQuery(sql);
+			System.out.print(myRs);
+			while (myRs.next()) {
+				// Integer newid = Integer.parseInt(myRs.getString("id"));
+				
+				String id  = myRs.getString("id");
+		    	String deptId  = myRs.getString("department");
+		    	String semester  = myRs.getString("semester");
+		    	String main_fee  = myRs.getString("main_fee");
+		    	String misce_fee  = myRs.getString("misce_fee");
+		    	String start_date  = myRs.getString("start_date");
+		    	String end_date  = myRs.getString("end_date");
+		    
+		    	
+		    	String sql1 = "select * from department where id = '"+deptId+"'";
+		    	 ps1 = (PreparedStatement)con.prepareStatement(sql1);
+			     myRs1 = ps1.executeQuery(sql1);
+			     while(myRs1.next()) {
+			     String deptname = myRs1.getString("dept_name");
+			     newItem.setDeptName(deptname);
+			     }		    	
+		    	newItem.setId(id);
+		    	newItem.setDeptId(deptId);
+		    	newItem.setSemester(semester);
+		    	newItem.setMain_fee(main_fee);
+		    	newItem.setMisce_fee(misce_fee);
+		    	newItem.setStart_date(start_date);
+		    	newItem.setEnd_date(end_date);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return newItem;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	public static ArrayList<ChangedFees> showAllChangedFees() {
 		dbConnection db = new dbConnection();
 		ArrayList<ChangedFees> feesList = new ArrayList<ChangedFees>();

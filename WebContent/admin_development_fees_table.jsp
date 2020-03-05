@@ -7,11 +7,11 @@
 	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
 	import="java.sql.SQLException" import="java.sql.Statement"
 	import="java.text.ParseException"%>
-	
-	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-	
-	
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
 
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
@@ -55,7 +55,7 @@
 		<tbody>
 			<c:forEach items="${development_fees_list}" var="list">
 				<tr>
-					<td><c:out value=" ${list.getDeptName()}" /></td>
+					<td><c:out value="${list.getDeptName()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
 					<td><c:out value=" ${list.getMain_fee()}" /></td>
 					<td><c:out value=" ${list.getMisce_fee()}" /></td>

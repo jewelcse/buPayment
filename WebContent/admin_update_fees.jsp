@@ -18,9 +18,10 @@
 
 <%@include file="admin-header.jsp"%>
 
-
-
-
+<!-- onlu=y work for bootstrtap 3.0  -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
@@ -30,49 +31,77 @@
 
 
 <div class="container">
-	<div class="row">
-		<div class="col-md-6">
-			<form class="form-controll"
-				action="adminFeesManageController?type=update_development_fee"
-				method="post">
 
-				<div class="md-form mb-2">
-					<input type="text" id="roll" name="roll" class="form-control"
-						placeholder="Roll No." required>
-				</div>
 
-				<div class="md-form">
-					<div class="md-form mb-0">
-						<select id="ssemester"
-							class="browser-default custom-select custom-select-lg mb-3"
-							name="ssemester" required>
-							<option selected>Semester</option>
-							<option value="1st">1<sup>st</sup></option>
-							<option value="2nd">2<sup>nd</sup></option>
-							<option value="3rd">3<sup>rd</sup></option>
-							<option value="4th">4<sup>th</sup></option>
-							<option value="5th">5<sup>th</sup></option>
-							<option value="6th">6<sup>th</sup></option>
-							<option value="7th">7<sup>th</sup></option>
-							<option value="8th">8<sup>th</sup></option>
-						</select>
+	<div class="row mb-2">
+		<!-- Button to trigger modal -->
+		<button class="btn btn-primary btn-lg" data-toggle="modal"
+			data-target="#modalForm">Reduced TK</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="modalForm" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<!-- Modal Header -->
+					<div class="modal-header">
+
+						<h4 class="modal-title" id="myModalLabel">Reduced Development
+							Fee</h4>
+						<button type="button" class="close" data-dismiss="modal">
+							<span aria-hidden="true">&times;</span> <span class="sr-only">Close</span>
+						</button>
+					</div>
+
+					<!-- Modal Body -->
+					<div class="modal-body">
+						<p class="statusMsg"></p>
+						<form role="form" id="reducedForm">
+							<div class="form-group">
+								<label for="roll">Roll</label> <input type="text" id="roll"
+									name="roll" class="form-control" placeholder="Roll No."
+									required>
+							</div>
+							<div class="form-group">
+								<label for="semester">Semester</label>
+								<div class="md-form">
+									<div class="md-form mb-0">
+										<select id="semester"
+											class="browser-default custom-select custom-select-lg mb-3"
+											name="semester" required>
+											<option value=null>.....</option>
+											<option value="1st">1<sup>st</sup></option>
+											<option value="2nd">2<sup>nd</sup></option>
+											<option value="3rd">3<sup>rd</sup></option>
+											<option value="4th">4<sup>th</sup></option>
+											<option value="5th">5<sup>th</sup></option>
+											<option value="6th">6<sup>th</sup></option>
+											<option value="7th">7<sup>th</sup></option>
+											<option value="8th">8<sup>th</sup></option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="changed_amount">Reduced Amount</label> <input
+									type="number" id="changed_amount" name="changed_amount"
+									class="form-control" placeholder="Amount..." required>
+							</div>
+						</form>
+					</div>
+
+					<!-- Modal Footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						<button type="button" class="btn btn-primary submitBtn"
+							onclick="submitDevFeeChangedForm()">Update</button>
 					</div>
 				</div>
-
-				<div class="md-form mb-2">
-					<input type="text" id="changed_amount" name="changed_amount"
-						class="form-control" placeholder="Amount..." required>
-				</div>
-
-
-				<div class="text-center">
-					<input type="submit" class="btn btn-primary"
-						value="Click to change">
-				</div>
-			</form>
+			</div>
 		</div>
+	</div>
 
-		<div class="col-md-6">
+	<div class="row">
+		<div class="col-md-8">
 			<table class="table table-bordered table-hover  " id="myTable"
 				border="2px solid black">
 				<tr>
@@ -94,6 +123,69 @@
 		</div>
 	</div>
 </div>
+
+
+<script>
+	$('#modalForm').on('hidden.bs.modal', function(e) {
+		$(this).find('#reducedForm')[0].reset();
+		$('.statusMsg')
+		.html('');
+		
+	});
+
+	function submitDevFeeChangedForm() {
+		var roll = $('#roll').val();
+		var semester = $('#semester').val();
+		var amount = $('#changed_amount').val();
+		//alert(roll+semester+amount);
+
+		if (roll.trim() == '') {
+			alert('Please enter Roll.');
+			$('#roll').focus();
+			return false;
+		} else if (semester.trim() == '') {
+			alert('Please enter Semester.');
+			$('#semester').focus();
+			return false;
+		} else if (amount.trim() == '') {
+			alert('Please enter Reduced Amount.');
+			$('#changed_amount').focus();
+			return false;
+		} else {
+			$
+					.ajax({
+						type : 'POST',
+						url : 'adminFeesManageController?type=update_development_fee',
+						data : {
+							roll : roll,
+							semester : semester,
+							changed_amount : amount
+						},
+						beforeSend : function() {
+							$('.submitBtn').attr("disabled", "disabled");
+							$('.modal-body').css('opacity', '.5');
+						},
+						success : function(msg) {
+							console.log(msg);
+							if (msg == 'ok') {
+								document.getElementById("reducedForm").reset();
+								$('.statusMsg')
+										.html(
+												'<span style="color:green;">Successfuly Reduced .</p>');
+							} else {
+								$('.statusMsg')
+										.html(
+												'<span style="color:red;">Duplicate Entity found!.</span>');
+							}
+							$('.submitBtn').removeAttr("disabled");
+							$('.modal-body').css('opacity', '');
+						}
+					});
+		}
+	}
+</script>
+
+
 
 <%@include file="admin-footer.jsp"%>
 <%

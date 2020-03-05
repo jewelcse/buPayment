@@ -72,8 +72,10 @@ public class adminFeesManageController extends HttpServlet {
 		if (type.equals("update_development_fee")) {
 
 			String roll = request.getParameter("roll");
-			String semester = request.getParameter("ssemester");
+			String semester = request.getParameter("semester");
 			String changed_amount = request.getParameter("changed_amount");
+			
+			System.out.println(roll+semester+changed_amount);
 
 			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount);
 			
@@ -84,10 +86,13 @@ public class adminFeesManageController extends HttpServlet {
 			if (!duplicate) {
 				mainController.ChangedFeesNow(changedFees);
 				response.sendRedirect("adminController?target=update_development_fee");
+				out.write("ok");
+				out.close();
 			} else {
-				request.setAttribute("error", "Duplicate Entity found!");
+				out.write("err");
 				response.sendRedirect("adminController?target=update_development_fee");
 				System.out.println("---->Duplicate Entity found!");
+				out.close();
 				
 			}
 

@@ -1,6 +1,8 @@
 package com.buPayments.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.buPayments.Dao.adminDevelopmentFeesDao;
 import com.buPayments.model.adminDevelopmentFeesTable;
 import com.buPayments.model.adminFormFillUpFeesTable;
 import com.buPayments.model.adminSemesterFeesTable;
@@ -32,7 +35,7 @@ public class adminFeesEditTableController extends HttpServlet {
 		if (fee_type.equals("development_fee")) {
 
 		        
-		        adminDevelopmentFeesTable devItem=mainController.getDevelopmentItemById(id);  
+		       /* adminDevelopmentFeesTable devItem=mainController.getDevelopmentItemById(id);  
 		        
 		        
 		        devItem.setId(devItem.getId());
@@ -42,9 +45,29 @@ public class adminFeesEditTableController extends HttpServlet {
 		        devItem.setStart_date(devItem.getStart_date());
 		        devItem.setEnd_date(devItem.getEnd_date());
 		        
-		        
 		 	    request.setAttribute("devItem", devItem);			  	   			  	    
-		 		request.getRequestDispatcher("development_fees_edit.jsp").forward(request, response);
+		 		request.getRequestDispatcher("development_fees_edit.jsp").forward(request, response);*/
+			
+			
+			
+			//ArrayList<adminDevelopmentFeesTable> list = adminDevelopmentFeesDao.showDevelopmentFeesTable(stpage, total);
+			
+			adminDevelopmentFeesTable devItem = adminDevelopmentFeesDao.getDevelopmentItemById(id);
+			
+			
+			PrintWriter out = response.getWriter();
+
+			request.setAttribute("development_fee", devItem);
+
+			RequestDispatcher view = request.getRequestDispatcher("development_fees_edit.jsp");
+			view.forward(request, response);
+			
+			
+			
+			
+			
+			
+			
 		 		
 
 		} else if (fee_type.equals("semester_fee")) {

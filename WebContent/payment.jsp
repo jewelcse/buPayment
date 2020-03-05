@@ -35,8 +35,6 @@
 			<h2 class="h4 text-responsive font-weight-bold text-center ">University
 				of Barishal</h2>
 			<h6 class="h5 text-responsive font-weight-bold text-center ">Barishal-8200</h6>
-			<h6 class="h5 text-responsive font-weight-bold text-center">Computer
-				Science & Engineering</h6>
 			<p class="text-center ">
 
 				<%
@@ -120,17 +118,6 @@
 			</form>
 		</div>
 	</div>
-
-
-	<script>
-		
-	</script>
-
-
-
-
-
-
 
 </body>
 

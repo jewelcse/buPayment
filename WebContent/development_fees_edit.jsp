@@ -30,8 +30,8 @@
 		String url = request.getHeader("referer"); /// get the full url
 
 		String pageNo = (String) session.getAttribute("currentPage");
-%>
 
+%>
 
 <div class="col-md-5  m-auto pt-1 pb-3">
 	<form method="post"
@@ -42,34 +42,34 @@
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">
-					<h3>Update Development Fee</h3>
+					<h3><c:out value="${development_fee.getDeptName()}" /></h3>
 				</div>
 				<div class="md-form">
 					<input type="hidden" id="semester" name="id" class="form-control"
-						value="${devItem.id}" required>
+						value="<c:out value="${development_fee.getId()}" />" required>
 				</div>
 				<div class="md-form">
 					<label for="semester" class="">Semester:</label> <input type="text"
 						id="semester" name="semester" class="form-control"
-						value="${devItem.semester}" readonly>
+						value="<c:out value="${development_fee.getSemester()}" />" readonly>
 				</div>
 				<div class="md-form">
 					<label for="main_fee" class="">Main Fee</label> <input type="text"
 						id="main_fee" name="main_fee" class="form-control"
-						value="${devItem.main_fee}" required>
+						value="<c:out value="${development_fee.getMain_fee()}" />" required>
 				</div>
 				<div class="md-form mb-2">
 					<label for="misce_fee" class="">Misce_fee</label> <input
 						type="text" id="misce_fee" name="misce_fee" class="form-control"
-						value="${devItem.misce_fee}" required>
+						value="<c:out value="${development_fee.getMisce_fee()}" />" required>
 				</div>
 				<div class="md-form mb-2">
 					<label for="date" class="">Start date</label> <input type="date"
-						name="start_date" value="${devItem.start_date}" required>
+						name="start_date" value="<c:out value="${development_fee.getStart_date()}" />" required>
 				</div>
 				<div class="md-form mb-2">
 					<label for="date" class="">End date</label> <input type="date"
-						name="end_date" value="${devItem.end_date}" required>
+						name="end_date" value="<c:out value="${development_fee.getEnd_date()}" />" required>
 				</div>
 				<input type="submit" class="btn btn-primary" value="Update">
 			</div>

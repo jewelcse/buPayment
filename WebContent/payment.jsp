@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
 	import="com.buPayments.controller.*"
-	import="com.buPayments.model.Devfees" import="java.sql.Connection"
+	import="com.buPayments.model.*" import="java.sql.Connection"
 	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
 	import="java.sql.SQLException" import="java.sql.Statement"
 	import="java.text.ParseException"%>
@@ -27,8 +27,6 @@
 }
 </style>
 
-<body>
-
 	<div class="col-md-4 box-check">
 		<div class="checkBox m-4 validity">
 
@@ -38,33 +36,22 @@
 			<p class="text-center ">
 
 				<%
-					//if (request.getParameter("date_expire") == null) {
-
-						//} else {
-						//	out.println("<span style='color:red;font-weight:bold'> Date Over</span>");
-						//}
-
-						//Student loggegStudent = new Student();
-						//System.out.println(currentUser.getS_department());
-
-						dbConnection db = new dbConnection();
-
-						Connection myConn = db.getCon();
-						PreparedStatement pstmt = myConn.prepareStatement("SELECT * FROM department where dept_name = ?");
-
-						pstmt.setString(1, currentUser.getS_department()); // Assigns "First Class" to first place holder
-
-						ResultSet myRs = pstmt.executeQuery();
-
-						while (myRs.next()) {
-
-							String deptid = myRs.getString("id");
-							String name = myRs.getString("dept_name");
-
-							System.out.println("From jsp page the dept id is >>>>>>>>>>>>>>>>" + deptid);
+				
+				String dept_name = currentUser.getS_department();
+				
+				Department dept ;
+				
+			    dept = mainController.getDepartmentIdByDepartmentName(dept_name);
+			    
+			    String departmentId = dept.getDeptId();
+			   
+			    System.out.println("from jsp dept id "+departmentId);
+			   
 				%>
 
 			</p>
+
+			
 			<form action="checkValidityController" method="get">
 				<div class="md-form">
 					<div class="md-form mb-0">
@@ -106,22 +93,22 @@
 				</div>
 
 				<input type="hidden" name="departmentId"
-					value="<%out.println(deptid);%>">
+					value="<%out.println(departmentId);%>">
+					
+				<input type="hidden" name="roll"
+					value="<%=currentUser.getS_roll()%>">
 
-				<%
-					}
-				%>
+			
 				<div class="text-center text-md-right">
 					<input type="submit" class="btn btn-primary submitBtn"
 						value="check">
 				</div>
 			</form>
+			
+			
 		</div>
 	</div>
 
-</body>
-
-<br>
 <br><%@include file="footer.jsp"%>
 
 <%

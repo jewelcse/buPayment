@@ -1,48 +1,30 @@
 package com.buPayments.model;
 
 public class adminDevelopmentFeesTable {
-	
+
 	private String id;
-	private String deptId;
-	private String deptName;
+	private String department;
 	private String semester;
 	private String main_fee;
 	private String misce_fee;
 	private String start_date;
 	private String end_date;
-	
+
 	public adminDevelopmentFeesTable() {
-		
+
 	}
-	
-	
 
-	
-
-	public adminDevelopmentFeesTable(String id, String deptId, String deptName, String semester, String main_fee,
+	public adminDevelopmentFeesTable(String id, String department, String deptName, String semester, String main_fee,
 			String misce_fee, String start_date, String end_date) {
 		super();
 		this.id = id;
-		this.deptId = deptId;
-		this.deptName = deptName;
+		this.department = department;
 		this.semester = semester;
 		this.main_fee = main_fee;
 		this.misce_fee = misce_fee;
 		this.start_date = start_date;
 		this.end_date = end_date;
 	}
-
-
-	public String getDeptName() {
-		return deptName;
-	}
-
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
-
 
 	public String getId() {
 		return id;
@@ -52,12 +34,12 @@ public class adminDevelopmentFeesTable {
 		this.id = id;
 	}
 
-	public String getDeptId() {
-		return deptId;
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	public String getSemester() {
@@ -99,7 +81,5 @@ public class adminDevelopmentFeesTable {
 	public void setEnd_date(String end_date) {
 		this.end_date = end_date;
 	}
-	
-	
 
 }

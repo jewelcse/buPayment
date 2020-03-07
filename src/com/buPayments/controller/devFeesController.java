@@ -20,8 +20,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
 
+import com.buPayments.model.ChangedFees;
+import com.buPayments.model.Department;
 import com.buPayments.model.Devfees;
 import com.buPayments.model.Student;
+import com.buPayments.model.adminDevelopmentFeesTable;
 import com.mysql.jdbc.PreparedStatement;
 
 import  com.buPayments.sslcommerz.TransactionInitiator;
@@ -39,28 +42,45 @@ public class devFeesController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 
-		String semester = request.getParameter("s_semester");
+	/*	String semester = request.getParameter("s_semester");
 		String roll= request.getParameter("s_roll");
-
+		String deptname = request.getParameter("s_department");
 		
-		try {
-
-			String	amount =  mainController.check_development_fee(semester,roll);
-
-			PrintWriter out = response.getWriter();  
-			//request.setAttribute("amount", amount);
+		System.out.println(semester + roll + deptname);
+		
+		Department dept ;
+		
+	    dept = mainController.getDepartmentIdByDepartmentName(deptname);
+	    
+	    String departmentId = dept.getDeptId();
+	    
+	    System.out.println("dept id "+departmentId);
+	    
+	    adminDevelopmentFeesTable devfee;
+	    devfee = mainController.findDevelopmentFee(departmentId,semester);
+		
+		System.out.println("devfee = "+devfee.getMain_fee() + devfee.getMisce_fee());
+		
+		ChangedFees changedfee = mainController.findChangedDevelopmentFee(roll,semester,departmentId);
+		
+		System.out.println("chfee "+changedfee.getChanged_amount());
+		String chfee = changedfee.getChanged_amount();
+		
+		if(chfee ==  null) {
+			chfee = "0";
 			
-			//response.setContentType("text/plain");
-			//response.setCharacterEncoding("UTF-8");
-			//response.getWriter().write(amount);
-	        out.println(amount);
-	        //rd=request.getRequestDispatcher("/test.jsp");
-	        
-		} catch (SQLException e) {
-			e.printStackTrace();
 		}
 		
-		//rd.forward(request, response);
+		
+		PrintWriter out = response.getWriter();
+		
+		request.setAttribute("mainfee", devfee.getMain_fee());
+		request.setAttribute("miscefee", devfee.getMisce_fee());
+		request.setAttribute("changedfee", chfee);
+		
+		request.getRequestDispatcher("devFees.jsp").forward(request, response);
+		
+		*/
 		
 	}
 	

@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.buPayments.controller.dbConnection;
+import com.buPayments.controller.mainController;
 import com.buPayments.model.ChangedFees;
+import com.buPayments.model.Department;
 import com.buPayments.model.adminDevelopmentFeesTable;
 import com.buPayments.model.adminFormFillUpFeesTable;
 import com.buPayments.model.adminSemesterFeesTable;
@@ -26,8 +28,8 @@ public class adminFeesDao {
 			myRs = ps.executeQuery(sql);
 			while (myRs.next()) {
 				adminDevelopmentFeesTable newItem = new adminDevelopmentFeesTable();
+
 				String id = myRs.getString("id");
-				Integer newId = Integer.parseInt(id);
 				String deptId = myRs.getString("department");
 				String semester = myRs.getString("semester");
 				String main_fee = myRs.getString("main_fee");
@@ -35,16 +37,11 @@ public class adminFeesDao {
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
 				newItem.setSemester(semester);
+				newItem.setDepartment(dept.getDeptName());
 				newItem.setMain_fee(main_fee);
 				newItem.setMisce_fee(misce_fee);
 				newItem.setStart_date(start_date);
@@ -83,16 +80,11 @@ public class adminFeesDao {
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = (PreparedStatement) con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
 				newItem.setSemester(semester);
+				newItem.setDepartment(dept.getDeptName());
 				newItem.setMain_fee(main_fee);
 				newItem.setMisce_fee(misce_fee);
 				newItem.setStart_date(start_date);
@@ -153,25 +145,25 @@ public class adminFeesDao {
 			while (myRs.next()) {
 				adminSemesterFeesTable newItem = new adminSemesterFeesTable();
 				String id = myRs.getString("id");
-				Integer newId = Integer.parseInt(id);
 				String deptId = myRs.getString("department");
 				String semester = myRs.getString("semester");
-				String main_fee = myRs.getString("main_fee");
+				String semester_admission_fee = myRs.getString("semester_admission_fee");
+				String tution_fee = myRs.getString("tution_fee");
+				String lab_or_seminar_fee = myRs.getString("lab_or_seminar_fee");
+				String transport_fee = myRs.getString("transport_fee");
 				String misce_fee = myRs.getString("misce_fee");
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
 				newItem.setSemester(semester);
-				newItem.setMain_fee(main_fee);
+				newItem.setDepartment(dept.getDeptName());
+				newItem.setSemester_admission_fee(semester_admission_fee);
+				newItem.setTution_fee(tution_fee);
+				newItem.setLab_or_seminar_fee(lab_or_seminar_fee);
+				newItem.setTransport_fee(transport_fee);
 				newItem.setMisce_fee(misce_fee);
 				newItem.setStart_date(start_date);
 				newItem.setEnd_date(end_date);
@@ -197,7 +189,6 @@ public class adminFeesDao {
 			while (myRs.next()) {
 				adminFormFillUpFeesTable newItem = new adminFormFillUpFeesTable();
 				String id = myRs.getString("id");
-				Integer newId = Integer.parseInt(id);
 				String deptId = myRs.getString("department");
 				String semester = myRs.getString("semester");
 				String main_fee = myRs.getString("main_fee");
@@ -205,15 +196,10 @@ public class adminFeesDao {
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
+				newItem.setDepartment(dept.getDeptName());
 				newItem.setSemester(semester);
 				newItem.setMain_fee(main_fee);
 				newItem.setMisce_fee(misce_fee);
@@ -246,22 +232,23 @@ public class adminFeesDao {
 				String id = myRs.getString("id");
 				String deptId = myRs.getString("department");
 				String semester = myRs.getString("semester");
-				String main_fee = myRs.getString("main_fee");
+				String semester_admission_fee = myRs.getString("semester_admission_fee");
+				String tution_fee = myRs.getString("tution_fee");
+				String lab_or_seminar_fee = myRs.getString("lab_or_seminar_fee");
+				String transport_fee = myRs.getString("transport_fee");
 				String misce_fee = myRs.getString("misce_fee");
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = (PreparedStatement) con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
 				newItem.setSemester(semester);
-				newItem.setMain_fee(main_fee);
+				newItem.setDepartment(dept.getDeptName());
+				newItem.setSemester_admission_fee(semester_admission_fee);
+				newItem.setTution_fee(tution_fee);
+				newItem.setLab_or_seminar_fee(lab_or_seminar_fee);
+				newItem.setTransport_fee(transport_fee);
 				newItem.setMisce_fee(misce_fee);
 				newItem.setStart_date(start_date);
 				newItem.setEnd_date(end_date);
@@ -296,15 +283,10 @@ public class adminFeesDao {
 				String start_date = myRs.getString("start_date");
 				String end_date = myRs.getString("end_date");
 
-				String sql1 = "select * from department where id = '" + deptId + "'";
-				ps1 = (PreparedStatement) con.prepareStatement(sql1);
-				myRs1 = ps1.executeQuery(sql1);
-				while (myRs1.next()) {
-					String deptname = myRs1.getString("dept_name");
-					newItem.setDeptName(deptname);
-				}
+				Department dept = mainController.getDepartmentById(deptId);
+
 				newItem.setId(id);
-				newItem.setDeptId(deptId);
+				newItem.setDepartment(dept.getDeptName());
 				newItem.setSemester(semester);
 				newItem.setMain_fee(main_fee);
 				newItem.setMisce_fee(misce_fee);

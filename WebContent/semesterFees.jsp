@@ -27,11 +27,13 @@
 			<h2 class="text-responsive font-weight-bold text-center ">University
 				of Barishal</h2>
 			<h6 class="text-responsive font-weight-bold text-center ">Barishal-8200</h6>
-			<h6 class="text-responsive font-weight-bold text-center">Computer
-				Science & Engineering</h6>
-			</br> <u><h3 class="text-responsive font-weight-bold text-center ">Semester
-					Fees Payment Form</h3> </u>
-
+			<h6 class="text-responsive font-weight-bold text-center">
+				Dept. of
+				<%=currentUser.getS_department()%>
+			</h6>
+			</br>
+			<h3 class="text-responsive font-weight-bold text-center ">Semester
+				Fees Payment Form</h3>
 
 			<!--Grid column-->
 			<div class="col-md-12 mb-md-0 mb-5 ">
@@ -118,13 +120,6 @@
 					</div>
 
 
-
-
-
-
-
-
-
 					<!-- Amount table for users -->
 					<div class="mt-4">
 						<table class="table table-bordered">
@@ -139,28 +134,38 @@
 								<tr>
 									<td>Semester Admission Fee</td>
 									<!-- বিভাগ উন্নয়ন ফি ,বিবিধ,মোট-->
-									<td></td>
+									<td><input type="text" id="fee1"
+										value="<%out.println(request.getAttribute("fee1"));%>"
+										readonly></td>
 								</tr>
 								<tr>
 									<td>Tution Fee</td>
-									<td></td>
+									<td><input type="text" id="fee2"
+										value="<%out.println(request.getAttribute("fee2"));%>"
+										readonly></td>
 								</tr>
 								<tr>
 									<td>Lab/Seminar Fee</td>
-									<td></td>
+									<td><input type="text" id="fee3"
+										value="<%out.println(request.getAttribute("fee3"));%>"
+										readonly></td>
 								</tr>
 								<tr>
 									<td>Transport Fee</td>
-									<td></td>
+									<td><input type="text" id="fee4"
+										value="<%out.println(request.getAttribute("fee4"));%>"
+										readonly></td>
 								</tr>
 								<tr>
 									<td>Miscellaneous</td>
-									<td></td>
+									<td><input type="text" id="fee5"
+										value="<%out.println(request.getAttribute("fee5"));%>"
+										readonly></td>
 								</tr>
 
 								<tr>
 									<td>Total</td>
-									<td><input type="text" name="s_semester_fee" value="1500"
+									<td><input type="text" id="total" name="s_semester_fee"
 										readonly></td>
 								</tr>
 
@@ -186,6 +191,27 @@
 	</div>
 </div>
 
+<script>
+	$(document).ready(
+			function() {
+				var a1 = $("#fee1").val();
+				var a2 = $("#fee2").val();
+				var a3 = $("#fee3").val();
+				var a4 = $("#fee4").val();
+				var a5 = $("#fee5").val();
+				function total(a1, a2, a3, a4, a5) {
+					var sum = parseInt(a1) + parseInt(a2) + parseInt(a3)
+							+ parseInt(a4) + parseInt(a5);
+					return sum;
+				}
+				;
+
+				var sum = total(a1, a2, a3, a4, a5);
+				$("#total").val(sum);
+				console.log(sum);
+
+			});
+</script>
 </body>
 </html>
 

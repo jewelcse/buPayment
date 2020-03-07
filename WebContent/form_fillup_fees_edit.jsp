@@ -46,7 +46,7 @@
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">
-					<h3><c:out value="${formfillup_fee.getDeptName()}" /> Department :</h3>
+					<h3><c:out value="${formfillup_fee.getDepartment()}" /> Department :</h3>
 				</div>
 				<div class="md-form">
 					<input type="hidden" id="semester" name="id" class="form-control"

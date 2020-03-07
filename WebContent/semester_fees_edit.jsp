@@ -48,7 +48,7 @@
 		<div class="card">
 			<div class="card-body mb-5">
 				<div class="form-header  text-center " style="border-radius: 25px;">
-					<h3><c:out value="${semester_fee.getDeptName()}" /> Department :</h3>
+					<h3><c:out value="${semester_fee.getDepartment()}" /> Department :</h3>
 				</div>
 				<div class="md-form">
 					<input type="hidden" id="semester" name="id" class="form-control"
@@ -60,15 +60,31 @@
 						value="<c:out value="${semester_fee.getSemester()}" />" readonly>
 				</div>
 				<div class="md-form">
-					<label for="main_fee" class="">Main Fee</label> <input type="text"
-						id="main_fee" name="main_fee" class="form-control"
-						value="<c:out value="${semester_fee.getMain_fee()}" />" required>
+					<label for="main_fee" class="">Admission Fee</label> <input type="text"
+						id="semester_admission_fee" name="semester_admission_fee" class="form-control"
+						value="<c:out value="${semester_fee.getSemester_admission_fee()}" />" required>
 				</div>
-				<div class="md-form mb-2">
-					<label for="misce_fee" class="">Misce_fee</label> <input
-						type="text" id="misce_fee" name="misce_fee" class="form-control"
+				<div class="md-form">
+					<label for="main_fee" class="">Tution Fee</label> <input type="text"
+						id="tution_fee" name="tution_fee" class="form-control"
+						value="<c:out value="${semester_fee.getTution_fee()}" />" required>
+				</div>
+				<div class="md-form">
+					<label for="main_fee" class="">Lab/Seminar Fee</label> <input type="text"
+						id="lab_or_seminar_fee" name="lab_or_seminar_fee" class="form-control"
+						value="<c:out value="${semester_fee.getLab_or_seminar_fee()}" />" required>
+				</div>
+				<div class="md-form">
+					<label for="main_fee" class="">Transport Fee</label> <input type="text"
+						id="transport_fee" name="transport_fee" class="form-control"
+						value="<c:out value="${semester_fee.getTransport_fee()}" />" required>
+				</div>
+				<div class="md-form">
+					<label for="main_fee" class="">Miscellaneous Fee</label> <input type="text"
+						id="misce_fee" name="misce_fee" class="form-control"
 						value="<c:out value="${semester_fee.getMisce_fee()}" />" required>
 				</div>
+				
 				<div class="md-form mb-2">
 					<label for="date" class="">Start date</label> <input type="date"
 						name="start_date" value="<c:out value="${semester_fee.getStart_date()}" />" required>

@@ -50,7 +50,7 @@
 		<tbody>
 			<c:forEach items="${formfillup_fees_list}" var="list">
 				<tr>
-					<td><c:out value="${list.getDeptName()}" /></td>
+					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
 					<td><c:out value=" ${list.getMain_fee()}" /></td>
 					<td><c:out value=" ${list.getMisce_fee()}" /></td>

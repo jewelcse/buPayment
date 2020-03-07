@@ -3,8 +3,7 @@ package com.buPayments.model;
 public class adminFormFillUpFeesTable {
 
 	private String id;
-	private String deptId;
-	private String deptName;
+	private String department;
 	private String semester;
 	private String main_fee;
 	private String misce_fee;
@@ -15,12 +14,11 @@ public class adminFormFillUpFeesTable {
 
 	}
 
-	public adminFormFillUpFeesTable(String id, String deptId, String deptName, String semester, String main_fee,
+	public adminFormFillUpFeesTable(String id, String department, String semester, String main_fee,
 			String misce_fee, String start_date, String end_date) {
 		super();
 		this.id = id;
-		this.deptId = deptId;
-		this.deptName = deptName;
+		this.department = department;
 		this.semester = semester;
 		this.main_fee = main_fee;
 		this.misce_fee = misce_fee;
@@ -28,14 +26,7 @@ public class adminFormFillUpFeesTable {
 		this.end_date = end_date;
 	}
 
-	public String getDeptName() {
-		return deptName;
-	}
-
-	public void setDeptName(String deptName) {
-		this.deptName = deptName;
-	}
-
+	
 	public String getId() {
 		return id;
 	}
@@ -44,12 +35,14 @@ public class adminFormFillUpFeesTable {
 		this.id = id;
 	}
 
-	public String getDeptId() {
-		return deptId;
+	
+
+	public String getDepartment() {
+		return department;
 	}
 
-	public void setDeptId(String deptId) {
-		this.deptId = deptId;
+	public void setDepartment(String department) {
+		this.department = department;
 	}
 
 	public String getSemester() {

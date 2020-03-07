@@ -46,6 +46,7 @@
 				<th>Semester</th>
 				<th>Main Fee</th>
 				<th>Misce Fee</th>
+				<th>Total</th>
 				<th>Start date</th>
 				<th>End Date</th>
 				<th>Action</th>
@@ -55,17 +56,22 @@
 		<tbody>
 			<c:forEach items="${development_fees_list}" var="list">
 				<tr>
-					<td><c:out value="${list.getDeptName()}" /></td>
+					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
-					<td><c:out value=" ${list.getMain_fee()}" /></td>
-					<td><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td class="fee1"><c:out value=" ${list.getMain_fee()}" /></td>
+					<td class="fee2"><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td><div class="total"></div></td>
 					<td><c:out value=" ${list.getStart_date()}" /></td>
 					<td><c:out value=" ${list.getEnd_date()}" /></td>
 					<td><a class="btn btn-primary"
 						href='adminFeesEditTableController?fee_type=developmentfee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
 					</td>
+
+
 				</tr>
+
 			</c:forEach>
+
 		</tbody>
 	</table>
 
@@ -127,6 +133,26 @@
 	</nav>
 
 </section>
+
+<script>
+	$(document).ready(function() {
+		var mainAmount = $(".fee1").html();
+		var misceAmount = $(".fee2").html();
+
+		function total(a1, a2) {
+			var sum = parseInt(a1) + parseInt(a2);
+			return sum;
+		}
+		;
+
+		console.log(mainAmount + " " + misceAmount);
+		var sum = total(mainAmount, misceAmount);
+		//$("#total").val(sum);
+
+		$(".total").append(sum);// for showing in the div element
+
+	});
+</script>
 
 
 <%@include file="admin-footer.jsp"%>

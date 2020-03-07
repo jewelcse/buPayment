@@ -14,6 +14,7 @@ Connection con;
 			Class.forName("com.mysql.jdbc.Driver");
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/bupayment", "root", "");
 			//System.out.print("success to database");
+			System.getProperty("java.classpath");
 			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block

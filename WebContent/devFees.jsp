@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
 	import="com.buPayments.model.Devfees"%>
-	
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 
 <%@include file="header.jsp"%>
@@ -18,44 +18,6 @@
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 %>
 
-
-
-<script>
-	$(document).ready(function() {
-		$('#SSemester').change(function(event) {
-			var semester = $('#SSemester').find(":selected").val();
-			console.log(semester);
-			var roll = $('#classRoll').val();
-			$.get('devFeesController', {
-				s_semester : semester,
-				s_roll : roll
-			}, function(responseText) {
-				$('#id2').val(responseText);
-				var add = responseText;
-				var newVal = +add + 600;
-				$('#sum').val(newVal);
-			});
-		});
-	});
-
-	function sum() {
-		var main = Document.getElementById("id1");
-		var misce = Document.getElementById("id2");
-
-		var total = main + misce;
-		return total;
-		alert(total)
-
-	}
-	function clearForms() {
-		var i;
-		for (i = 0; (i < document.forms.length); i++) {
-			document.forms[i].reset();
-		}
-	}
-</script>
-
-
 <body>
 	<div class="container">
 
@@ -64,10 +26,9 @@
 				<h2 class="text-responsive font-weight-bold text-center ">University
 					of Barishal</h2>
 				<h6 class="text-responsive font-weight-bold text-center ">Barishal-8200</h6>
-				<h6 class="text-responsive font-weight-bold text-center">Computer
-					Science & Engineering</h6>
-				</br> <u><h3 class="text-responsive font-weight-bold text-center ">Development
-						Fees Payment Form</h3> </u>
+				<h6 class="text-responsive font-weight-bold text-center">Dept. of <%=currentUser.getS_department()%></h6>
+				</br> <h3 class="text-responsive font-weight-bold text-center ">Development
+						Fees Payment Form</h3> 
 
 
 				<div class="col-md-12 mb-md-0 mb-5  ">
@@ -97,20 +58,17 @@
 						<%
 							String semester = request.getParameter("semester");
 						%>
+
+
 						<div class="md-form">
-							<div class="md-form mb-0 mt-2">
-								<select
-									class="browser-default custom-select custom-select-lg mb-3"
-									name="s_semester" id="SSemester">
-									<option value="0">Confirm Semester</option>
-									<option value="<%out.print(semester);%>">
-										<%
-											out.print(semester);
-										%>
-									</option>
-								</select>
-							</div>
+							<label for="orangeForm-name" class="">Semester</label> <input
+								type="text" id="SSemester" name="s_semester" readonly
+								class="form-control" value="<%out.print(semester);%>">
+
 						</div>
+
+
+
 						<div class="md-form">
 							<label for="orangeForm-name" class="">Student's Name</label> <input
 								type="text" id="sname" name="s_name" readonly
@@ -159,17 +117,33 @@
 									<tr>
 										<td>Development Fees</td>
 										<!-- বিভাগ উন্নয়ন ফি ,বিবিধ,মোট-->
-										<td><input type="text" id="id1" value="600" readonly>
-										</td>
+										<td><input type="text" id="id1"
+											value="<%out.println(request.getAttribute("mainfee"));%>"
+											readonly></td>
 									</tr>
 									<tr>
 										<td>Miscellaneous</td>
-										<td><input type="text" id="id2" name="amount" readonly>
-										</td>
+										<td><input type="text" id="id2"
+											value="<%out.println(request.getAttribute("miscefee"));%>"
+											readonly></td>
 									</tr>
+
+									<%
+										if (request.getAttribute("changedfee") != null) {
+									%>
+									<tr>
+										<td>Reduced Amount (-)</td>
+										<td><input type="text" id="id3"
+											value="<%out.println(request.getAttribute("changedfee"));%>"
+											readonly></td>
+									</tr>
+
+									<%
+										}
+									%>
 									<tr>
 										<td>Total</td>
-										<td><input type="text" id="sum" name="total_amount"
+										<td><input type="text" id="total" name="total_amount"
 											readonly></td>
 									</tr>
 								</tbody>
@@ -186,19 +160,50 @@
 		</div>
 	</div>
 
-	<script>
-		function check_semester() {
-
-			var semester = document.getElementById('SSemester').selectedOptions[0].value;
-			console.log(semester);
-
-			if (semester == "0") {
-				alert("Confirm your Semester");
-			}
-
-		}
-	</script>
 </body>
+
+<script>
+	$(document).ready(function() {
+		var mainAmount = $("#id1").val();
+		var misceAmount = $("#id2").val();
+		var reducedAmount = $("#id3").val();
+
+		function total1(a1, a2) {
+			var sum = parseInt(a1) + parseInt(a2);
+			return sum;
+		}
+		;
+
+		function total2(a1, a2, a3) {
+			var sum = parseInt(a1) + parseInt(a2) - parseInt(a3);
+			return sum;
+		}
+		;
+
+		if (reducedAmount != null) {
+			console.log(mainAmount + " " + misceAmount + " " + reducedAmount);
+			var sum = total2(mainAmount, misceAmount, reducedAmount);
+			$("#total").val(sum);
+			console.log(sum);
+		} else {
+			console.log(mainAmount + " " + misceAmount);
+			var sum = total1(mainAmount, misceAmount);
+			$("#total").val(sum);
+			console.log(sum);
+		}
+
+		//$("#total").append(sum);// for showing in the div element
+
+	});
+
+	function clearForms() {
+		var i;
+		for (i = 0; (i < document.forms.length); i++) {
+			document.forms[i].reset();
+		}
+	}
+</script>
+
 
 </html>
 <br>

@@ -42,8 +42,11 @@
 			<tr>
 				<th>Department</th>
 				<th>Semester</th>
-				<th>Main Fee</th>
-				<th>Misce Fee</th>
+				<th>admission Fee</th>
+				<th>Tution Fee</th>
+				<th>Lab/Seminar Fee</th>
+				<th>Transport Fee</th>
+				<th>Miscellaneous Fee</th>
 				<th>Start date</th>
 				<th>End Date</th>
 				<th>Action</th>
@@ -53,9 +56,12 @@
 		<tbody>
 			<c:forEach items="${semester_fees_list}" var="list">
 				<tr>
-					<td><c:out value="${list.getDeptName()}" /></td>
+					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
-					<td><c:out value=" ${list.getMain_fee()}" /></td>
+					<td><c:out value=" ${list.getSemester_admission_fee()}" /></td>
+					<td><c:out value=" ${list.getTution_fee()}" /></td>
+					<td><c:out value=" ${list.getLab_or_seminar_fee()}" /></td>
+					<td><c:out value=" ${list.getTransport_fee()}" /></td>
 					<td><c:out value=" ${list.getMisce_fee()}" /></td>
 					<td><c:out value=" ${list.getStart_date()}" /></td>
 					<td><c:out value=" ${list.getEnd_date()}" /></td>

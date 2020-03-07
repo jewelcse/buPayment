@@ -20,6 +20,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.text.StringEscapeUtils;
 
+import com.buPayments.Dao.studentsDao;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Department;
 import com.buPayments.model.Devfees;
@@ -105,9 +106,8 @@ public class devFeesController extends HttpServlet {
 			
 				Devfees newDevfees = new Devfees(id,semester,development_fee);
 				String rand = UUID.randomUUID().toString();
-				Student student = mainController.getStudentByStudentId(id);
+				Student student = studentsDao.getStudentProfileById(id);
 				Devfees devfees = new Devfees();
-				
 				
 				
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");

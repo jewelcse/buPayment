@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import com.buPayments.controller.dbConnection;
 import com.buPayments.model.Admin;
+import com.buPayments.model.Department;
 import com.buPayments.model.allApplication;
 
 public class adminDao {
@@ -88,6 +89,34 @@ public class adminDao {
 			e.printStackTrace();
 		}
 		return applicationList;
+	}
+
+	public static ArrayList<Department> getAllDepartment() {
+		dbConnection db = new dbConnection();
+		ArrayList<Department> deptList = new ArrayList<Department>();
+		String sql = "select * from  department";
+		Connection con = db.getCon();
+		try {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+
+				Department newItem = new Department();
+
+				String id = myRs.getString("id");
+				String dept = myRs.getString("dept_name");
+
+				newItem.setDeptId(id);
+				newItem.setDeptName(dept);
+
+				deptList.add(newItem);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return deptList;
 	}
 
 }

@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
+	import="com.buPayments.Dao.*"
 	import="java.util.HashMap"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,6 +15,8 @@
 	new java.util.Date();
 	if (session.getAttribute("currentSessionStudent") != null) {
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
+		
+		Student stu = studentsDao.getStudentProfileById(currentUser.getId());
 %>
 
 
@@ -29,7 +32,7 @@
 			<h6 class="text-responsive font-weight-bold text-center ">Barishal-8200</h6>
 			<h6 class="text-responsive font-weight-bold text-center">
 				Dept. of
-				<%=currentUser.getS_department()%>
+				<%=stu.getS_department()%>
 			</h6>
 			</br>
 			<h3 class="text-responsive font-weight-bold text-center ">Semester
@@ -42,7 +45,7 @@
 
 				<form action="devSemesterFeesController" method="post">
 					<input type="hidden" id="" name="s_id" class="form-control"
-						value="<%=currentUser.getId()%>">
+						value="<%=stu.getId()%>">
 
 					<!--Grid row-->
 					<div class="row">
@@ -51,7 +54,7 @@
 							<div class="md-form mb-0">
 								<label for="classRoll" class="">Class Roll</label> <input
 									type="text" id="classRoll" name="s_roll" readonly
-									class="form-control" value="<%=currentUser.getS_roll()%>">
+									class="form-control" value="<%=stu.getS_roll()%>">
 
 							</div>
 						</div>
@@ -62,7 +65,7 @@
 							<div class="md-form mb-0">
 								<label for="regNumber" class="">Registration No.</label> <input
 									type="text" id="regNumber" name="s_reg" readonly
-									class="form-control" value="<%=currentUser.getS_reg()%>">
+									class="form-control" value="<%=stu.getS_reg()%>">
 
 							</div>
 						</div>
@@ -87,35 +90,35 @@
 					<div class="md-form">
 						<label for="orangeForm-name" class="">Student's Name</label> <input
 							type="text" id="sname" name="s_name" readonly
-							class="form-control" value="<%=currentUser.getS_name()%>">
+							class="form-control" value="<%=stu.getS_name()%>">
 
 					</div>
 
 					<div class="md-form">
 						<label for="orangeForm-moname" class="">Mother's Name</label> <input
 							type="text" id="moname" name="s_mother_name" readonly
-							value="<%=currentUser.getS_mother_name()%>" class="form-control">
+							value="<%=stu.getS_mother_name()%>" class="form-control">
 
 					</div>
 
 					<div class="md-form">
 						<label for="orangeForm-faname" class="">Father's Name</label> <input
 							type="text" id="faname" name="s_father_name" readonly
-							value="<%=currentUser.getS_father_name()%>" class="form-control">
+							value="<%=stu.getS_father_name()%>" class="form-control">
 
 					</div>
 
 					<div class="md-form">
 						<label for="orangeForm-faname" class="">Department Name</label> <input
 							type="text" id="daname" name="s_department" readonly
-							value="<%=currentUser.getS_department()%>" class="form-control">
+							value="<%=stu.getS_department()%>" class="form-control">
 
 					</div>
 
 					<div class="md-form">
 						<label for="orangeForm-faname" class="">Faculty Name</label> <input
 							type="text" id="facaname" name="s_faculty" readonly
-							value="<%=currentUser.getS_faculty()%>" class="form-control">
+							value="<%=stu.getS_faculty()%>" class="form-control">
 
 					</div>
 

@@ -34,8 +34,6 @@ public class adminFeesEditTableController extends HttpServlet {
 
 			adminDevelopmentFeesTable devItem = adminFeesDao.getDevelopmentFeeById(id);
 
-			PrintWriter out = response.getWriter();
-
 			request.setAttribute("development_fee", devItem);
 
 			RequestDispatcher view = request.getRequestDispatcher("development_fees_edit.jsp");
@@ -45,8 +43,6 @@ public class adminFeesEditTableController extends HttpServlet {
 
 			adminSemesterFeesTable semItem = adminFeesDao.getSemesterFeeById(id);
 
-			PrintWriter out = response.getWriter();
-
 			request.setAttribute("semester_fee", semItem);
 
 			RequestDispatcher view = request.getRequestDispatcher("semester_fees_edit.jsp");
@@ -55,8 +51,6 @@ public class adminFeesEditTableController extends HttpServlet {
 		} else if (fee_type.equals("formfillupfee")) {
 
 			adminFormFillUpFeesTable formItem = adminFeesDao.getFormfillupFeeById(id);
-
-			PrintWriter out = response.getWriter();
 
 			request.setAttribute("formfillup_fee", formItem);
 

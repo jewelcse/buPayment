@@ -58,16 +58,14 @@
 				<tr>
 					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
-					<td class="fee1"><c:out value=" ${list.getMain_fee()}" /></td>
-					<td class="fee2"><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getMain_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getMisce_fee()}" /></td>
 					<td><div class="total"></div></td>
 					<td><c:out value=" ${list.getStart_date()}" /></td>
 					<td><c:out value=" ${list.getEnd_date()}" /></td>
 					<td><a class="btn btn-primary"
 						href='adminFeesEditTableController?fee_type=developmentfee&&edit_id=<c:out value="${list.getId()}" />'>Update</a>
 					</td>
-
-
 				</tr>
 
 			</c:forEach>
@@ -135,23 +133,25 @@
 </section>
 
 <script>
-	$(document).ready(function() {
-		var mainAmount = $(".fee1").html();
-		var misceAmount = $(".fee2").html();
-
-		function total(a1, a2) {
-			var sum = parseInt(a1) + parseInt(a2);
-			return sum;
-		}
-		;
-
-		console.log(mainAmount + " " + misceAmount);
-		var sum = total(mainAmount, misceAmount);
-		//$("#total").val(sum);
-
-		$(".total").append(sum);// for showing in the div element
-
-	});
+	
+$(document).ready(function () {
+    //iterate through each row in the table
+    $('tr').each(function () {
+        //the value of sum needs to be reset for each row, so it has to be set inside the row loop
+        var sum = 0;
+        //find the fee elements in the current row and sum it 
+        $(this).find('.fee').each(function () {
+            var fee = $(this).text();
+            if (!isNaN(fee) && fee.length !== 0) {
+                sum += parseFloat(fee);
+            }
+        });
+        //set the value of currents rows sum to the total-combat element in the current row
+        $('.total', this).html(sum);
+    });
+});
+	
+	
 </script>
 
 

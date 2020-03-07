@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"
+	import="com.buPayments.Dao.*"%>
 
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -15,6 +16,10 @@
 	new java.util.Date();
 	session.getAttribute("currentSessionStudent");
 	Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
+	
+	Student stu;
+	stu = studentsDao.getStudentProfileById(currentUser.getId());
+	
 %>
 
 
@@ -29,16 +34,16 @@
 					<div class="p-4" style="font-size: 20px">
 						<p>
 							I am <input type="text" name="s_name" class="form-control m-1"
-								value="<%=currentUser.getS_name()%>" readonly> bearing
+								value="<%=stu.getS_name()%>" readonly> bearing
 							roll no: <input type="text" name="s_roll"
-								class="form-control m-1" value="<%=currentUser.getS_roll()%>"
+								class="form-control m-1" value="<%=stu.getS_roll()%>"
 								readonly> studying in <input type="hidden" name="id"
-								class="form-control m-1" value="<%=currentUser.getId()%>">
+								class="form-control m-1" value="<%=stu.getId()%>">
 							<input type="text" name="semester" class="form-control m-1"
 								placeholder="Enter your semester" required> at the
 							department of <input type="text" name="s_dept"
 								class="form-control m-1"
-								value="<%=currentUser.getS_department()%>" readonly>
+								value="<%=stu.getS_department()%>" readonly>
 							University of Barishal.
 						</p>
 

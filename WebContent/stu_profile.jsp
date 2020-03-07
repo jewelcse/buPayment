@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Student"%>
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
+	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -11,15 +12,21 @@
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
 	if (session.getAttribute("currentSessionStudent") != null) {
-		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
-%>
 
+		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
+
+		Student stu;
+
+		stu = studentsDao.getStudentProfileById(currentUser.getId());
+
+		//System.out.println("id "+currentUser.getId());
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title><%=currentUser.getS_name()%></title>
+<title><%=stu.getS_name()%></title>
 <style>
 .pcolor {
 	color: black
@@ -27,23 +34,9 @@
 </style>
 </head>
 <body>
-	<input type="hidden" name="s_Roll" value="<%=currentUser.getS_roll()%>">
-	<input type="hidden" name="s_Reg" value="<%=currentUser.getS_reg()%>">
-	<input type="hidden" name="s_Name" value="<%=currentUser.getS_name()%>">
-	<input type="hidden" name="s_Father_name"
-		value="<%=currentUser.getS_father_name()%>">
-	<input type="hidden" name="s_Mother_name"
-		value="<%=currentUser.getS_mother_name()%>">
-	<input type="hidden" name="s_Email"
-		value="<%=currentUser.getS_email()%>">
-	<input type="hidden" name="s_Phone"
-		value="<%=currentUser.getS_phone()%>">
-	<input type="hidden" name="s_Department"
-		value="<%=currentUser.getS_department()%>">
-	<input type="hidden" name="s_Semester"
-		value="<%=currentUser.getS_semester()%>">
-	<input type="hidden" name="s_Semester"
-		value="<%=currentUser.getS_faculty()%>">
+
+
+
 
 
 	<div class="container emp-profile pt-4">
@@ -59,10 +52,10 @@
 				<div class="col-md-6">
 					<div class="profile-head">
 						<h5>
-							<%=currentUser.getS_name()%>
+							<%=stu.getS_name()%>
 						</h5>
 						<h6>
-							<%=currentUser.getS_department()%>
+							<%=stu.getS_department()%>
 						</h6>
 						<p class="proile-rating">University of Barishal</p>
 						<ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -85,8 +78,8 @@
 						<p>
 							<u>Contact Info:</u>
 						</p>
-						<p><%=currentUser.getS_email()%></p>
-						<p><%=currentUser.getS_phone()%></p>
+						<p><%=stu.getS_email()%></p>
+						<p><%=stu.getS_phone()%></p>
 						<br />
 
 					</div>
@@ -100,7 +93,7 @@
 									<label>Mother's Name:</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_mother_name()%></p>
+									<p><%=stu.getS_mother_name()%></p>
 								</div>
 							</div>
 							<div class="row">
@@ -108,7 +101,7 @@
 									<label>Father's Name:</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_father_name()%></p>
+									<p><%=stu.getS_father_name()%></p>
 								</div>
 							</div>
 							<div class="row">
@@ -116,7 +109,7 @@
 									<label>Roll No:</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_roll()%></p>
+									<p><%=stu.getS_roll()%></p>
 								</div>
 							</div>
 							<div class="row">
@@ -124,7 +117,7 @@
 									<label>Registration No:</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_reg()%></p>
+									<p><%=stu.getS_reg()%></p>
 								</div>
 							</div>
 							<div class="row">
@@ -132,7 +125,7 @@
 									<label>Semester:</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_semester()%></p>
+									<p><%=stu.getS_semester()%></p>
 								</div>
 							</div>
 							<div class="row">
@@ -140,7 +133,7 @@
 									<label>Faculty</label>
 								</div>
 								<div class="col-md-6">
-									<p><%=currentUser.getS_faculty()%></p>
+									<p><%=stu.getS_faculty()%></p>
 								</div>
 							</div>
 

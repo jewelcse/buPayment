@@ -22,7 +22,8 @@
 			|| session.getAttribute("adminSemesterFeesTableController") != null) {
 %>
 <%@include file="admin-header.jsp"%>
-
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- Breadcrumbs-->
 <ol class="breadcrumb">
@@ -47,6 +48,7 @@
 				<th>Lab/Seminar Fee</th>
 				<th>Transport Fee</th>
 				<th>Miscellaneous Fee</th>
+				<th>Total</th>
 				<th>Start date</th>
 				<th>End Date</th>
 				<th>Action</th>
@@ -58,11 +60,12 @@
 				<tr>
 					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
-					<td><c:out value=" ${list.getSemester_admission_fee()}" /></td>
-					<td><c:out value=" ${list.getTution_fee()}" /></td>
-					<td><c:out value=" ${list.getLab_or_seminar_fee()}" /></td>
-					<td><c:out value=" ${list.getTransport_fee()}" /></td>
-					<td><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getSemester_admission_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getTution_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getLab_or_seminar_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getTransport_fee()}" /></td>
+					<td class="fee"><c:out value=" ${list.getMisce_fee()}" /></td>
+					<td ><div class="total"></div></td>
 					<td><c:out value=" ${list.getStart_date()}" /></td>
 					<td><c:out value=" ${list.getEnd_date()}" /></td>
 					<td><a class="btn btn-primary"
@@ -135,7 +138,27 @@
 		</ul>
 	</nav>
 </section>
-
+<script>
+	
+$(document).ready(function () {
+    //iterate through each row in the table
+    $('tr').each(function () {
+        //the value of sum needs to be reset for each row, so it has to be set inside the row loop
+        var sum = 0;
+        //find the fee elements in the current row and sum it 
+        $(this).find('.fee').each(function () {
+            var fee = $(this).text();
+            if (!isNaN(fee) && fee.length !== 0) {
+                sum += parseFloat(fee);
+            }
+        });
+        //set the value of currents rows sum to the total-combat element in the current row
+        $('.total', this).html(sum);
+    });
+});
+	
+	
+</script>
 <%@include file="admin-footer.jsp"%>
 <%
 	} else {

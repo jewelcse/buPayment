@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.adminDevelopmentFeesTable;
+import com.buPayments.model.adminFormFillUpFeesTable;
 import com.buPayments.model.adminSemesterFeesTable;
 
 @WebServlet("/checkValidityController")
@@ -78,8 +79,20 @@ public class checkValidityController extends HttpServlet {
 			}
 
 			else if (res.equals("formfillup_page")) {
-				RequestDispatcher dispatcher = request.getRequestDispatcher("formFillUp.jsp");
-				dispatcher.forward(request, response);
+				
+				adminFormFillUpFeesTable formfillupfee;
+				
+				formfillupfee = mainController.findFormfillupFee(departmentId,semester);
+				
+				System.out.println(formfillupfee.getMain_fee() + " "+formfillupfee.getMisce_fee() );
+				
+				request.setAttribute("mainfee", formfillupfee.getMain_fee());
+				request.setAttribute("miscefee", formfillupfee.getMisce_fee());
+				
+				request.getRequestDispatcher("formFillUp.jsp").forward(request, response);
+				
+				
+			
 
 			} else {
 

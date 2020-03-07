@@ -1,6 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"%>
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
+	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -19,9 +20,12 @@
 <%@include file="admin-header.jsp"%>
 
 <!-- onlu=y work for bootstrtap 3.0  -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
@@ -60,6 +64,28 @@
 								<label for="roll">Roll</label> <input type="text" id="roll"
 									name="roll" class="form-control" placeholder="Roll No."
 									required>
+							</div>
+							<div class="form-group">
+								<label for="semester">Department</label>
+								<div class="md-form">
+									<div class="md-form mb-0">
+										<select id="semester"
+											class="browser-default custom-select custom-select-lg mb-3"
+											name="semester" required>
+											<option value="null">.....</option>
+											<% 
+											ArrayList<Department> item = new ArrayList<Department>();
+											
+											item = adminDao.getAllDepartment(); 
+
+											for (int i = 0; i < item.size(); i++) {  %>
+										<option value="<% out.println(item.get(i).getDeptId()); %>"><% out.println(item.get(i).getDeptName()); %></option>
+										
+									<%} %>	
+											
+										</select>
+									</div>
+								</div>
 							</div>
 							<div class="form-group">
 								<label for="semester">Semester</label>
@@ -128,9 +154,8 @@
 <script>
 	$('#modalForm').on('hidden.bs.modal', function(e) {
 		$(this).find('#reducedForm')[0].reset();
-		$('.statusMsg')
-		.html('');
-		
+		$('.statusMsg').html('');
+
 	});
 
 	function submitDevFeeChangedForm() {

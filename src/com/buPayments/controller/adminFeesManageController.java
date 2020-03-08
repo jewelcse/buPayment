@@ -115,19 +115,15 @@ public class adminFeesManageController extends HttpServlet {
 			String roll = request.getParameter("roll");
 			String semester = request.getParameter("semester");
 			String changed_amount = request.getParameter("changed_amount");
+			String departmentId = request.getParameter("department");
 
-			System.out.println(roll + semester + changed_amount);
+			System.out.println(roll + semester + changed_amount + " " + departmentId);
 			
-			/*ArrayList<Department> dept = adminDao.getAllDepartment();
+			
 
-			request.setAttribute("dept_list", dept);
+			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount,departmentId);
 
-			RequestDispatcher view = request.getRequestDispatcher("adminController?target=update_development_fee");
-			view.forward(request, response);*/
-
-			/*ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount);
-
-			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester);
+			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester,departmentId);
 			
 			PrintWriter out = response.getWriter();
 
@@ -142,7 +138,7 @@ public class adminFeesManageController extends HttpServlet {
 				System.out.println("---->Duplicate Entity found!");
 				out.close();
 
-			}*/
+			}
 
 		}
 

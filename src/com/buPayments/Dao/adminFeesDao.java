@@ -115,13 +115,17 @@ public class adminFeesDao {
 			while (myRs.next()) {
 
 				String id = myRs.getString("id");
-				String roll = myRs.getString("roll_no");
+				String roll = myRs.getString("roll");
 				String semester = myRs.getString("semester");
+				String departmentId = myRs.getString("department");
+
 				String amount = myRs.getString("changed_amount");
+				
+				Department departmentName = mainController.getDepartmentById(departmentId);
 
 				newItem.setId(id);
 				newItem.setRoll(roll);
-				newItem.setSemester_name(semester);
+				newItem.setDepartment(departmentName.getDeptName());
 				newItem.setChanged_amount(amount);
 				changedDevelopmentfee.add(newItem);
 

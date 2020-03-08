@@ -22,10 +22,12 @@
 <!-- onlu=y work for bootstrtap 3.0  -->
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 <ol class="breadcrumb">
 	<li class="breadcrumb-item"><a href="super-admin.jsp">Dashboard</a>
@@ -66,23 +68,30 @@
 									required>
 							</div>
 							<div class="form-group">
-								<label for="semester">Department</label>
+								<label for="department">Department</label>
 								<div class="md-form">
 									<div class="md-form mb-0">
-										<select id="semester"
+										<select id="department"
 											class="browser-default custom-select custom-select-lg mb-3"
-											name="semester" required>
+											name="department" required>
 											<option value="null">.....</option>
-											<% 
-											ArrayList<Department> item = new ArrayList<Department>();
-											
-											item = adminDao.getAllDepartment(); 
+											<%
+												ArrayList<Department> item = new ArrayList<Department>();
 
-											for (int i = 0; i < item.size(); i++) {  %>
-										<option value="<% out.println(item.get(i).getDeptId()); %>"><% out.println(item.get(i).getDeptName()); %></option>
-										
-									<%} %>	
-											
+													item = adminDao.getAllDepartment();
+
+													for (int i = 0; i < item.size(); i++) {
+											%>
+											<option value="<%out.println(item.get(i).getDeptId());%>">
+												<%
+													out.println(item.get(i).getDeptName());
+												%>
+											</option>
+
+											<%
+												}
+											%>
+
 										</select>
 									</div>
 								</div>
@@ -132,6 +141,7 @@
 				border="2px solid black">
 				<tr>
 					<th>Roll No</th>
+					<th>Department</th>
 					<th>Semester</th>
 					<th>Changed Amount</th>
 				</tr>
@@ -140,7 +150,8 @@
 				<c:forEach items="${changed_fees_list}" var="list">
 					<tr>
 						<td><c:out value=" ${list.getRoll()}" /></td>
-						<td><c:out value=" ${list.getSemester_name()}" /></td>
+						<td><c:out value=" ${list.getDepartment()}" /></td>
+						<td><c:out value=" ${list.getSemester()}" /></td>
 						<td><c:out value=" ${list.getChanged_amount()}" /></td>
 					</tr>
 				</c:forEach>
@@ -158,12 +169,19 @@
 
 	});
 
+	//$(window).on('load', function() { ... });
+
 	function submitDevFeeChangedForm() {
 		var roll = $('#roll').val();
 		var semester = $('#semester').val();
 		var amount = $('#changed_amount').val();
-		//alert(roll+semester+amount);
+		var department = $('#department').val();
 
+		/*$(".department").change(function(){
+		    var department = $(this).val();
+		    alert(department);
+		});*/
+		//alert(roll+semester+amount);
 		if (roll.trim() == '') {
 			alert('Please enter Roll.');
 			$('#roll').focus();
@@ -184,6 +202,7 @@
 						data : {
 							roll : roll,
 							semester : semester,
+							department : department,
 							changed_amount : amount
 						},
 						beforeSend : function() {

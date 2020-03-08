@@ -211,7 +211,7 @@ public class mainController {
 	 * same semester
 	 */
 
-	public static boolean FindDuplicateChangedDevelopmentFees(String roll, String semester) {
+	public static boolean FindDuplicateChangedDevelopmentFees(String roll, String semester, String departmentId) {
 
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
@@ -221,7 +221,7 @@ public class mainController {
 		myConn = db.getCon();
 
 		String select_sql = "select * from changed_development_fee where roll_no = '" + roll + "' AND semester = '"
-				+ semester + "'";
+				+ semester + "' AND department = '"+departmentId+"'";
 		try {
 			stmt = myConn.createStatement();
 			myRs = stmt.executeQuery(select_sql);
@@ -243,14 +243,16 @@ public class mainController {
 		myConn = db.getCon();
 
 		String roll = changedFees.getRoll();
-		String semester = changedFees.getSemester_name();
+		String semester = changedFees.getSemester();
 		String amount = changedFees.getChanged_amount();
+		String departmentId = changedFees.getDepartment();
 
-		String sql = "insert into changed_development_fee (roll_no,semester,changed_amount) values (?,?,?)";
+		String sql = "insert into changed_development_fee (roll_no,semester,department,changed_amount) values (?,?,?,?)";
 		try {
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, roll);
 			myStmt.setString(2, semester);
+			myStmt.setString(3, departmentId);
 			myStmt.setString(3, amount);
 			myStmt.execute();
 			System.out.print("--->Changed Development Fee Successfull!\n");

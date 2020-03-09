@@ -120,7 +120,6 @@ public class adminFeesManageController extends HttpServlet {
 			System.out.println(roll + semester + changed_amount + " " + departmentId);
 			
 			
-
 			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount,departmentId);
 
 			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester,departmentId);
@@ -129,8 +128,16 @@ public class adminFeesManageController extends HttpServlet {
 
 			if (!duplicate) {
 				mainController.ChangedFeesNow(changedFees);
-				response.sendRedirect("adminController?target=update_development_fee");
 				out.write("ok");
+				//response.sendRedirect("adminController?target=update_development_fee");
+				
+				/*ArrayList<ChangedFees> list = adminFeesDao.showAllChangedFees();
+
+				request.setAttribute("changed_fees_list", list);
+
+				RequestDispatcher view = request.getRequestDispatcher("admin_update_fees.jsp");
+				view.forward(request, response);*/
+				
 				out.close();
 			} else {
 				out.write("err");

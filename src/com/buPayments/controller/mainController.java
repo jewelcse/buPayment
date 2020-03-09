@@ -220,8 +220,8 @@ public class mainController {
 
 		myConn = db.getCon();
 
-		String select_sql = "select * from changed_development_fee where roll_no = '" + roll + "' AND semester = '"
-				+ semester + "' AND department = '"+departmentId+"'";
+		String select_sql = "select * from changed_development_fee where roll = '" + roll + "' AND semester = '"
+				+ semester + "' AND department = '" + departmentId + "'";
 		try {
 			stmt = myConn.createStatement();
 			myRs = stmt.executeQuery(select_sql);
@@ -247,20 +247,19 @@ public class mainController {
 		String amount = changedFees.getChanged_amount();
 		String departmentId = changedFees.getDepartment();
 
-		String sql = "insert into changed_development_fee (roll_no,semester,department,changed_amount) values (?,?,?,?)";
+		String sql = "insert into changed_development_fee (roll,semester,department,changed_amount) values (?,?,?,?)";
 		try {
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, roll);
 			myStmt.setString(2, semester);
 			myStmt.setString(3, departmentId);
-			myStmt.setString(3, amount);
+			myStmt.setString(4, amount);
 			myStmt.execute();
 			System.out.print("--->Changed Development Fee Successfull!\n");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 
 	}
 

@@ -163,6 +163,8 @@
 
 
 <script>
+
+
 	$('#modalForm').on('hidden.bs.modal', function(e) {
 		$(this).find('#reducedForm')[0].reset();
 		$('.statusMsg').html('');
@@ -177,11 +179,6 @@
 		var amount = $('#changed_amount').val();
 		var department = $('#department').val();
 
-		/*$(".department").change(function(){
-		    var department = $(this).val();
-		    alert(department);
-		});*/
-		//alert(roll+semester+amount);
 		if (roll.trim() == '') {
 			alert('Please enter Roll.');
 			$('#roll').focus();
@@ -216,6 +213,7 @@
 								$('.statusMsg')
 										.html(
 												'<span style="color:green;">Successfuly Reduced .</p>');
+								 $('#modalForm').modal('hide');
 							} else {
 								$('.statusMsg')
 										.html(
@@ -227,6 +225,8 @@
 					});
 		}
 	}
+	
+
 </script>
 
 

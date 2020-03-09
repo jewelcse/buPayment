@@ -101,30 +101,28 @@ public class adminFeesDao {
 
 		dbConnection db = new dbConnection();
 		ArrayList<ChangedFees> changedDevelopmentfee = new ArrayList<ChangedFees>();
-		String sql = "select * from  changed_development_fee";
-		Connection con = db.getCon();
-		ChangedFees newItem = new ChangedFees();
+		String sql = "select * from  changed_development_fee order by id desc";
 
 		try {
-
+			Connection con = db.getCon();
 			PreparedStatement ps;
 			ResultSet myRs;
 			ps = (PreparedStatement) con.prepareStatement(sql);
 			myRs = ps.executeQuery(sql);
-			System.out.print(myRs);
-			while (myRs.next()) {
 
+			while (myRs.next()) {
+				ChangedFees newItem = new ChangedFees();
 				String id = myRs.getString("id");
 				String roll = myRs.getString("roll");
 				String semester = myRs.getString("semester");
 				String departmentId = myRs.getString("department");
-
 				String amount = myRs.getString("changed_amount");
-				
+
 				Department departmentName = mainController.getDepartmentById(departmentId);
 
 				newItem.setId(id);
 				newItem.setRoll(roll);
+				newItem.setSemester(semester);
 				newItem.setDepartment(departmentName.getDeptName());
 				newItem.setChanged_amount(amount);
 				changedDevelopmentfee.add(newItem);

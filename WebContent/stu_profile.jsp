@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
-	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"%>
+	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"
+	import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -15,11 +16,26 @@
 
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 
+		String id = currentUser.getId();
+
 		Student stu;
 
-		stu = studentsDao.getStudentProfileById(currentUser.getId());
+		stu = studentsDao.getStudentProfileById(id);
 
 		//System.out.println("id "+currentUser.getId());
+
+		ArrayList<Devfees> devfee = new ArrayList<Devfees>();
+		ArrayList<FormfillupFees> formfillupfee = new ArrayList<FormfillupFees>();
+		ArrayList<SemesterFees> semfee = new ArrayList<SemesterFees>();
+
+		devfee = studentsDao.getPaidDevelopmentFeeByUserId(id);
+		formfillupfee = studentsDao.getPaidFormfillupFeeByUserId(id);
+		semfee = studentsDao.getPaidSemesterpFeeByUserId(id);
+
+		/*for(int i= 0 ; i < devfee.size();i++){
+			
+			System.out.println(devfee.get(i).getS_semester()+ " " + devfee.get(i).getAmount());
+		}*/
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -66,7 +82,7 @@
 							<li class="nav-item"><a class="nav-link" id="profile-tab"
 								data-toggle="tab" href="#profile" role="tab"
 								aria-controls="profile" aria-selected="false"><span
-									class="pcolor">Timeline</span></a></li>
+									class="pcolor">Payments History</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -139,7 +155,86 @@
 
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel"
-							aria-labelledby="profile-tab">status</div>
+							aria-labelledby="profile-tab">
+							<table class="table table-bordered">
+								<tbody>
+
+									<%
+										for (int i = 0; i < devfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Development Fee:</td>
+										<td>
+											<%
+												out.print(devfee.get(i).getS_semester());
+											%>
+										</td>
+										<td>
+											<%
+												out.print(devfee.get(i).getAmount());
+											%><span> Tk</span>
+										</td>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+								
+								<tbody>
+
+									<%
+										for (int i = 0; i < formfillupfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Formfillup Fee:</td>
+										<td>
+											<%
+												out.print(formfillupfee.get(i).getS_semester());
+											%>
+										</td>
+										<td>
+											<%
+												out.print(formfillupfee.get(i).getS_amount());
+											%><span> Tk</span>
+										</td>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+								
+								<tbody>
+
+									<%
+										for (int i = 0; i < semfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Semester Fee:</td>
+										<td>
+											<%
+												out.print(semfee.get(i).getS_semester());
+											%>
+										</td>
+										<td>
+											<%
+												out.print(semfee.get(i).getS_semester_fee());
+											%> <span> Tk</span>
+										</td>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+
+							</table>
+
+						</div>
 					</div>
 				</div>
 			</div>

@@ -10,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.buPayments.model.Admin;
-import com.buPayments.model.Student;
 
 
 @WebServlet("/adminLogout")
@@ -50,9 +49,10 @@ public class adminLogout extends HttpServlet {
 					 
 				 }
 				       
-				 else 
+				 else {
 				      response.sendRedirect("admin-login.jsp"); //error page 
-				
+				      
+				 }
 
 		       
 		 }      

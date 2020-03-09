@@ -3,6 +3,7 @@ package com.buPayments.model;
 public class FormfillupFees {
 
 	private String s_id;
+	private String departmentId;
 	private String s_semester;
 	private String s_amount;
 

@@ -1,3 +1,25 @@
+
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
+	import="com.buPayments.model.adminDevelopmentFeesTable"
+	import="com.buPayments.controller.*" import="com.buPayments.model.*"
+	import="java.util.ArrayList" import="java.sql.Connection"
+	import="java.sql.PreparedStatement" import="java.sql.ResultSet"
+	import="java.sql.SQLException" import="java.sql.Statement"
+	import="java.text.ParseException"%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+
+
+
+
+<%
+	response.setHeader("Cache-Control", "no-store,must-revalidate");
+	response.setHeader("Pragma", "no-cache");
+	response.setDateHeader("Expires", -1);
+	new java.util.Date();
+%>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -26,13 +48,27 @@
 	<div class="container">
 		<div class="card card-login mx-auto mt-5 ">
 			<div class="card-header text-center">Admin Login Panel</div>
+			<c:if test="${not empty error}">
+						<span class="alert alert-danger"><c:out value="${error}" /></span>
+					</c:if>
 			<div class="card-body">
-				<p>Login as:</p>
 				<form action="adminController?action=login" method="post">
-					<label><input type="radio" name="admin_status"
-						value="SuperAdmin" required>Super Admin</label> <label><input
-						type="radio" name="admin_status" value="Admin">Admin</label><br>
-					<br>
+					
+					<div class="form-group">
+						<label for="semester">Role</label>
+						<div class="md-form">
+							<div class="md-form mb-0">
+								<select id="role"
+									class="browser-default custom-select custom-select-lg mb-3"
+									name="role" required>
+									<option value="null">.....</option>
+									<option value="super_admin">Super Admin</option>
+									<option value="sub_admin">Sub Admin</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
 					<div class="form-group">
 						<div class="form-label-group">
 							<input type="text" id="admin" name="admin" class="form-control"

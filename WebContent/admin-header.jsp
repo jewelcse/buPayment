@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
+	pageEncoding="ISO-8859-1" import="com.buPayments.Dao.*"
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
@@ -179,7 +179,16 @@
 					}
 
 					else if (session.getAttribute("currentSessionForSubAdmin") != null) {
+						
+						
+						
 						Admin currentsubAdmin = (Admin) (session.getAttribute("currentSessionForSubAdmin"));
+						
+						
+						Admin subadmin = adminDao.getSubAdminById(currentsubAdmin.getId());
+						
+						System.out.println(subadmin.getItem1() + " "+ subadmin.getItem2()+ " "+ subadmin.getItem3()+ " "+ subadmin.getItem4()+ " "+ subadmin.getItem5()+ " "+ subadmin.getItem6());
+						
 				%>
 				<!DOCTYPE html>
 				<html lang="en">
@@ -281,13 +290,13 @@
 
 
 			<%
-				if (currentsubAdmin.getItem2().equals("1")) {
+				if (subadmin.getItem2().equals("1")) {
 
 						session.setAttribute("show_student_table", "show_student_table");
 			%>
 
 			<li class="nav-item"><a class="nav-link"
-				href="adminShowStudentsController"> <i
+				href="adminShowStudentsController?page=1"> <i
 					class="fas fa-fw fa-table"></i> <span>Students Information</span></a></li>
 
 			<%
@@ -299,13 +308,13 @@
 
 
 			<%
-				if (currentsubAdmin.getItem1().equals("1")) {
+				if (subadmin.getItem1().equals("1")) {
 
 						session.setAttribute("admin_update_fees", "admin_update_fees");
 			%>
 
 			<li class="nav-item"><a class="nav-link"
-				href="admin_update_fees.jsp"> <i class="fas fa-fw fa-chart-area"></i>
+				href="adminController?target=update_development_fee"> <i class="fas fa-fw fa-chart-area"></i>
 					<span>Update Dev Fee</span></a></li>
 
 			<%
@@ -317,13 +326,13 @@
 
 
 			<%
-				if (currentsubAdmin.getItem3().equals("1")) {
+				if (subadmin.getItem3().equals("1")) {
 
 						session.setAttribute("admin_all_application", "admin_all_application");
 			%>
 
 			<li class="nav-item"><a class="nav-link"
-				href="admin_all_application.jsp"> <i class="fas fa-fw fa-table"></i>
+				href="adminController?target=all_application"> <i class="fas fa-fw fa-table"></i>
 					<span>Application Letters</span></a></li>
 
 			<%
@@ -350,12 +359,12 @@
 				<div class="dropdown-menu" aria-labelledby="pagesDropdown">
 
 					<%
-						if (currentsubAdmin.getItem4().equals("1")) {
+						if (subadmin.getItem4().equals("1")) {
 
 								session.setAttribute("adminDevelopmentFeesTableController", "adminDevelopmentFeesTableController");
 					%>
 
-					<a class="dropdown-item" href="adminDevelopmentFeesTableController">Development
+					<a class="dropdown-item" href="adminFeesManageController?type=developmentfee&&page=1">Development
 						Fees</a>
 
 					<%
@@ -365,12 +374,12 @@
 					%>
 
 					<%
-						if (currentsubAdmin.getItem5().equals("1")) {
+						if (subadmin.getItem5().equals("1")) {
 
 								session.setAttribute("adminSemesterFeesTableController", "adminSemesterFeesTableController");
 					%>
 
-					<a class="dropdown-item" href="adminSemesterFeesTableController">Semester
+					<a class="dropdown-item" href="adminFeesManageController?type=semesterfee&&page=1">Semester
 						Fees</a>
 
 					<%
@@ -382,12 +391,12 @@
 
 
 					<%
-						if (currentsubAdmin.getItem6().equals("1")) {
+						if (subadmin.getItem6().equals("1")) {
 
 								session.setAttribute("adminFormFillUpFeesTableController", "adminFormFillUpFeesTableController");
 					%>
 
-					<a class="dropdown-item" href="adminFormFillUpFeesTableController">Form
+					<a class="dropdown-item" href="adminFeesManageController?type=formfillupfee&&page=1">Form
 						Fillup Fee</a>
 
 					<%

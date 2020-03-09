@@ -103,7 +103,7 @@
 										<select id="semester"
 											class="browser-default custom-select custom-select-lg mb-3"
 											name="semester" required>
-											<option value=null>.....</option>
+											<option value="null">.....</option>
 											<option value="1st">1<sup>st</sup></option>
 											<option value="2nd">2<sup>nd</sup></option>
 											<option value="3rd">3<sup>rd</sup></option>
@@ -210,17 +210,15 @@
 							console.log(msg);
 							if (msg == 'ok') {
 								document.getElementById("reducedForm").reset();
-								$('.statusMsg')
-										.html(
-												'<span style="color:green;">Successfuly Reduced .</p>');
-								 $('#modalForm').modal('hide');
+								$('.statusMsg').html('<span style="color:green;">Successfuly Reduced!.</span>');
+								$('#modalForm').modal('hide');
+								 
 							} else {
-								$('.statusMsg')
-										.html(
-												'<span style="color:red;">Duplicate Entity found!.</span>');
+								$('.statusMsg').html('<span style="color:red;">Duplicate Entity found!.</span>');
 							}
 							$('.submitBtn').removeAttr("disabled");
 							$('.modal-body').css('opacity', '');
+							
 						}
 					});
 		}

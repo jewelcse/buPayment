@@ -271,7 +271,7 @@ public class mainController {
 		String admin = login_admin.getName();
 		String password = login_admin.getPassword();
 		String adminType = login_admin.getAdminType();
-		if (adminType.equals("SuperAdmin")) {
+		if (adminType.equals("super_admin")) {
 			String sql1 = "select * from super_admin where name = '" + admin + "' AND password = '" + password + "'";
 			try {
 				myConn = db.getCon();
@@ -288,7 +288,7 @@ public class mainController {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-		} else {
+		} else if (adminType.equals("sub_admin")) {
 			String sql2 = "select * from sub_admin where name = '" + admin + "' AND password = '" + password + "'";
 			try {
 				myConn = db.getCon();
@@ -299,18 +299,23 @@ public class mainController {
 					System.out.println("----->Sub Admin Login Failed!");
 					login_admin.setSubAdminIsvalid(false);
 				} else if (more) {
-					login_admin.setSubAdminIsvalid(true);
+					login_admin.setId(myRs.getString("id"));
+					login_admin.setName(myRs.getString("name"));
 					login_admin.setItem1(myRs.getString("update_development_fee"));
 					login_admin.setItem2(myRs.getString("student_information"));
 					login_admin.setItem3(myRs.getString("application_letters"));
 					login_admin.setItem4(myRs.getString("update_development_fees_table"));
 					login_admin.setItem5(myRs.getString("update_semester_fees_table"));
 					login_admin.setItem6(myRs.getString("update_formfillup_fees_table"));
+					login_admin.setSubAdminIsvalid(true);
 					System.out.println("----->Sub Admin Login Successful!");
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+		}
+		else {
+			System.out.println("----->Login Error!");
 		}
 		return login_admin;
 	}
@@ -599,7 +604,7 @@ public class mainController {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		ResultSet myRs = null;
-		String sql = "select * from changed_development_fee where roll_no = '" + roll + "' and  semester = '" + semester
+		String sql = "select * from changed_development_fee where roll = '" + roll + "' and  semester = '" + semester
 				+ "' and department ='" + departmentId + "' ";
 		ChangedFees chfee = new ChangedFees();
 

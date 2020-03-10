@@ -101,12 +101,14 @@ public class devFeesController extends HttpServlet {
 			String semester = request.getParameter("s_semester");
 			String development_fee = request.getParameter("total_amount");
 			System.out.println(semester);
-
+			System.out.println("id"+id +"semester "+ semester+ " amount "+development_fee);
 			if( ! semester.equals("0")) {
 			
 				Devfees newDevfees = new Devfees(id,semester,development_fee);
 				String rand = UUID.randomUUID().toString();
+				System.out.println(id);
 				Student student = studentsDao.getStudentProfileById(id);
+				System.out.println("name"+student.getS_name());
 				Devfees devfees = new Devfees();
 				
 				
@@ -128,6 +130,7 @@ public class devFeesController extends HttpServlet {
 				
 				
 				String response1 = trans.initTrnxnRequest(student, devfees);
+				System.out.println("LINE 131 "+ response1);
 				
 				response.sendRedirect(response1);
 			

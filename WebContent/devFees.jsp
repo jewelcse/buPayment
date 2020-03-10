@@ -18,6 +18,8 @@
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 		
 		Student stu = studentsDao.getStudentProfileById(currentUser.getId());
+		
+		System.out.println(stu.getId());
 %>
 
 <body>

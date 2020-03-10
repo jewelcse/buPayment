@@ -16,6 +16,8 @@ public class TransactionInitiator {
              * insert your success and fail URL correctly in this Map
              */
             Map<String, String> postData = ParameterBuilder.constructRequestParameters(student, devfees);
+
+        //	 Map<String, String> postData = ParameterBuilder.constructRequestParameters();
             /**
              * Provide your SSL Commerz store Id and Password by this following constructor.
              * If Test Mode then insert true and false otherwise.

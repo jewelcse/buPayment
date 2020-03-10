@@ -27,6 +27,7 @@ public class studentsDao {
 			ResultSet myRs = ps.executeQuery(sql);
 			while (myRs.next()) {
 
+				String d_id = myRs.getString("s_Id");
 				String d_roll = myRs.getString("s_Roll");
 				String d_reg = myRs.getString("s_Reg");
 				String d_name = myRs.getString("s_Name");
@@ -39,7 +40,7 @@ public class studentsDao {
 				String d_faculty = myRs.getString("s_Faculty");
 				String d_pass = myRs.getString("s_Pass");
 				
-				
+				stu.setId(d_id);
 				stu.setS_roll(d_roll);
 				stu.setS_reg(d_reg);
 				stu.setS_name(d_name);

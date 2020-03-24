@@ -9,6 +9,7 @@
 	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
+
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
@@ -99,25 +100,14 @@ a {
 							out.print(admin_list.get(i).getPassword());
 						%>
 					</td>
-					<%
-						if (admin_list.get(i).getItem1().equals("1")) {
-					%>
-					<td class="text-center"><a class="table_row" href="#"
-						id="item" data-id="<c:out value='${list.getId()}' />"
-						data-type="update_development_fee"
-						data-value="<c:out value=" ${list.getItem1()}" />"><img src="images/right.jpg"></a></td>
-					<%
-						} else {
-					%>
-					<td class="text-center"><a class="table_row" href="#"
-						id="item" data-id="<c:out value='${list.getId()}' />"
-						data-type="update_development_fee"
-						data-value="<c:out value=" ${list.getItem1()}" />"><img src="images/cross.jpg"> </a></td>
-					<%
-						}
-					%>
 
-				
+					<td>
+						<a class="table_row" href="#" id="item"
+							data-id="<% out.print(admin_list.get(i).getId());%>"
+							data-type="update_development_fee"
+							data-value="<% out.print(admin_list.get(i).getItem1());%>"><% out.print(admin_list.get(i).getItem1());%>
+						</a>
+					</td>
 					<td>
 						<%
 							out.print(admin_list.get(i).getItem2());
@@ -133,7 +123,7 @@ a {
 							out.print(admin_list.get(i).getItem4());
 						%>
 					</td>
-					
+
 					<td>
 						<%
 							out.print(admin_list.get(i).getItem5());
@@ -145,10 +135,8 @@ a {
 						%>
 					</td>
 					<td class="text-center"><a class="btn btn-primary"
-							href="adminController?target=delete&&delete_id=<%
-							out.print(admin_list.get(i).getId());
-						%>">Delete</a>
-						</td>
+						href="adminController?target=delete&&delete_id=<%out.print(admin_list.get(i).getId());%>">Delete</a>
+					</td>
 				</tr>
 
 				<%
@@ -230,6 +218,8 @@ a {
 				success : function(status) {
 
 					console.log(status);
+					alert(status);
+					 window.location.reload(true);
 
 				}
 			});

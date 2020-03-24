@@ -21,6 +21,7 @@
 		Student stu;
 
 		stu = studentsDao.getStudentProfileById(id);
+<<<<<<< HEAD
 
 		String sid = stu.getId();
 		String did = stu.getS_department();
@@ -50,6 +51,22 @@
 		/*for (int i = 0; i < history.size(); i++) {
 
 			System.out.println(history.get(i).getFeeType() + " " + history.get(i).getAmount());
+=======
+
+		//System.out.println("id "+currentUser.getId());
+
+		ArrayList<Devfees> devfee = new ArrayList<Devfees>();
+		ArrayList<FormfillupFees> formfillupfee = new ArrayList<FormfillupFees>();
+		ArrayList<SemesterFees> semfee = new ArrayList<SemesterFees>();
+
+		devfee = studentsDao.getPaidDevelopmentFeeByUserId(id);
+		formfillupfee = studentsDao.getPaidFormfillupFeeByUserId(id);
+		semfee = studentsDao.getPaidSemesterpFeeByUserId(id);
+
+		/*for(int i= 0 ; i < devfee.size();i++){
+			
+			System.out.println(devfee.get(i).getS_semester()+ " " + devfee.get(i).getAmount());
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 		}*/
 %>
 
@@ -171,6 +188,7 @@
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel"
 							aria-labelledby="profile-tab">
+<<<<<<< HEAD
 							<table border=1px>
 								
 								
@@ -203,10 +221,50 @@
 										<td>
 											<%
 												out.print(history.get(i).getSemester());
+=======
+							<table class="table table-bordered">
+								<tbody>
+
+									<%
+										for (int i = 0; i < devfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Development Fee:</td>
+										<td>
+											<%
+												out.print(devfee.get(i).getS_semester());
 											%>
 										</td>
 										<td>
 											<%
+												out.print(devfee.get(i).getAmount());
+											%><span> Tk</span>
+										</td>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+								
+								<tbody>
+
+									<%
+										for (int i = 0; i < formfillupfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Formfillup Fee:</td>
+										<td>
+											<%
+												out.print(formfillupfee.get(i).getS_semester());
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
+											%>
+										</td>
+										<td>
+											<%
+<<<<<<< HEAD
 												out.print(history.get(i).getAmount());
 											%><span> Tk</span>
 										</td>
@@ -228,6 +286,36 @@
 										<%
 											}
 										%>
+=======
+												out.print(formfillupfee.get(i).getS_amount());
+											%><span> Tk</span>
+										</td>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+								
+								<tbody>
+
+									<%
+										for (int i = 0; i < semfee.size(); i++) {
+									%>
+
+									<tr>
+										<td>Semester Fee:</td>
+										<td>
+											<%
+												out.print(semfee.get(i).getS_semester());
+											%>
+										</td>
+										<td>
+											<%
+												out.print(semfee.get(i).getS_semester_fee());
+											%> <span> Tk</span>
+										</td>
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 									</tr>
 									<%
 										}
@@ -235,8 +323,11 @@
 
 								</tbody>
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 							</table>
 
 						</div>

@@ -43,7 +43,11 @@ public class adminController extends HttpServlet {
 
 			//ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
 
+<<<<<<< HEAD
 			//request.setAttribute("sub_admin_list", admin_list);
+=======
+			request.setAttribute("sub_admin_list", admin_list);
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 			RequestDispatcher view = request.getRequestDispatcher("all_sub_admin.jsp");
 			view.forward(request, response);

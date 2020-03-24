@@ -10,6 +10,15 @@ public class SemesterFees {
 	private String transId;
 	private boolean paymentStatus;
 
+<<<<<<< HEAD
+=======
+	private String s_id;
+	private String departmentId;
+	private String s_semester;
+	private String s_semester_fee;
+	
+	
+>>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 	public SemesterFees() {
 	}
 

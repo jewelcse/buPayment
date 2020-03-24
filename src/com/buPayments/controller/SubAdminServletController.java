@@ -19,7 +19,7 @@ public class SubAdminServletController extends HttpServlet {
 		String adminId = request.getParameter("sub_admin_id");
 		String value = request.getParameter("value");
 		System.out.println(type + " " + adminId + "------>" + value);
-
+		
 		PrintWriter out = response.getWriter();
 		if (type.equals("update_development_fee")) {
 			String col = "update_development_fee";

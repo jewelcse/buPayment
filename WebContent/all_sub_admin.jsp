@@ -45,6 +45,14 @@ a {
 .adbtn {
 	padding: 5px;
 }
+
+table.fixed {
+	table-layout: fixed;
+}
+
+table.fixed td {
+	overflow: hidden;
+}
 </style>
 
 <ol class="breadcrumb">
@@ -69,81 +77,153 @@ a {
 		<%
 			//request.setAttribute("error", "Duplicate Entity found!");
 		%>
+		<div class="table-responsive"> 
+			<table class="table table-sm" border="2px solid black">
+			
+				<thead class="thead-light">
+					<tr>
+						<th>Admin name</th>
+						<th>Password</th>
+						<th>Update Development Fee</th>
+						<th>Students Information</th>
+						<th>Applications Letters</th>
+						<th>Update Development Fees Table</th>
+						<th>Update Semester Fees Table</th>
+						<th>Update Form fill up Fees Table</th>
+						<th>Delete</th>
+					</tr>
+				</thead>
+				<tbody>
 
-		<table class="table" border="2px solid black">
-			<thead>
-				<tr>
-					<th>Admin name</th>
-					<th>Password</th>
-					<th>Update Development Fee</th>
-					<th>Students Information</th>
-					<th>Applications Letters</th>
-					<th>Update Development Fees Table</th>
-					<th>Update Semester Fees Table</th>
-					<th>Update Form fill up Fees Table</th>
-					<th>Delete</th>
-				</tr>
-			</thead>
-			<tbody>
+					<%
+						for (int i = 0; i < admin_list.size(); i++) {
+					%>
+					<tr>
+						<td>
+							<%
+								out.print(admin_list.get(i).getName());
+							%>
+						</td>
+						<td>
+							<%
+								out.print(admin_list.get(i).getPassword());
+							%>
+						</td>
 
-				<%
-					for (int i = 0; i < admin_list.size(); i++) {
-				%>
-				<tr>
-					<td>
-						<%
-							out.print(admin_list.get(i).getName());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(admin_list.get(i).getPassword());
-						%>
-					</td>
-
-					<td>
-						<a class="table_row" href="#" id="item"
-							data-id="<% out.print(admin_list.get(i).getId());%>"
+						<td>
+							<%
+								if (admin_list.get(i).getItem1().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
 							data-type="update_development_fee"
-							data-value="<% out.print(admin_list.get(i).getItem1());%>"><% out.print(admin_list.get(i).getItem1());%>
-						</a>
-					</td>
-					<td>
-						<%
-							out.print(admin_list.get(i).getItem2());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(admin_list.get(i).getItem3());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(admin_list.get(i).getItem4());
-						%>
-					</td>
+							data-value="<%out.print(admin_list.get(i).getItem1());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="update_development_fee"
+							data-value="<%out.print(admin_list.get(i).getItem1());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
 
-					<td>
-						<%
-							out.print(admin_list.get(i).getItem5());
-						%>
-					</td>
-					<td>
-						<%
-							out.print(admin_list.get(i).getItem6());
-						%>
-					</td>
-					<td class="text-center"><a class="btn btn-primary"
-						href="adminController?target=delete&&delete_id=<%out.print(admin_list.get(i).getId());%>">Delete</a>
-					</td>
-				</tr>
+						<td>
+							<%
+								if (admin_list.get(i).getItem2().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="students_info"
+							data-value="<%out.print(admin_list.get(i).getItem2());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="students_info"
+							data-value="<%out.print(admin_list.get(i).getItem2());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
+						<td>
+							<%
+								if (admin_list.get(i).getItem3().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="application_letters"
+							data-value="<%out.print(admin_list.get(i).getItem3());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="application_letters"
+							data-value="<%out.print(admin_list.get(i).getItem3());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
+						<td>
+							<%
+								if (admin_list.get(i).getItem4().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="development_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem4());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="development_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem4());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
 
-				<%
-					}
-				%>
+						<td>
+							<%
+								if (admin_list.get(i).getItem5().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="semester_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem5());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="semester_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem5());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
+						<td>
+							<%
+								if (admin_list.get(i).getItem6().equals("1")) {
+							%> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="formfillup_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem6());%>"><img
+								src="images/right.jpg"> </a> <%
+ 	} else {
+ %> <a class="table_row" href="#" id="item"
+							data-id="<%out.print(admin_list.get(i).getId());%>"
+							data-type="formfillup_fees_table_update"
+							data-value="<%out.print(admin_list.get(i).getItem6());%>"><img
+								src="images/cross.jpg"> </a> <%
+ 	}
+ %>
+						</td>
+						<td class="text-center"><a class="btn btn-primary"
+							href="adminController?target=delete&&delete_id=<%out.print(admin_list.get(i).getId());%>">Delete</a>
+						</td>
+					</tr>
 
-				<!-- 	<c:forEach items="${sub_admin_list}" var="list">
+					<%
+						}
+					%>
+
+					<!-- 	<c:forEach items="${sub_admin_list}" var="list">
 					<tr>
 						<td><c:out value=" ${list.getName()}" /></td>
 						<td><c:out value=" ${list.getPassword()}" /></td>
@@ -190,9 +270,10 @@ a {
 					</tr>
 				</c:forEach>  -->
 
-			</tbody>
+				</tbody>
 
-		</table>
+			</table>
+	</div>
 
 	</div>
 
@@ -218,8 +299,8 @@ a {
 				success : function(status) {
 
 					console.log(status);
-					alert(status);
-					 window.location.reload(true);
+					//alert(status);
+					window.location.reload(true);
 
 				}
 			});
@@ -229,7 +310,7 @@ a {
 </script>
 
 
-<%@include file="admin-footer.jsp"%>
+
 
 <%
 	} else {

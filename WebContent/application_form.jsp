@@ -29,7 +29,7 @@
 			<div class="box" id="application">
 				<h2 class="h6-responsive font-weight-bold text-center">Application
 					Form</h2>
-				<form action="devFeesController?devfees_id=application_form"
+				<form action="devFeesController?feetype=application_form"
 					method="post" class="form-controll">
 					<div class="p-4" style="font-size: 20px">
 						<p>

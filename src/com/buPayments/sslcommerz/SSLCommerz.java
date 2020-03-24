@@ -62,6 +62,8 @@ public class SSLCommerz {
         this.storeTestMode = storeTestMode;
 
         if (storeTestMode) {
+           // this.storeId = "bupaymentslive";
+           // this.storePass = "5E662CA68865573443";
             this.storeId = "testbox";
             this.storePass = "qwerty";
             this.sslczURL = "https://sandbox.sslcommerz.com/";

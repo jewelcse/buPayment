@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
-	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"%>
+	import="com.buPayments.Dao.*" import="com.buPayments.controller.*"
+	import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -15,11 +16,41 @@
 
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 
+		String id = currentUser.getId();
+
 		Student stu;
 
-		stu = studentsDao.getStudentProfileById(currentUser.getId());
+		stu = studentsDao.getStudentProfileById(id);
+
+		String sid = stu.getId();
+		String did = stu.getS_department();
+
+		Department dept;
+
+		dept = mainController.getDepartmentIdByDepartmentName(did);
+
+		String departmentId = dept.getDeptId();
+
+		System.out.println(sid + " deptid-> " + departmentId);
 
 		//System.out.println("id "+currentUser.getId());
+
+		/*ArrayList<Devfees> devfee = new ArrayList<Devfees>();
+		ArrayList<FormfillupFees> formfillupfee = new ArrayList<FormfillupFees>();
+		ArrayList<SemesterFees> semfee = new ArrayList<SemesterFees>();
+		
+		devfee = studentsDao.getPaidDevelopmentFeeByUserId(id);
+		formfillupfee = studentsDao.getPaidFormfillupFeeByUserId(id);
+		semfee = studentsDao.getPaidSemesterpFeeByUserId(id);*/
+
+		ArrayList<PaymentHistory> history = new ArrayList<PaymentHistory>();
+
+		history = studentsDao.getAllPaidFeesByUserId(sid, departmentId);
+
+		/*for (int i = 0; i < history.size(); i++) {
+
+			System.out.println(history.get(i).getFeeType() + " " + history.get(i).getAmount());
+		}*/
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -49,7 +80,7 @@
 
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-8">
 					<div class="profile-head">
 						<h5>
 							<%=stu.getS_name()%>
@@ -66,7 +97,7 @@
 							<li class="nav-item"><a class="nav-link" id="profile-tab"
 								data-toggle="tab" href="#profile" role="tab"
 								aria-controls="profile" aria-selected="false"><span
-									class="pcolor">Timeline</span></a></li>
+									class="pcolor">Payments History</span></a></li>
 						</ul>
 					</div>
 				</div>
@@ -139,7 +170,76 @@
 
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel"
-							aria-labelledby="profile-tab">status</div>
+							aria-labelledby="profile-tab">
+							<table border=1px>
+								
+								
+								<thead>
+									<tr>
+										<th>Sector</th>
+										<th>Semester</th>
+										<th>Amount</th>
+										<th>Time</th>
+										<th>Payment-Satus</th>
+									
+									</tr>
+								
+								
+								</thead>
+								<tbody>
+
+									<%
+										for (int i = 0; i < history.size(); i++) {
+									%>
+
+									<tr>
+
+										<td>
+											<%
+												out.print(history.get(i).getFeeType());
+											%>
+										</td>
+
+										<td>
+											<%
+												out.print(history.get(i).getSemester());
+											%>
+										</td>
+										<td>
+											<%
+												out.print(history.get(i).getAmount());
+											%><span> Tk</span>
+										</td>
+										<td>
+											<%
+												out.print(history.get(i).getcDate());
+											%>
+										</td>
+
+										<%
+											if (history.get(i).isPaymentStatus()) {
+										%>
+										<td style="color:green"><span class="badge badge-success">Payment success and Verified  </span></td>
+
+										<%
+											} else {
+										%>
+										<td style="color:red"><span class="badge badge-danger">Payment success but Not-Verified  </span></td>
+										<%
+											}
+										%>
+									</tr>
+									<%
+										}
+									%>
+
+								</tbody>
+
+
+
+							</table>
+
+						</div>
 					</div>
 				</div>
 			</div>

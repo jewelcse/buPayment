@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
+	pageEncoding="ISO-8859-1" import="com.buPayments.Dao.*"
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
@@ -16,6 +16,10 @@
 	new java.util.Date();
 	if ((session.getAttribute("currentSessionForSuperAdmin") != null)
 			|| (session.getAttribute("currentSessionForSubAdmin") != null)) {
+
+		ArrayList<SemesterFees> allSemfee = new ArrayList<SemesterFees>();
+
+		allSemfee = adminFeesDao.showAllPaidSemesterFees();
 %>
 
 
@@ -52,43 +56,78 @@ h3.inline {
 		</h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
+
+				<th>StudentId</th>
+				<th>DeptId</th>
 				<th>Semester</th>
 				<th>Amount</th>
-				<th>Student Id</th>
+				<th>Trans ID</th>
+				<th>Date</th>
+				<th>Payment Status</th>
+				<th>Action</th>
 			</tr>
 
-			<%
-				adminShowAllFeesController semItem = new adminShowAllFeesController();
-					ArrayList<SemesterFees> item = new ArrayList<SemesterFees>();
-					item = semItem.showAllSemesterFee();
 
-					for (int i = 0; i < item.size(); i++) {
+
+			<%
+				for (int i = 0; i < allSemfee.size(); i++) {
 			%>
 			<tr>
+				<td>
+					<%
+						out.print(allSemfee.get(i).getStudentId());
+					%>
+				</td>
+				<td>
+					<%
+						out.print(allSemfee.get(i).getDepartmentId());
+					%>
+				</td>
+				<td>
+					<%
+						out.print(allSemfee.get(i).getSemester());
+					%>
+				</td>
+				<td>
+					<%
+						out.print(allSemfee.get(i).getAmount());
+					%>
+				</td>
+				<td>
+					<%
+						out.print(allSemfee.get(i).getTransId());
+					%>
+				</td>
 
 				<td>
 					<%
-						out.println(item.get(i).getS_semester());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_semester_fee());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_id());
+						out.print(allSemfee.get(i).getPaymentTime());
 					%>
 				</td>
 
+
+				<td>
+					<%
+						if (allSemfee.get(i).isPaymentStatus()) {
+					%> <span
+					class="badge badge-success"> Verified </span> <%
+ 	} else {
+ %> <span
+					class="badge badge-danger"> Not verified</span> <%
+ 	}
+ %>
+				
+				<td><a
+					href="adminFeesTableController?type=semester_fee&&status=false&&id=<%out.print(allSemfee.get(i).getId());%> "><input
+						type="submit" class="btn btn-danger" value="Not-Verify"></a> <a
+					href="adminFeesTableController?type=semester_fee&&status=true&&id=<%out.print(allSemfee.get(i).getId());%> "><input
+						type="submit" class="btn btn-success" value="Verify"></a></td>
 
 			</tr>
 
 			<%
 				}
 			%>
-
 
 
 		</table>

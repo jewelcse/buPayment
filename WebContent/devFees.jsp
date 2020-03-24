@@ -18,6 +18,8 @@
 		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 		
 		Student stu = studentsDao.getStudentProfileById(currentUser.getId());
+		
+		System.out.println(stu.getId());
 %>
 
 <body>
@@ -34,7 +36,7 @@
 
 
 				<div class="col-md-12 mb-md-0 mb-5  ">
-					<form action="devFeesController?devfees_id=devfees" method="post">
+					<form action="devFeesController?feetype=devfees" method="post">
 						<div class="row">
 							<input type="hidden" name="s_id" class="form-control"
 								value="<%=stu.getId()%>">

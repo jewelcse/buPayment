@@ -19,6 +19,7 @@ public class TransactionResponseValidator {
        String amount = request.get("amount");
        String currency = "BDT";
        // Set your store Id and store password and define TestMode
+       //SSLCommerz sslcz = new SSLCommerz("bupaymentslive", "5E662CA68865573443", true);
        SSLCommerz sslcz = new SSLCommerz("testbox", "qwerty", true);
 
        /**
@@ -26,6 +27,7 @@ public class TransactionResponseValidator {
         * if this following validation returns false , then query status if failed of canceled.
         *      Check request.get("status") for this purpose
         */
+       //System.out.println("order validate "+ sslcz.orderValidate(trxId, amount, currency, request));
        return sslcz.orderValidate(trxId, amount, currency, request);
 
    }

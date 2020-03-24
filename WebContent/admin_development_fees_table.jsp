@@ -56,6 +56,8 @@
 		<tbody>
 			<c:forEach items="${development_fees_list}" var="list">
 				<tr>
+				
+				
 					<td><c:out value="${list.getDepartment()}" /></td>
 					<td><c:out value=" ${list.getSemester()}" /></td>
 					<td class="fee"><c:out value=" ${list.getMain_fee()}" /></td>

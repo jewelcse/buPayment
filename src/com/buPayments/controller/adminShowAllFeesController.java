@@ -1,136 +1,79 @@
 package com.buPayments.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.buPayments.Dao.adminFeesDao;
 import com.buPayments.model.Devfees;
 import com.buPayments.model.FormfillupFees;
 import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
+import com.buPayments.model.adminSemesterFeesTable;
 
 /**
  * Servlet implementation class adminShowAllFeesController
  */
 @WebServlet("/adminShowAllFeesController")
 public class adminShowAllFeesController extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+
 	
-	dbConnection db = new dbConnection();
-	ArrayList<Devfees> devfee = new ArrayList<Devfees>();
-	public ArrayList<Devfees> showAllDevFees(){
-		String sql = "select * from  development_fees ORDER BY id DESC ";
-		Connection con = db.getCon();
-		try {
 
-			PreparedStatement ps = con.prepareStatement(sql);
-		    ResultSet myRs =	ps.executeQuery(sql);
-		    while (myRs.next()) {
-		    	Devfees newItem = new Devfees();
-		    	
-		    	String semester  = myRs.getString("semester");
-		    	String amount  = myRs.getString("amount");
-		    	String stu_id  = myRs.getString("s_id");
+	
 
-		    	newItem.setS_semester(semester);
-		    	newItem.setS_semester_fee(amount);
-		    	newItem.setS_id(stu_id);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 
-		        devfee.add(newItem);
-			}
-		    
+		// adminShowAllFeesController?target=all_developmentfee
+		// adminShowAllFeesController?target=all_semesterfee
+		// adminShowAllFeesController?target=all_formfillupfee
+
+		String target = request.getParameter("target");
+
+		if (target.equals("all_developmentfee")) {
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return devfee;
-	}
-	
-	ArrayList<SemesterFees> semfee = new ArrayList<SemesterFees>();
-	public ArrayList<SemesterFees> showAllSemesterFee(){
-		String sql = "select * from  semester_fees2 ORDER BY id DESC ";
-		Connection con = db.getCon();
-		try {
+			//ArrayList<Devfees> list = adminFeesDao.showAllPaidDevelopmentFees();
 
-			PreparedStatement ps = con.prepareStatement(sql);
-		    ResultSet myRs =	ps.executeQuery(sql);
-		    while (myRs.next()) {
-		    	
-		    	SemesterFees newItem1 = new SemesterFees();
-		    	
-		    	String semester  = myRs.getString("semester");
-		    	String amount  = myRs.getString("amount");
-		    	String stu_id  = myRs.getString("s_id");
+			//request.setAttribute("show_dev_fee_list", list);
 
-		    	newItem1.setS_semester(semester);
-		    	newItem1.setS_semester_fee(amount);
-		    	newItem1.setS_id(stu_id);
+			RequestDispatcher view = request.getRequestDispatcher("admin_show_development_fees_table.jsp");
+			view.forward(request, response);
 
-		    	semfee.add(newItem1);
-			}
-		    
+		} else if (target.equals("all_semesterfee")) {
+			//ArrayList<SemesterFees> list = adminFeesDao.showAllPaidSemesterFees();
+
+			//request.setAttribute("show_sem_fee_list", list);
+
+			RequestDispatcher view = request.getRequestDispatcher("admin_show_semester_fees_table.jsp");
+			view.forward(request, response);
+
+		} else if (target.equals("all_formfillupfee")) {
 			
-		} catch (SQLException e) {
-			e.printStackTrace();
+			//ArrayList<FormfillupFees> list = adminFeesDao.showAllPaidFormfillupFees();
+
+			//request.setAttribute("show_form_fee_list", list);
+
+			RequestDispatcher view = request.getRequestDispatcher("admin_show_formfillup_fees_table.jsp");
+			view.forward(request, response);
+
 		}
-		return semfee;
-	}
-	
-	
-	ArrayList<FormfillupFees> formfillupfee = new ArrayList<FormfillupFees>();
-	
-	public ArrayList<FormfillupFees> showAllFormfillupFee(){
-		String sql = "select * from  formfillup_fees ORDER BY id DESC ";
-		Connection con = db.getCon();
-		try {
 
-			PreparedStatement ps = con.prepareStatement(sql);
-		    ResultSet myRs =	ps.executeQuery(sql);
-		    while (myRs.next()) {
-		    	
-		    	FormfillupFees newItem1 = new FormfillupFees();
-		    	
-		    	String semester  = myRs.getString("semester");
-		    	String amount  = myRs.getString("amount");
-		    	String stu_id  = myRs.getString("s_id");
-
-		    	newItem1.setS_semester(semester);
-		    	newItem1.setS_amount(amount);
-		    	newItem1.setS_id(stu_id);
-
-		    	formfillupfee.add(newItem1);
-			}
-		    
-			
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return formfillupfee;
-	}
-	
-
-       
-
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
 	}
 
 }

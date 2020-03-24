@@ -43,7 +43,7 @@
 
 
 
-				<form action="devFormFillupFees" method="post">
+				<form action="devFeesController?feetype=formfillupfee" method="post">
 					<input type="hidden" id="" name="s_id" class="form-control"
 						value="<%=stu.getId()%>">
 
@@ -146,7 +146,7 @@
 
 								<tr>
 									<td>Total</td>
-									<td><input type="text" name="total" id="total" readonly></td>
+									<td><input type="text" name="total_amount" id="total" readonly></td>
 								</tr>
 
 							</tbody>

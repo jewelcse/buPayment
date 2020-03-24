@@ -4,8 +4,13 @@ import java.util.Map;
 
 import com.buPayments.Utility.ParameterBuilder;
 import com.buPayments.model.Devfees;
+import com.buPayments.model.FormfillupFees;
+import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
 public class TransactionInitiator {
+	
+	String storeId = "testbox";
+	String storePass = "qwerty";
 
 	public String initTrnxnRequest(Student student, Devfees devfees) {
         String response = "";
@@ -16,11 +21,14 @@ public class TransactionInitiator {
              * insert your success and fail URL correctly in this Map
              */
             Map<String, String> postData = ParameterBuilder.constructRequestParameters(student, devfees);
+
+        //	 Map<String, String> postData = ParameterBuilder.constructRequestParameters();
             /**
              * Provide your SSL Commerz store Id and Password by this following constructor.
              * If Test Mode then insert true and false otherwise.
              */
-            SSLCommerz sslcz = new SSLCommerz("testbox", "qwerty", true);
+            //SSLCommerz sslcz = new SSLCommerz("bupaymentslive", "5E662CA68865573443", false);
+            SSLCommerz sslcz = new SSLCommerz(storeId, storePass, true);
 
             /**
              * If user want to get Gate way list then pass isGetGatewayList parameter as true
@@ -33,6 +41,35 @@ public class TransactionInitiator {
         }
         return response;
     }
+
+	public String initTrnxnRequest(Student student, SemesterFees semfee) {
+		
+		 String response = "";
+	        try {
+	            Map<String, String> postData = ParameterBuilder.constructRequestParameters(student, semfee);
+	            SSLCommerz sslcz = new SSLCommerz(storeId, storePass, true);
+	            response = sslcz.initiateTransaction(postData, false);
+	            return response;
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        }
+	        return response;
+		
+	}
+
+	public String initTrnxnRequest(Student student, FormfillupFees formfillupfee) {
+		String response = "";
+        try {
+        
+            Map<String, String> postData = ParameterBuilder.constructRequestParameters(student, formfillupfee);
+            SSLCommerz sslcz = new SSLCommerz(storeId, storePass, true);
+            response = sslcz.initiateTransaction(postData, false);
+            return response;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return response;
+	}
 
 
 }

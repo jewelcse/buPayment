@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" import="com.buPayments.model.*"
+	pageEncoding="ISO-8859-1" import="com.buPayments.model.*"
+	import="com.buPayments.controller.*" import="com.buPayments.Dao.*"
 	import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -16,6 +16,16 @@
 	new java.util.Date();
 	if ((session.getAttribute("currentSessionForSuperAdmin") != null)
 			|| (session.getAttribute("currentSessionForSubAdmin") != null)) {
+		
+		
+		
+		
+		ArrayList<Devfees> allDevfee = new ArrayList<Devfees>();
+		
+		allDevfee = adminFeesDao.showAllPaidDevelopmentFees();
+		
+		
+		
 %>
 
 
@@ -37,6 +47,7 @@ h3.inline {
 	<li class="breadcrumb-item active">Developments Fees</li>
 </ol>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <section class="p-1">
 
@@ -55,43 +66,57 @@ h3.inline {
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
 
+				<th>StudentId</th>
+				<th>DeptId</th>
 				<th>Semester</th>
 				<th>Amount</th>
-				<th>Student Id</th>
+				<th>Trans ID</th>
+				<th>Date</th>
+				<th>Payment Status</th>
+				<th>Action</th>
 			</tr>
 
-			<%
-				adminShowAllFeesController devItem = new adminShowAllFeesController();
-					ArrayList<Devfees> item = new ArrayList<Devfees>();
-					item = devItem.showAllDevFees();
+			<!--<c:forEach items="${show_dev_fee_list}" var="list">
+				<tr>
+					<td><c:out value="${list.getStudentId()}" /></td>
+					<td><c:out value=" ${list.getDepartmentId()}" /></td>
+					<td><c:out value=" ${list.getSemester()}" /></td>
+					<td><c:out value=" ${list.getAmount()}" /></td>
+					<td><c:out value=" ${list.getPaymentTime()}" /></td>
+					<td class="badge badge-success"><c:out value=" ${list.isPaymentStatus()}" /></td>
+					
+				</tr>
 
-					for (int i = 0; i < item.size(); i++) {
-			%>
-			<tr>
+			</c:forEach>-->
 
-				<td>
-					<%
-						out.println(item.get(i).getS_semester());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_semester_fee());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_id());
-					%>
-				</td>
+								<%
+										for (int i = 0; i < allDevfee.size(); i++) {
+								%>
+								<tr>
+									<td><% out.print(allDevfee.get(i).getStudentId());%> </td>
+									<td><% out.print(allDevfee.get(i).getDepartmentId());%> </td>
+									<td><% out.print(allDevfee.get(i).getSemester());%> </td>
+									<td><% out.print(allDevfee.get(i).getAmount());%> </td>
+									<td><% out.print(allDevfee.get(i).getTransId());%> </td>
+									<td><% out.print(allDevfee.get(i).getPaymentTime());%> </td>
+									
+									<td>
+									<% if(allDevfee.get(i).isPaymentStatus()){ %>
+									
+									 <span class="badge badge-success"> Verified </span>
+									<% }else { %>
+									<span class="badge badge-danger"> Not verified</span>
+									
+									<%} %>
+									
+									<td>
+									<a href="adminFeesTableController?type=development_fee&&status=false&&id=<% out.print(allDevfee.get(i).getId());%> "><input type="submit" class="btn btn-danger" value="Not-Verify"></a>
+									<a href="adminFeesTableController?type=development_fee&&status=true&&id=<% out.print(allDevfee.get(i).getId());%> "><input type="submit" class="btn btn-success" value="Verify"></a>
+									</td>
+								
+								</tr>
 
-
-			</tr>
-
-			<%
-				}
-			%>
-
+							<%} %>
 
 
 		</table>
@@ -100,6 +125,46 @@ h3.inline {
 
 
 <script>
+
+
+$(document).ready(function(){
+	
+	$('.paymentStatus').on('change', function() {
+	    var responseId = $(this).val();
+	    var id = $('id').val();
+		console.log(id);
+	    $.ajax({
+			type : 'POST',
+			url : '#',
+			data : {
+				id : id,
+				semester : semester,
+			},
+			
+			success : function(msg) {
+				console.log(msg);
+				if (msg == 'ok') {
+					document.getElementById("reducedForm").reset();
+					$('.statusMsg').html('<span style="color:green;">Successfuly Reduced!.</span>');
+					$('#modalForm').modal('hide');
+					 
+				} else {
+					$('.statusMsg').html('<span style="color:red;">Duplicate Entity found OR maybe Changed amount is more Than Total Fee!.</span>');
+				}
+				$('.submitBtn').removeAttr("disabled");
+				$('.modal-body').css('opacity', '');
+				
+			}
+		});
+	});
+});
+
+
+
+
+
+
+
 	function fnExcelReport() {
 		var tab_text = '<html xmlns:x="urn:schemas-microsoft-com:office:excel">';
 		tab_text = tab_text

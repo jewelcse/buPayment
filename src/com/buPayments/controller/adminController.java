@@ -34,18 +34,16 @@ public class adminController extends HttpServlet {
 		// target=delete
 		// target=new_admin_create
 		// target=update_development_fee
-		//target=all_application
+		// target=all_application
 
 		String action = request.getParameter("target");
 		String delete_id = request.getParameter("delete_id");
 
 		if (action.equals("show_all_admin")) {
 
-			ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
+			//ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
 
-			PrintWriter out = response.getWriter();
-
-			request.setAttribute("sub_admin_list", admin_list);
+			//request.setAttribute("sub_admin_list", admin_list);
 
 			RequestDispatcher view = request.getRequestDispatcher("all_sub_admin.jsp");
 			view.forward(request, response);
@@ -70,8 +68,8 @@ public class adminController extends HttpServlet {
 		} else if (action.equals("update_development_fee")) {
 
 			ArrayList<ChangedFees> list = adminFeesDao.showAllChangedFees();
-
-			PrintWriter out = response.getWriter();
+			
+			
 
 			request.setAttribute("changed_fees_list", list);
 
@@ -80,9 +78,7 @@ public class adminController extends HttpServlet {
 
 		} else if (action.equals("all_application")) {
 
-
 			ArrayList<allApplication> list = adminDao.showAllApplicationForm();
-			PrintWriter out = response.getWriter();
 
 			request.setAttribute("applicationList", list);
 
@@ -100,10 +96,11 @@ public class adminController extends HttpServlet {
 
 		if (action.equals("login")) {
 
-			String adminType = request.getParameter("admin_status");
-
+			String adminType = request.getParameter("role");
 			String admin = request.getParameter("admin");
 			String password = request.getParameter("password");
+			
+			
 
 			Admin login_admin = new Admin();
 			login_admin.setName(admin);
@@ -116,7 +113,7 @@ public class adminController extends HttpServlet {
 
 				HttpSession session = request.getSession(true);
 				session.setAttribute("currentSessionForSuperAdmin", login_admin);
-				session.setAttribute("currentSuperAdminName", admin);
+				session.setAttribute("currentSuperAdminName", login_admin.getName());
 				response.sendRedirect("super-admin.jsp"); // logged-in page
 
 			}
@@ -124,14 +121,23 @@ public class adminController extends HttpServlet {
 			else if (login_admin.isSubAdminIsvalid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSubAdminName", admin);
+				session.setAttribute("currentSubAdminName",login_admin.getName() );
 				session.setAttribute("currentSessionForSubAdmin", login_admin);
 				response.sendRedirect("super-admin.jsp"); // logged-in page
 
 			}
 
-			else
-				response.sendRedirect("admin-login.jsp"); // error page
+			else {
+				PrintWriter out = response.getWriter();
+				//out.write("login_failed");
+				request.setAttribute("error", "Login Falid ! Try Again....");
+				//response.sendRedirect("admin-login.jsp"); // error page
+				request.getRequestDispatcher("admin-login.jsp").forward(request, response);
+				
+				//request.getRequestDispatcher("admin-login.jsp").include(request, response);
+				//out.println("<div class='alert alert-danger'> Login Failed</div>");
+			}
+				
 
 		} else if (action.equals("addNewAdmin")) {
 

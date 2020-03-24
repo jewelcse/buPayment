@@ -2,37 +2,95 @@ package com.buPayments.model;
 
 public class FormfillupFees {
 
-	private String s_id;
-	private String s_semester;
-	private String s_amount;
+	private String id;
+	private String studentId;
+	private String departmentId;
+	private String semester;
+	private String amount;
+	private String paymentTime;
+	private String transId;
+	private boolean paymentStatus;
+
+	public FormfillupFees() {
+	}
 
 	
-	public FormfillupFees() {
+	public FormfillupFees(String id, String studentId, String departmentId, String semester, String amount,
+			String paymentTime, String transId, boolean paymentStatus) {
 		super();
+		this.id = id;
+		this.studentId = studentId;
+		this.departmentId = departmentId;
+		this.semester = semester;
+		this.amount = amount;
+		this.paymentTime = paymentTime;
+		this.transId = transId;
+		this.paymentStatus = paymentStatus;
 	}
-	public FormfillupFees( String s_id, String s_semester, String s_amount) {
-		
-		this.s_amount = s_amount;
-		this.s_semester = s_semester;
-		this.s_id = s_id;
+
+
+	public String getId() {
+		return id;
 	}
-	public String getS_id() {
-		return s_id;
+
+	public void setId(String id) {
+		this.id = id;
 	}
-	public void setS_id(String s_id) {
-		this.s_id = s_id;
+
+	public String getStudentId() {
+		return studentId;
 	}
-	public String getS_semester() {
-		return s_semester;
+
+	public void setStudentId(String studentId) {
+		this.studentId = studentId;
 	}
-	public void setS_semester(String s_semester) {
-		this.s_semester = s_semester;
+
+	public String getDepartmentId() {
+		return departmentId;
 	}
-	public String getS_amount() {
-		return s_amount;
+
+	public void setDepartmentId(String departmentId) {
+		this.departmentId = departmentId;
 	}
-	public void setS_amount(String s_amount) {
-		this.s_amount = s_amount;
+
+	public String getSemester() {
+		return semester;
+	}
+
+	public void setSemester(String semester) {
+		this.semester = semester;
+	}
+
+	public String getAmount() {
+		return amount;
+	}
+
+	public void setAmount(String amount) {
+		this.amount = amount;
+	}
+
+	public String getPaymentTime() {
+		return paymentTime;
+	}
+
+	public void setPaymentTime(String paymentTime) {
+		this.paymentTime = paymentTime;
+	}
+
+	public String getTransId() {
+		return transId;
+	}
+
+	public void setTransId(String transId) {
+		this.transId = transId;
+	}
+
+	public boolean isPaymentStatus() {
+		return paymentStatus;
+	}
+
+	public void setPaymentStatus(boolean paymentStatus) {
+		this.paymentStatus = paymentStatus;
 	}
 
 	

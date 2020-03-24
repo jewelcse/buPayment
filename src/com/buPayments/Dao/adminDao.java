@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import com.buPayments.controller.dbConnection;
 import com.buPayments.model.Admin;
 import com.buPayments.model.Department;
+import com.buPayments.model.Student;
 import com.buPayments.model.allApplication;
 
 public class adminDao {
@@ -52,6 +53,38 @@ public class adminDao {
 			e.printStackTrace();
 		}
 		return adminList;
+	}
+
+	public static Admin getSubAdminById(String id) {
+
+		dbConnection db = new dbConnection();
+		Admin login_admin = new Admin();
+
+		String sql = "select * from sub_admin where id = '" + id + "'";
+
+		try {
+			Connection con = db.getCon();
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+
+				login_admin.setId(myRs.getString("id"));
+				login_admin.setName(myRs.getString("name"));
+				login_admin.setItem1(myRs.getString("update_development_fee"));
+				login_admin.setItem2(myRs.getString("student_information"));
+				login_admin.setItem3(myRs.getString("application_letters"));
+				login_admin.setItem4(myRs.getString("update_development_fees_table"));
+				login_admin.setItem5(myRs.getString("update_semester_fees_table"));
+				login_admin.setItem6(myRs.getString("update_formfillup_fees_table"));
+
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return login_admin;
+
 	}
 
 	public static ArrayList<allApplication> showAllApplicationForm() {

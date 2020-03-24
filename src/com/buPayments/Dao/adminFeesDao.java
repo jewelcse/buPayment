@@ -10,6 +10,9 @@ import com.buPayments.controller.dbConnection;
 import com.buPayments.controller.mainController;
 import com.buPayments.model.ChangedFees;
 import com.buPayments.model.Department;
+import com.buPayments.model.Devfees;
+import com.buPayments.model.FormfillupFees;
+import com.buPayments.model.SemesterFees;
 import com.buPayments.model.adminDevelopmentFeesTable;
 import com.buPayments.model.adminFormFillUpFeesTable;
 import com.buPayments.model.adminSemesterFeesTable;
@@ -101,30 +104,28 @@ public class adminFeesDao {
 
 		dbConnection db = new dbConnection();
 		ArrayList<ChangedFees> changedDevelopmentfee = new ArrayList<ChangedFees>();
-		String sql = "select * from  changed_development_fee";
-		Connection con = db.getCon();
-		ChangedFees newItem = new ChangedFees();
+		String sql = "select * from  changed_development_fee order by id desc";
 
 		try {
-
+			Connection con = db.getCon();
 			PreparedStatement ps;
 			ResultSet myRs;
 			ps = (PreparedStatement) con.prepareStatement(sql);
 			myRs = ps.executeQuery(sql);
-			System.out.print(myRs);
-			while (myRs.next()) {
 
+			while (myRs.next()) {
+				ChangedFees newItem = new ChangedFees();
 				String id = myRs.getString("id");
 				String roll = myRs.getString("roll");
 				String semester = myRs.getString("semester");
 				String departmentId = myRs.getString("department");
-
 				String amount = myRs.getString("changed_amount");
-				
+
 				Department departmentName = mainController.getDepartmentById(departmentId);
 
 				newItem.setId(id);
 				newItem.setRoll(roll);
+				newItem.setSemester(semester);
 				newItem.setDepartment(departmentName.getDeptName());
 				newItem.setChanged_amount(amount);
 				changedDevelopmentfee.add(newItem);
@@ -301,6 +302,130 @@ public class adminFeesDao {
 			e.printStackTrace();
 		}
 		return newItem;
+	}
+	
+	public static ArrayList<Devfees> showAllPaidDevelopmentFees() {
+		dbConnection db = new dbConnection();
+		ArrayList<Devfees> devfee = new ArrayList<Devfees>();
+		String sql = "select * from  development_fees ORDER BY id DESC ";
+		Connection con = db.getCon();
+		try {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+				
+				Devfees newItem = new Devfees();
+				String id = myRs.getString("id");
+				String departmentId = myRs.getString("departmentId");
+				String semester = myRs.getString("semester");
+				String stuId = myRs.getString("studentId");
+				String amount = myRs.getString("amount");
+				String transId = myRs.getString("transId");
+				String date = myRs.getString("date");
+				Boolean status = myRs.getBoolean("paymentStatus");
+				
+				
+				newItem.setId(id);
+				newItem.setDepartmentId(departmentId);
+				newItem.setSemester(semester);
+				newItem.setStudentId(stuId);
+				newItem.setAmount(amount);
+				newItem.setTransId(transId);
+				newItem.setPaymentTime(date);
+				newItem.setPaymentStatus(status);
+
+				devfee.add(newItem);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return devfee;
+	}
+
+	
+
+	public static ArrayList<SemesterFees> showAllPaidSemesterFees() {
+		ArrayList<SemesterFees> semfee = new ArrayList<SemesterFees>();
+		dbConnection db = new dbConnection();
+		String sql = "select * from  semester_fees2 ORDER BY id DESC ";
+		Connection con = db.getCon();
+		try {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+
+
+				SemesterFees newItem = new SemesterFees();
+				String id = myRs.getString("id");
+				String departmentId = myRs.getString("departmentId");
+				String semester = myRs.getString("semester");
+				String stuId = myRs.getString("studentId");
+				String amount = myRs.getString("amount");
+				String transId = myRs.getString("transId");
+				String date = myRs.getString("date");
+				Boolean status = myRs.getBoolean("paymentStatus");
+
+				
+				newItem.setId(id);
+				newItem.setDepartmentId(departmentId);
+				newItem.setSemester(semester);
+				newItem.setStudentId(stuId);
+				newItem.setAmount(amount);
+				newItem.setTransId(transId);
+				newItem.setPaymentTime(date);
+				newItem.setPaymentStatus(status);
+
+				semfee.add(newItem);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return semfee;
+	}
+
+	
+
+	public static ArrayList<FormfillupFees> showAllPaidFormfillupFees() {
+		ArrayList<FormfillupFees> formfillupfee = new ArrayList<FormfillupFees>();
+		dbConnection db = new dbConnection();
+		String sql = "select * from  formfillup_fees ORDER BY id DESC ";
+		Connection con = db.getCon();
+		try {
+
+			PreparedStatement ps = con.prepareStatement(sql);
+			ResultSet myRs = ps.executeQuery(sql);
+			while (myRs.next()) {
+				
+				FormfillupFees newItem = new FormfillupFees();
+				String id = myRs.getString("id");
+				String departmentId = myRs.getString("departmentId");
+				String semester = myRs.getString("semester");
+				String stuId = myRs.getString("studentId");
+				String amount = myRs.getString("amount");
+				String transId = myRs.getString("transId");
+				String date = myRs.getString("date");
+				Boolean status = myRs.getBoolean("paymentStatus");
+
+				newItem.setId(id);
+				newItem.setDepartmentId(departmentId);
+				newItem.setSemester(semester);
+				newItem.setStudentId(stuId);
+				newItem.setAmount(amount);
+				newItem.setTransId(transId);
+				newItem.setPaymentTime(date);
+				newItem.setPaymentStatus(status);
+
+				formfillupfee.add(newItem);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return formfillupfee;
 	}
 
 }

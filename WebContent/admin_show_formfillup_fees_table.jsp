@@ -1,6 +1,6 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="com.buPayments.model.Admin"
+	pageEncoding="ISO-8859-1" import="com.buPayments.Dao.*"
 	import="com.buPayments.controller.*" import="com.buPayments.model.*"
 	import="java.util.ArrayList"%>
 
@@ -16,9 +16,14 @@
 	new java.util.Date();
 	if ((session.getAttribute("currentSessionForSuperAdmin") != null)
 			|| (session.getAttribute("currentSessionForSubAdmin") != null)) {
+		
+	ArrayList<FormfillupFees> allformfillupfee = new ArrayList<FormfillupFees>();
+		
+	allformfillupfee = adminFeesDao.showAllPaidFormfillupFees();
+		
+
+
 %>
-
-
 
 
 <%@include file="admin-header.jsp"%>
@@ -51,43 +56,47 @@ h3.inline {
 		</h3>
 		<table class="table table-hover" id="myTable" border="2px solid black">
 			<tr>
+
+				<th>StudentId</th>
+				<th>DeptId</th>
 				<th>Semester</th>
 				<th>Amount</th>
-				<th>Student Id</th>
+				<th>Trans ID</th>
+				<th>Date</th>
+				<th>Payment Status</th>
+				<th>Action</th>
 			</tr>
 
-			<%
-				adminShowAllFeesController formfillupItem = new adminShowAllFeesController();
-					ArrayList<FormfillupFees> item = new ArrayList<FormfillupFees>();
-					item = formfillupItem.showAllFormfillupFee();
+		
 
-					for (int i = 0; i < item.size(); i++) {
-			%>
-			<tr>
+								<%
+										for (int i = 0; i < allformfillupfee.size(); i++) {
+								%>
+								<tr>
+									<td><% out.print(allformfillupfee.get(i).getStudentId());%> </td>
+									<td><% out.print(allformfillupfee.get(i).getDepartmentId());%> </td>
+									<td><% out.print(allformfillupfee.get(i).getSemester());%> </td>
+									<td><% out.print(allformfillupfee.get(i).getAmount());%> </td>
+									<td><% out.print(allformfillupfee.get(i).getTransId());%> </td>
+									<td><% out.print(allformfillupfee.get(i).getPaymentTime());%> </td>
+									
+									<td>
+									<% if(allformfillupfee.get(i).isPaymentStatus()){ %>
+									
+									 <span class="badge badge-success"> Verified </span>
+									<% }else { %>
+									<span class="badge badge-danger"> Not verified</span>
+									
+									<%} %>
+									
+									<td>
+									<a href="adminFeesTableController?type=formfillup_fee&&status=false&&id=<% out.print(allformfillupfee.get(i).getId());%> "><input type="submit" class="btn btn-danger" value="Not-Verify"></a>
+									<a href="adminFeesTableController?type=formfillup_fee&&status=true&&id=<% out.print(allformfillupfee.get(i).getId());%> "><input type="submit" class="btn btn-success" value="Verify"></a>
+									</td>
+								
+								</tr>
 
-				<td>
-					<%
-						out.println(item.get(i).getS_semester());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_amount());
-					%>
-				</td>
-				<td>
-					<%
-						out.println(item.get(i).getS_id());
-					%>
-				</td>
-
-
-			</tr>
-
-			<%
-				}
-			%>
-
+							<%} %>
 
 
 		</table>

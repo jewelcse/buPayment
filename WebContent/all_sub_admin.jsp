@@ -1,13 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" 
-	import="com.buPayments.model.Admin"
-	import="com.buPayments.controller.*" 
-	import="com.buPayments.model.*"
-	import="java.util.ArrayList"%>
+	pageEncoding="ISO-8859-1" import="com.buPayments.controller.*"
+	import="com.buPayments.model.*" import="java.util.ArrayList"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
 
 <%
@@ -16,6 +15,10 @@
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
 	if (session.getAttribute("currentSessionForSuperAdmin") != null) {
+
+		ArrayList<Admin> admin_list = new ArrayList<Admin>();
+
+		admin_list = adminDao.showAllSubAdmin();
 %>
 
 <%@include file="admin-header.jsp"%>
@@ -35,7 +38,7 @@ a {
 .adbtnBox {
 	border: 2px solid black;
 	width: 210px;
-	margin-bottom:3px;
+	margin-bottom: 3px;
 }
 
 .adbtn {
@@ -59,15 +62,11 @@ a {
 		<div class="adbtnBox">
 			<div class="adbtn">
 				<a href="adminController?target=new_admin_create"><img
-				src="images/plus.png" style="width: 35px"> Add new Sub Admin</a>
+					src="images/plus.png" style="width: 35px"> Add new Sub Admin</a>
 			</div>
 		</div>
-		<% //request.setAttribute("error", "Duplicate Entity found!");
-		
-		
-		
-		
-		
+		<%
+			//request.setAttribute("error", "Duplicate Entity found!");
 		%>
 
 		<table class="table" border="2px solid black">
@@ -86,23 +85,123 @@ a {
 			</thead>
 			<tbody>
 
+				<%
+					for (int i = 0; i < admin_list.size(); i++) {
+				%>
+				<tr>
+					<td>
+						<%
+							out.print(admin_list.get(i).getName());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(admin_list.get(i).getPassword());
+						%>
+					</td>
+					<%
+						if (admin_list.get(i).getItem1().equals("1")) {
+					%>
+					<td class="text-center"><a class="table_row" href="#"
+						id="item" data-id="<c:out value='${list.getId()}' />"
+						data-type="update_development_fee"
+						data-value="<c:out value=" ${list.getItem1()}" />"><img src="images/right.jpg"></a></td>
+					<%
+						} else {
+					%>
+					<td class="text-center"><a class="table_row" href="#"
+						id="item" data-id="<c:out value='${list.getId()}' />"
+						data-type="update_development_fee"
+						data-value="<c:out value=" ${list.getItem1()}" />"><img src="images/cross.jpg"> </a></td>
+					<%
+						}
+					%>
 
-				<c:forEach items="${sub_admin_list}" var="list">
+				
+					<td>
+						<%
+							out.print(admin_list.get(i).getItem2());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(admin_list.get(i).getItem3());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(admin_list.get(i).getItem4());
+						%>
+					</td>
+					
+					<td>
+						<%
+							out.print(admin_list.get(i).getItem5());
+						%>
+					</td>
+					<td>
+						<%
+							out.print(admin_list.get(i).getItem6());
+						%>
+					</td>
+					<td class="text-center"><a class="btn btn-primary"
+							href="adminController?target=delete&&delete_id=<%
+							out.print(admin_list.get(i).getId());
+						%>">Delete</a>
+						</td>
+				</tr>
+
+				<%
+					}
+				%>
+
+				<!-- 	<c:forEach items="${sub_admin_list}" var="list">
 					<tr>
-						<td ><c:out value=" ${list.getName()}" /></td>
+						<td><c:out value=" ${list.getName()}" /></td>
 						<td><c:out value=" ${list.getPassword()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem1()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem2()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem3()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem4()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem5()}" /></td>
-						<td class="text-center"><c:out value=" ${list.getItem6()}" /></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="update_development_fee"
+							data-value="<c:out value=" ${list.getItem1()}" />"> <c:out
+									value=" ${list.getItem1()}" />
+						</a></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="students_info"
+							data-value="<c:out value=" ${list.getItem2()}" />"> <c:out
+									value=" ${list.getItem2()}" />
+						</a></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="application_letters"
+							data-value="<c:out value=" ${list.getItem3()}" />"> <c:out
+									value=" ${list.getItem3()}" />
+						</a></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="development_fees_table_update"
+							data-value="<c:out value=" ${list.getItem4()}" />"> <c:out
+									value=" ${list.getItem4()}" />
+						</a></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="semester_fees_table_update"
+							data-value="<c:out value=" ${list.getItem5()}" />"> <c:out
+									value=" ${list.getItem5()}" />
+						</a></td>
+						<td class="text-center"><a class="table_row" href="#" id="item"
+							data-id="<c:out value='${list.getId()}' />"
+							data-type="formfillup_fees_table_update"
+							data-value="<c:out value=" ${list.getItem6()}" />"> <c:out
+									value=" ${list.getItem6()}" />
+						</a></td>
+
 						<td class="text-center"><a class="btn btn-primary"
 							href="adminController?target=delete&&delete_id=<c:out value=" ${list.getId()}" />">Delete</a>
-						</td>						
+						</td>
 					</tr>
-				</c:forEach>
-				
+				</c:forEach>  -->
+
 			</tbody>
 
 		</table>
@@ -111,8 +210,35 @@ a {
 
 </div>
 
+<script>
+	$(document).ready(function() {
+		$('.table_row').on('click', function() {
+			var sub_admin_id = $(this).attr("data-id");
+			//var sub_admin_id = $(".table_row").attr("data-id");
+			var type = $(this).attr("data-type");
+			var value = $(this).attr("data-value");
 
-		
+			//alert(sub_admin_id + " " + type + " " + value);
+			console.log(sub_admin_id + " " + type + " " + value);
+			$.ajax({
+				url : 'SubAdminServletController?update_data_type=' + type,
+				dataType : 'text',
+				data : {
+					sub_admin_id : sub_admin_id,
+					value : value
+				},
+				success : function(status) {
+
+					console.log(status);
+
+				}
+			});
+
+		});
+	});
+</script>
+
+
 <%@include file="admin-footer.jsp"%>
 
 <%

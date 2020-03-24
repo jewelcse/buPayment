@@ -20,31 +20,88 @@ public class adminFeesTableController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		/*
-		 * String fee_type = request.getParameter("type"); System.out.println(fee_type);
-		 * 
-		 * if (fee_type.equals("development_fee")) {
-		 * 
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("admin_development_fees_table.jsp");
-		 * 
-		 * dispatcher.forward(request, response);
-		 * 
-		 * } else if (fee_type.equals("semester_fee")) {
-		 * 
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("admin_semester_fees_table.jsp");
-		 * 
-		 * dispatcher.forward(request, response);
-		 * 
-		 * } else if (fee_type.equals("formfillup_fee")) {
-		 * 
-		 * RequestDispatcher dispatcher =
-		 * request.getRequestDispatcher("admin_form_fill_up_fees_table.jsp");
-		 * dispatcher.forward(request, response);
-		 * 
-		 * }
-		 */
+		String fee_type = request.getParameter("type");
+		String id = request.getParameter("id");
+		String status = request.getParameter("status");
+		System.out.println(fee_type + " id  " + id);
+
+		String tbl1 = "development_fees";
+		String tbl2 = "formfillup_fees";
+		String tbl3 = "semester_fees2";
+
+		if (fee_type.equals("development_fee") && status.equals("true")) {
+
+			if (mainController.updatePaymentStatusToVerify(tbl1, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_developmentfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		} else if (fee_type.equals("development_fee") && status.equals("false")) {
+
+			if (mainController.updatePaymentStatusToNotVerify(tbl1, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_developmentfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		} else if (fee_type.equals("formfillup_fee") && status.equals("true")) {
+
+			if (mainController.updatePaymentStatusToVerify(tbl2, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_formfillupfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		} else if (fee_type.equals("formfillup_fee") && status.equals("false")) {
+
+			if (mainController.updatePaymentStatusToNotVerify(tbl2, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_formfillupfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		} else if (fee_type.equals("semester_fee") && status.equals("true")) {
+
+			if (mainController.updatePaymentStatusToVerify(tbl3, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_semesterfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		} else if (fee_type.equals("semester_fee") && status.equals("false")) {
+
+			if (mainController.updatePaymentStatusToNotVerify(tbl3, id)) {
+				System.out.println("successfully updated payment status !");
+				RequestDispatcher dispatcher = request
+						.getRequestDispatcher("adminShowAllFeesController?target=all_semesterfee");
+
+				dispatcher.forward(request, response);
+			} else {
+				System.out.println("Failed to updated payment status !");
+			}
+
+		}
 
 	}
 

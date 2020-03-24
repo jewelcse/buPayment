@@ -103,7 +103,7 @@
 										<select id="semester"
 											class="browser-default custom-select custom-select-lg mb-3"
 											name="semester" required>
-											<option value=null>.....</option>
+											<option value="null">.....</option>
 											<option value="1st">1<sup>st</sup></option>
 											<option value="2nd">2<sup>nd</sup></option>
 											<option value="3rd">3<sup>rd</sup></option>
@@ -163,6 +163,8 @@
 
 
 <script>
+
+
 	$('#modalForm').on('hidden.bs.modal', function(e) {
 		$(this).find('#reducedForm')[0].reset();
 		$('.statusMsg').html('');
@@ -177,11 +179,6 @@
 		var amount = $('#changed_amount').val();
 		var department = $('#department').val();
 
-		/*$(".department").change(function(){
-		    var department = $(this).val();
-		    alert(department);
-		});*/
-		//alert(roll+semester+amount);
 		if (roll.trim() == '') {
 			alert('Please enter Roll.');
 			$('#roll').focus();
@@ -195,8 +192,7 @@
 			$('#changed_amount').focus();
 			return false;
 		} else {
-			$
-					.ajax({
+			$.ajax({
 						type : 'POST',
 						url : 'adminFeesManageController?type=update_development_fee',
 						data : {
@@ -213,20 +209,21 @@
 							console.log(msg);
 							if (msg == 'ok') {
 								document.getElementById("reducedForm").reset();
-								$('.statusMsg')
-										.html(
-												'<span style="color:green;">Successfuly Reduced .</p>');
+								$('.statusMsg').html('<span style="color:green;">Successfuly Reduced!.</span>');
+								$('#modalForm').modal('hide');
+								 
 							} else {
-								$('.statusMsg')
-										.html(
-												'<span style="color:red;">Duplicate Entity found!.</span>');
+								$('.statusMsg').html('<span style="color:red;">Duplicate Entity found OR maybe Changed amount is more Than Total Fee!.</span>');
 							}
 							$('.submitBtn').removeAttr("disabled");
 							$('.modal-body').css('opacity', '');
+							
 						}
 					});
 		}
 	}
+	
+
 </script>
 
 

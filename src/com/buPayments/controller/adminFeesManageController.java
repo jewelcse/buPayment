@@ -40,10 +40,8 @@ public class adminFeesManageController extends HttpServlet {
 		// adminFeesManageController?type=formfillupfee&&page
 		String type = request.getParameter("type");
 
-		//String pageNo = request.getParameter("page");
+		// String pageNo = request.getParameter("page");
 		String page = request.getParameter("page");
-		
-		 
 
 		if (type.equals("developmentfee")) {
 			int stpage = Integer.parseInt(page);
@@ -55,9 +53,6 @@ public class adminFeesManageController extends HttpServlet {
 			}
 
 			ArrayList<adminDevelopmentFeesTable> list = adminFeesDao.showAllDevelopmentFees(stpage, total);
-
-			PrintWriter out = response.getWriter();
-
 			request.setAttribute("development_fees_list", list);
 
 			RequestDispatcher view = request.getRequestDispatcher("admin_development_fees_table.jsp");
@@ -74,8 +69,7 @@ public class adminFeesManageController extends HttpServlet {
 
 			ArrayList<adminSemesterFeesTable> list = adminFeesDao.showAllSemesterFees(stpage, total);
 
-			PrintWriter out = response.getWriter();
-
+	
 			request.setAttribute("semester_fees_list", list);
 
 			RequestDispatcher view = request.getRequestDispatcher("admin_semester_fees_table.jsp");
@@ -92,8 +86,7 @@ public class adminFeesManageController extends HttpServlet {
 
 			ArrayList<adminFormFillUpFeesTable> list = adminFeesDao.showAllFormfillupFees(stpage, total);
 
-			PrintWriter out = response.getWriter();
-
+		
 			request.setAttribute("formfillup_fees_list", list);
 
 			RequestDispatcher view = request.getRequestDispatcher("admin_form_fill_up_fees_table.jsp");
@@ -118,24 +111,23 @@ public class adminFeesManageController extends HttpServlet {
 			String departmentId = request.getParameter("department");
 
 			System.out.println(roll + semester + changed_amount + " " + departmentId);
-			
-			
 
-			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount,departmentId);
+			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount, departmentId);
 
-			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester,departmentId);
-			
+			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester, departmentId);
+			boolean notMuchThanMainfee = mainController.isCahangedFeeMoreThanMainFee(changed_amount, semester,
+					departmentId);
+
 			PrintWriter out = response.getWriter();
 
-			if (!duplicate) {
+			if (!duplicate && !notMuchThanMainfee) {
 				mainController.ChangedFeesNow(changedFees);
-				response.sendRedirect("adminController?target=update_development_fee");
 				out.write("ok");
 				out.close();
 			} else {
 				out.write("err");
 				response.sendRedirect("adminController?target=update_development_fee");
-				System.out.println("---->Duplicate Entity found!");
+				System.out.println("---->Duplicate Entity found OR maybe Changed amount is more Than Total Fee ");
 				out.close();
 
 			}

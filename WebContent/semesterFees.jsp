@@ -43,7 +43,7 @@
 
 
 
-				<form action="devSemesterFeesController" method="post">
+				<form action="devFeesController?feetype=semesterfee" method="post">
 					<input type="hidden" id="" name="s_id" class="form-control"
 						value="<%=stu.getId()%>">
 
@@ -168,7 +168,7 @@
 
 								<tr>
 									<td>Total</td>
-									<td><input type="text" id="total" name="s_semester_fee"
+									<td><input type="text" id="total" name="total_amount"
 										readonly></td>
 								</tr>
 

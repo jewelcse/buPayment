@@ -11,15 +11,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-
-
 <%
 	response.setHeader("Cache-Control", "no-store,must-revalidate");
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-%>
+	
+	if (session.getAttribute("currentSessionForSuperAdmin") != null || session.getAttribute("currentSessionForSubAdmin") != null) {
+		response.sendRedirect("super-admin.jsp");
+
+	} else { %> 
+
+		
 <!DOCTYPE html>
 <html lang="en">
 
@@ -51,6 +54,7 @@
 			<c:if test="${not empty error}">
 						<span class="alert alert-danger"><c:out value="${error}" /></span>
 					</c:if>
+				<!-- <span class="alert alert-danger">${error }</span> -->
 			<div class="card-body">
 				<form action="adminController?action=login" method="post">
 					
@@ -105,3 +109,5 @@
 </body>
 
 </html>
+
+<%} %>

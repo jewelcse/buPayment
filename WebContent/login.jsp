@@ -12,15 +12,11 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	if (session.getAttribute("currentSessionStudent") == null) {
+	if (session.getAttribute("currentSessionStudent") != null) {
 
-		Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
+		response.sendRedirect("index.jsp");
+	}else{
 %>
-
-
-
-
-
 <body>
 	<div class="container">
 		<div class="row">
@@ -65,28 +61,4 @@
 <%
 	}
 
-	else {
-%>
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-12 mt-5 mr-auto ml-auto">
-
-			<div class="already-logged-msg text-center text-responsive">
-				<h1>Already logged!</h1>
-
-			</div>
-
-
-		</div>
-
-	</div>
-
-</div>
-
-
-
-
-<%
-	}
 %>

@@ -14,7 +14,7 @@
 	response.setHeader("Pragma", "no-cache");
 	response.setDateHeader("Expires", -1);
 	new java.util.Date();
-	session.getAttribute("currentSessionStudent");
+	if(session.getAttribute("currentSessionStudent") != null){
 	Student currentUser = (Student) (session.getAttribute("currentSessionStudent"));
 	
 	Student stu;
@@ -101,3 +101,8 @@
 <br>
 <br>
 <%@include file="footer.jsp"%>
+
+<% }else{ 
+	
+	response.sendRedirect("login.jsp");
+}%>

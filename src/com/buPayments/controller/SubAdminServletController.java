@@ -26,9 +26,11 @@ public class SubAdminServletController extends HttpServlet {
 			if (mainController.havePermission(col, adminId)) {
 				mainController.deniedPermission(col, adminId);
 				out.write("Permission denied!");
+				request.setAttribute("errormsg", "Permission denied!");
 			} else {
 				mainController.makePermission(col, adminId);
 				out.write("Accessed permission");
+				request.setAttribute("errormsg", "Accessed permission!");
 			}
 
 		} else if (type.equals("students_info")) {

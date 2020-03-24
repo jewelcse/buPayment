@@ -65,7 +65,7 @@ table.fixed td {
 
 <div class="row ml-5 mt-5">
 
-
+${errormsg }
 	<div class="col-md-12">
 
 		<div class="adbtnBox">
@@ -77,7 +77,9 @@ table.fixed td {
 		<%
 			//request.setAttribute("error", "Duplicate Entity found!");
 		%>
+		
 		<div class="table-responsive"> 
+		
 			<table class="table table-sm" border="2px solid black">
 			
 				<thead class="thead-light">

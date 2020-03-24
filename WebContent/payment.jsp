@@ -29,7 +29,7 @@
 		String sid = stu.getId();
 		String did = stu.getS_department();
 
-		System.out.println(sid + " " + did);
+		//System.out.println(sid + " " + did);
 
 	
 		Department dept;
@@ -38,7 +38,7 @@
 
 		String departmentId = dept.getDeptId();
 
-		System.out.println("from payment.jsp page , dept id " + departmentId);
+		//System.out.println("from payment.jsp page , dept id " + departmentId);
 
 		
 %>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 09, 2020 at 04:46 PM
+-- Generation Time: Mar 17, 2020 at 09:16 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.9
 
@@ -212,10 +212,10 @@ INSERT INTO `admin_formfillup_fees_table` (`id`, `department`, `semester`, `main
 (1, 1, '1st', 0, 500, '2019-09-27', '2019-09-27'),
 (2, 1, '2nd', 1500, 800, '2019-09-27', '2019-09-27'),
 (3, 1, '3rd', 1500, 800, '2019-09-27', '2019-09-27'),
-(4, 1, '4th', 10, 600, '2019-09-27', '2019-09-27'),
+(4, 1, '4th', 10, 600, '2019-09-27', '2020-06-10'),
 (5, 1, '5th', 1500, 600, '2019-09-27', '2019-09-27'),
-(6, 1, '6th', 1500, 700, '2019-09-27', '2019-09-27'),
-(7, 1, '7th', 1600, 400, '2019-09-27', '2019-09-27'),
+(6, 1, '6th', 1500, 700, '2019-09-27', '2020-04-22'),
+(7, 1, '7th', 1600, 400, '2019-09-27', '2020-04-20'),
 (8, 1, '8th', 1500, 500, '2019-09-27', '2019-09-27'),
 (9, 2, '1st', 1500, 500, '2019-09-27', '2019-09-27'),
 (10, 2, '2nd', 1500, 800, '2019-09-27', '2019-09-27'),
@@ -240,7 +240,7 @@ INSERT INTO `admin_formfillup_fees_table` (`id`, `department`, `semester`, `main
 (29, 4, '5th', 1500, 600, '2019-09-27', '2019-09-27'),
 (30, 4, '6th', 1500, 700, '2019-09-27', '2019-09-27'),
 (31, 4, '7th', 1600, 400, '2019-09-27', '2019-09-27'),
-(32, 4, '8th', 1500, 500, '2019-09-27', '2019-09-27'),
+(32, 4, '8th', 1500, 500, '2019-09-27', '2020-06-03'),
 (33, 5, '1st', 1500, 500, '2019-09-27', '2019-09-27'),
 (34, 5, '2nd', 1500, 800, '2019-09-27', '2019-09-27'),
 (35, 5, '3rd', 1500, 800, '2019-09-27', '2019-09-27'),
@@ -431,9 +431,9 @@ INSERT INTO `admin_semester_fees_table` (`id`, `department`, `semester`, `semest
 (5, 1, '3rd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
 (6, 1, '4th', 0, 0, 0, 0, 600, '2019-09-27', '2019-09-27'),
 (7, 1, '5th', 0, 0, 0, 0, 600, '2019-09-27', '2019-09-27'),
-(8, 1, '6th', 0, 0, 0, 0, 700, '2019-09-27', '2019-09-27'),
-(9, 1, '7th', 0, 0, 0, 0, 400, '2019-09-27', '2019-09-27'),
-(10, 1, '8th', 0, 0, 0, 0, 500, '2019-09-27', '2019-09-27'),
+(8, 1, '6th', 0, 0, 0, 0, 700, '2019-09-27', '2020-05-07'),
+(9, 1, '7th', 0, 0, 0, 0, 400, '2019-09-27', '2020-03-12'),
+(10, 1, '8th', 0, 0, 0, 0, 500, '2019-09-27', '2020-04-02'),
 (11, 2, '1st', 0, 0, 0, 0, 500, '2019-09-27', '2019-09-27'),
 (12, 2, '2nd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
 (13, 2, '3rd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
@@ -455,9 +455,9 @@ INSERT INTO `admin_semester_fees_table` (`id`, `department`, `semester`, `semest
 (29, 4, '3rd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
 (30, 4, '4th', 0, 0, 0, 0, 600, '2019-09-27', '2019-09-27'),
 (31, 4, '5th', 0, 0, 0, 0, 600, '2019-09-27', '2019-09-27'),
-(32, 4, '6th', 0, 0, 0, 0, 700, '2019-09-27', '2019-09-27'),
-(33, 4, '7th', 0, 0, 0, 0, 400, '2019-09-27', '2019-09-27'),
-(34, 4, '8th', 0, 0, 0, 0, 500, '2019-09-27', '2019-09-27'),
+(32, 4, '6th', 0, 0, 0, 0, 700, '2019-09-27', '2020-09-27'),
+(33, 4, '7th', 0, 0, 0, 0, 400, '2019-09-27', '2020-04-07'),
+(34, 4, '8th', 0, 0, 0, 0, 500, '2019-09-27', '2020-05-07'),
 (35, 5, '1st', 0, 0, 0, 0, 500, '2019-09-27', '2019-09-27'),
 (36, 5, '2nd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
 (37, 5, '3rd', 0, 0, 0, 0, 800, '2019-09-27', '2019-09-27'),
@@ -644,7 +644,10 @@ INSERT INTO `application_form_table` (`id`, `semester`, `subject`, `feeType`, `r
 (81, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
 (82, '5th', 'reducing amount', 'Semester fee ', 'onk taka amr', 6, 'Computer Science & Engineering'),
 (83, '6th', 'reducing amount and extending time', 'Form Fill up fee ', ' i have no money right now', 1, 'Computer Science & Engineering'),
-(84, '7th', 'reducing amount', 'Development fee ', 'ssasas', 6, 'Computer Science & Engineering');
+(84, '7th', 'reducing amount', 'Development fee ', 'ssasas', 6, 'Computer Science & Engineering'),
+(92, '7th', 'reducing amount and extending time', 'application_form', 'dfgdgfdg', 6, 'Computer Science & Engineering'),
+(93, '7th', 'reducing amount and extending time', 'application_form', 'dfgdgfdg', 6, 'Computer Science & Engineering'),
+(94, '7th', 'reducing amount and extending time', 'application_form', 'xcvcvcvbcv', 6, 'Computer Science & Engineering');
 
 -- --------------------------------------------------------
 
@@ -665,10 +668,11 @@ CREATE TABLE `changed_development_fee` (
 --
 
 INSERT INTO `changed_development_fee` (`id`, `roll`, `semester`, `department`, `changed_amount`) VALUES
-(76, '16CSE045', '6th', 1, 600),
+(76, '16CSE045', '6th', 1, 1590),
 (80, '16CSE029', '5th', 1, 200),
 (81, '16CSE029', '1st', 1, 200),
-(82, '16CSE029', '2nd', 1, 500);
+(82, '16CSE029', '2nd', 1, 500),
+(83, '16CSE01', '6th', 1, 500);
 
 -- --------------------------------------------------------
 
@@ -722,16 +726,30 @@ CREATE TABLE `development_fees` (
   `departmentId` int(11) NOT NULL,
   `semester` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `s_id` int(11) NOT NULL
+  `studentId` int(11) NOT NULL,
+  `transId` text NOT NULL,
+  `date` text NOT NULL,
+  `paymentStatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `development_fees`
 --
 
-INSERT INTO `development_fees` (`id`, `departmentId`, `semester`, `amount`, `s_id`) VALUES
-(38, 1, '1st', 1200, 1),
-(39, 1, '2nd', 2500, 1);
+INSERT INTO `development_fees` (`id`, `departmentId`, `semester`, `amount`, `studentId`, `transId`, `date`, `paymentStatus`) VALUES
+(90, 1, '6th', 10, 1, '2003-1713-0128-db8ac0b3-8aba-4a1e-a0b2-b395e7f0e97c', '2020-03-17 12:56:47', 0);
+
+--
+-- Triggers `development_fees`
+--
+DELIMITER $$
+CREATE TRIGGER `insertHistory` AFTER INSERT ON `development_fees` FOR EACH ROW INSERT into student_payment_history VALUES(null,NEW.studentId,NEW.departmentId,NEW.semester,NEW.amount,"Development Fee",NEW.paymentStatus,NEW.date)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updateDevelopmentFeesHistory` AFTER UPDATE ON `development_fees` FOR EACH ROW INSERT INTO student_payment_history VALUES(null,old.studentId,old.departmentId,old.semester,old.amount,"Development Fee",new.paymentStatus,NOW())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -744,15 +762,30 @@ CREATE TABLE `formfillup_fees` (
   `departmentId` int(11) NOT NULL,
   `semester` varchar(255) NOT NULL,
   `amount` int(11) NOT NULL,
-  `s_id` int(11) NOT NULL
+  `studentId` int(11) NOT NULL,
+  `transId` text NOT NULL,
+  `date` text NOT NULL,
+  `paymentStatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `formfillup_fees`
 --
 
-INSERT INTO `formfillup_fees` (`id`, `departmentId`, `semester`, `amount`, `s_id`) VALUES
-(14, 1, '5th', 121, 1);
+INSERT INTO `formfillup_fees` (`id`, `departmentId`, `semester`, `amount`, `studentId`, `transId`, `date`, `paymentStatus`) VALUES
+(19, 4, '8th', 2000, 3, '2003-1712-5140-5340cb5a-7e82-483c-91dc-b3db4614bdfd', '2020-03-17 12:46:59', 0);
+
+--
+-- Triggers `formfillup_fees`
+--
+DELIMITER $$
+CREATE TRIGGER `insertFormfillUpHistory` AFTER INSERT ON `formfillup_fees` FOR EACH ROW INSERT into student_payment_history VALUES(null,NEW.studentId,NEW.departmentId,NEW.semester,NEW.amount,"Formfillup Fee",NEW.paymentStatus,NEW.date)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updateFormfillupFeesHistory` AFTER UPDATE ON `formfillup_fees` FOR EACH ROW INSERT INTO student_payment_history VALUES(null,old.studentId,old.departmentId,old.semester,old.amount,"Formfillup Fee",new.paymentStatus,NOW())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -765,15 +798,31 @@ CREATE TABLE `semester_fees2` (
   `departmentId` int(11) NOT NULL,
   `semester` varchar(11) NOT NULL,
   `amount` int(11) NOT NULL,
-  `s_id` int(11) NOT NULL
+  `studentId` int(11) NOT NULL,
+  `transId` text NOT NULL,
+  `date` text NOT NULL,
+  `paymentStatus` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `semester_fees2`
 --
 
-INSERT INTO `semester_fees2` (`id`, `departmentId`, `semester`, `amount`, `s_id`) VALUES
-(25, 1, '6th', 2500, 1);
+INSERT INTO `semester_fees2` (`id`, `departmentId`, `semester`, `amount`, `studentId`, `transId`, `date`, `paymentStatus`) VALUES
+(32, 4, '7th', 400, 3, '2003-1712-5007-ab927c40-d196-46b8-b5fa-8efa45a3865d', '2020-03-17 12:45:27', 0),
+(35, 4, '6th', 700, 3, '2003-1713-0046-5cabffcf-8751-49f8-b357-a370355edb4c', '2020-03-17 12:56:05', 0);
+
+--
+-- Triggers `semester_fees2`
+--
+DELIMITER $$
+CREATE TRIGGER `insertSemesterFeeHistory` BEFORE INSERT ON `semester_fees2` FOR EACH ROW INSERT into student_payment_history VALUES(null,NEW.studentId,NEW.departmentId,NEW.semester,NEW.amount,"Semester Fee",NEW.paymentStatus,NEW.date)
+$$
+DELIMITER ;
+DELIMITER $$
+CREATE TRIGGER `updateSemesterFeesHistory` AFTER UPDATE ON `semester_fees2` FOR EACH ROW INSERT INTO student_payment_history VALUES(null,old.studentId,old.departmentId,old.semester,old.amount,"Semester Fee",new.paymentStatus,NOW())
+$$
+DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -809,6 +858,49 @@ INSERT INTO `student` (`s_Id`, `s_Roll`, `s_Reg`, `s_Name`, `s_Father_name`, `s_
 (15, '16CSE020', '110-045-16', 'stu name', 'fa name', 'mo name', 'dhrubo9250@gmail.com', '01712346378', '8146', '6th', 'Computer Science & Engineering', 'Science & Engineering'),
 (21, '13CSE007', '110-007-13', 'Md Mainul Islam Raju', 'Mainul\'s dad name', 'Mainul\'s mom name', 'mainul@gmail.com', '01922623321', '6238', '6th', 'Computer Science & Engineering', 'Science & Engineering'),
 (104, '16CSE006', '110-006-16', 'Md. Shefat Ullah', 'Md. Faruk Hossain', 'Mrs. Lizu Akther', 'siam.cse3.bu@gmail.com', '01985079500', '9004', '7th', 'Computer Science & Engineering', 'Science & Engineering');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `student_payment_history`
+--
+
+CREATE TABLE `student_payment_history` (
+  `id` int(11) NOT NULL,
+  `studentId` int(11) NOT NULL,
+  `departmentId` int(11) NOT NULL,
+  `semester` text NOT NULL,
+  `amount` int(11) NOT NULL,
+  `feeType` varchar(20) NOT NULL,
+  `paymentStatus` tinyint(1) NOT NULL,
+  `cDate` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `student_payment_history`
+--
+
+INSERT INTO `student_payment_history` (`id`, `studentId`, `departmentId`, `semester`, `amount`, `feeType`, `paymentStatus`, `cDate`) VALUES
+(102, 1, 1, '8th', 1600, 'Development Fee', 0, '2020-03-17 10:32:23'),
+(107, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:07:49'),
+(108, 1, 1, '8th', 1600, 'Development Fee', 0, '2020-03-17 11:20:34'),
+(109, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:22:03'),
+(110, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:24:41'),
+(111, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:25:22'),
+(112, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:26:08'),
+(113, 1, 1, '8th', 1600, 'Development Fee', 0, '2020-03-17 11:29:25'),
+(114, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:30:59'),
+(115, 1, 1, '8th', 1600, 'Development Fee', 0, '2020-03-17 11:33:35'),
+(116, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 11:35:05'),
+(117, 1, 1, '8th', 1600, 'Development Fee', 0, '2020-03-17 12:12:17'),
+(118, 3, 4, '7th', 400, 'Semester Fee', 0, '2020-03-17 12:40:49'),
+(119, 3, 4, '8th', 500, 'Semester Fee', 0, '2020-03-17 12:42:29'),
+(120, 3, 4, '7th', 400, 'Semester Fee', 0, '2020-03-17 12:45:27'),
+(121, 3, 4, '8th', 2000, 'Formfillup Fee', 0, '2020-03-17 12:46:59'),
+(122, 3, 4, '6th', 700, 'Semester Fee', 0, '2020-03-17 12:53:48'),
+(123, 3, 4, '6th', 700, 'Semester Fee', 0, '2020-03-17 12:55:09'),
+(124, 3, 4, '6th', 700, 'Semester Fee', 0, '2020-03-17 12:56:05'),
+(125, 1, 1, '6th', 10, 'Development Fee', 0, '2020-03-17 12:56:47');
 
 -- --------------------------------------------------------
 
@@ -916,7 +1008,7 @@ ALTER TABLE `department`
 --
 ALTER TABLE `development_fees`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `s_id` (`s_id`),
+  ADD KEY `s_id` (`studentId`),
   ADD KEY `departmentId` (`departmentId`);
 
 --
@@ -924,7 +1016,7 @@ ALTER TABLE `development_fees`
 --
 ALTER TABLE `formfillup_fees`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `s_id` (`s_id`),
+  ADD KEY `s_id` (`studentId`),
   ADD KEY `departmentId` (`departmentId`);
 
 --
@@ -932,7 +1024,7 @@ ALTER TABLE `formfillup_fees`
 --
 ALTER TABLE `semester_fees2`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `s_id` (`s_id`),
+  ADD KEY `s_id` (`studentId`),
   ADD KEY `departmentId` (`departmentId`);
 
 --
@@ -940,6 +1032,12 @@ ALTER TABLE `semester_fees2`
 --
 ALTER TABLE `student`
   ADD PRIMARY KEY (`s_Id`);
+
+--
+-- Indexes for table `student_payment_history`
+--
+ALTER TABLE `student_payment_history`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `sub_admin`
@@ -985,13 +1083,13 @@ ALTER TABLE `admin_semester_fees_table`
 -- AUTO_INCREMENT for table `application_form_table`
 --
 ALTER TABLE `application_form_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `changed_development_fee`
 --
 ALTER TABLE `changed_development_fee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=83;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `department`
@@ -1003,25 +1101,31 @@ ALTER TABLE `department`
 -- AUTO_INCREMENT for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT for table `semester_fees2`
 --
 ALTER TABLE `semester_fees2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `student`
 --
 ALTER TABLE `student`
   MODIFY `s_Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=105;
+
+--
+-- AUTO_INCREMENT for table `student_payment_history`
+--
+ALTER TABLE `student_payment_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `sub_admin`
@@ -1079,21 +1183,21 @@ ALTER TABLE `changed_development_fee`
 -- Constraints for table `development_fees`
 --
 ALTER TABLE `development_fees`
-  ADD CONSTRAINT `development_fees_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `development_fees_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `development_fees_ibfk_2` FOREIGN KEY (`departmentId`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `formfillup_fees`
 --
 ALTER TABLE `formfillup_fees`
-  ADD CONSTRAINT `formfillup_fees_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `formfillup_fees_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `formfillup_fees_ibfk_2` FOREIGN KEY (`departmentId`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 --
 -- Constraints for table `semester_fees2`
 --
 ALTER TABLE `semester_fees2`
-  ADD CONSTRAINT `semester_fees2_ibfk_1` FOREIGN KEY (`s_id`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `semester_fees2_ibfk_1` FOREIGN KEY (`studentId`) REFERENCES `student` (`s_Id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   ADD CONSTRAINT `semester_fees2_ibfk_2` FOREIGN KEY (`departmentId`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 

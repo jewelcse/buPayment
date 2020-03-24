@@ -111,33 +111,18 @@ public class adminFeesManageController extends HttpServlet {
 			String departmentId = request.getParameter("department");
 
 			System.out.println(roll + semester + changed_amount + " " + departmentId);
-<<<<<<< HEAD
 
 			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount, departmentId);
 
 			boolean duplicate = mainController.FindDuplicateChangedDevelopmentFees(roll, semester, departmentId);
 			boolean notMuchThanMainfee = mainController.isCahangedFeeMoreThanMainFee(changed_amount, semester,
 					departmentId);
-=======
-			
-			
-			ChangedFees changedFees = new ChangedFees(roll, semester, changed_amount,departmentId);
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 			PrintWriter out = response.getWriter();
 
 			if (!duplicate && !notMuchThanMainfee) {
 				mainController.ChangedFeesNow(changedFees);
 				out.write("ok");
-				//response.sendRedirect("adminController?target=update_development_fee");
-				
-				/*ArrayList<ChangedFees> list = adminFeesDao.showAllChangedFees();
-
-				request.setAttribute("changed_fees_list", list);
-
-				RequestDispatcher view = request.getRequestDispatcher("admin_update_fees.jsp");
-				view.forward(request, response);*/
-				
 				out.close();
 			} else {
 				out.write("err");

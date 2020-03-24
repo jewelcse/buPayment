@@ -2,7 +2,6 @@ package com.buPayments.model;
 
 public class FormfillupFees {
 
-<<<<<<< HEAD
 	private String id;
 	private String studentId;
 	private String departmentId;
@@ -11,12 +10,6 @@ public class FormfillupFees {
 	private String paymentTime;
 	private String transId;
 	private boolean paymentStatus;
-=======
-	private String s_id;
-	private String departmentId;
-	private String s_semester;
-	private String s_amount;
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 	public FormfillupFees() {
 	}

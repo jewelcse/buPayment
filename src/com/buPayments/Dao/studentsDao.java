@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import com.buPayments.controller.dbConnection;
 import com.buPayments.model.Devfees;
 import com.buPayments.model.FormfillupFees;
-<<<<<<< HEAD
 import com.buPayments.model.PaymentHistory;
-=======
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 import com.buPayments.model.SemesterFees;
 import com.buPayments.model.Student;
 
@@ -72,7 +69,6 @@ public class studentsDao {
 
 		ArrayList<Devfees> devfeelist = new ArrayList<Devfees>();
 
-<<<<<<< HEAD
 		String sql = "select * from  development_fees where studentId = '" + id + "'";
 
 		try {
@@ -138,9 +134,6 @@ public class studentsDao {
 		ArrayList<SemesterFees> Semesterfeelist = new ArrayList<SemesterFees>();
 
 		String sql = "select * from   semester_fees2 where studentId = '" + id + "'";
-=======
-		String sql = "select * from  development_fees where s_id = '" + id + "'";
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 		try {
 			Connection con = db.getCon();
@@ -148,7 +141,6 @@ public class studentsDao {
 			ResultSet myRs = ps.executeQuery(sql);
 			while (myRs.next()) {
 
-<<<<<<< HEAD
 				SemesterFees semesterfee = new SemesterFees();
 				String semester = myRs.getString("semester");
 				String amount = myRs.getString("amount");
@@ -156,15 +148,6 @@ public class studentsDao {
 				semesterfee.setSemester(semester);
 				semesterfee.setAmount(amount);
 				Semesterfeelist.add(semesterfee);
-=======
-				Devfees devfee = new Devfees();
-				String semester = myRs.getString("semester");
-				String amount = myRs.getString("amount");
-
-				devfee.setS_semester(semester);
-				devfee.setAmount(amount);
-				devfeelist.add(devfee);
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 			}
 
@@ -172,7 +155,6 @@ public class studentsDao {
 			e.printStackTrace();
 		}
 
-<<<<<<< HEAD
 		return Semesterfeelist;
 
 	}
@@ -184,19 +166,6 @@ public class studentsDao {
 		ArrayList<PaymentHistory> feelist = new ArrayList<PaymentHistory>();
 
 		String sql = "select * from   student_payment_history where studentId = '" + sid + "' AND departmentId = '" + did + "' ORDER BY id DESC";
-=======
-		return devfeelist;
-
-	}
-
-	public static ArrayList<FormfillupFees> getPaidFormfillupFeeByUserId(String id) {
-
-		dbConnection db = new dbConnection();
-
-		ArrayList<FormfillupFees> formfillupfeelist = new ArrayList<FormfillupFees>();
-
-		String sql = "select * from   formfillup_fees where s_id = '" + id + "'";
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 		try {
 			Connection con = db.getCon();
@@ -204,7 +173,6 @@ public class studentsDao {
 			ResultSet myRs = ps.executeQuery(sql);
 			while (myRs.next()) {
 
-<<<<<<< HEAD
 				PaymentHistory fee = new PaymentHistory();
 				String semester = myRs.getString("semester");
 				String amount = myRs.getString("amount");
@@ -221,14 +189,6 @@ public class studentsDao {
 				fee.setPaymentStatus(status);
 
 				feelist.add(fee);
-=======
-				FormfillupFees formfillupfee = new FormfillupFees();
-				String semester = myRs.getString("semester");
-				String amount = myRs.getString("amount");
-
-				formfillupfee.setS_semester(semester);
-				formfillupfee.setS_amount(amount);
-				formfillupfeelist.add(formfillupfee);
 
 			}
 
@@ -236,44 +196,7 @@ public class studentsDao {
 			e.printStackTrace();
 		}
 
-		return formfillupfeelist;
-
-	}
-
-	public static ArrayList<SemesterFees> getPaidSemesterpFeeByUserId(String id) {
-
-		dbConnection db = new dbConnection();
-
-		ArrayList<SemesterFees> Semesterfeelist = new ArrayList<SemesterFees>();
-
-		String sql = "select * from   semester_fees2 where s_id = '" + id + "'";
-
-		try {
-			Connection con = db.getCon();
-			PreparedStatement ps = con.prepareStatement(sql);
-			ResultSet myRs = ps.executeQuery(sql);
-			while (myRs.next()) {
-
-				SemesterFees semesterfee = new SemesterFees();
-				String semester = myRs.getString("semester");
-				String amount = myRs.getString("amount");
-
-				semesterfee.setS_semester(semester);
-				semesterfee.setS_semester_fee(amount);
-				Semesterfeelist.add(semesterfee);
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
-
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-<<<<<<< HEAD
 		return feelist;
-=======
-		return Semesterfeelist;
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 
 	}
 }

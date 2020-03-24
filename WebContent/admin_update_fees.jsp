@@ -213,11 +213,7 @@
 								$('#modalForm').modal('hide');
 								 
 							} else {
-<<<<<<< HEAD
 								$('.statusMsg').html('<span style="color:red;">Duplicate Entity found OR maybe Changed amount is more Than Total Fee!.</span>');
-=======
-								$('.statusMsg').html('<span style="color:red;">Duplicate Entity found!.</span>');
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 							}
 							$('.submitBtn').removeAttr("disabled");
 							$('.modal-body').css('opacity', '');

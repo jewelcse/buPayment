@@ -302,9 +302,6 @@ public class mainController {
 		} else {
 			System.out.println("----->Login Error!");
 		}
-		else {
-			System.out.println("----->Login Error!");
-		}
 		return login_admin;
 	}
 

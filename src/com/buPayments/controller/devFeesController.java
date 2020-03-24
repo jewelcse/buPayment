@@ -32,7 +32,6 @@ import com.buPayments.sslcommerz.TransactionInitiator;
 
 @WebServlet("/devFeesController")
 public class devFeesController extends HttpServlet {
-<<<<<<< HEAD
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -61,85 +60,6 @@ public class devFeesController extends HttpServlet {
 				// System.out.println("name"+student.getS_name());
 
 				// System.out.println(student.getId() + " ++++" + student.getS_department());
-=======
-	private static final long serialVersionUID = 1L;
-	static dbConnection db = new dbConnection();
-
-    public devFeesController() {
-        super();
-    }
-
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-
-	/*	String semester = request.getParameter("s_semester");
-		String roll= request.getParameter("s_roll");
-		String deptname = request.getParameter("s_department");
-		
-		System.out.println(semester + roll + deptname);
-		
-		Department dept ;
-		
-	    dept = mainController.getDepartmentIdByDepartmentName(deptname);
-	    
-	    String departmentId = dept.getDeptId();
-	    
-	    System.out.println("dept id "+departmentId);
-	    
-	    adminDevelopmentFeesTable devfee;
-	    devfee = mainController.findDevelopmentFee(departmentId,semester);
-		
-		System.out.println("devfee = "+devfee.getMain_fee() + devfee.getMisce_fee());
-		
-		ChangedFees changedfee = mainController.findChangedDevelopmentFee(roll,semester,departmentId);
-		
-		System.out.println("chfee "+changedfee.getChanged_amount());
-		String chfee = changedfee.getChanged_amount();
-		
-		if(chfee ==  null) {
-			chfee = "0";
-			
-		}
-		
-		
-		PrintWriter out = response.getWriter();
-		
-		request.setAttribute("mainfee", devfee.getMain_fee());
-		request.setAttribute("miscefee", devfee.getMisce_fee());
-		request.setAttribute("changedfee", chfee);
-		
-		request.getRequestDispatcher("devFees.jsp").forward(request, response);
-		
-		*/
-		
-	}
-	
-	
-	
-
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		String sub=request.getParameter("devfees_id");
-		
-		
-		if(sub.equals("devfees")){
-			
-			String id = request.getParameter("s_id");
-			String semester = request.getParameter("s_semester");
-			String development_fee = request.getParameter("total_amount");
-			System.out.println(semester);
-			System.out.println("id"+id +"semester "+ semester+ " amount "+development_fee);
-			if( ! semester.equals("0")) {
-			
-				Devfees newDevfees = new Devfees(id,semester,development_fee);
-				String rand = UUID.randomUUID().toString();
-				System.out.println(id);
-				Student student = studentsDao.getStudentProfileById(id);
-				System.out.println("name"+student.getS_name());
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 				Devfees devfees = new Devfees();
 
 				DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyMM-ddHH-mmss");
@@ -163,13 +83,8 @@ public class devFeesController extends HttpServlet {
 				com.buPayments.sslcommerz.TransactionInitiator trans = new com.buPayments.sslcommerz.TransactionInitiator();
 
 				String response1 = trans.initTrnxnRequest(student, devfees);
-<<<<<<< HEAD
 				System.out.println("LINE 131 " + response1);
 
-=======
-				System.out.println("LINE 131 "+ response1);
-				
->>>>>>> 265d245e3a9ff47d197af4d6ef3e408c3ca0b3db
 				response.sendRedirect(response1);
 
 				

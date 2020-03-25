@@ -4,6 +4,7 @@ public class Admin {
 
 	private String id;
 	private String name;
+	private String email;
 	private String password;
 	private String item1;
 	private String item2;
@@ -23,6 +24,29 @@ public class Admin {
 	}
 	
 	
+	public Admin(String id, String name, String email, String password, String adminType, boolean superAdminIsvalid,
+			boolean subAdminIsvalid) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.email = email;
+		this.password = password;
+		this.adminType = adminType;
+		this.superAdminIsvalid = superAdminIsvalid;
+		this.subAdminIsvalid = subAdminIsvalid;
+	}
+
+
+	public String getEmail() {
+		return email;
+	}
+
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
 	public String getId() {
 		return id;
 	}

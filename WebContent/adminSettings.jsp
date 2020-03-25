@@ -56,6 +56,14 @@
 				<input type="text" name="name" class="form-control"
 					placeholder="Name" required>
 			</div>
+			<div class="md-form mb-2">
+				<input type="email" name="email" class="form-control"
+					placeholder="Email" required>
+			</div>
+			<div class="md-form mb-2">
+				<input type="password" name="password" class="form-control"
+					placeholder="Password" required>
+			</div>
 			<div class=" mt-3">
 				<h3 class="text-canter">Privileges</h3>
 				<div class="items p-2">

@@ -117,82 +117,56 @@ public class mainController {
 	 * After completing payment process students information save to the database
 	 * for Development Fees for Semester Admission Fee for Form fill up Fee
 	 * 
-	 
-	public static String addDevFeestoDb(Devfees newDevfees) throws SQLException {
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		Statement stmt = null;
-		myConn = db.getCon();
-		String result = "";
-	
-			String sql = "insert into development_fees " + "(s_id,semester,amount) " + "values (?,?,?)";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-
-			myStmt.execute();
-			System.out.print("----->Development Fees payment successful!");
-			return result = "success";
-		
-	}
-*/
-	/*	public static String addsemesterFeestoDb(SemesterFees newsemesterFee) throws SQLException {
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		Statement stmt = null;
-		myConn = db.getCon();
-		ResultSet myRs = null;
-		String result = "";
-		String id = newsemesterFee.getS_id();
-		String semester = newsemesterFee.getS_semester();
-		System.out.println(id + " " + semester);
-		String select_sql = "select * from semester_fees2 where s_id = '" + id + "' AND semester = '" + semester + "'";
-		stmt = myConn.createStatement();
-		myRs = stmt.executeQuery(select_sql);
-		boolean more = myRs.next();
-		if (!more) {
-			String sql = "insert into semester_fees2 " + "(s_id,semester,amount) " + "values (?,?,?)";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			myStmt.setString(1, newsemesterFee.getS_id());
-			myStmt.setString(2, newsemesterFee.getS_semester());
-			myStmt.setString(3, newsemesterFee.getS_semester_fee());
-			myStmt.execute();
-			System.out.print("----->Semester Fees payment successful!");
-			return result = "success";
-		} else {
-			System.out.println("----->Already paid!");
-			return result = "failed";
-		}
-	}
-
-	public static String addFormfillupFeestoDb(FormfillupFees newFormfillup) throws SQLException {
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		Statement stmt = null;
-		ResultSet myRs = null;
-		myConn = db.getCon();
-		String result = "";
-		String id = newFormfillup.getS_id();
-		String semester = newFormfillup.getS_semester();
-		System.out.println(id + " " + semester);
-		String select_sql = "select * from formfillup_fees where s_id = '" + id + "' AND semester = '" + semester + "'";
-		stmt = myConn.createStatement();
-		myRs = stmt.executeQuery(select_sql);
-		boolean more = myRs.next();
-		if (!more) {
-			String sql = "insert into  formfillup_fees " + "(semester,amount,s_id) " + "values (?,?,?)";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			myStmt.setString(1, newFormfillup.getS_semester());
-			myStmt.setString(2, newFormfillup.getS_amount());
-			myStmt.setString(3, newFormfillup.getS_id());
-			myStmt.execute();
-			System.out.print("----->Formfillup Fees payment successful!");
-			return result = "success";
-		} else {
-			System.out.println("----->Already paid!");
-			return result = "failed";
-		}
-	}
-
-	
+	 * 
+	 * public static String addDevFeestoDb(Devfees newDevfees) throws SQLException {
+	 * Connection myConn = null; PreparedStatement myStmt = null; Statement stmt =
+	 * null; myConn = db.getCon(); String result = "";
+	 * 
+	 * String sql = "insert into development_fees " + "(s_id,semester,amount) " +
+	 * "values (?,?,?)"; myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+	 * 
+	 * myStmt.execute();
+	 * System.out.print("----->Development Fees payment successful!"); return result
+	 * = "success";
+	 * 
+	 * }
+	 */
+	/*
+	 * public static String addsemesterFeestoDb(SemesterFees newsemesterFee) throws
+	 * SQLException { Connection myConn = null; PreparedStatement myStmt = null;
+	 * Statement stmt = null; myConn = db.getCon(); ResultSet myRs = null; String
+	 * result = ""; String id = newsemesterFee.getS_id(); String semester =
+	 * newsemesterFee.getS_semester(); System.out.println(id + " " + semester);
+	 * String select_sql = "select * from semester_fees2 where s_id = '" + id +
+	 * "' AND semester = '" + semester + "'"; stmt = myConn.createStatement(); myRs
+	 * = stmt.executeQuery(select_sql); boolean more = myRs.next(); if (!more) {
+	 * String sql = "insert into semester_fees2 " + "(s_id,semester,amount) " +
+	 * "values (?,?,?)"; myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+	 * myStmt.setString(1, newsemesterFee.getS_id()); myStmt.setString(2,
+	 * newsemesterFee.getS_semester()); myStmt.setString(3,
+	 * newsemesterFee.getS_semester_fee()); myStmt.execute();
+	 * System.out.print("----->Semester Fees payment successful!"); return result =
+	 * "success"; } else { System.out.println("----->Already paid!"); return result
+	 * = "failed"; } }
+	 * 
+	 * public static String addFormfillupFeestoDb(FormfillupFees newFormfillup)
+	 * throws SQLException { Connection myConn = null; PreparedStatement myStmt =
+	 * null; Statement stmt = null; ResultSet myRs = null; myConn = db.getCon();
+	 * String result = ""; String id = newFormfillup.getS_id(); String semester =
+	 * newFormfillup.getS_semester(); System.out.println(id + " " + semester);
+	 * String select_sql = "select * from formfillup_fees where s_id = '" + id +
+	 * "' AND semester = '" + semester + "'"; stmt = myConn.createStatement(); myRs
+	 * = stmt.executeQuery(select_sql); boolean more = myRs.next(); if (!more) {
+	 * String sql = "insert into  formfillup_fees " + "(semester,amount,s_id) " +
+	 * "values (?,?,?)"; myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+	 * myStmt.setString(1, newFormfillup.getS_semester()); myStmt.setString(2,
+	 * newFormfillup.getS_amount()); myStmt.setString(3, newFormfillup.getS_id());
+	 * myStmt.execute();
+	 * System.out.print("----->Formfillup Fees payment successful!"); return result
+	 * = "success"; } else { System.out.println("----->Already paid!"); return
+	 * result = "failed"; } }
+	 * 
+	 * 
 	 * This method check duplication for more than several record for same user in
 	 * same semester
 	 */
@@ -479,35 +453,53 @@ public class mainController {
 		System.out.println("----->Update Sub Admin Successful!");
 	}
 
-	public static boolean addNewAdmin(String newAdminName, String password, String item1, String item2, String item3,
-			String item4, String item5, String item6) {
+	public static boolean isHaveSameSubadmin(String name, String email) {
 		Connection myConn = null;
-		PreparedStatement myStmt = null;
 		Statement stmt = null;
 		ResultSet myRs = null;
-		boolean retrunStatus = false;
+
+		myConn = db.getCon();
+
+		String select_sql = "select * from sub_admin where name='" + name + "' and email='" + email + "' ";
 		try {
-			String sql = "select * from sub_admin where name = '" + newAdminName + "' ";
-			myConn = db.getCon();
 			stmt = myConn.createStatement();
-			myRs = stmt.executeQuery(sql);
+			myRs = stmt.executeQuery(select_sql);
+
 			boolean more = myRs.next();
-			if (!more) {
-				String inserQuery = "insert into sub_admin "
-						+ "(name,password,update_development_fee,student_information,application_letters,update_development_fees_table,update_semester_fees_table,update_formfillup_fees_table) "
-						+ "values ('" + newAdminName + "','" + password + "','" + item1 + "','" + item2 + "','" + item3
-						+ "','" + item4 + "','" + item5 + "','" + item6 + "')";
-				myStmt = (PreparedStatement) myConn.prepareStatement(inserQuery);
-				myStmt.execute();
-				retrunStatus = true;
-				System.out.print("----->New Sub Admin Created Successfuly!");
-			} else {
-				System.out.println("----->Already have " + newAdminName + " !");
-				retrunStatus = false;
+
+			if (more) {
+				return true;
 			}
-		} catch (Exception e) {
+
+		} catch (SQLException e) {
+			e.printStackTrace();
 		}
-		return retrunStatus;
+
+		return false;
+	}
+
+	public static void addNewAdmin(String name, String email, String password, String item1, String item2,
+			String item3, String item4, String item5, String item6) throws SQLException {
+		Connection myConn = null;
+		PreparedStatement myStmt = null;
+		myConn = db.getCon();
+		String inserQuery = "insert into sub_admin "
+				+ "(name,email,password,update_development_fee,student_information,application_letters,update_development_fees_table,update_semester_fees_table,update_formfillup_fees_table) "
+				+ " values (?,?,?,?,?,?,?,?,?)";
+		myStmt = (PreparedStatement) myConn.prepareStatement(inserQuery);
+		myStmt.setString(1, name);
+		myStmt.setString(2, email);
+		myStmt.setString(3, password);
+		myStmt.setString(4, item1);
+		myStmt.setString(5, item2);
+		myStmt.setString(6, item3);
+		myStmt.setString(7, item4);
+		myStmt.setString(8, item5);
+		myStmt.setString(9, item6);
+		myStmt.execute();
+
+		System.out.print("----->New Sub Admin Created Successfuly!");
+
 	}
 
 	public static Department getDepartmentIdByDepartmentName(String deptname) {
@@ -714,7 +706,7 @@ public class mainController {
 
 		myConn = db.getCon();
 
-		String select_sql = "select * from "+tableName +" where departmentId='" + deptId + "' AND semester = '"
+		String select_sql = "select * from " + tableName + " where departmentId='" + deptId + "' AND semester = '"
 				+ stuSemester + "' AND studentId = '" + stuId + "' ";
 		try {
 			stmt = myConn.createStatement();
@@ -732,28 +724,27 @@ public class mainController {
 		return false;
 	}
 
-	
-	
 	public static String addFeesToDb(String tableName, Devfees developmentfee) throws SQLException {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		String result = "";
-	
-			String sql = "insert into "+tableName+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			myStmt.setString(1, developmentfee.getDepartmentId());
-			myStmt.setString(2, developmentfee.getSemester());
-			myStmt.setString(3, developmentfee.getAmount());
-			myStmt.setString(4, developmentfee.getStudentId());
-			myStmt.setString(5, developmentfee.getTransId());
-			myStmt.setString(6, developmentfee.getPaymentTime());
-			myStmt.setString(7, "0");
 
-			myStmt.execute();
-			System.out.print("----->Development Fees payment successful!");
-			return result = "success";
+		String sql = "insert into " + tableName
+				+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
+		myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+		myStmt.setString(1, developmentfee.getDepartmentId());
+		myStmt.setString(2, developmentfee.getSemester());
+		myStmt.setString(3, developmentfee.getAmount());
+		myStmt.setString(4, developmentfee.getStudentId());
+		myStmt.setString(5, developmentfee.getTransId());
+		myStmt.setString(6, developmentfee.getPaymentTime());
+		myStmt.setString(7, "0");
+
+		myStmt.execute();
+		System.out.print("----->Development Fees payment successful!");
+		return result = "success";
 	}
 
 	public static String addFeesToDb(String tableName, SemesterFees semesterfee) throws SQLException {
@@ -761,21 +752,22 @@ public class mainController {
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		String result = "";
-	
-			String sql = "insert into "+tableName+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			myStmt.setString(1, semesterfee.getDepartmentId());
-			myStmt.setString(2, semesterfee.getSemester());
-			myStmt.setString(3, semesterfee.getAmount());
-			myStmt.setString(4, semesterfee.getStudentId());
-			myStmt.setString(5, semesterfee.getTransId());
-			myStmt.setString(6, semesterfee.getPaymentTime());
-			myStmt.setString(7, "0");
 
-			myStmt.execute();
-			System.out.print("----->Semester Fee payment successful!");
-			return result = "success";
+		String sql = "insert into " + tableName
+				+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
+		myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+		myStmt.setString(1, semesterfee.getDepartmentId());
+		myStmt.setString(2, semesterfee.getSemester());
+		myStmt.setString(3, semesterfee.getAmount());
+		myStmt.setString(4, semesterfee.getStudentId());
+		myStmt.setString(5, semesterfee.getTransId());
+		myStmt.setString(6, semesterfee.getPaymentTime());
+		myStmt.setString(7, "0");
+
+		myStmt.execute();
+		System.out.print("----->Semester Fee payment successful!");
+		return result = "success";
 	}
 
 	public static String addFeesToDb(String tableName, FormfillupFees formfillupFee) throws SQLException {
@@ -783,47 +775,41 @@ public class mainController {
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		String result = "";
-	
-			String sql = "insert into "+tableName+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			
-			myStmt.setString(1, formfillupFee.getDepartmentId());
-			myStmt.setString(2, formfillupFee.getSemester());
-			myStmt.setString(3, formfillupFee.getAmount());
-			myStmt.setString(4, formfillupFee.getStudentId());
-			myStmt.setString(5, formfillupFee.getTransId());
-			myStmt.setString(6, formfillupFee.getPaymentTime());
-			myStmt.setString(7, "0");
 
-			myStmt.execute();
-			System.out.print("----->Formfillup payment successful!");
-			return result = "success";
+		String sql = "insert into " + tableName
+				+ "(departmentId,semester,amount,studentId,transId,date,paymentStatus) values(?,?,?,?,?,?,?) ";
+		myStmt = (PreparedStatement) myConn.prepareStatement(sql);
+
+		myStmt.setString(1, formfillupFee.getDepartmentId());
+		myStmt.setString(2, formfillupFee.getSemester());
+		myStmt.setString(3, formfillupFee.getAmount());
+		myStmt.setString(4, formfillupFee.getStudentId());
+		myStmt.setString(5, formfillupFee.getTransId());
+		myStmt.setString(6, formfillupFee.getPaymentTime());
+		myStmt.setString(7, "0");
+
+		myStmt.execute();
+		System.out.print("----->Formfillup payment successful!");
+		return result = "success";
 	}
 
-	/*public static boolean updatePaymentStatus(String tblName, String id) {
-		
-		Connection myConn = null;
-		PreparedStatement myStmt = null;
-		myConn = db.getCon();
-		try {
-			String sql = "update "+tblName +"  set paymentStatus=? where id=?";
-			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
-			myStmt.setString(1, "1");
-			myStmt.setString(2, id);
-			myStmt.executeUpdate();
-			return true;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return false;
-	}*/
+	/*
+	 * public static boolean updatePaymentStatus(String tblName, String id) {
+	 * 
+	 * Connection myConn = null; PreparedStatement myStmt = null; myConn =
+	 * db.getCon(); try { String sql = "update "+tblName
+	 * +"  set paymentStatus=? where id=?"; myStmt = (PreparedStatement)
+	 * myConn.prepareStatement(sql); myStmt.setString(1, "1"); myStmt.setString(2,
+	 * id); myStmt.executeUpdate(); return true; } catch (SQLException e) {
+	 * e.printStackTrace(); } return false; }
+	 */
 
 	public static boolean updatePaymentStatusToVerify(String tblName, String id) {
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		try {
-			String sql = "update "+tblName +"  set paymentStatus=? where id=?";
+			String sql = "update " + tblName + "  set paymentStatus=? where id=?";
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, "1");
 			myStmt.setString(2, id);
@@ -840,7 +826,7 @@ public class mainController {
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		try {
-			String sql = "update "+tblName +"  set paymentStatus=? where id=?";
+			String sql = "update " + tblName + "  set paymentStatus=? where id=?";
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, "0");
 			myStmt.setString(2, id);
@@ -853,21 +839,21 @@ public class mainController {
 	}
 
 	public static void makePermission(String col, String adminId) {
-		
+
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		try {
-			String sql = "update sub_admin  set "+col +"=? where id=?";
+			String sql = "update sub_admin  set " + col + "=? where id=?";
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, "1");
 			myStmt.setString(2, adminId);
 			myStmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public static void deniedPermission(String col, String adminId) {
@@ -875,19 +861,19 @@ public class mainController {
 		PreparedStatement myStmt = null;
 		myConn = db.getCon();
 		try {
-			String sql = "update sub_admin  set "+col +"=? where id=?";
+			String sql = "update sub_admin  set " + col + "=? where id=?";
 			myStmt = (PreparedStatement) myConn.prepareStatement(sql);
 			myStmt.setString(1, "0");
 			myStmt.setString(2, adminId);
 			myStmt.executeUpdate();
-			
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 	}
 
 	public static boolean havePermission(String col, String adminId) {
-		
+
 		Connection myConn = null;
 		PreparedStatement myStmt = null;
 		Statement stmt = null;
@@ -895,7 +881,7 @@ public class mainController {
 
 		myConn = db.getCon();
 
-		String select_sql = "select "+col +" from sub_admin where "+col +"=1 and id='"+adminId+"' ";
+		String select_sql = "select " + col + " from sub_admin where " + col + "=1 and id='" + adminId + "' ";
 		try {
 			stmt = myConn.createStatement();
 			myRs = stmt.executeQuery(select_sql);

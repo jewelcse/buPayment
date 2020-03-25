@@ -2,6 +2,8 @@ package com.buPayments.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.NoSuchAlgorithmException;
+import java.security.NoSuchProviderException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -41,9 +43,9 @@ public class adminController extends HttpServlet {
 
 		if (action.equals("show_all_admin")) {
 
-			//ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
+			// ArrayList<Admin> admin_list = adminDao.showAllSubAdmin();
 
-			//request.setAttribute("sub_admin_list", admin_list);
+			// request.setAttribute("sub_admin_list", admin_list);
 
 			RequestDispatcher view = request.getRequestDispatcher("all_sub_admin.jsp");
 			view.forward(request, response);
@@ -68,8 +70,6 @@ public class adminController extends HttpServlet {
 		} else if (action.equals("update_development_fee")) {
 
 			ArrayList<ChangedFees> list = adminFeesDao.showAllChangedFees();
-			
-			
 
 			request.setAttribute("changed_fees_list", list);
 
@@ -100,11 +100,22 @@ public class adminController extends HttpServlet {
 			String admin = request.getParameter("admin");
 			String password = request.getParameter("password");
 			
+			String hashPassword = null;
 			
-
+			 try {
+				byte[] salt = EncryptedPassword.getSalt();
+				System.out.println(password + " in hash pass");
+				hashPassword = EncryptedPassword.getSecurePassword(password, salt);
+				
+			} catch (NoSuchAlgorithmException | NoSuchProviderException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			 System.out.println(hashPassword + " is now ");
 			Admin login_admin = new Admin();
 			login_admin.setName(admin);
-			login_admin.setPassword(password);
+			login_admin.setPassword(hashPassword);
 			login_admin.setAdminType(adminType);
 
 			login_admin = mainController.admin_login(login_admin);
@@ -121,7 +132,7 @@ public class adminController extends HttpServlet {
 			else if (login_admin.isSubAdminIsvalid()) {
 
 				HttpSession session = request.getSession(true);
-				session.setAttribute("currentSubAdminName",login_admin.getName() );
+				session.setAttribute("currentSubAdminName", login_admin.getName());
 				session.setAttribute("currentSessionForSubAdmin", login_admin);
 				response.sendRedirect("super-admin.jsp"); // logged-in page
 
@@ -129,19 +140,21 @@ public class adminController extends HttpServlet {
 
 			else {
 				PrintWriter out = response.getWriter();
-				//out.write("login_failed");
+				// out.write("login_failed");
 				request.setAttribute("error", "Login Falid ! Try Again....");
-				//response.sendRedirect("admin-login.jsp"); // error page
+				// response.sendRedirect("admin-login.jsp"); // error page
 				request.getRequestDispatcher("admin-login.jsp").forward(request, response);
-				
-				//request.getRequestDispatcher("admin-login.jsp").include(request, response);
-				//out.println("<div class='alert alert-danger'> Login Failed</div>");
+
+				// request.getRequestDispatcher("admin-login.jsp").include(request, response);
+				// out.println("<div class='alert alert-danger'> Login Failed</div>");
 			}
-				
 
 		} else if (action.equals("addNewAdmin")) {
-
+			String hashPassword = null;
 			String newAdminName = request.getParameter("name");
+			String email = request.getParameter("email");
+			String password = request.getParameter("password");
+			//String password = "1234";
 			String item1 = request.getParameter("item1");
 			String item2 = request.getParameter("item2");
 			String item3 = request.getParameter("item3");
@@ -172,19 +185,33 @@ public class adminController extends HttpServlet {
 
 			System.out.println(item1 + item2 + item3 + item4 + item5 + item6);
 
-			Random rand = new Random();
-			Integer min = 1000;
-			Integer max = 10000;
-			Integer rand_int1 = rand.nextInt((max - min) + 1) + min;
-			String password = String.valueOf(rand_int1);
+			/*
+			 * Random rand = new Random(); Integer min = 1000; Integer max = 10000; Integer
+			 * rand_int1 = rand.nextInt((max - min) + 1) + min; String password =
+			 * String.valueOf(rand_int1);
+			 */
 
-			if (mainController.addNewAdmin(newAdminName, password, item1, item2, item3, item4, item5, item6) == true) {
-
-				response.sendRedirect("adminController?target=show_all_admin");
-
+			try {
+				byte[] salt = EncryptedPassword.getSalt();
+				hashPassword = EncryptedPassword.getSecurePassword(password, salt);
+			} catch (NoSuchAlgorithmException | NoSuchProviderException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
 			}
 
-			else {
+			if (!(mainController.isHaveSameSubadmin(newAdminName, email))) {
+
+				System.out.println("is there");
+
+				try {
+					mainController.addNewAdmin(newAdminName, email, hashPassword, item1, item2, item3, item4, item5, item6);
+					response.sendRedirect("adminController?target=show_all_admin");
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			} else {
 
 				response.sendRedirect("adminSettings.jsp?error");
 			}

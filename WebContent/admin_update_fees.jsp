@@ -211,6 +211,7 @@
 								document.getElementById("reducedForm").reset();
 								$('.statusMsg').html('<span style="color:green;">Successfuly Reduced!.</span>');
 								$('#modalForm').modal('hide');
+								window.location.reload(true);
 								 
 							} else {
 								$('.statusMsg').html('<span style="color:red;">Duplicate Entity found OR maybe Changed amount is more Than Total Fee!.</span>');
